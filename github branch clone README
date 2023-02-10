@@ -1,0 +1,8 @@
+This README is to instruct on where to clone repository on personal machine.
+This README should be consulted during installation of XAMPP.
+
+Cloning github branch STEPS:
+1. Locate XAMPP/htdocs folder and copy address.
+2. Open console and change working directory to XAMPP/htdocs and enter the following:
+cd C:\xampp\htdocs (this or wherever you decided to install XAMPP)
+git clone --branch <branchname> https://github.com/nedavis2/Capstone_Project.git                             
