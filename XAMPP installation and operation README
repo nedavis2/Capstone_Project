@@ -1,0 +1,17 @@
+To install XAMPP and get it to run with our project STEPS:
+
+1. Download XAMPP and run installer.
+2. See github branch clone README to clone branch into correct folder.
+3. Launch XAMPP.
+
+To get to our web application STEPS:
+1. Launch XAMPP.
+2. Click the start button next to Apache.
+3. Naviagte to http://localhost/Capstone_project/src/index.html.
+
+To get to our mySQL database STEPS:
+1. Launch XAMPP.
+2. Click the start button next to Apache.
+3. Click the start button next to MySQL.
+4. Click the admin button next to MySQL.
+5. Navigate to the appropriate database within MyPhpAdmin.
