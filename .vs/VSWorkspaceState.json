@@ -1,6 +1,12 @@
 {
   "ExpandedNodes": [
-    ""
+    "",
+    "\\Data",
+    "\\Database",
+    "\\dist",
+    "\\dist\\css",
+    "\\src"
   ],
+  "SelectedNode": "\\XAMPP installation and operation README",
   "PreviewInSolutionExplorer": false
 }
