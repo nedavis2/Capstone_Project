@@ -1,6 +1,8 @@
 class Player:
+    '''Representation of a given player'''
 
-    def get_offence_score(self):
+    def get_offence_score(self) -> float:
+        '''Returns the offence score of the player'''
 
         '''
         #Basic scores
@@ -21,16 +23,25 @@ class Player:
         '''
         pass
 
-    def get_pos_rank(self):
+    def get_pos_rank(self) -> int:
+        '''Returns the rank of the player relative to all other players'''
         pass
 
     def get_injury_history(self):
+        '''Returns the injury history of this player'''
         pass
 
 class Team:
+
+    '''Representation of a team'''
     def get_injury_stats_by_year(self, year : int):
+        '''Returns the injury stats of a player in a year'''
+
+        #TODO: Ask if a datetime object should be used rather than an int for year
         pass
-    def get_team_defense(self):
+    def get_team_defense(self) -> int:
+
+        '''Returns the teams defensive score.'''
         '''
         team defense: (dint + fr + sk + sft + bk + points_allowed) = points scored
 
