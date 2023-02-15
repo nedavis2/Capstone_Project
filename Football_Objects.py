@@ -1,27 +1,50 @@
+import datetime
 class Player:
     '''Representation of a given player'''
-
-    def get_offence_score(self) -> float:
+    
+    def __init__(player_id : str, db):
+        
+        #TODO: Query database with "SELECT * FROM `nfl_pass_rush_receive_raw_data` WHERE player_id = %s"%player_id
+        
+        #Then save that to db
+        
+        db = None
+        
+    def get_offence_score(self, game) -> float:
         '''Returns the offence score of the player'''
-
-        '''
+        pass_yards = db[game]["pass_yds"]
+        rush_yards = db[game]["rush_yds"]
+        pass_TDs  = db[game]["pass_td"]
+        rush_TDs  = db[game]["rush_td"]
+        ints  = db[game]["pass_int"]
+        pass_2pt  = db[game][]
+        rush_2pt = db[game][]
+        catches  = db[game][]
+        rec_yards  = db[game]["rec_yards"]
+        rec_TDs  = db[game]["rec_td"]
+        rec_2pt  = db[game][]
+        rush_2pt  = db[game][]
+        fumble  = db[game][]
+        
+        
         #Basic scores
-        offensive player:  (py + ry + ptd + rtd + int + pcon + rcon + cy + recy + rectd  + reccon + fum) = points scored
-        pass_yards * .04 = py
-        rush_yards * .1 = ry
-        pass_TDs * 4 = ptd
-        rush_TDs * 6 = rtd
-        int * -2 = int
-        pass_2pt * 2 = pcon
-        rush_2pt * 2 = rcon
-        catches * 1 = cy
-        rec_yards * .1 = recy
-        rec_TDs * 6 = rectd
-        rec_2pt * 2 = reccon
-        rush_2pt * 2 = rcon
-        fumble * -2 = fum 
-        '''
-        pass
+        #offensive player: 
+        py = pass_yards * .04 
+        ry = rush_yards * .1 
+        ptd = pass_TDs * 4 
+        rtd = rush_TDs * 6 
+        ints =  ints * -2
+        pcon = pass_2pt * 2 
+        rcon = rush_2pt * 2
+        cy = catches * 1 
+        recy = rec_yards * .1 
+        rectd = rec_TDs * 6 
+        reccon = rec_2pt * 2 
+        rcon = rush_2pt * 2 
+        fum =  fumble * -2 
+        points scored = (py + ry + ptd + rtd + int + pcon + rcon + cy + recy + rectd  + reccon + fum) 
+        
+        return db[]
 
     def get_pos_rank(self) -> int:
         '''Returns the rank of the player relative to all other players'''
@@ -34,7 +57,7 @@ class Player:
 class Team:
 
     '''Representation of a team'''
-    def get_injury_stats_by_year(self, year : int):
+    def get_injury_stats_by_year(self, year : datetime):
         '''Returns the injury stats of a player in a year'''
 
         #TODO: Ask if a datetime object should be used rather than an int for year
