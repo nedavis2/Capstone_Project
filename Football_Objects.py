@@ -44,10 +44,12 @@ class Player:
         fum =  fumble * -2 
         points scored = (py + ry + ptd + rtd + int + pcon + rcon + cy + recy + rectd  + reccon + fum) 
         
-        return db[]
+        return points scored
 
     def get_pos_rank(self) -> int:
         '''Returns the rank of the player relative to all other players'''
+        
+        
         pass
 
     def get_injury_history(self):
@@ -57,6 +59,13 @@ class Player:
 class Team:
 
     '''Representation of a team'''
+    def __init__(team_id, db):
+        '''Generate team object from given data'''
+        tid = team_id
+        team_db = db["team_id"] == team_id
+        
+        team_db = db.loc[team_db]
+        
     def get_injury_stats_by_year(self, year : datetime):
         '''Returns the injury stats of a player in a year'''
 
