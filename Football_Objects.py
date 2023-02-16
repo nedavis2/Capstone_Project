@@ -17,7 +17,7 @@ class Player:
         pass_TDs  = db[game]["pass_td"]
         rush_TDs  = db[game]["rush_td"]
         ints  = db[game]["pass_int"]
-        pass_2pt  = db[game][]
+        pass_2pt  = db[game]["two_point_conv"]
         rush_2pt = db[game][]
         catches  = db[game][]
         rec_yards  = db[game]["rec_yards"]
