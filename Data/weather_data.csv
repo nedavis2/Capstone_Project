@@ -1,0 +1,1092 @@
+game_id,Temperature,Humidity,Wind_Speed,Roof,Surface
+201909050chi,65,69,10,outdoors,grass
+201909080car,87,53,3,outdoors,grass
+201909080cle,71,55,10,outdoors,grass
+201909080crd,72,45,0,retractable roof (closed),grass
+201909080dal,72,45,0,retractable roof (closed),fieldturf
+201909080jax,91,54,6,outdoors,grass
+201909080mia,91,56,8,outdoors,grass
+201909080min,72,45,0,dome,sportturf
+201909080nwe,66,62,2,outdoors,grass
+201909080nyj,77,46,6,outdoors,fieldturf 
+201909080phi,79,49,4,outdoors,grass
+201909080sdg,77,52,10,outdoors,grass
+201909080sea,64,82,7,outdoors,fieldturf
+201909080tam,93,52,9,outdoors,grass
+201909090nor,72,45,0,dome,astroturf
+201909090rai,68,66,15,outdoors,grass
+201909120car,85,55,3,outdoors,grass
+201909150atl,72,45,0,retractable roof (open),fieldturf
+201909150cin,81,45,5,outdoors,grass
+201909150den,87,14,3,outdoors,grass
+201909150det,72,45,0,dome,fieldturf
+201909150gnb,72,75,5,outdoors,grass
+201909150htx,72,45,0,retractable roof (closed),grass
+201909150mia,87,67,4,outdoors,grass
+201909150nyg,79,48,5,outdoors,fieldturf 
+201909150oti,93,45,1,outdoors,grass
+201909150pit,81,51,3,outdoors,grass
+201909150rai,70,61,13,outdoors,grass
+201909150ram,85,44,4,outdoors,grass
+201909150rav,82,60,8,outdoors,grass
+201909150was,80,46,7,outdoors,grass
+201909160nyj,72,69,3,outdoors,fieldturf 
+201909190jax,73,87,9,outdoors,grass
+201909220buf,83,53,13,outdoors,astroturf
+201909220cle,83,33,12,outdoors,grass
+201909220clt,72,45,0,retractable roof (closed),fieldturf
+201909220crd,72,45,0,retractable roof (closed),grass
+201909220dal,72,45,0,retractable roof (closed),fieldturf
+201909220gnb,69,93,7,outdoors,grass
+201909220kan,72,45,0,outdoors,grass
+201909220min,72,45,0,dome,sportturf
+201909220nwe,81,49,10,outdoors,grass
+201909220phi,84,53,7,outdoors,grass
+201909220sdg,87,37,4,outdoors,grass
+201909220sea,63,85,8,outdoors,fieldturf
+201909220sfo,79,36,3,outdoors,grass
+201909220tam,88,46,11,outdoors,grass
+201909230was,87,39,5,outdoors,grass
+201909260gnb,60,62,3,outdoors,grass
+201909290atl,72,45,0,retractable roof (closed),fieldturf
+201909290buf,58,71,10,outdoors,astroturf
+201909290chi,67,89,8,outdoors,grass
+201909290clt,72,45,0,retractable roof (closed),fieldturf
+201909290crd,72,45,0,retractable roof (closed),grass
+201909290den,87,11,14,outdoors,grass
+201909290det,72,45,0,dome,fieldturf
+201909290htx,72,45,0,retractable roof (closed),grass
+201909290mia,88,53,15,outdoors,grass
+201909290nor,72,45,0,dome,astroturf
+201909290nyg,77,42,11,outdoors,fieldturf 
+201909290ram,74,41,2,outdoors,grass
+201909290rav,83,57,8,outdoors,grass
+201909300pit,76,72,1,outdoors,grass
+201910030sea,57,56,7,outdoors,fieldturf
+201910060car,72,59,4,outdoors,grass
+201910060cin,76,68,6,outdoors,grass
+201910060dal,72,45,0,retractable roof (closed),fieldturf
+201910060htx,72,45,0,retractable roof (closed),grass
+201910060kan,59,75,3,outdoors,grass
+201910060nor,72,45,0,dome,astroturf
+201910060nyg,66,73,10,outdoors,fieldturf 
+201910060oti,77,71,13,outdoors,grass
+201910060phi,68,68,10,outdoors,grass
+201910060pit,70,74,7,outdoors,grass
+201910060rai,59,60,15,outdoors,grass
+201910060sdg,85,35,12,outdoors,grass
+201910060was,70,66,8,outdoors,grass
+201910070sfo,87,36,8,outdoors,grass
+201910100nwe,54,61,13,outdoors,grass
+201910130cle,58,38,20,outdoors,grass
+201910130crd,72,45,0,retractable roof (closed),grass
+201910130den,69,9,7,outdoors,grass
+201910130jax,81,56,3,outdoors,grass
+201910130kan,56,47,2,outdoors,grass
+201910130mia,84,66,13,outdoors,grass
+201910130min,72,45,0,dome,sportturf
+201910130nyj,66,38,7,outdoors,fieldturf 
+201910130ram,77,42,2,outdoors,grass
+201910130rav,64,43,7,outdoors,grass
+201910130sdg,71,61,9,outdoors,grass
+201910130tam,61,86,14,outdoors,grass
+201910140gnb,43,73,5,outdoors,grass
+201910170den,75,7,6,outdoors,grass
+201910200atl,72,45,0,retractable roof (open),fieldturf
+201910200buf,65,54,7,outdoors,astroturf
+201910200chi,54,84,6,outdoors,grass
+201910200cin,70,63,2,outdoors,grass
+201910200clt,72,45,0,retractable roof (open),fieldturf
+201910200dal,72,45,0,retractable roof (closed),fieldturf
+201910200det,72,45,0,dome,fieldturf
+201910200gnb,55,74,6,outdoors,grass
+201910200nyg,56,78,3,outdoors,fieldturf 
+201910200oti,77,40,2,outdoors,grass
+201910200sea,50,79,8,outdoors,fieldturf
+201910200was,55,93,12,outdoors,grass
+201910210nyj,58,73,0,outdoors,fieldturf 
+201910240min,72,45,0,dome,sportturf
+201910270atl,72,45,0,retractable roof (open),fieldturf
+201910270buf,54,87,23,outdoors,astroturf
+201910270chi,52,59,9,outdoors,grass
+201910270clt,72,45,0,retractable roof (open),fieldturf
+201910270det,72,45,0,dome,fieldturf
+201910270htx,72,45,0,retractable roof (closed),grass
+201910270jax,72,45,0,outdoors,grass
+201910270kan,54,60,5,outdoors,grass
+201910270nor,72,45,0,dome,astroturf
+201910270nwe,49,91,11,outdoors,grass
+201910270oti,59,67,3,outdoors,grass
+201910270ram,48,69,5,outdoors,grass
+201910270sfo,66,20,19,outdoors,grass
+201910280pit,59,50,2,outdoors,grass
+201910310crd,72,45,0,retractable roof (closed),grass
+201911030buf,42,56,18,outdoors,astroturf
+201911030car,58,34,5,outdoors,grass
+201911030den,55,32,4,outdoors,grass
+201911030jax,53,54,6,outdoors,grass
+201911030kan,54,37,15,outdoors,grass
+201911030mia,85,64,11,outdoors,grass
+201911030phi,52,37,13,outdoors,grass
+201911030pit,48,47,12,outdoors,grass
+201911030rai,71,34,6,outdoors,grass
+201911030rav,48,41,1,outdoors,grass
+201911030sdg,72,45,0,outdoors,grass
+201911030sea,54,66,6,outdoors,fieldturf
+201911040nyg,51,58,10,outdoors,fieldturf 
+201911070rai,54,84,9,outdoors,grass
+201911100chi,40,80,12,outdoors,grass
+201911100cin,56,53,9,outdoors,grass
+201911100cle,72,45,0,outdoors,grass
+201911100clt,72,45,0,retractable roof (closed),fieldturf
+201911100dal,72,45,0,retractable roof (closed),fieldturf
+201911100gnb,72,45,0,outdoors,grass
+201911100nor,72,45,0,dome,astroturf
+201911100nyj,48,50,8,outdoors,fieldturf 
+201911100oti,63,35,9,outdoors,grass
+201911100pit,55,44,12,outdoors,grass
+201911100tam,77,53,8,outdoors,grass
+201911110sfo,77,32,3,outdoors,grass
+201911140cle,36,57,10,outdoors,grass
+201911170car,51,50,11,outdoors,grass
+201911170clt,72,45,0,retractable roof (closed),fieldturf
+201911170det,72,45,0,dome,fieldturf
+201911170mia,62,74,13,outdoors,grass
+201911170min,72,45,0,dome,sportturf
+201911170phi,42,57,13,outdoors,grass
+201911170rai,76,41,13,outdoors,grass
+201911170ram,79,20,0,outdoors,grass
+201911170rav,44,56,10,outdoors,grass
+201911170sfo,72,46,0,outdoors,grass
+201911170tam,55,79,4,outdoors,grass
+201911170was,43,58,8,outdoors,grass
+201911180sdg,67,63,7,outdoors,grass
+201911210htx,72,45,0,retractable roof (closed),grass
+201911240atl,72,45,0,retractable roof (closed),fieldturf
+201911240buf,40,75,17,outdoors,astroturf
+201911240chi,48,59,12,outdoors,grass
+201911240cin,46,62,10,outdoors,grass
+201911240cle,39,73,14,outdoors,grass
+201911240nor,72,45,0,dome,astroturf
+201911240nwe,38,90,16,outdoors,grass
+201911240nyj,43,93,12,outdoors,fieldturf 
+201911240oti,52,54,9,outdoors,grass
+201911240phi,40,78,17,outdoors,grass
+201911240sfo,63,40,7,outdoors,grass
+201911240was,46,56,17,outdoors,grass
+201911250ram,62,64,5,outdoors,grass
+201911280atl,72,45,0,retractable roof (closed),fieldturf
+201911280dal,72,45,0,retractable roof (closed),fieldturf
+201911280det,72,45,0,dome,fieldturf
+201912010car,64,77,16,outdoors,grass
+201912010cin,46,77,15,outdoors,grass
+201912010clt,72,45,0,retractable roof (closed),fieldturf
+201912010crd,72,45,0,retractable roof (closed),grass
+201912010den,33,51,7,outdoors,grass
+201912010htx,72,45,0,retractable roof (closed),grass
+201912010jax,72,45,0,outdoors,grass
+201912010kan,36,55,20,outdoors,grass
+201912010mia,72,45,0,outdoors,grass
+201912010nyg,32,86,10,outdoors,fieldturf 
+201912010pit,46,91,6,outdoors,grass
+201912010rav,40,91,13,outdoors,grass
+201912020sea,51,65,1,outdoors,fieldturf
+201912050chi,44,66,9,outdoors,grass
+201912080atl,72,45,0,retractable roof (closed),fieldturf
+201912080buf,43,48,18,outdoors,astroturf
+201912080cle,48,58,16,outdoors,grass
+201912080crd,72,45,0,retractable roof (closed),grass
+201912080gnb,37,75,10,outdoors,grass
+201912080htx,72,45,0,retractable roof (closed),grass
+201912080jax,72,45,0,outdoors,grass
+201912080min,72,45,0,dome,sportturf
+201912080nor,72,45,0,dome,astroturf
+201912080nwe,32,56,8,outdoors,grass
+201912080nyj,41,47,9,outdoors,fieldturf 
+201912080rai,59,78,5,outdoors,grass
+201912080ram,60,79,4,outdoors,grass
+201912080tam,78,58,9,outdoors,grass
+201912090phi,53,87,11,outdoors,grass
+201912120rav,33,55,3,outdoors,grass
+201912150car,56,45,5,outdoors,grass
+201912150cin,36,58,6,outdoors,grass
+201912150crd,72,45,0,retractable roof (closed),grass
+201912150dal,72,45,0,retractable roof (closed),fieldturf
+201912150det,72,45,0,dome,fieldturf
+201912150gnb,11,70,7,outdoors,grass
+201912150kan,24,88,8,outdoors,grass
+201912150nyg,48,42,19,outdoors,fieldturf 
+201912150oti,45,71,4,outdoors,grass
+201912150pit,31,67,6,outdoors,grass
+201912150rai,59,52,7,outdoors,grass
+201912150sdg,64,28,14,outdoors,grass
+201912150sfo,55,58,6,outdoors,grass
+201912150was,52,44,13,outdoors,grass
+201912160nor,72,45,0,dome,astroturf
+201912210nwe,33,64,2,outdoors,grass
+201912210sfo,58,66,12,outdoors,grass
+201912210tam,73,65,11,outdoors,grass
+201912220atl,72,45,0,retractable roof (closed),fieldturf
+201912220chi,45,66,10,outdoors,grass
+201912220cle,49,41,10,outdoors,grass
+201912220clt,72,45,0,retractable roof (closed),fieldturf
+201912220den,67,8,3,outdoors,grass
+201912220mia,76,68,15,outdoors,grass
+201912220nyj,45,52,6,outdoors,fieldturf 
+201912220oti,50,59,4,outdoors,grass
+201912220phi,47,46,7,outdoors,grass
+201912220sdg,64,60,10,outdoors,grass
+201912220sea,43,87,7,outdoors,fieldturf
+201912220was,44,52,6,outdoors,grass
+201912230min,72,45,0,dome,sportturf
+201912290buf,43,85,7,outdoors,astroturf
+201912290car,63,89,9,outdoors,grass
+201912290cin,64,80,7,outdoors,grass
+201912290dal,72,45,0,retractable roof (closed),fieldturf
+201912290den,31,43,6,outdoors,grass
+201912290det,72,45,0,dome,fieldturf
+201912290htx,72,45,0,retractable roof (closed),grass
+201912290jax,72,45,0,outdoors,grass
+201912290kan,40,70,16,outdoors,grass
+201912290min,72,45,0,dome,sportturf
+201912290nwe,43,41,2,outdoors,grass
+201912290nyg,42,69,5,outdoors,fieldturf 
+201912290ram,62,47,0,outdoors,grass
+201912290rav,46,91,7,outdoors,grass
+201912290sea,51,70,3,outdoors,fieldturf
+201912290tam,78,77,12,outdoors,grass
+202001040htx,72,45,0,retractable roof (closed),grass
+202001040nwe,44,88,4,outdoors,grass
+202001050nor,72,45,0,dome,astroturf
+202001050phi,41,40,17,outdoors,grass
+202001110rav,69,70,12,outdoors,grass
+202001110sfo,56,67,11,outdoors,grass
+202001120gnb,23,74,8,outdoors,grass
+202001120kan,72,45,0,outdoors,grass
+202001190kan,72,45,0,outdoors,grass
+202001190sfo,58,56,5,outdoors,grass
+202009100kan,56,95,7,outdoors,astroturf
+202009130atl,72,45,0,retractable roof (closed),fieldturf
+202009130buf,67,93,15,outdoors,astroturf
+202009130car,81,59,5,outdoors,grass
+202009130cin,83,56,6,outdoors,grass
+202009130det,72,45,0,dome,fieldturf
+202009130jax,80,85,3,outdoors,grass
+202009130min,72,45,0,dome,sportturf
+202009130nor,72,45,0,dome,astroturf
+202009130nwe,70,62,8,outdoors,grass
+202009130ram,72,45,0,dome,matrixturf
+202009130rav,76,72,5,outdoors,grass
+202009130sfo,72,45,0,outdoors,grass
+202009130was,76,68,5,outdoors,grass
+202009140den,79,14,10,outdoors,grass
+202009140nyg,71,44,5,outdoors,fieldturf 
+202009170cle,65,52,8,outdoors,grass
+202009200chi,66,41,12,outdoors,grass
+202009200clt,72,45,0,retractable roof (closed),fieldturf
+202009200crd,72,45,0,retractable roof (closed),grass
+202009200dal,72,45,0,retractable roof (closed),fieldturf
+202009200gnb,66,41,12,outdoors,grass
+202009200htx,72,45,0,retractable roof (closed),grass
+202009200mia,90,68,5,outdoors,grass
+202009200nyj,61,29,7,outdoors,fieldturf 
+202009200oti,72,60,5,outdoors,grass
+202009200phi,62,34,12,outdoors,grass
+202009200pit,64,39,5,outdoors,grass
+202009200sdg,72,45,0,dome,matrixturf
+202009200sea,70,57,5,outdoors,fieldturf
+202009200tam,85,72,17,outdoors,grass
+202009210rai,72,45,0,dome,grass
+202009240jax,81,75,12,outdoors,grass
+202009270atl,72,45,0,retractable roof (closed),fieldturf
+202009270buf,79,52,16,outdoors,astroturf
+202009270cle,73,64,18,outdoors,grass
+202009270clt,72,45,0,retractable roof (closed),fieldturf
+202009270crd,72,45,0,retractable roof (closed),grass
+202009270den,55,39,7,outdoors,grass
+202009270min,72,45,0,dome,sportturf
+202009270nor,72,45,0,dome,astroturf
+202009270nwe,73,81,8,outdoors,grass
+202009270nyg,75,72,2,outdoors,fieldturf 
+202009270phi,76,82,5,outdoors,grass
+202009270pit,79,69,6,outdoors,grass
+202009270sdg,72,45,0,dome,matrixturf
+202009270sea,63,65,3,outdoors,fieldturf
+202009280rav,73,84,8,outdoors,grass
+202010010nyj,64,55,6,outdoors,fieldturf 
+202010040car,68,48,8,outdoors,grass
+202010040chi,52,54,10,outdoors,grass
+202010040cin,64,58,6,outdoors,grass
+202010040dal,72,45,0,retractable roof (closed),fieldturf
+202010040det,72,45,0,dome,fieldturf
+202010040htx,72,45,0,retractable roof (closed),grass
+202010040mia,86,71,13,outdoors,grass
+202010040rai,72,45,0,dome,grass
+202010040ram,72,45,0,dome,matrixturf
+202010040sfo,72,45,0,outdoors,grass
+202010040tam,75,87,6,outdoors,grass
+202010040was,65,45,5,outdoors,grass
+202010050gnb,53,46,9,outdoors,grass
+202010050kan,73,39,14,outdoors,astroturf
+202010080chi,57,74,7,outdoors,grass
+202010110atl,72,45,0,retractable roof (closed),fieldturf
+202010110cle,64,67,16,outdoors,grass
+202010110dal,72,45,0,retractable roof (closed),fieldturf
+202010110htx,72,45,0,retractable roof (closed),grass
+202010110kan,80,57,16,outdoors,astroturf
+202010110nyj,64,57,8,outdoors,fieldturf 
+202010110pit,70,89,4,outdoors,grass
+202010110rav,69,92,3,outdoors,grass
+202010110sea,54,90,10,outdoors,fieldturf
+202010110sfo,72,45,0,outdoors,grass
+202010110was,69,82,2,outdoors,grass
+202010120nor,72,45,0,dome,astroturf
+202010130oti,73,32,3,outdoors,grass
+202010180car,63,44,6,outdoors,grass
+202010180clt,72,45,0,retractable roof (closed),fieldturf
+202010180jax,78,78,10,outdoors,grass
+202010180mia,85,66,15,outdoors,grass
+202010180min,72,45,0,dome,sportturf
+202010180nwe,58,45,7,outdoors,grass
+202010180nyg,62,48,0,outdoors,fieldturf 
+202010180oti,61,58,10,outdoors,grass
+202010180phi,61,52,7,outdoors,grass
+202010180pit,61,43,9,outdoors,grass
+202010180sfo,86,22,10,outdoors,grass
+202010180tam,88,48,12,outdoors,grass
+202010190buf,51,92,6,outdoors,astroturf
+202010190dal,72,45,0,retractable roof (closed),fieldturf
+202010220phi,70,75,4,outdoors,grass
+202010250atl,72,45,0,retractable roof (closed),fieldturf
+202010250cin,48,77,8,outdoors,grass
+202010250crd,72,45,0,retractable roof (closed),grass
+202010250den,14,78,11,outdoors,grass
+202010250htx,72,45,0,retractable roof (closed),grass
+202010250nor,72,45,0,dome,astroturf
+202010250nwe,49,60,7,outdoors,grass
+202010250nyj,52,52,8,outdoors,fieldturf 
+202010250oti,55,88,3,outdoors,grass
+202010250rai,72,45,0,dome,grass
+202010250sdg,72,45,0,dome,matrixturf
+202010250was,46,90,5,outdoors,grass
+202010260ram,72,45,0,dome,matrixturf
+202010290car,76,76,8,outdoors,grass
+202011010buf,41,87,17,outdoors,astroturf
+202011010chi,40,41,20,outdoors,grass
+202011010cin,48,52,24,outdoors,grass
+202011010cle,49,56,35,outdoors,grass
+202011010den,64,23,10,outdoors,grass
+202011010det,72,45,0,dome,fieldturf
+202011010gnb,34,50,23,outdoors,grass
+202011010kan,52,0,11,outdoors,astroturf
+202011010mia,86,73,10,outdoors,grass
+202011010phi,49,66,17,outdoors,grass
+202011010rav,52,97,7,outdoors,grass
+202011010sea,55,58,4,outdoors,fieldturf
+202011020nyg,39,46,8,outdoors,fieldturf 
+202011050sfo,78,83,5,outdoors,grass
+202011080atl,72,45,0,retractable roof (closed),fieldturf
+202011080buf,69,41,4,outdoors,astroturf
+202011080clt,72,45,0,retractable roof (closed),fieldturf
+202011080crd,72,45,0,retractable roof (closed),grass
+202011080dal,72,45,0,retractable roof (closed),fieldturf
+202011080jax,79,71,14,outdoors,grass
+202011080kan,71,63,19,outdoors,astroturf
+202011080min,72,45,0,dome,sportturf
+202011080oti,77,55,14,outdoors,grass
+202011080sdg,72,45,0,dome,matrixturf
+202011080tam,77,76,17,outdoors,grass
+202011080was,75,49,1,outdoors,grass
+202011090nyj,61,72,2,outdoors,fieldturf 
+202011120oti,56,46,6,outdoors,grass
+202011150car,65,90,15,outdoors,grass
+202011150cle,59,66,25,outdoors,grass
+202011150crd,72,45,0,retractable roof (closed),grass
+202011150det,72,45,0,dome,fieldturf
+202011150gnb,38,76,23,outdoors,grass
+202011150mia,83,73,7,outdoors,grass
+202011150nor,72,45,0,dome,astroturf
+202011150nwe,52,81,13,outdoors,grass
+202011150nyg,56,60,18,outdoors,fieldturf 
+202011150pit,52,82,21,outdoors,grass
+202011150rai,72,45,0,dome,grass
+202011150ram,72,45,0,dome,matrixturf
+202011160chi,44,59,11,outdoors,grass
+202011190sea,48,74,11,outdoors,fieldturf
+202011220car,65,67,7,outdoors,grass
+202011220cle,38,88,8,outdoors,grass
+202011220clt,72,45,0,retractable roof (closed),fieldturf
+202011220den,45,19,7,outdoors,grass
+202011220htx,72,45,0,retractable roof (closed),grass
+202011220jax,72,84,3,outdoors,grass
+202011220min,72,45,0,dome,sportturf
+202011220nor,72,45,0,dome,astroturf
+202011220rai,72,45,0,dome,grass
+202011220rav,53,67,6,outdoors,grass
+202011220sdg,72,45,0,dome,matrixturf
+202011220was,57,63,7,outdoors,grass
+202011230tam,69,65,5,outdoors,grass
+202011260dal,72,45,0,retractable roof (closed),fieldturf
+202011260det,72,45,0,dome,fieldturf
+202011290atl,72,45,0,retractable roof (closed),fieldturf
+202011290buf,48,52,7,outdoors,astroturf
+202011290cin,52,50,4,outdoors,grass
+202011290clt,72,45,0,retractable roof (closed),fieldturf
+202011290den,38,33,6,outdoors,grass
+202011290gnb,37,59,13,outdoors,grass
+202011290jax,70,83,1,outdoors,grass
+202011290min,72,45,0,dome,sportturf
+202011290nwe,52,40,8,outdoors,grass
+202011290nyj,54,32,2,outdoors,fieldturf 
+202011290ram,72,45,0,dome,matrixturf
+202011290tam,81,50,5,outdoors,grass
+202011300phi,60,94,16,outdoors,grass
+202012020pit,36,68,14,outdoors,grass
+202012060atl,72,45,0,retractable roof (closed),fieldturf
+202012060chi,35,80,5,outdoors,grass
+202012060crd,72,45,0,retractable roof (closed),grass
+202012060gnb,34,64,9,outdoors,grass
+202012060htx,72,45,0,retractable roof (closed),grass
+202012060kan,41,70,9,outdoors,astroturf
+202012060mia,81,64,5,outdoors,grass
+202012060min,72,45,0,dome,sportturf
+202012060nyj,39,46,18,outdoors,fieldturf 
+202012060oti,52,68,1,outdoors,grass
+202012060sdg,72,45,0,dome,matrixturf
+202012060sea,51,83,4,outdoors,fieldturf
+202012070pit,34,58,10,outdoors,grass
+202012070sfo,72,45,0,retractable roof (closed),grass
+202012080rav,38,54,9,outdoors,grass
+202012100ram,72,45,0,dome,matrixturf
+202012130buf,35,71,11,outdoors,astroturf
+202012130car,70,67,7,outdoors,grass
+202012130chi,34,70,1,outdoors,grass
+202012130cin,44,73,5,outdoors,grass
+202012130det,72,45,0,dome,fieldturf
+202012130jax,69,83,2,outdoors,grass
+202012130mia,81,56,8,outdoors,grass
+202012130nyg,59,58,15,outdoors,fieldturf 
+202012130phi,57,49,10,outdoors,grass
+202012130rai,72,45,0,dome,grass
+202012130sdg,72,45,0,dome,matrixturf
+202012130sea,43,90,8,outdoors,fieldturf
+202012130sfo,72,45,0,retractable roof (closed),grass
+202012130tam,78,63,5,outdoors,grass
+202012140cle,34,51,18,outdoors,grass
+202012170rai,72,45,0,dome,grass
+202012190den,47,22,24,outdoors,grass
+202012190gnb,33,85,5,outdoors,grass
+202012200atl,72,45,0,retractable roof (closed),fieldturf
+202012200clt,72,45,0,retractable roof (closed),fieldturf
+202012200crd,72,45,0,retractable roof (closed),grass
+202012200dal,72,45,0,retractable roof (closed),fieldturf
+202012200mia,79,65,9,outdoors,grass
+202012200min,72,45,0,dome,sportturf
+202012200nor,72,45,0,dome,astroturf
+202012200nyg,36,82,0,outdoors,fieldturf 
+202012200oti,46,86,5,outdoors,grass
+202012200ram,72,45,0,dome,matrixturf
+202012200rav,39,78,3,outdoors,grass
+202012200was,43,69,8,outdoors,grass
+202012210cin,43,63,10,outdoors,grass
+202012250nor,72,45,0,dome,astroturf
+202012260crd,72,45,0,retractable roof (closed),grass
+202012260det,72,45,0,dome,fieldturf
+202012260rai,72,45,0,dome,grass
+202012270dal,72,45,0,retractable roof (closed),fieldturf
+202012270gnb,28,88,15,outdoors,grass
+202012270htx,72,45,0,retractable roof (closed),grass
+202012270jax,55,60,5,outdoors,grass
+202012270kan,49,44,8,outdoors,astroturf
+202012270nyj,37,42,5,outdoors,fieldturf 
+202012270pit,37,65,6,outdoors,grass
+202012270rav,38,48,3,outdoors,grass
+202012270sdg,72,45,0,dome,matrixturf
+202012270sea,45,89,2,outdoors,fieldturf
+202012270was,41,46,6,outdoors,grass
+202012280nwe,41,90,4,outdoors,grass
+202101030buf,35,93,1,outdoors,astroturf
+202101030car,57,80,2,outdoors,grass
+202101030chi,32,85,7,outdoors,grass
+202101030cin,39,79,10,outdoors,grass
+202101030cle,38,91,7,outdoors,grass
+202101030clt,72,45,0,retractable roof (closed),fieldturf
+202101030den,53,19,10,outdoors,grass
+202101030det,72,45,0,dome,fieldturf
+202101030htx,72,45,0,retractable roof (closed),grass
+202101030kan,35,88,6,outdoors,astroturf
+202101030nwe,33,75,5,outdoors,grass
+202101030nyg,33,85,6,outdoors,fieldturf 
+202101030phi,38,92,10,outdoors,grass
+202101030ram,72,45,0,dome,matrixturf
+202101030sfo,72,45,0,retractable roof (closed),grass
+202101030tam,65,77,4,outdoors,grass
+202101090buf,34,59,6,outdoors,astroturf
+202101090sea,39,91,1,outdoors,fieldturf
+202101090was,40,47,10,outdoors,grass
+202101100nor,72,45,0,dome,astroturf
+202101100oti,33,63,1,outdoors,grass
+202101100pit,34,72,1,outdoors,grass
+202101160buf,34,81,13,outdoors,astroturf
+202101160gnb,35,69,13,outdoors,grass
+202101170kan,40,62,13,outdoors,astroturf
+202101170nor,72,45,0,dome,astroturf
+202101240gnb,29,75,10,outdoors,grass
+202101240kan,40,70,7,outdoors,astroturf
+202102070tam,63,78,9,outdoors,grass
+202109090tam,82,85,9,outdoors,grass 
+202109120atl,72,45,0,retractable roof (open),fieldturf
+202109120buf,73,79,17,outdoors,a_turf
+202109120car,81,51,0,outdoors,grass 
+202109120cin,81,54,15,outdoors,fieldturf 
+202109120clt,72,45,0,retractable roof (closed),fieldturf 
+202109120det,72,45,0,dome,fieldturf 
+202109120htx,72,45,0,retractable roof (closed),astroturf
+202109120kan,88,43,8,outdoors,grass 
+202109120nor,86,57,9,outdoors,grass 
+202109120nwe,81,58,15,outdoors,fieldturf 
+202109120nyg,82,56,19,outdoors,fieldturf 
+202109120oti,82,55,8,outdoors,grass 
+202109120ram,72,45,0,dome,matrixturf
+202109120was,81,49,4,outdoors,grass 
+202109130rai,72,45,0,dome,grass
+202109160was,71,94,0,outdoors,grass 
+202109190car,83,65,4,outdoors,grass 
+202109190chi,80,52,0,outdoors,grass 
+202109190cle,75,66,12,outdoors,grass 
+202109190clt,72,45,0,retractable roof (closed),fieldturf 
+202109190crd,72,45,0,retractable roof (closed),grass 
+202109190jax,80,87,7,outdoors,grass 
+202109190mia,89,59,7,outdoors,grass 
+202109190nyj,72,49,13,outdoors,fieldturf 
+202109190phi,76,42,13,outdoors,grass 
+202109190pit,77,60,4,outdoors,grass 
+202109190rav,82,38,8,outdoors,grass
+202109190sdg,72,45,0,dome,matrixturf
+202109190sea,62,70,14,outdoors,fieldturf 
+202109190tam,85,72,0,outdoors,grass 
+202109200gnb,73,84,12,outdoors,grass 
+202109230htx,72,45,0,retractable roof (closed),astroturf
+202109260buf,67,40,21,outdoors,a_turf
+202109260cle,70,38,22,outdoors,grass 
+202109260den,82,13,6,outdoors,grass 
+202109260det,72,45,0,dome,fieldturf 
+202109260jax,81,49,4,outdoors,grass 
+202109260kan,81,34,19,outdoors,grass 
+202109260min,72,45,0,dome,sportturf
+202109260nwe,73,55,11,outdoors,fieldturf 
+202109260nyg,69,45,13,outdoors,fieldturf 
+202109260oti,72,66,4,outdoors,grass 
+202109260pit,67,42,9,outdoors,grass 
+202109260rai,72,45,0,dome,grass
+202109260ram,72,45,0,dome,matrixturf
+202109260sfo,69,57,15,outdoors,grass
+202109270dal,72,45,0,retractable roof (open),matrixturf
+202109300cin,65,84,0,outdoors,fieldturf 
+202110030atl,72,45,0,retractable roof (open),fieldturf
+202110030buf,67,93,12,outdoors,a_turf
+202110030chi,72,79,4,outdoors,grass 
+202110030dal,72,45,0,retractable roof (closed),matrixturf
+202110030den,77,14,11,outdoors,grass 
+202110030gnb,67,87,4,outdoors,grass 
+202110030mia,85,57,16,outdoors,grass 
+202110030min,72,45,0,dome,sportturf
+202110030nor,72,45,0,dome,sportturf
+202110030nwe,62,84,4,outdoors,fieldturf 
+202110030nyj,78,50,9,outdoors,fieldturf 
+202110030phi,73,69,8,outdoors,grass 
+202110030ram,72,45,0,dome,matrixturf
+202110030sfo,80,33,0,outdoors,grass
+202110040sdg,72,45,0,dome,matrixturf
+202110070sea,56,53,8,outdoors,fieldturf 
+202110100atl,63,77,8,outdoors,grass
+202110100car,76,60,13,outdoors,grass 
+202110100cin,76,67,12,outdoors,fieldturf 
+202110100crd,72,45,0,retractable roof (closed),grass 
+202110100dal,72,45,0,retractable roof (closed),matrixturf
+202110100htx,72,45,0,retractable roof (closed),astroturf
+202110100jax,78,71,11,outdoors,grass 
+202110100kan,76,52,0,outdoors,grass 
+202110100min,72,45,0,dome,sportturf
+202110100pit,71,61,9,outdoors,grass 
+202110100rai,72,45,0,dome,grass
+202110100sdg,72,45,0,dome,matrixturf
+202110100tam,84,59,7,outdoors,grass 
+202110100was,70,78,12,outdoors,grass 
+202110110rav,69,75,6,outdoors,grass
+202110140phi,74,56,8,outdoors,grass 
+202110170car,62,39,7,outdoors,grass 
+202110170chi,59,39,6,outdoors,grass 
+202110170cle,58,55,23,outdoors,grass 
+202110170clt,72,45,0,retractable roof (open),fieldturf 
+202110170den,76,10,8,outdoors,grass 
+202110170det,72,45,0,dome,fieldturf 
+202110170jax,63,72,11,outdoors,grass
+202110170nwe,62,46,11,outdoors,fieldturf 
+202110170nyg,61,56,13,outdoors,fieldturf 
+202110170pit,49,77,6,outdoors,grass 
+202110170rav,63,46,15,outdoors,grass
+202110170was,62,39,13,outdoors,grass 
+202110180oti,66,40,6,outdoors,grass 
+202110210cle,59,69,27,outdoors,grass 
+202110240crd,72,45,0,retractable roof (closed),grass 
+202110240gnb,49,56,11,outdoors,grass 
+202110240mia,85,70,9,outdoors,grass 
+202110240nwe,52,44,0,outdoors,fieldturf 
+202110240nyg,57,51,0,outdoors,fieldturf 
+202110240oti,74,48,14,outdoors,grass 
+202110240rai,72,45,0,dome,grass
+202110240ram,72,45,0,dome,matrixturf
+202110240rav,61,60,6,outdoors,grass
+202110240sfo,64,84,16,outdoors,grass
+202110240tam,83,65,7,outdoors,grass 
+202110250sea,54,77,16,outdoors,fieldturf 
+202110280crd,72,45,0,retractable roof (open),grass 
+202110310atl,72,45,0,retractable roof (open),fieldturf
+202110310buf,54,82,9,outdoors,a_turf
+202110310chi,53,63,12,outdoors,grass 
+202110310cle,57,67,13,outdoors,grass 
+202110310clt,72,45,0,retractable roof (open),fieldturf 
+202110310den,41,70,4,outdoors,grass 
+202110310det,72,45,0,dome,fieldturf 
+202110310htx,72,45,0,retractable roof (closed),astroturf
+202110310min,72,45,0,dome,sportturf
+202110310nor,72,45,0,dome,sportturf
+202110310nyj,63,67,11,outdoors,fieldturf 
+202110310sdg,72,45,0,dome,matrixturf
+202110310sea,54,45,8,outdoors,fieldturf 
+202111010kan,39,89,4,outdoors,grass 
+202111040clt,72,45,0,retractable roof (closed),fieldturf 
+202111070car,61,35,16,outdoors,grass 
+202111070cin,56,47,0,outdoors,fieldturf 
+202111070dal,72,45,0,retractable roof (closed),matrixturf
+202111070jax,59,75,16,outdoors,grass 
+202111070kan,51,74,12,outdoors,grass 
+202111070mia,72,57,19,outdoors,grass 
+202111070nor,72,45,0,dome,sportturf
+202111070nyg,54,38,4,outdoors,fieldturf 
+202111070phi,54,37,11,outdoors,grass 
+202111070ram,72,45,0,dome,matrixturf
+202111070rav,56,37,8,outdoors,grass
+202111070sfo,57,74,8,outdoors,grass
+202111080pit,55,51,7,outdoors,grass 
+202111110mia,77,85,4,outdoors,grass 
+202111140clt,72,45,0,retractable roof (closed),fieldturf 
+202111140crd,72,45,0,retractable roof (closed),grass 
+202111140dal,72,45,0,retractable roof (closed),matrixturf
+202111140den,57,27,19,outdoors,grass 
+202111140gnb,35,78,11,outdoors,grass 
+202111140nwe,48,54,6,outdoors,fieldturf 
+202111140nyj,47,56,4,outdoors,fieldturf 
+202111140oti,53,48,12,outdoors,grass 
+202111140pit,37,72,12,outdoors,grass 
+202111140rai,72,45,0,dome,grass
+202111140sdg,72,45,0,dome,matrixturf
+202111140was,47,40,8,outdoors,grass 
+202111150sfo,59,88,0,outdoors,grass
+202111180atl,72,45,0,retractable roof (closed),fieldturf
+202111210buf,49,48,12,outdoors,a_turf
+202111210car,54,50,0,outdoors,grass 
+202111210chi,46,71,9,outdoors,grass 
+202111210cle,42,84,7,outdoors,grass 
+202111210jax,68,84,17,outdoors,grass 
+202111210kan,57,31,17,outdoors,grass 
+202111210min,72,45,0,dome,sportturf
+202111210nyj,52,44,4,outdoors,fieldturf 
+202111210oti,59,67,8,outdoors,grass 
+202111210phi,51,63,4,outdoors,grass 
+202111210rai,72,45,0,dome,grass
+202111210sdg,72,45,0,dome,matrixturf
+202111210sea,46,76,0,outdoors,fieldturf 
+202111220tam,68,61,6,outdoors,grass 
+202111250dal,72,45,0,retractable roof (closed),matrixturf
+202111250det,72,45,0,dome,fieldturf 
+202111250nor,72,45,0,dome,sportturf
+202111280cin,43,65,12,outdoors,fieldturf 
+202111280clt,72,45,0,retractable roof (closed),fieldturf 
+202111280den,62,22,0,outdoors,grass 
+202111280gnb,37,46,14,outdoors,grass 
+202111280htx,72,45,0,retractable roof (closed),astroturf
+202111280jax,61,41,4,outdoors,grass 
+202111280mia,74,56,4,outdoors,grass 
+202111280nwe,33,61,6,outdoors,fieldturf 
+202111280nyg,39,72,4,outdoors,fieldturf 
+202111280rav,43,70,0,outdoors,grass
+202111280sfo,68,43,7,outdoors,grass
+202111290was,41,51,9,outdoors,grass 
+202112020nor,72,45,0,dome,sportturf
+202112050atl,72,45,0,retractable roof (closed),fieldturf
+202112050chi,34,80,8,outdoors,grass 
+202112050cin,48,51,11,outdoors,fieldturf 
+202112050det,72,45,0,dome,fieldturf 
+202112050htx,72,45,0,retractable roof (closed),astroturf
+202112050kan,58,55,22,outdoors,grass 
+202112050mia,80,62,11,outdoors,grass 
+202112050nyj,45,33,0,outdoors,fieldturf 
+202112050pit,50,44,7,outdoors,grass 
+202112050rai,72,45,0,dome,grass
+202112050ram,72,45,0,dome,matrixturf
+202112050sea,41,76,4,outdoors,fieldturf 
+202112060buf,36,59,19,outdoors,a_turf
+202112090min,72,45,0,dome,sportturf
+202112120car,48,37,9,outdoors,grass 
+202112120cin,48,40,9,outdoors,fieldturf 
+202112120cle,46,42,14,outdoors,grass 
+202112120den,63,12,8,outdoors,grass 
+202112120gnb,36,59,8,outdoors,grass 
+202112120htx,72,45,0,retractable roof (open),astroturf
+202112120kan,47,34,19,outdoors,grass 
+202112120nyj,46,30,13,outdoors,fieldturf 
+202112120oti,45,58,0,outdoors,grass 
+202112120sdg,72,45,0,dome,matrixturf
+202112120tam,82,66,4,outdoors,grass 
+202112120was,48,32,17,outdoors,grass 
+202112130crd,72,45,0,retractable roof (open),grass 
+202112160sdg,72,45,0,dome,matrixturf
+202112180clt,72,45,0,retractable roof (closed),fieldturf 
+202112190buf,30,69,8,outdoors,a_turf
+202112190den,61,9,19,outdoors,grass 
+202112190det,72,45,0,dome,fieldturf 
+202112190jax,80,71,12,outdoors,grass 
+202112190mia,82,70,9,outdoors,grass 
+202112190nyg,37,54,8,outdoors,fieldturf 
+202112190pit,32,74,11,outdoors,grass 
+202112190rav,43,52,11,outdoors,grass
+202112190sfo,46,81,0,outdoors,grass
+202112190tam,75,99,0,outdoors,grass 
+202112200chi,37,75,8,outdoors,grass 
+202112200cle,40,47,8,outdoors,grass 
+202112210phi,42,57,7,outdoors,grass 
+202112210ram,72,45,0,dome,matrixturf
+202112230oti,48,46,7,outdoors,grass 
+202112250crd,72,45,0,retractable roof (closed),grass 
+202112250gnb,35,49,11,outdoors,grass 
+202112260atl,72,45,0,retractable roof (open),fieldturf
+202112260car,73,41,8,outdoors,grass 
+202112260cin,52,63,0,outdoors,fieldturf 
+202112260dal,72,45,0,retractable roof (closed),matrixturf
+202112260htx,72,45,0,retractable roof (closed),astroturf
+202112260kan,60,64,22,outdoors,grass 
+202112260min,72,45,0,dome,sportturf
+202112260nwe,38,79,13,outdoors,fieldturf 
+202112260nyj,47,49,0,outdoors,fieldturf 
+202112260phi,53,46,9,outdoors,grass 
+202112260rai,72,45,0,dome,grass
+202112260sea,25,85,11,outdoors,fieldturf 
+202112270nor,72,45,0,dome,sportturf
+202201020buf,26,81,11,outdoors,a_turf
+202201020chi,25,74,13,outdoors,grass 
+202201020cin,33,81,13,outdoors,fieldturf 
+202201020clt,72,45,0,retractable roof (closed),fieldturf 
+202201020dal,72,45,0,retractable roof (closed),matrixturf
+202201020gnb,11,60,9,outdoors,grass 
+202201020nor,72,45,0,dome,sportturf
+202201020nwe,46,100,4,outdoors,fieldturf 
+202201020nyj,57,82,9,outdoors,fieldturf 
+202201020oti,43,93,13,outdoors,grass 
+202201020rav,59,92,6,outdoors,grass
+202201020sdg,72,45,0,dome,matrixturf
+202201020sea,37,92,0,outdoors,fieldturf 
+202201020sfo,50,58,6,outdoors,grass
+202201020was,62,91,4,outdoors,grass 
+202201030pit,25,60,12,outdoors,grass 
+202201080den,41,57,4,outdoors,grass 
+202201080phi,31,43,8,outdoors,grass 
+202201090atl,72,45,0,retractable roof (closed),fieldturf
+202201090buf,36,67,19,outdoors,a_turf
+202201090cle,38,89,22,outdoors,grass 
+202201090crd,72,45,0,retractable roof (open),grass 
+202201090det,72,45,0,dome,fieldturf 
+202201090htx,72,45,0,retractable roof (closed),astroturf
+202201090jax,76,60,19,outdoors,grass 
+202201090mia,75,79,8,outdoors,grass 
+202201090min,72,45,0,dome,sportturf
+202201090nyg,38,64,0,outdoors,fieldturf 
+202201090rai,72,45,0,dome,grass
+202201090ram,72,45,0,dome,matrixturf
+202201090rav,36,100,0,outdoors,grass
+202201090tam,80,99,4,outdoors,grass 
+202201150buf,7,66,8,outdoors,a_turf
+202201150cin,31,63,12,outdoors,fieldturf 
+202201160dal,72,45,0,retractable roof (closed),matrixturf
+202201160kan,30,78,8,outdoors,grass 
+202201160tam,66,52,21,outdoors,grass 
+202201170ram,72,45,0,dome,matrixturf
+202201220gnb,15,53,12,outdoors,grass 
+202201220oti,35,43,0,outdoors,grass 
+202201230kan,35,54,6,outdoors,grass 
+202201230tam,50,69,11,outdoors,grass 
+202201300kan,41,41,4,outdoors,grass 
+202201300ram,72,45,0,dome,matrixturf
+202202130cin,72,45,0,dome,matrixturf
+202209080ram,72,45,0,dome,matrixturf
+202209110atl,72,45,0,retractable roof (closed),fieldturf
+202209110car,72,45,0,outdoors,grass 
+202209110chi,72,45,0,outdoors,grass 
+202209110cin,72,45,0,outdoors,fieldturf 
+202209110crd,72,45,0,retractable roof (closed),grass 
+202209110dal,72,45,0,retractable roof (closed),matrixturf
+202209110det,72,45,0,dome,fieldturf 
+202209110htx,72,45,0,retractable roof (closed),astroturf
+202209110mia,72,45,0,outdoors,grass 
+202209110min,72,45,0,dome,sportturf
+202209110nyj,72,45,0,outdoors,fieldturf 
+202209110oti,72,45,0,outdoors,grass 
+202209110sdg,72,45,0,dome,matrixturf
+202209110was,72,45,0,outdoors,grass 
+202209120sea,72,45,0,outdoors,fieldturf 
+202209150kan,72,45,0,outdoors,grass 
+202209180cle,72,45,0,outdoors,grass 
+202209180dal,72,45,0,retractable roof (closed),matrixturf
+202209180den,72,45,0,outdoors,grass 
+202209180det,72,45,0,dome,fieldturf 
+202209180gnb,72,45,0,outdoors,grass 
+202209180jax,72,45,0,outdoors,grass 
+202209180nor,72,45,0,dome,sportturf
+202209180nyg,72,45,0,outdoors,fieldturf 
+202209180pit,72,45,0,outdoors,grass 
+202209180rai,72,45,0,dome,grass
+202209180ram,72,45,0,dome,matrixturf
+202209180rav,72,45,0,outdoors,grass
+202209180sfo,72,45,0,outdoors,grass
+202209190buf,72,45,0,outdoors,a_turf
+202209190phi,72,45,0,outdoors,grass 
+202209220cle,72,45,0,outdoors,grass 
+202209250car,72,45,0,outdoors,grass 
+202209250chi,72,45,0,outdoors,grass 
+202209250clt,72,45,0,retractable roof (open),fieldturf 
+202209250crd,72,45,0,retractable roof (closed),grass 
+202209250den,72,45,0,outdoors,grass 
+202209250mia,72,45,0,outdoors,grass 
+202209250min,72,45,0,dome,sportturf
+202209250nwe,72,45,0,outdoors,fieldturf 
+202209250nyj,72,45,0,outdoors,fieldturf 
+202209250oti,72,45,0,outdoors,grass 
+202209250sdg,72,45,0,dome,matrixturf
+202209250sea,72,45,0,outdoors,fieldturf 
+202209250tam,72,45,0,outdoors,grass 
+202209250was,72,45,0,outdoors,grass 
+202209260nyg,72,45,0,outdoors,fieldturf 
+202209290cin,72,45,0,outdoors,fieldturf 
+202210020atl,72,45,0,retractable roof (open),fieldturf
+202210020car,72,45,0,outdoors,grass 
+202210020clt,72,45,0,retractable roof (open),fieldturf 
+202210020dal,72,45,0,retractable roof (closed),matrixturf
+202210020det,72,45,0,dome,fieldturf 
+202210020gnb,72,45,0,outdoors,grass 
+202210020htx,72,45,0,retractable roof (closed),astroturf
+202210020nor,72,45,0,outdoors,grass
+202210020nyg,72,45,0,outdoors,fieldturf 
+202210020phi,72,45,0,outdoors,grass 
+202210020pit,72,45,0,outdoors,grass 
+202210020rai,72,45,0,dome,grass
+202210020rav,72,45,0,outdoors,grass
+202210020tam,72,45,0,outdoors,grass 
+202210030sfo,72,45,0,outdoors,grass
+202210060den,72,45,0,outdoors,grass 
+202210090buf,72,45,0,outdoors,a_turf
+202210090car,72,45,0,outdoors,grass 
+202210090cle,72,45,0,outdoors,grass 
+202210090crd,72,45,0,retractable roof (closed),grass 
+202210090gnb,72,45,0,outdoors,grass
+202210090jax,72,45,0,outdoors,grass 
+202210090min,72,45,0,dome,sportturf
+202210090nor,72,45,0,dome,sportturf
+202210090nwe,72,45,0,outdoors,fieldturf 
+202210090nyj,72,45,0,outdoors,fieldturf 
+202210090ram,72,45,0,dome,matrixturf
+202210090rav,72,45,0,outdoors,grass
+202210090tam,72,45,0,outdoors,grass 
+202210090was,72,45,0,outdoors,grass 
+202210100kan,72,45,0,outdoors,grass 
+202210130chi,72,45,0,outdoors,grass 
+202210160atl,72,45,0,retractable roof (open),fieldturf
+202210160cle,72,45,0,outdoors,grass 
+202210160clt,72,45,0,retractable roof (open),fieldturf 
+202210160gnb,72,45,0,outdoors,grass 
+202210160kan,72,45,0,outdoors,grass 
+202210160mia,72,45,0,outdoors,grass 
+202210160nor,72,45,0,dome,sportturf
+202210160nyg,72,45,0,outdoors,fieldturf 
+202210160phi,72,45,0,outdoors,grass 
+202210160pit,72,45,0,outdoors,grass 
+202210160ram,72,45,0,dome,matrixturf
+202210160sea,72,45,0,outdoors,fieldturf 
+202210170sdg,72,45,0,dome,matrixturf
+202210200crd,72,45,0,retractable roof (open),grass 
+202210230car,72,45,0,outdoors,grass 
+202210230cin,72,45,0,outdoors,fieldturf 
+202210230dal,72,45,0,retractable roof (closed),matrixturf
+202210230den,72,45,0,outdoors,grass 
+202210230jax,72,45,0,outdoors,grass 
+202210230mia,72,45,0,outdoors,grass 
+202210230oti,72,45,0,outdoors,grass 
+202210230rai,72,45,0,dome,grass
+202210230rav,72,45,0,outdoors,grass
+202210230sdg,72,45,0,dome,matrixturf
+202210230sfo,72,45,0,outdoors,grass
+202210230was,72,45,0,outdoors,grass 
+202210240nwe,72,45,0,outdoors,fieldturf 
+202210270tam,76,91,4,outdoors,grass 
+202210300atl,72,45,0,retractable roof (closed),fieldturf
+202210300buf,54,47,4,outdoors,a_turf
+202210300clt,72,45,0,retractable roof (closed),fieldturf 
+202210300dal,72,45,0,retractable roof (open),matrixturf
+202210300det,72,45,0,dome,fieldturf 
+202210300htx,72,45,0,retractable roof (closed),astroturf
+202210300jax,72,45,0,outdoors,grass
+202210300min,72,45,0,dome,sportturf
+202210300nor,72,45,0,dome,sportturf
+202210300nyj,57,39,2,outdoors,fieldturf 
+202210300phi,60,47,2,outdoors,grass 
+202210300ram,72,45,0,dome,matrixturf
+202210300sea,54,83,8,outdoors,fieldturf 
+202210310cle,66,68,9,outdoors,grass 
+202211030htx,72,45,0,retractable roof (closed),astroturf
+202211060atl,72,45,0,retractable roof (open),fieldturf
+202211060chi,58,55,17,outdoors,grass 
+202211060cin,68,57,11,outdoors,fieldturf 
+202211060crd,72,45,0,retractable roof (open),grass 
+202211060det,72,45,0,dome,fieldturf 
+202211060jax,81,72,14,outdoors,grass 
+202211060kan,54,61,7,outdoors,grass 
+202211060nwe,78,56,13,outdoors,fieldturf 
+202211060nyj,69,81,17,outdoors,fieldturf 
+202211060tam,88,57,2,outdoors,grass 
+202211060was,71,79,11,outdoors,grass 
+202211070nor,72,45,0,dome,sportturf
+202211100car,61,88,12,outdoors,grass 
+202211130buf,38,85,11,outdoors,a_turf
+202211130chi,34,45,13,outdoors,grass 
+202211130gnb,33,53,8,outdoors,grass 
+202211130kan,33,56,7,outdoors,grass 
+202211130mia,85,48,7,outdoors,grass 
+202211130nyg,50,58,15,outdoors,fieldturf 
+202211130oti,36,48,9,outdoors,grass 
+202211130pit,37,65,15,outdoors,grass 
+202211130rai,72,45,0,dome,grass
+202211130ram,72,45,0,dome,matrixturf
+202211130sfo,57,38,6,outdoors,grass
+202211130tam,54,71,9,outdoors,grass
+202211140phi,43,45,6,outdoors,grass 
+202211170gnb,25,81,11,outdoors,grass 
+202211200atl,72,45,0,retractable roof (closed),fieldturf
+202211200buf,72,45,0,dome,fieldturf 
+202211200clt,72,45,0,retractable roof (closed),fieldturf 
+202211200den,49,23,11,outdoors,grass 
+202211200htx,72,45,0,retractable roof (closed),astroturf
+202211200min,72,45,0,dome,sportturf
+202211200nor,72,45,0,dome,sportturf
+202211200nwe,42,35,2,outdoors,fieldturf 
+202211200nyg,35,30,21,outdoors,fieldturf 
+202211200pit,27,38,12,outdoors,grass 
+202211200rav,36,24,2,outdoors,grass
+202211200sdg,72,45,0,dome,matrixturf
+202211210crd,64,52,4,outdoors,grass
+202211240dal,72,45,0,retractable roof (closed),matrixturf
+202211240det,72,45,0,dome,fieldturf 
+202211240min,72,45,0,dome,sportturf
+202211270car,66,94,15,outdoors,grass 
+202211270cle,56,84,14,outdoors,grass 
+202211270crd,72,45,0,retractable roof (closed),grass 
+202211270jax,77,82,19,outdoors,grass 
+202211270kan,44,65,6,outdoors,grass 
+202211270mia,84,63,13,outdoors,grass 
+202211270nyj,50,61,9,outdoors,fieldturf 
+202211270oti,56,62,14,outdoors,grass 
+202211270phi,62,86,24,outdoors,grass 
+202211270sea,44,67,8,outdoors,fieldturf 
+202211270sfo,59,63,2,outdoors,grass
+202211270was,46,97,9,outdoors,grass 
+202211280clt,72,45,0,retractable roof (closed),fieldturf 
+202212010nwe,35,57,2,outdoors,fieldturf 
+202212040atl,72,45,0,retractable roof (closed),fieldturf
+202212040chi,38,42,12,outdoors,grass 
+202212040cin,57,77,2,outdoors,fieldturf 
+202212040dal,72,45,0,retractable roof (closed),matrixturf
+202212040det,72,45,0,dome,fieldturf 
+202212040htx,72,45,0,retractable roof (closed),astroturf
+202212040min,72,45,0,dome,sportturf
+202212040nyg,40,63,9,outdoors,fieldturf 
+202212040phi,60,62,7,outdoors,grass 
+202212040rai,72,45,0,dome,grass
+202212040ram,72,45,0,dome,matrixturf
+202212040rav,63,75,8,outdoors,grass
+202212040sfo,38,73,6,outdoors,grass
+202212050tam,69,78,2,outdoors,grass 
+202212080ram,72,45,0,dome,matrixturf
+202212110buf,36,92,11,outdoors,a_turf
+202212110cin,47,63,8,outdoors,fieldturf 
+202212110dal,72,45,0,retractable roof (closed),matrixturf
+202212110den,55,19,4,outdoors,grass 
+202212110det,72,45,0,dome,fieldturf 
+202212110nyg,37,78,6,outdoors,fieldturf 
+202212110oti,54,77,8,outdoors,grass 
+202212110pit,42,82,12,outdoors,grass 
+202212110sdg,72,45,0,dome,matrixturf
+202212110sea,45,97,4,outdoors,fieldturf 
+202212110sfo,54,54,8,outdoors,grass
+202212120crd,72,45,0,retractable roof (closed),grass 
+202212150sea,39,71,6,outdoors,fieldturf 
+202212170buf,29,92,4,outdoors,a_turf
+202212170cle,34,59,12,outdoors,grass 
+202212170min,72,45,0,dome,sportturf
+202212180car,47,37,7,outdoors,grass 
+202212180chi,17,70,17,outdoors,grass 
+202212180den,37,20,4,outdoors,grass 
+202212180htx,72,45,0,retractable roof (closed),astroturf
+202212180jax,54,37,9,outdoors,grass 
+202212180nor,72,45,0,dome,sportturf
+202212180nyj,38,52,13,outdoors,fieldturf 
+202212180rai,72,45,0,dome,grass
+202212180sdg,72,45,0,dome,matrixturf
+202212180tam,66,43,6,outdoors,grass 
+202212180was,35,47,13,outdoors,grass 
+202212190gnb,15,76,4,outdoors,grass 
+202212220nyj,43,89,17,outdoors,fieldturf 
+202212240car,20,43,12,outdoors,grass 
+202212240chi,7,72,17,outdoors,grass 
+202212240cle,6,66,27,outdoors,grass 
+202212240dal,72,45,0,retractable roof (closed),matrixturf
+202212240kan,12,61,9,outdoors,grass 
+202212240min,72,45,0,dome,sportturf
+202212240nwe,21,43,2,outdoors,fieldturf 
+202212240oti,22,55,14,outdoors,grass 
+202212240pit,9,76,21,outdoors,grass 
+202212240rav,17,38,9,outdoors,grass
+202212240sfo,54,82,2,outdoors,grass
+202212250crd,72,45,0,retractable roof (open),grass 
+202212250mia,45,68,14,outdoors,grass 
+202212250ram,72,45,0,dome,matrixturf
+202212260clt,72,45,0,retractable roof (closed),fieldturf 
+202212290oti,56,72,4,outdoors,grass 
+202301010atl,72,45,0,retractable roof (closed),fieldturf
+202301010det,72,45,0,dome,fieldturf 
+202301010gnb,39,79,7,outdoors,grass 
+202301010htx,72,45,0,retractable roof (closed),astroturf
+202301010kan,47,80,2,outdoors,grass 
+202301010nwe,53,73,2,outdoors,fieldturf 
+202301010nyg,52,57,14,outdoors,fieldturf 
+202301010phi,54,57,11,outdoors,grass 
+202301010rai,72,45,0,dome,grass
+202301010rav,44,89,2,outdoors,grass
+202301010sdg,72,45,0,dome,matrixturf
+202301010sea,45,93,2,outdoors,fieldturf 
+202301010tam,75,87,2,outdoors,grass 
+202301010was,59,51,9,outdoors,grass 
+202301070jax,56,67,4,outdoors,grass 
+202301070rai,72,45,0,dome,grass
+202301080atl,72,45,0,retractable roof (closed),fieldturf
+202301080buf,30,74,6,outdoors,a_turf
+202301080chi,32,74,2,outdoors,grass 
+202301080cin,38,62,7,outdoors,fieldturf 
+202301080clt,72,45,0,retractable roof (closed),fieldturf 
+202301080den,43,39,4,outdoors,grass 
+202301080gnb,21,92,4,outdoors,grass 
+202301080mia,75,66,9,outdoors,grass 
+202301080nor,72,45,0,dome,sportturf
+202301080phi,43,55,12,outdoors,grass 
+202301080pit,36,64,8,outdoors,grass 
+202301080sea,45,100,4,outdoors,fieldturf 
+202301080sfo,57,77,2,outdoors,grass
+202301080was,42,53,7,outdoors,grass 
