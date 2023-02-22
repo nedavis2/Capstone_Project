@@ -1,4 +1,5 @@
 import datetime
+import pandas as pd
 class Player:
     '''Representation of a given player'''
     
