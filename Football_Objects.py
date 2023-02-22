@@ -20,11 +20,10 @@ class Player:
         rush_TDs  = db[game]["rush_td"]
         ints  = db[game]["pass_int"]
         2pt_conv  = db[game]["two_point_conv"]
-        catches  = db[game]["pass_cmp"] #This one could be wrong
+        catches  = db[game]["rec"]
         rec_yards  = db[game]["rec_yards"]
         rec_TDs  = db[game]["rec_td"]
-        rec_2pt  = db[game]["rec"] #This one could be wrong
-        rush_2pt  = db[game]["rush_td"] #This one could be wrong
+
         fumble  = db[game]["fumbles_lost"] #This one could be wrong
         
         
@@ -39,10 +38,9 @@ class Player:
         cy = catches * 1 
         recy = rec_yards * .1 
         rectd = rec_TDs * 6 
-        reccon = rec_2pt * 2 
-        rcon = rush_2pt * 2 
+
         fum =  fumble * -2 
-        points scored = (py + ry + ptd + rtd + ints + pcon + cy + recy + rectd  + reccon + fum) 
+        points scored = (py + ry + ptd + rtd + ints + pcon + cy + recy + rectd  + fum) 
         
         return points scored
 
