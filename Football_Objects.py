@@ -2,13 +2,15 @@ import datetime
 class Player:
     '''Representation of a given player'''
     
-    def __init__(player_id : str, db):
+    def __init__(input_player_id : str, in_db):
+        player_id = input_player_id
         
         #TODO: Query database with "SELECT * FROM `nfl_pass_rush_receive_raw_data` WHERE player_id = %s"%player_id
         
         #Then save that to db
         
-        db = None
+        db = in_db.loc[(in_db["player_id"] == player_id), :]
+        
         
     def get_offence_score(self, game) -> float:
         '''Returns the offence score of the player'''
