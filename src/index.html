@@ -1,14 +1,42 @@
+<?php
+
+$con = mysqli_connect("localhost", "root", "", "capstone_project");
+
+$sql = "SELECT DISTINCT player FROM nfl_pass_rush_receive_raw_data";
+
+$search_names = mysqli_query($con, $sql);
+
+if (isset($_POST['submit'])) {
+    $name = mysqli_real_escape_string($con, $_POST['player']);
+}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Capstone_project/dist/css/style.min.css">
     <script src="js/main.js" type="module"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
+    <script src="jQFuncs.js"></script>
+    <!--<script>
+        $(document).ready(function(){
+          $("p").click(function(){
+            $(this).hide();
+          });
+        });
+        </script>-->
     <title>Silicon Stadium</title>
 </head>
+
 <body>
+
+
 
 
     <div class="page" id="pageData">
@@ -19,19 +47,22 @@
         <a href="/Capstone_project/src/support.html" target="_self">Support</a>
 
         <div id="playerSearchBar">
-            <input type="search" id="playerQuery" name="playerQ" placeholder="Enter player name here">
-            <button onclick="location.href='/Capstone_project/src/player.html'">Search</button>
+                <input type="search" id="playerQuery" name="playerQ" placeholder="Enter player name here">
+                <button onclick="location.href='/Capstone_project/src/player.html'">Search</button>
         </div>
-    
+
         <div id="teamSearchBar">
             <input type="search" id="teamQuery" name="teamQ" placeholder="Enter team here">
             <button onclick="location.href='/Capstone_project/src/team.html'">Search</button>
         </div>
     </div>
-    
 
-    
 
-    <div class="page" id="banner"><p>N<br>F<br>L<br><br>L<br>o<br>g<br>o</div>
+
+
+    <div class="page" id="banner">
+        <p>N<br>F<br>L<br><br>L<br>o<br>g<br>o
+    </div>
 </body>
+
 </html>

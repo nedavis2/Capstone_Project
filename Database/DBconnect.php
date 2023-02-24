@@ -1,20 +1,31 @@
 <?php
-$mysqli = new mysqli("localhost","root","","capstone_project");
 
-// Check connection
-if ($mysqli -> connect_errno) {
-  echo "Failed to connect to MySQL: " . $mysqli -> connect_error;
-  exit();
+try  {
+  require_once("dbconfig.php"); //database access details
 
+  //Populate these four variables
+  $host = "localhost";//Domain name of database server
+  $dbname = "capstone_project";//name of your database
+  $username = "root";//SQL user
+  $options = null;
+
+  configure($host, $username, $password, $options, $dbname, $dsn);
+
+  $connection = new PDO($dsn, $username, $password, $options); //create database connection and get handler
+
+  $stmt = $connection->prepare("SELECT player FROM nfl_pass_rush_receive_raw_data where player = 'aaron rodgers' and game_date = '2019-09-05'");
+  $stmt->execute(); 
+  $result = $stmt->fetch();
+  foreach($result as $result){
+    print_r($result);
+}
+  
   
 }
 
-if ($result = $mysqli -> query("SELECT player FROM nfl_pass_rush_receive_raw_data where player = 'aaron rodgers' and game_date = '2019-09-05'")) {
-  echo var_dump($result);
-  // Free result set
-  $result -> free_result();
+catch(PDOException $error) {
+  //if connection failed, print error and exit;
+  echo "Database connection error: " . $error->getMessage() . "<BR>";
+  die;
 }
-
-$mysqli -> close();
-
 ?>
