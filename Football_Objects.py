@@ -20,7 +20,7 @@ class Player:
         pass_TDs  = db[game]["pass_td"]
         rush_TDs  = db[game]["rush_td"]
         ints  = db[game]["pass_int"]
-        2pt_conv  = db[game]["two_point_conv"]
+        two_pt_conv  = db[game]["two_point_conv"]
         catches  = db[game]["rec"]
         rec_yards  = db[game]["rec_yards"]
         rec_TDs  = db[game]["rec_td"]
@@ -35,15 +35,15 @@ class Player:
         ptd = pass_TDs * 4 
         rtd = rush_TDs * 6 
         ints =  ints * -2
-        pcon = 2pt_conv * 2 
+        pcon = two_pt_conv * 2 
         cy = catches * 1 
         recy = rec_yards * .1 
         rectd = rec_TDs * 6 
 
         fum =  fumble * -2 
-        points scored = (py + ry + ptd + rtd + ints + pcon + cy + recy + rectd  + fum) 
+        points_scored = (py + ry + ptd + rtd + ints + pcon + cy + recy + rectd  + fum) 
         
-        return points scored
+        return points_scored
 
     def get_pos_rank(self) -> int:
         '''Returns the rank of the player relative to all other players'''
