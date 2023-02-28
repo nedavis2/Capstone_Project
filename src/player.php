@@ -30,7 +30,7 @@
         </div>
 
         <div>
-            <?php
+        <?php
             $selectedPlayer = $_POST['playerSelect'];
             if (empty($selectedPlayer)) {
                 echo ('no player found');
