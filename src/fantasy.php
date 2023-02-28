@@ -13,9 +13,9 @@
     <div class="page" id="pageData">
         <h1>Fantasy page</h1>
 
-        <a href="/Capstone_project/src/index.html" target="_self" class="futureTab">Home</a>
-        <a href="/Capstone_project/src/fantasy.html" targer="_self" class="futureTab">Fantasy</a>
-        <a href="/Capstone_project/src/support.html" target="_self" class="futureTab">Support</a>
+        <a href="/Capstone_project/src/index.php" target="_self" class="futureTab">Home</a>
+        <a href="/Capstone_project/src/fantasy.php" targer="_self" class="futureTab">Fantasy</a>
+        <a href="/Capstone_project/src/support.php" target="_self" class="futureTab">Support</a>
     </div>
     
 

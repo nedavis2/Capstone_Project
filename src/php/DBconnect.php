@@ -1,5 +1,4 @@
-<?php
-
+<?php 
 require('dbconfig.php');
 function connect() {
   try  {
@@ -14,13 +13,6 @@ function connect() {
     configure($host, $username, $password, $options, $dbname, $dsn);
   
     $connection = new PDO($dsn, $username, $password, $options); //create database connection and get handler
-  
-    /*$stmt = $connection->prepare("SELECT player FROM nfl_pass_rush_receive_raw_data where player = 'aaron rodgers' and game_date = '2019-09-05'");
-    $stmt->execute(); 
-    $result = $stmt->fetch();
-    foreach($result as $result){
-      print_r($result);
-  }*/
     
     
   }
@@ -32,10 +24,6 @@ function connect() {
   }
 
   return $connection;
-}
-
-function closeConnect($connection) {
-  $connection->close();
 }
 
 ?>
