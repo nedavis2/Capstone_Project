@@ -1,18 +1,3 @@
-<?php
-
-$con = mysqli_connect("localhost", "root", "", "capstone_project");
-
-$sql = "SELECT DISTINCT player FROM nfl_pass_rush_receive_raw_data";
-
-$search_names = mysqli_query($con, $sql);
-
-if (isset($_POST['submit'])) {
-    $name = mysqli_real_escape_string($con, $_POST['player']);
-}
-
-?>
-
-
 <!DOCTYPE html>
 <html lang="en">
 
@@ -23,14 +8,10 @@ if (isset($_POST['submit'])) {
     <link rel="stylesheet" href="/Capstone_project/dist/css/style.min.css">
     <script src="js/main.js" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="jQFuncs.js"></script>
-    <!--<script>
-        $(document).ready(function(){
-          $("p").click(function(){
-            $(this).hide();
-          });
-        });
-        </script>-->
+    <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
+    <script src="js/jQFuncs.js"></script>
+    
     <title>Silicon Stadium</title>
 </head>
 
@@ -46,17 +27,35 @@ if (isset($_POST['submit'])) {
         <a href="/Capstone_project/src/fantasy.html" targer="_self">Fantasy</a>
         <a href="/Capstone_project/src/support.html" target="_self">Support</a>
 
-        <div id="playerSearchBar">
+
+        <div class="ui-widget">
+            <p>Type "a" or "s"</p>
+            <label for="automplete-1">Tags: </label>
+            <input id="automplete-1">
+        </div>
+
+        <div class="form-group">
+            <div class="input-group">
+                <span class="input-group-addon">Search</span>
+                <input type="text" name="search_text" id="search_text" placeholder="Search by player name"
+                    class="form-control" />
+            </div>
+        </div>
+        <br />
+        <div id="result"></div>
+        <!--<div id="playerSearchBar">
                 <input type="search" id="playerQuery" name="playerQ" placeholder="Enter player name here">
                 <button onclick="location.href='/Capstone_project/src/player.html'">Search</button>
-        </div>
+        </div>-->
+        
+
 
         <div id="teamSearchBar">
             <input type="search" id="teamQuery" name="teamQ" placeholder="Enter team here">
             <button onclick="location.href='/Capstone_project/src/team.html'">Search</button>
         </div>
     </div>
-
+    <!--<p>testering</p>-->
 
 
 
