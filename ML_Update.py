@@ -35,9 +35,9 @@ for player_id, game_id in player_games:
 
 
     #NOTE: This could be changed into an insert statement, but I would need to store all data for the predicted game before hand.
-    query = '''UPDATE nfl_pass_rush_receive_raw_data
+    query = '''UPDATE %s
                 SET %s
-                WHERE game_id = %s, player_id = %s''' % (cleaned_predicted_values, game_id, player_id)
+                WHERE game_id = %s, player_id = %s''' % (db_name, cleaned_predicted_values, game_id, player_id)
 
     cursor.execute(query)
 
