@@ -28,6 +28,8 @@ for player_id, game_id in player_games:
 
     #This should be <Column name> = <predicted value>.
 
+    #TODO: Once changing to INSERT INTO, all data for the row needs to be added. It also needs to be formated for an insert statement
+
     #Then seperate these with commas and by player and game id so this can be read and updated with the db querry.
 
     cleaned_predicted_values = None
@@ -35,6 +37,7 @@ for player_id, game_id in player_games:
 
 
     #NOTE: This could be changed into an insert statement, but I would need to store all data for the predicted game before hand.
+    #TODO: Change this to an INSERT INTO statement with all data for a new entry.
     query = '''UPDATE %s
                 SET %s
                 WHERE game_id = %s, player_id = %s''' % (db_name, cleaned_predicted_values, game_id, player_id)
