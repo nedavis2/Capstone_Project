@@ -38,6 +38,12 @@ for player_id, game_id in player_games:
 
     #NOTE: This could be changed into an insert statement, but I would need to store all data for the predicted game before hand.
     #TODO: Change this to an INSERT INTO statement with all data for a new entry.
+
+    '''
+    New formmating after change (from https://www.w3schools.com/mysql/mysql_insert.asp):
+    INSERT INTO table_name (column1, column2, column3, ...)
+    VALUES (value1, value2, value3, ...);
+    '''
     query = '''UPDATE %s
                 SET %s
                 WHERE game_id = %s, player_id = %s''' % (db_name, cleaned_predicted_values, game_id, player_id)
