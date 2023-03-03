@@ -28,11 +28,13 @@
     ?>
 
     <div class="page" id="pageData">
-        <h1>Home</h1>
-
-        <a href="/Capstone_project/src/index.php" target="_self">Home</a>
-        <a href="/Capstone_project/src/fantasy.php" targer="_self">Fantasy</a>
-        <a href="/Capstone_project/src/support.php" target="_self">Support</a>
+        <h1 id="headerTag">Home</h1>
+        <div class="navLinks" id="all">
+        <a href="/Capstone_project/src/index.php" target="_self" class="navLinks" id="home">Home</a>
+        <a href="/Capstone_project/src/fantasy.php" targer="_self" class="navLinks" id="fantasy">Fantasy</a>
+        <a href="/Capstone_project/src/support.php" target="_self" class="navLinks" id="support">Support</a>
+        </div>
+        
 
         <form method="post" class="searchBar" action="player.php" >
             <div id="playerSearchBar">

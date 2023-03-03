@@ -39,6 +39,8 @@
                 $results = $stmt->fetchAll();
                 $p = $results[0];
                 print("<option value=\"" . $p['team'] . "\">" . $p['team']  . "</option>");
+
+                echo $p[0];
             }
             ?>
 
