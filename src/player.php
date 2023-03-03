@@ -83,8 +83,8 @@
                 $stmt->execute();
                 $results = $stmt->fetchAll();
                 $p = $results[0];
-                print("<option value=\"" . $p['player'] . "\">" . $p['player'] . ", " . $p['team'] . ", " .
-                    $p['sumRecYDS'] . "</option>");
+                /*print("<option value=\"" . $p['player'] . "\">" . $p['player'] . ", " . $p['team'] . ", " .
+                    $p['sumRecYDS'] . "</option>");*/
             }
             ?>
             <div><?php echo "Player name: " . $p[0]; ?></div>
