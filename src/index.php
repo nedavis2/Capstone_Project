@@ -6,7 +6,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="/Capstone_project/dist/css/style.min.css">
+    <link rel="stylesheet" href="../dist/css/style.min.css">
     <script src="js/main.js" type="module"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-1.10.2.js"></script>
@@ -16,7 +16,7 @@
     <title>Silicon Stadium</title>
 </head>
 
-<body>
+<body class="homePage">
 
 
     <?php
@@ -27,17 +27,16 @@
     $connection = connect();
     ?>
 
-    <div class="page" id="pageData">
-        <h1 id="headerTag">Home</h1>
+    <div class="homePage" id="pageData">
         <div class="navLinks" id="all">
-        <a href="/Capstone_project/src/index.php" target="_self" class="navLinks" id="home">Home</a>
-        <a href="/Capstone_project/src/fantasy.php" targer="_self" class="navLinks" id="fantasy">Fantasy</a>
-        <a href="/Capstone_project/src/support.php" target="_self" class="navLinks" id="support">Support</a>
+            <a href="../src/index.php" target="_self" class="navLinks" id="home">Home</a>
+            <a href="../src/fantasy.php" targer="_self" class="navLinks" id="fantasy">Fantasy</a>
+            <a href="../src/support.php" target="_self" class="navLinks" id="support">Support</a>
         </div>
-        
 
-        <form method="post" class="searchBar" action="player.php" >
-            <div id="playerSearchBar">
+
+        <form method="post" class="searchBar" action="player.php">
+            <div class="searchBar" id="playerSearchBar">
                 <select name="playerSelect">
 
                     <?php
@@ -52,12 +51,12 @@
                     ?>
 
                 </select>
-                <button onclick="location.href='/Capstone_project/src/player'">Search</button>
+                <button onclick="location.href='../src/player'">Search</button>
             </div>
         </form>
 
-        <form  method="post" class="searchBar" action="team.php">
-            <div id="teamSearchBar">
+        <form method="post" class="searchBar" action="team.php">
+            <div class="searchBar" id="teamSearchBar">
                 <select name="teamSelect">
 
                     <?php
@@ -68,7 +67,7 @@
                         $p = $results[$idx];
                         print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
                     }
-                    $connection=null;
+                    $connection = null;
                     ?>
 
                 </select>
@@ -77,9 +76,9 @@
         </form>
 
 
-        <div class="page" id="banner">
+        <!--<div class="page" id="banner">
             <p>N<br>F<br>L<br><br>L<br>o<br>g<br>o
-        </div>
+        </div>-->
 
 
 </body>
