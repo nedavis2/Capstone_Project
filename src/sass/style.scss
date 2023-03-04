@@ -1,8 +1,6 @@
 body {
-    background-color: rgb(191, 226, 187);
-}
-h1 {
-    text-align: center;
+    background-color: rgb(206, 216, 204);
+    
 }
 
 a {
@@ -10,14 +8,35 @@ a {
     padding: 10%;
 }
 
+#headerTag {
+    background-color: black;
+    color: white;
+}
+
+#all {
+    background-image: url(/Capstone_project/src/picSource/fieldViewAngled1.jpg);
+    padding:  5% 5% 5% 5%;
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+    
+}
 #playerSearchBar {
     text-align: center;
     padding-top: 15%;
+    background-image: url(/Capstone_project/src/picSource/ballCloseUp1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 #teamSearchBar {
     text-align: center;
-    padding-top: 1%;
+    padding-top: 15%;
+    background-image: url(/Capstone_project/src/picSource/ballCloseUp1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 .page {
