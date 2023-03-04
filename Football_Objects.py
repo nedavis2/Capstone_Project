@@ -3,29 +3,29 @@ import pandas as pd
 class Player:
     '''Representation of a given player'''
     
-    def __init__(input_player_id : str, in_db):
-        player_id = input_player_id
+    def __init__(self, input_player_id : str, in_db):
+        self.player_id = input_player_id
         
         #TODO: Query database with "SELECT * FROM `nfl_pass_rush_receive_raw_data` WHERE player_id = %s"%player_id
         
         #Then save that to db
         
-        db = in_db.loc[(in_db["player_id"] == player_id), :]
+        self.db = in_db.loc[(in_db["player_id"] == self.player_id), :]
         
         
     def get_offence_score(self, game) -> float:
         '''Returns the offence score of the player'''
-        pass_yards = db[game]["pass_yds"]
-        rush_yards = db[game]["rush_yds"]
-        pass_TDs  = db[game]["pass_td"]
-        rush_TDs  = db[game]["rush_td"]
-        ints  = db[game]["pass_int"]
-        two_pt_conv  = db[game]["two_point_conv"]
-        catches  = db[game]["rec"]
-        rec_yards  = db[game]["rec_yards"]
-        rec_TDs  = db[game]["rec_td"]
+        pass_yards = self.db[game]["pass_yds"]
+        rush_yards = self.db[game]["rush_yds"]
+        pass_TDs  = self.db[game]["pass_td"]
+        rush_TDs  = self.db[game]["rush_td"]
+        ints  = self.db[game]["pass_int"]
+        two_pt_conv  = self.db[game]["two_point_conv"]
+        catches  = self.db[game]["rec"]
+        rec_yards  = self.db[game]["rec_yards"]
+        rec_TDs  = self.db[game]["rec_td"]
 
-        fumble  = db[game]["fumbles_lost"] #This one could be wrong
+        fumble  = self.db[game]["fumbles_lost"] #This one could be wrong
         
         
         #Basic scores
@@ -58,17 +58,18 @@ class Player:
 class Team:
 
     '''Representation of a team'''
-    def __init__(team_id, db):
+    def __init__(self, team_id, db):
         '''Generate team object from given data'''
-        tid = team_id
-        team_db = db["team_id"] == team_id
+        self.tid = team_id
+        self.team_db = db["team_id"] == team_id
         
-        team_db = db.loc[team_db]
+        self.team_db = db.loc[self.team_db]
         
     def get_injury_stats_by_year(self, year : datetime):
         '''Returns the injury stats of a player in a year'''
 
         #TODO: Ask if a datetime object should be used rather than an int for year
+        #NOTE: This should be a datetime.
         pass
     def get_team_defense(self) -> int:
 

@@ -28,6 +28,8 @@ for player_id, game_id in player_games:
 
     #This should be <Column name> = <predicted value>.
 
+    #NOTE: Change to db_name (col_1_val, col_2_val, ...) and (val_1, val2, ...) 
+
     #TODO: Once changing to INSERT INTO, all data for the row needs to be added. It also needs to be formated for an insert statement
 
     #Then seperate these with commas and by player and game id so this can be read and updated with the db querry.
