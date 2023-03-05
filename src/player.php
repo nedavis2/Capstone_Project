@@ -10,7 +10,7 @@
     <title>Silicon Stadium</title>
 </head>
 
-<body>
+<body id="playerPage">
 
     <?php
     error_reporting(E_ALL);
@@ -21,16 +21,22 @@
     ?>
 
 
-    <div class="page" id="pageData">
-        <h1>Player page</h1>
-
-            <a href="/Capstone_project/src/index.php" target="_self" class="futureTab">Home</a>
-            <a href="/Capstone_project/src/fantasy.php" targer="_self" class="futureTab">Fantasy</a>
-            <a href="/Capstone_project/src/support.php" target="_self" class="futureTab">Support</a>
+    <div id="pageData">
+        <div class="all">
+            <button class="navLink" onclick="location.href='../src/index.php'">Home</button>
+            <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>
+            <button class="navLink" onclick="location.href='../src/support.php'">Support</button>
         </div>
 
-        <div>
-        <?php
+        <div id="PlayerRep">
+            <div id="playerIntro">
+                <p>Player data</p>
+            </div>
+            <img src="/capstone_project/src/picSource/mascotCropped.png" id="playerImg">
+        </div>
+
+        <div id="playerData">
+            <?php
             $selectedPlayer = $_POST['playerSelect'];
             if (empty($selectedPlayer)) {
                 echo ('no player found');
@@ -87,23 +93,32 @@
                     $p['sumRecYDS'] . "</option>");*/
             }
             ?>
-            <div><?php echo "Player name: " . $p[0]; ?></div>
-            <div><?php echo "Player team: " . $p[1]; ?></div>
-            <div><?php echo "Total reception yds since 2019: " . $p[2]; ?></div>
-            <div><?php echo "Total passes complete since 2019: " . $p[3]; ?></div>
-            <div><?php echo "Total passes attempted since 2019: " . $p[4]; ?></div>
+
 
         </div>
 
+
+
     </div>
 
+    <div id="playerResultSet">
+        <div class="playerResult"><?php echo "Player name: " . $p[0]; ?></div>
+        <div class="playerResult"><?php echo "Player team: " . $p[1]; ?></div>
+        <div class="playerResult"><?php echo "Total reception yds since 2019: " . $p[2]; ?></div>
+        <div class="playerResult"><?php echo "Total passes complete since 2019: " . $p[3]; ?></div>
+        <div class="playerResult"><?php echo "Total passes attempted since 2019: " . $p[4]; ?></div>
+    </div>
+    
+        <p>test1</p>
+    
+    
+        <p>test2</p>
+    
 
 
-
-
-    <div class="page" id="banner">
+    <!--<div class="page" id="banner">
         <p>N<br>F<br>L<br><br>L<br>o<br>g<br>o
-    </div>
+    </div>-->
 </body>
 
 </html>
