@@ -12,6 +12,8 @@ db_name = "capstone_project"
 db_host = "localhost"
 db_password = ""
 db_user = "root"
+predicted_columns = "pass_cmp, pass_att, pass_yds, pass_td, pass_int, rush_yds, rush_td, fumbles_lost, rush_att, targets, rec, rec_yds, rec_td"
+predicted_table_name = "prediction"
 
 '''This file takes the values from the database that needs to be predicted, predicts what they need to be, and then updates the database with these values'''
 #TODO: Connect to database
@@ -19,6 +21,7 @@ db_user = "root"
 try:
     db = mysql.connector.connect(user=db_user, password=db_password, host=db_host, database=db_name)
     cursor = db.cursor()
+    
 
 
     #TODO: get data to be predicted
@@ -31,7 +34,7 @@ try:
     #Create and train model to predict the games
 
     for player_id, game_id in player_games:
-        #TODO: Run ML Model to get predicted values for the 
+        #TODO: Run ML Model to get predicted values for the prediction table
 
         predicted_values = None
 
@@ -40,11 +43,12 @@ try:
         #This should be <Column name> = <predicted value>.
 
         #NOTE: Change to db_name (col_1_val, col_2_val, ...) and (val_1, val2, ...) 
+        
 
         #TODO: Once changing to INSERT INTO, all data for the row needs to be added. It also needs to be formated for an insert statement
 
         #Then seperate these with commas and by player and game id so this can be read and updated with the db querry.
-
+        
         cleaned_predicted_values = None
         #TODO: Update database with predicted values
 
@@ -52,14 +56,11 @@ try:
         #NOTE: This could be changed into an insert statement, but I would need to store all data for the predicted game before hand.
         #TODO: Change this to an INSERT INTO statement with all data for a new entry.
 
-        '''
-        New formmating after change (from https://www.w3schools.com/mysql/mysql_insert.asp):
-        INSERT INTO table_name (column1, column2, column3, ...)
-        VALUES (value1, value2, value3, ...);
-        '''
-        query = '''UPDATE %s
-                    SET %s
-                    WHERE game_id = %s, player_id = %s''' % (db_name, cleaned_predicted_values, game_id, player_id)
+        
+        query = '''INSERT INTO %s (%s, %s, %s)
+                    VALUES (%s);
+                    '''%(predicted_table_name, player_id, game_id, predicted_columns, cleaned_predicted_values)
+                    
 
         cursor.execute(query)
 
