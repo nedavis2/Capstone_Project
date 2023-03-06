@@ -1,4 +1,4 @@
-import mysql.connector as mysql
+import mysql
 import pandas as ps
 
 import sys
@@ -22,6 +22,8 @@ try:
 
 
     #TODO: get data to be predicted
+
+    get_query = None #Turn into a query to get requierd data for games to be predicted
 
     player_games = [] #TODO: update to make this have a list of the primary keys to be updated in the database
 
@@ -71,5 +73,5 @@ except mysql.connector.Error as err:
     print(err)
 else:
 
-  cnx.close()
+  db.close()
   cursor.close()
