@@ -1,5 +1,11 @@
+@import '_fantasy';
 @import '_index';
 @import '_player';
+@import '_predictions';
+@import '_support';
+@import '_team';
+
+
 
 html,body {
     margin: 0%;
@@ -22,11 +28,6 @@ html,body {
 
 .page {
     display: inline-block;
-}
-
-#pageData {
-    height: 100vh;
-    display:flexbox;
 }
 
 

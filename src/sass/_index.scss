@@ -5,6 +5,11 @@
     background-attachment: fixed;
 }
 
+#homePageData {
+    height: 100vh;
+    display:flexbox;
+}
+
 .homeSearchBar {
     height: 70vh;
     margin-top: 3%;
@@ -39,3 +44,4 @@
     font-size: 35px;
     border-radius: 0px 15px 15px 0px;
 }
+

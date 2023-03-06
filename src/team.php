@@ -1,15 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="/Capstone_project/dist/css/style.min.css">
-    
+
     <title>Silicon Stadium</title>
 </head>
-<body>
-<?php
+
+<body id="teamPage">
+    <?php
     error_reporting(E_ALL);
     ini_set('display_errors', True);
 
@@ -19,14 +21,14 @@
 
 
 
-    <div class="page" id="pageData">
-        <h1>Team page</h1>
+    <div id="teamPageData">
 
-        <a href="/Capstone_project/src/index.php" target="_self" class="futureTab">Home</a>
-        <a href="/Capstone_project/src/fantasy.php" targer="_self" class="futureTab">Fantasy</a>
-        <a href="/Capstone_project/src/support.php" target="_self" class="futureTab">Support</a>
-
-        <div>
+        <div class="all">
+            <button class="navLink" onclick="location.href='../src/index.php'">Home</button>
+            <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>
+            <button class="navLink" onclick="location.href='../src/support.php'">Support</button>
+        </div>
+        <div id="teamDataDump">
             <?php
             $selectedTeam = $_POST['teamSelect'];
             if (empty($selectedTeam)) {
@@ -47,10 +49,7 @@
         </div>
 
     </div>
-    
 
-    
-
-    <div class="page" id="banner"><p>N<br>F<br>L<br><br>L<br>o<br>g<br>o</div>
 </body>
+
 </html>

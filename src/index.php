@@ -27,7 +27,7 @@
     $connection = connect();
     ?>
 
-    <div id="pageData">
+    <div id="homePageData">
         <div class="all">
             <button class="navLink" onclick="location.href='../src/index.php'">Home</button>
             <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>

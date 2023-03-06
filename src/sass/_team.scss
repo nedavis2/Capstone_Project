@@ -1,0 +1,18 @@
+#teamPage {
+    background-image: url(../../src/picSource/stadium5.jpg);
+    //background-image: url(../../src/picSource/stadiumOverhead.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#teamPageData {
+    font-size: large;
+}
+
+#teamDataDump {
+    background-color: #fff;
+    position: absolute;
+    left: 50vw;
+    bottom: 50vh;
+}

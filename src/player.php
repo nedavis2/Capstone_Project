@@ -21,7 +21,8 @@
     ?>
 
 
-    <div id="pageData">
+    <div id="playerPageData">
+        
         <div class="all">
             <button class="navLink" onclick="location.href='../src/index.php'">Home</button>
             <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>
@@ -32,10 +33,9 @@
             <div id="playerIntro">
                 <p>Player data</p>
             </div>
-            <img src="/capstone_project/src/picSource/mascotCropped.png" id="playerImg">
         </div>
 
-        <div id="playerData">
+        <div id="playerPageData">
             <?php
             $selectedPlayer = $_POST['playerSelect'];
             if (empty($selectedPlayer)) {

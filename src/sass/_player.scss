@@ -1,8 +1,14 @@
 #playerPage {
-    background-image: url(../../src/picSource/fieldView1.jpg);
+    background-image: url(../../src/picSource/qb2.jpg);
+    //background-image: url(../../src/picSource/qb5.jpg);
+    //background-image: url(../../src/picSource/mascotVIK1.jpg);
     background-position: center;
     background-size: cover;
     background-attachment: fixed;
+}
+
+#playerPageData {
+    font-size:large;
 }
 
 #playerRep {
@@ -26,5 +32,5 @@
 }
 
 .playerResult {
-    font-size: large;
+    font-size: small;
 }
