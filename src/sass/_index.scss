@@ -1,0 +1,47 @@
+#homePage {
+    background-image: url(../../src/picSource/fieldSideView1.jpg);
+    background-position: center;
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+#homePageData {
+    height: 100vh;
+    display:flexbox;
+}
+
+.homeSearchBar {
+    height: 70vh;
+    margin-top: 3%;
+}
+
+#playerSearchBar {
+    text-align: center;
+    padding-top: 15%;
+}
+
+#playerSelect {
+    font-size: 35px;
+    border-radius: 15px 0px 0px 15px;
+}
+
+#playerButton {
+    font-size: 35px;
+    border-radius: 0px 15px 15px 0px;
+}
+
+#teamSearchBar {
+    text-align: center;
+    padding-top: 2%;
+}
+
+#teamSelect {
+    font-size: 35px;
+    border-radius: 15px 0px 0px 15px;
+}
+
+#teamButton {
+    font-size: 35px;
+    border-radius: 0px 15px 15px 0px;
+}
+

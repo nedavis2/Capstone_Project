@@ -8,14 +8,14 @@
     
     <title>Silicon Stadium</title>
 </head>
-<body>
+<body id="supportPage">
 
-    <div class="page" id="pageData">
-        <h1>Support page</h1>
-
-        <a href="/Capstone_project/src/index.php" target="_self" class="futureTab">Home</a>
-        <a href="/Capstone_project/src/fantasy.php" targer="_self" class="futureTab">Fantasy</a>
-        <a href="/Capstone_project/src/support.php" target="_self" class="futureTab">Support</a>
+    <div id="supportPageData">
+        <div class="all">
+            <button class="navLink" onclick="location.href='../src/index.php'">Home</button>
+            <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>
+            <button class="navLink" onclick="location.href='../src/support.php'">Support</button>
+        </div>
 
         <div class="supportTab">Contact us</div>
         <div class="supportTab">Documentation</div>
