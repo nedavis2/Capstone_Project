@@ -57,9 +57,9 @@ try:
         #TODO: Change this to an INSERT INTO statement with all data for a new entry.
 
         
-        query = '''INSERT INTO %s (%s, %s, %s)
-                    VALUES (%s);
-                    '''%(predicted_table_name, player_id, game_id, predicted_columns, cleaned_predicted_values)
+        query = '''INSERT INTO %s (player_id, game_id, %s)
+                    VALUES (%s, %s, %s);
+                    '''%(predicted_table_name, predicted_columns, player_id, game_id, cleaned_predicted_values)
                     
 
         cursor.execute(query)
