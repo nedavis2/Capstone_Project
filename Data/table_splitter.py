@@ -3,7 +3,7 @@ import pandas as pd
 import os
 
 # read in the main data source
-data = pd.read_csv('Data\\nfl_data.csv')
+data = pd.read_csv('Data\\nfl_pass_rush_receive_raw_data.csv')
 
 # split main dataframe into useful parts
 game_data = data[['game_id', 'vis_team', 'home_team', 'vis_score', 'home_score', 'OT', 'game_date']].copy()
