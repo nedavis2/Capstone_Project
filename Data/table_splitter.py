@@ -14,11 +14,12 @@ player_data = data[['game_id', 'player_id', 'player', 'pos', 'team']].copy()
 game_data_unique = game_data.drop_duplicates('game_id')
 weather_data_unique = weather_data.drop_duplicates('game_id')
 
-# remove old data files so new ones can be created 
-# these need to be commented out on the first run as the files need
-# to exist for them to be removed
-os.remove('game_data.csv')
-os.remove('weather_data.csv')
+# remove old data files so new ones can be created
+if (os.path.exists('game_data.csv')) :
+    os.remove('game_data.csv')
+
+if (os.path.exists('weather_data.csv')) :
+    os.remove('weather_data.csv')
 
 # take dataframes and export to csv files
 game_data_unique.to_csv('game_data.csv', index=False)
