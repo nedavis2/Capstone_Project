@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/Capstone_project/dist/css/style.min.css">
 
     <title>Silicon Stadium</title>
+    <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
 
 <body id="fantasyPage">

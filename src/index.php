@@ -14,6 +14,7 @@
     <script src="js/jQFuncs.js"></script>
 
     <title>Silicon Stadium</title>
+    <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
 
 <body id="homePage">

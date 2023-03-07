@@ -19,10 +19,6 @@
     font-size: large;
 }
 
-#playerImg {
-    position: absolute;
-}
-
 #playerData {
     font-size: large
 }
@@ -31,6 +27,71 @@
     font-size: large;
 }
 
+#pResultName {
+    font-size: medium;
+    font-weight: 900;
+    background-color: #fff;
+    border-style: solid;
+    border-color: gold;
+    border-width: 6px;
+    padding: 1%;
+    position: absolute;
+    left: 50vw;
+    top: 10vh;
+}
+
+#pResultTeam {
+    font-size: medium;
+    font-weight: 900;
+    background-color: #fff;
+    border-style: solid;
+    border-color: gold;
+    border-width: 6px;
+    padding: 1%;
+    position: absolute;
+    left: 50vw;
+    top: 20vh;
+}
+
+#pResultStat1 {
+    font-size: medium;
+    font-weight: 900;
+    background-color: #fff;
+    border-style: solid;
+    border-color: gold;
+    border-width: 6px;
+    padding: 1%;
+    position: absolute;
+    left: 50vw;
+    top: 30vh;
+}
+
+#pResultStat2 {
+    font-size: medium;
+    font-weight: 900;
+    background-color: #fff;
+    border-style: solid;
+    border-color: gold;
+    border-width: 6px;
+    padding: 1%;
+    position: absolute;
+    left: 50vw;
+    top: 40vh;
+}
+
+#pResultStat3 {
+    font-size: medium;
+    font-weight: 900;
+    background-color: #fff;
+    border-style: solid;
+    border-color: gold;
+    border-width: 6px;
+    padding: 1%;
+    position: absolute;
+    left: 50vw;
+    top: 50vh;
+}
+
 .playerResult {
-    font-size: small;
+    font-size: large;
 }

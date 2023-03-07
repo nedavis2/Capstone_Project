@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="/Capstone_project/dist/css/style.min.css">
 
     <title>Silicon Stadium</title>
+    <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
 
 <body id="playerPage">
@@ -37,12 +38,22 @@
 
         <div id="playerPageData">
             <?php
+            
+            
             $selectedPlayer = $_POST['playerSelect'];
             if (empty($selectedPlayer)) {
                 echo ('no player found');
             } else {
 
-                $stmt = $connection->prepare("SELECT DISTINCT 
+
+            
+                
+                $result = exec('python ../src/test.py ' . escapeshellarg($selectedPlayer));
+                $finalResult = explode(",", $result);
+                #echo $finalResult;
+                
+                
+                /*$stmt = $connection->prepare("SELECT DISTINCT 
                 player, 
                 team,  
                 SUM(rec_yds) AS sumRecYDS, 
@@ -89,7 +100,7 @@
                 $stmt->execute();
                 $results = $stmt->fetchAll();
                 $p = $results[0];
-                /*print("<option value=\"" . $p['player'] . "\">" . $p['player'] . ", " . $p['team'] . ", " .
+                print("<option value=\"" . $p['player'] . "\">" . $p['player'] . ", " . $p['team'] . ", " .
                     $p['sumRecYDS'] . "</option>");*/
             }
             ?>
@@ -102,11 +113,11 @@
     </div>
 
     <div id="playerResultSet">
-        <div class="playerResult"><?php echo "Player name: " . $p[0]; ?></div>
-        <div class="playerResult"><?php echo "Player team: " . $p[1]; ?></div>
-        <div class="playerResult"><?php echo "Total reception yds since 2019: " . $p[2]; ?></div>
-        <div class="playerResult"><?php echo "Total passes complete since 2019: " . $p[3]; ?></div>
-        <div class="playerResult"><?php echo "Total passes attempted since 2019: " . $p[4]; ?></div>
+        <div id="pResultName"><?php echo "Player name: " . $finalResult[0]; ?></div>
+        <div id="pResultTeam"><?php echo "Player team: " . $finalResult[1]; ?></div>
+        <div id="pResultStat1"><?php echo "Total reception yds since 2019: " . $finalResult[2]; ?></div>
+        <div id="pResultStat2"><?php echo "Total passes complete since 2019: " . $finalResult[3]; ?></div>
+        <div id="pResultStat3"><?php echo "Total passes attempted since 2019: " . $finalResult[4]; ?></div>
     </div>
     
         <p>test1</p>
