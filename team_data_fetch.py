@@ -16,7 +16,7 @@ db_user = "root"
 def _retrieve_player_total_data(player_id : str, retreived_data : str) -> int:
   pass
 
-ef _retrieve_player_total_data(player_id : str, retreived_data : str, weekly : bool = True) -> int[]:
+def _retrieve_player_total_data(player_id : str, retreived_data : str, weekly : bool = True) -> int[]:
   pass
 
 
