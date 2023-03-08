@@ -13,6 +13,18 @@ db_host = "localhost"
 db_password = ""
 db_user = "root"
 
+def _retrieve_player_total_data(player_id : str, retreived_data : str) -> int:
+  pass
+
+ef _retrieve_player_total_data(player_id : str, retreived_data : str, weekly : bool = True) -> int[]:
+  pass
+
+
+def _retrieve_team_data(team : str,retreived_data : str, weekly : bool = True) -> int[]:
+  pass
+
+
+
 #NOTE: Seperate data into weeks.
 #result includes gamedate + stat for weekly/monthly data
 #directly interact with database
