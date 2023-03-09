@@ -51,6 +51,7 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
         _end_database_connection(db, cursor)
     return int(total)
 
+#TODO: ask if I should filter by when a player held a certion position.
 def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str, weekly : bool = True) -> tuple((list[int], list[date])):
     data = None
     try:
@@ -84,16 +85,23 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
         _end_database_connection(db, cursor)
     return data["value"].to_list(), data["date"].to_list()
 
-def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True) -> tuple((list[int], list[date])):
+def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True, position = "ANY") -> tuple((list[int], list[date])):
     data = None
     try:
     
         db, cursor = _connect_to_database()
+        query = ""
+        if position == "ANY":
 
-        query = ''' SELECT %s AS value, game_date AS date
-                    FROM %s
-                    WHERE team = \"%s\"
-        '''%(retreived_data, table_name, team)
+            query = ''' SELECT %s AS value, game_date AS date
+                        FROM %s
+                        WHERE team = \"%s\"
+            '''%(retreived_data, table_name, team)
+        else:
+            query = ''' SELECT %s AS value, game_date AS date
+                        FROM %s
+                        WHERE team = \"%s\" AND \"pos\" = %s
+            '''%(retreived_data, table_name, team, position)
 
         data = ps.read_sql(query, db)
 
@@ -295,87 +303,114 @@ def player_running_back_rec_monthly(player_id : str) -> tuple((list[int], list[d
 #week
 def team_wide_receiver_targets_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = "WR"
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
+
 def team_wide_receiver_rec_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_wide_receiver_rec_td_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_wide_receiver_rec_yds_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 
 def team_tight_end_targets_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_tight_end_rec_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_tight_end_rec_td_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_tight_end_rec_yds_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 
 def team_running_back_rush_td_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_running_back_rush_att_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_running_back_rush_yds_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_running_back_rec_td_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_running_back_rec_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 #month
 def team_wide_receiver_targets_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_wide_receiver_rec_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_wide_receiver_rec_td_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_wide_receiver_rec_yds_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 
 def team_tight_end_targets_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_tight_end_rec_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_tight_end_rec_td_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_tight_end_rec_yds_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 
 def team_running_back_rush_td_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_running_back_rush_att_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_running_back_rush_yds_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_running_back_rec_td_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 def team_running_back_rec_monthly(team : str) -> tuple((list[int], list[date])):
     retreived_data = ""
-    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+    position = ""
+    _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 
 
 
