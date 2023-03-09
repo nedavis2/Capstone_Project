@@ -48,11 +48,67 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
         _end_database_connection(db, cursor)
 
 def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str, weekly : bool = True) -> tuple((list[int], list[date])):
-  pass
+    try:
+    
+        db, cursor = _connect_to_database()
+
+        query = ''' SELECT %s AS value, game_date AS date
+                    FROM %s
+                    WHERE player_id = \"%s\"
+        '''%(retreived_data, table_name, player_id)
+
+        data = ps.read_sql(query, db)
+
+        data["date"] = ps.to_datetime(data["date"])
+
+        if weekly:
+            data["date"] = data["date"].dt.isocalendar().week
+        else:
+            data["date"] = data["date"].dt.month
+        #TODO Return values
+
+        return data["value"].to_list(), data["date"].to_list()
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    else:
+        _end_database_connection(db, cursor)
 
 
 def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True) -> tuple((list[int], list[date])):
-  pass
+    try:
+    
+        db, cursor = _connect_to_database()
+
+        query = ''' SELECT %s AS value, game_date AS date
+                    FROM %s
+                    WHERE team = \"%s\"
+        '''%(retreived_data, table_name, team)
+
+        data = ps.read_sql(query, db)
+
+        data["date"] = ps.to_datetime(data["date"])
+
+        if weekly:
+            data["date"] = data["date"].dt.isocalendar().week
+        else:
+            data["date"] = data["date"].dt.month
+        #TODO Return values
+
+        return data["value"].to_list(), data["date"].to_list()
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    else:
+        _end_database_connection(db, cursor)
 
 
 
@@ -226,4 +282,4 @@ def team_running_back_rec_monthly(team : str) -> tuple((list[int], list[date])):
 
 #Testing function
 
-print(_retrieve_player_total_data("RodgAa00", "pass_cmp", "nfl_pass_rush_receive_raw_data"))
+print(_retrieve_team_data("MIN", "pass_cmp", "nfl_pass_rush_receive_raw_data", False))
