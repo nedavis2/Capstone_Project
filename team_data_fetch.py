@@ -14,6 +14,7 @@ db_host = "localhost"
 db_password = ""
 db_user = "root"
 
+#TODO: Add contingancy for if database is off
 def _connect_to_database(db_user = db_user, db_host = db_host, db_password = db_password, db_name = db_name):
     db = mysql.connector.connect(user=db_user, password=db_password, host=db_host, database=db_name)
     cursor = db.cursor()
@@ -24,6 +25,7 @@ def _end_database_connection(db, cursor):
     cursor.close()
 
 def _retrieve_player_total_data(player_id : str, retreived_data : str, table_name: str) -> int:
+    total = None
     try:
     
         db, cursor = _connect_to_database()
@@ -36,7 +38,7 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
         data = ps.read_sql(query, db)
 
         total = data["total"]
-        return int(total)
+        
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
@@ -46,8 +48,10 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
             print(err)
     else:
         _end_database_connection(db, cursor)
+    return int(total)
 
 def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str, weekly : bool = True) -> tuple((list[int], list[date])):
+    data = None
     try:
     
         db, cursor = _connect_to_database()
@@ -67,7 +71,7 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
             data["date"] = data["date"].dt.month
         #TODO Return values
 
-        return data["value"].to_list(), data["date"].to_list()
+        
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
@@ -77,9 +81,10 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
             print(err)
     else:
         _end_database_connection(db, cursor)
-
+    return data["value"].to_list(), data["date"].to_list()
 
 def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True) -> tuple((list[int], list[date])):
+    data = None
     try:
     
         db, cursor = _connect_to_database()
@@ -99,7 +104,7 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
             data["date"] = data["date"].dt.month
         #TODO Return values
 
-        return data["value"].to_list(), data["date"].to_list()
+        
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
@@ -109,6 +114,7 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
             print(err)
     else:
         _end_database_connection(db, cursor)
+    return data["value"].to_list(), data["date"].to_list()
 
 
 
