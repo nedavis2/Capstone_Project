@@ -17,11 +17,11 @@ db_user = "root"
 def _retrieve_player_total_data(player_id : str, retreived_data : str) -> int:
   pass
 
-def _retrieve_player_total_data(player_id : str, retreived_data : str, weekly : bool = True) -> list(int, date):
+def _retrieve_player_total_data(player_id : str, retreived_data : str, weekly : bool = True) -> tuple(list[int], list[date]):
   pass
 
 
-def _retrieve_team_data(team : str,retreived_data : str, weekly : bool = True) -> list(int, date):
+def _retrieve_team_data(team : str,retreived_data : str, weekly : bool = True) -> tuple(list[int], list[date]):
   pass
 
 
