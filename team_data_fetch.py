@@ -1,6 +1,7 @@
 import mysql
 import pandas as ps
-
+import datetime
+from datetime import date
 import sys
 import subprocess
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
@@ -16,11 +17,11 @@ db_user = "root"
 def _retrieve_player_total_data(player_id : str, retreived_data : str) -> int:
   pass
 
-def _retrieve_player_total_data(player_id : str, retreived_data : str, weekly : bool = True) -> int[]:
+def _retrieve_player_total_data(player_id : str, retreived_data : str, weekly : bool = True) -> list(int, date):
   pass
 
 
-def _retrieve_team_data(team : str,retreived_data : str, weekly : bool = True) -> int[]:
+def _retrieve_team_data(team : str,retreived_data : str, weekly : bool = True) -> list(int, date):
   pass
 
 
@@ -63,131 +64,131 @@ def player_running_back_recc_total(player_id : str) -> int:
 #________________________________________
 
 #week
-def player_wide_receiver_targets_weekly(player_id : str) -> int[]:
+def player_wide_receiver_targets_weekly(player_id : str) -> list(int, date):
   '''
   person picks player from home screen, call this function, returns total of the stats and the targets broken down by week, and by month
   '''
   pass
-def player_wide_receiver_rec_weekly(player_id : str) -> int[]:
+def player_wide_receiver_rec_weekly(player_id : str) -> list(int, date):
   pass
-def player_wide_receiver_rec_td_weekly(player_id : str) -> int[]:
+def player_wide_receiver_rec_td_weekly(player_id : str) -> list(int, date):
   pass
-def player_wide_receiver_rec_yds_weekly(player_id : str) -> int[]:
-  pass
-
-def player_tight_end_targets_weekly(player_id : str) -> int[]:
-  pass
-def player_tight_end_rec_weekly(player_id : str) -> int[]:
-  pass
-def player_tight_end_rec_td_weekly(player_id : str) -> int[]:
-  pass
-def player_tight_end_rec_yds_weekly(player_id : str) -> int[]:
+def player_wide_receiver_rec_yds_weekly(player_id : str) -> list(int, date):
   pass
 
-def player_running_back_rush_td_weekly(player_id : str) -> int[]:
+def player_tight_end_targets_weekly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rush_att_weekly(player_id : str) -> int[]:
+def player_tight_end_rec_weekly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rush_yds_weekly(player_id : str) -> int[]:
+def player_tight_end_rec_td_weekly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rec_td_weekly(player_id : str) -> int[]:
+def player_tight_end_rec_yds_weekly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rec_weekly(player_id : str) -> int[]:
+
+def player_running_back_rush_td_weekly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rush_att_weekly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rush_yds_weekly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rec_td_weekly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rec_weekly(player_id : str) -> list(int, date):
   pass
 
 #________________________________________
 
 #month
-def player_wide_receiver_targets_monthly(player_id : str) -> int[]:
+def player_wide_receiver_targets_monthly(player_id : str) -> list(int, date):
   '''
   person picks player from home screen, call this function, returns total of the stats and the targets broken down by week, and by month
   '''
   pass
-def player_wide_receiver_rec_monthly(player_id : str) -> int[]:
+def player_wide_receiver_rec_monthly(player_id : str) -> list(int, date):
   pass
-def player_wide_receiver_rec_td_monthly(player_id : str) -> int[]:
+def player_wide_receiver_rec_td_monthly(player_id : str) -> list(int, date):
   pass
-def player_wide_receiver_rec_yds_monthly(player_id : str) -> int[]:
-  pass
-
-def player_tight_end_targets_monthly(player_id : str) -> int[]:
-  pass
-def player_tight_end_rec_monthly(player_id : str) -> int[]:
-  pass
-def player_tight_end_rec_td_monthly(player_id : str) -> int[]:
-  pass
-def player_tight_end_rec_yds_monthly(player_id : str) -> int[]:
+def player_wide_receiver_rec_yds_monthly(player_id : str) -> list(int, date):
   pass
 
-def player_running_back_rush_td_monthly(player_id : str) -> int[]:
+def player_tight_end_targets_monthly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rush_att_monthly(player_id : str) -> int[]:
+def player_tight_end_rec_monthly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rush_yds_monthly(player_id : str) -> int[]:
+def player_tight_end_rec_td_monthly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rec_td_monthly(player_id : str) -> int[]:
+def player_tight_end_rec_yds_monthly(player_id : str) -> list(int, date):
   pass
-def player_running_back_rec_monthly(player_id : str) -> int[]:
+
+def player_running_back_rush_td_monthly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rush_att_monthly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rush_yds_monthly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rec_td_monthly(player_id : str) -> list(int, date):
+  pass
+def player_running_back_rec_monthly(player_id : str) -> list(int, date):
   pass
 
 #________________________________________
 
 #week
-def team_wide_receiver_targets_weekly(team : str) -> int[]:
+def team_wide_receiver_targets_weekly(team : str) -> list(int, date):
   pass
-def team_wide_receiver_rec_weekly(team : str) -> int[]:
+def team_wide_receiver_rec_weekly(team : str) -> list(int, date):
   pass
-def team_wide_receiver_rec_td_weekly(team : str) -> int[]:
+def team_wide_receiver_rec_td_weekly(team : str) -> list(int, date):
   pass
-def team_wide_receiver_rec_yds_weekly(team : str) -> int[]:
-  pass
-
-def team_tight_end_targets_weekly(team : str) -> int[]:
-  pass
-def team_tight_end_rec_weekly(team : str) -> int[]:
-  pass
-def team_tight_end_rec_td_weekly(team : str) -> int[]:
-  pass
-def team_tight_end_rec_yds_weekly(team : str) -> int[]:
+def team_wide_receiver_rec_yds_weekly(team : str) -> list(int, date):
   pass
 
-def team_running_back_rush_td_weekly(team : str) -> int[]:
+def team_tight_end_targets_weekly(team : str) -> list(int, date):
   pass
-def team_running_back_rush_att_weekly(team : str) -> int[]:
+def team_tight_end_rec_weekly(team : str) -> list(int, date):
   pass
-def team_running_back_rush_yds_weekly(team : str) -> int[]:
+def team_tight_end_rec_td_weekly(team : str) -> list(int, date):
   pass
-def team_running_back_rec_td_weekly(team : str) -> int[]:
+def team_tight_end_rec_yds_weekly(team : str) -> list(int, date):
   pass
-def team_running_back_rec_weekly(team : str) -> int[]:
+
+def team_running_back_rush_td_weekly(team : str) -> list(int, date):
+  pass
+def team_running_back_rush_att_weekly(team : str) -> list(int, date):
+  pass
+def team_running_back_rush_yds_weekly(team : str) -> list(int, date):
+  pass
+def team_running_back_rec_td_weekly(team : str) -> list(int, date):
+  pass
+def team_running_back_rec_weekly(team : str) -> list(int, date):
   pass
 
 #month
-def team_wide_receiver_targets_monthly(team : str) -> int[]:
+def team_wide_receiver_targets_monthly(team : str) -> list(int, date):
   pass
-def team_wide_receiver_rec_monthly(team : str) -> int[]:
+def team_wide_receiver_rec_monthly(team : str) -> list(int, date):
   pass
-def team_wide_receiver_rec_td_monthly(team : str) -> int[]:
+def team_wide_receiver_rec_td_monthly(team : str) -> list(int, date):
   pass
-def team_wide_receiver_rec_yds_monthly(team : str) -> int[]:
-  pass
-
-def team_tight_end_targets_monthly(team : str) -> int[]:
-  pass
-def team_tight_end_rec_monthly(team : str) -> int[]:
-  pass
-def team_tight_end_rec_td_monthly(team : str) -> int[]:
-  pass
-def team_tight_end_rec_yds_monthly(team : str) -> int[]:
+def team_wide_receiver_rec_yds_monthly(team : str) -> list(int, date):
   pass
 
-def team_running_back_rush_td_monthly(team : str) -> int[]:
+def team_tight_end_targets_monthly(team : str) -> list(int, date):
   pass
-def team_running_back_rush_att_monthly(team : str) -> int[]:
+def team_tight_end_rec_monthly(team : str) -> list(int, date):
   pass
-def team_running_back_rush_yds_monthly(team : str) -> int[]:
+def team_tight_end_rec_td_monthly(team : str) -> list(int, date):
   pass
-def team_running_back_rec_td_monthly(team : str) -> int[]:
+def team_tight_end_rec_yds_monthly(team : str) -> list(int, date):
   pass
-def team_running_back_rec_monthly(team : str) -> int[]:
+
+def team_running_back_rush_td_monthly(team : str) -> list(int, date):
+  pass
+def team_running_back_rush_att_monthly(team : str) -> list(int, date):
+  pass
+def team_running_back_rush_yds_monthly(team : str) -> list(int, date):
+  pass
+def team_running_back_rec_td_monthly(team : str) -> list(int, date):
+  pass
+def team_running_back_rec_monthly(team : str) -> list(int, date):
   pass
