@@ -1,11 +1,11 @@
-import mysql
+
 import pandas as ps
 import datetime
 from datetime import date
 import sys
 import subprocess
 subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
-
+import mysql
 import mysql.connector
 from mysql.connector import errorcode
 
@@ -418,3 +418,4 @@ def team_running_back_rec_monthly(team : str) -> tuple((list[int], list[date])):
 
 #Testing function
 
+print(player_wide_receiver_rec_total("JoneAa00"))
