@@ -323,7 +323,7 @@ def team_wide_receiver_rec_yds_weekly(team : str) -> tuple((list[int], list[date
 
 def team_tight_end_targets_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = "targets"
-    position = ""
+    position = "TE"
     _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_tight_end_rec_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = "rec"
@@ -340,7 +340,7 @@ def team_tight_end_rec_yds_weekly(team : str) -> tuple((list[int], list[date])):
 
 def team_running_back_rush_td_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = "rush_td"
-    position = ""
+    position = "RB"
     _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 def team_running_back_rush_att_weekly(team : str) -> tuple((list[int], list[date])):
     retreived_data = "rush_att"
