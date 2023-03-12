@@ -1,3 +1,5 @@
+import { GoogleLogin } from 'library'
+
 function onLoadGoogleAuthLibrary() {
   console.log('Google 3P Authorization library loaded');
   

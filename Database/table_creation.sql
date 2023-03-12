@@ -35,12 +35,56 @@ CREATE TABLE user (
 );
 CREATE TABLE game_stats_team (
     game_id         varchar(20)     not null,
-    --stats 'n' stuff
+    --stats 'n' stuff 
+    Vis_team        VARCHAR(20),
+    Opponent_abbrev VARCHAR(5),
+    Home_team       VARCHAR(20),
+    Team_abbrev     VARCHAR(5),
+    Vis_score       INT(10),
+    Home_score      INT(10),
+    Pass_sacked     int(10),   
+    Pass_sacked_yds int(10),
+    Rush_scrambles  INT(10),
+    Designed_rush_att   INT(10),
+    Comb_pass_rush_play INT(10),
+    Comb_pass_play      INT(10),
+    Comb_rush_play      INT(10),
+    Total_ret_td        INT(10),
+    Offensive_fumble_recovery_td    INT(10),
+    Pass_blitzed        INT(10),
+    Pass_hurried        INT(10),
+
     foreign key (player_id) references player(player_id)
 );
 CREATE TABLE game_stats_player (
     player_id       varchar(20)     not null,
     --stats 'n' stuff
+    Pass_cmp        int(10),
+    Pass_att        int(10),
+    Pass_yds        int(10),
+    Pass_td         int(10),
+    Pass_int        int(10),
+    Pass_long       int(10),
+    Pass_rating     int(10),
+    Rush_att        INT(10),
+    Rush_yds        INT(10),
+    Rush_td         INT(10),
+    Rush_long       INT(10),
+    Targets         INT(10),
+    Rec             INT(10),
+    Rec_yds         INT(10),
+    Rec_td          INT(10),
+    Rec_long        INT(10),
+    Fumbles_lost    INT(10),
+    Two_point_conv      INT(10),
+    Pass_target_yds     INT(10),
+    Pass_poor_throws    INT(10),
+    Rush_yds_before_contact     INT(10),
+    Rush_yac            INT(10),
+    Rush_broken_tackles INT(10),
+    Rec_air_yds         DECIMAL(2.2),
+    Rec_yac         INT(10),
+    Rec_drops       INT(10),
     foreign key (player_id) references player(player_id)
 );
 CREATE TABLE injury (
