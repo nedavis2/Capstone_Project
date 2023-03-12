@@ -4,8 +4,9 @@
     "\\Data",
     "\\Database",
     "\\dist",
+    "\\Google_Auth",
     "\\src"
   ],
-  "SelectedNode": "\\team_data_fetch.py",
+  "SelectedNode": "\\Google_Auth\\GoogleAuthentication.php",
   "PreviewInSolutionExplorer": false
 }
