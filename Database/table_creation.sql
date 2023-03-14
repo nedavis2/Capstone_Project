@@ -1,3 +1,4 @@
+DROP TABLE IF EXISTS nfl_pass_rush_receive_raw_data;
 DROP TABLE IF EXISTS injury;
 DROP TABLE IF EXISTS game_stats_player;
 DROP TABLE IF EXISTS game_stats_team;
