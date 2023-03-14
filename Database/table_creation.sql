@@ -1,10 +1,10 @@
-DROP TABLE injury;
-DROP TABLE game_stats_player;
-DROP TABLE game_stats_team;
-DROP TABLE user;
-DROP TABLE weather;
-DROP TABLE game;
-DROP TABLE player;
+DROP TABLE IF EXISTS injury;
+DROP TABLE IF EXISTS game_stats_player;
+DROP TABLE IF EXISTS game_stats_team;
+DROP TABLE IF EXISTS user;
+DROP TABLE IF EXISTS weather;
+DROP TABLE IF EXISTS game;
+DROP TABLE IF EXISTS player;
 
 CREATE TABLE player (
     game_id         varchar(20)     not null,
