@@ -1,3 +1,11 @@
+DROP TABLE injury;
+DROP TABLE game_stats_player;
+DROP TABLE game_stats_team;
+DROP TABLE user;
+DROP TABLE weather;
+DROP TABLE game;
+DROP TABLE player;
+
 CREATE TABLE player (
     game_id         varchar(20)     not null,
     player_id       varchar(20)     not null,
