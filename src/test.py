@@ -5,7 +5,7 @@ import mysql.connector
 from mysql.connector import errorcode
 
 
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
+#subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
 
 
 try:
