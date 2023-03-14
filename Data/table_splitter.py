@@ -58,4 +58,4 @@ player_stats.to_csv('Data\\player_stats.csv', index=False)
 
 # testing print statements
 #print(player_stats.loc[player_stats['pos'] == 'WR'])
-print(player_description_unique)
+print(player_stats)
