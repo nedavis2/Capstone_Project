@@ -16,6 +16,12 @@ db_user = "root"
 
 used_table_name = "nfl_pass_rush_receive_raw_data"
 
+
+RETRIEVE_PLAYER_TOTAL_DATA = 1
+RETRIEVE_PLAYER_TIME_DATA = 2
+RETRiEVE_TEAM_DATA = 3
+
+
 def _connect_to_database(db_user = db_user, db_host = db_host, db_password = db_password, db_name = db_name):
     db = mysql.connector.connect(user=db_user, password=db_password, host=db_host, database=db_name)
     cursor = db.cursor()
