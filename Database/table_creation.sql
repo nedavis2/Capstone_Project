@@ -87,6 +87,9 @@ CREATE TABLE game_stats_team (
     rec_drops                       INT(4),
     offense                         INT(4),
     off_pct                         INT(4),
+    yds_per_rec                     numeric(3,2),
+    yds_per_rush                    numeric(3,2),
+    yds_per_target                  numeric(3,2),
     foreign key (game_id) references game(game_id)
 );
 CREATE TABLE game_stats_player (

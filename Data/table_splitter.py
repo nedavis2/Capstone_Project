@@ -28,6 +28,23 @@ player_data4 = player_data3.drop(columns=['Total_DKP', 'Off_DKP', 'Total_FDP', '
 team_stats = team_data4.groupby(['game_date', 'game_id', 'team'], as_index=False).sum()
 player_stats = player_data4.groupby(['game_date', 'game_id', 'player_id', 'player', 'pos'], as_index=False).sum()
 
+# pass yards / rec ---- yds_per_rec ---- (yards per reception)
+# rush yards / rush att ---- yds_per_rush ---- (yards per rushing attempt)
+# pass target yards / targets ---- yds_per_target ---- (yards per passing target)
+team_stats['yds_per_rec'] = (team_stats['pass_yds'] / team_stats['rec']).round(2)
+team_stats['yds_per_rush'] = (team_stats['rush_yds'] / team_stats['rush_att']).round(2)
+team_stats['yds_per_target'] = (team_stats['pass_target_yds'] / team_stats['targets']).round(2)
+
+# pass yards / rec ---- yds_per_rec ---- (yards per reception)
+# rush yards / rush att ---- yds_per_rush ---- (yards per rushing attempt)
+# pass target yards / targets ---- yds_per_target ---- (yards per passing target)
+player_stats['yds_per_rec'] = (player_stats['pass_yds'] / player_stats['rec']).round(2)
+player_stats['yds_per_rush'] = (player_stats['rush_yds'] / player_stats['rush_att']).round(2)
+player_stats['yds_per_target'] = (player_stats['pass_target_yds'] / player_stats['targets']).round(2)
+
+player_test = player_stats.loc[player_stats['player']=='Aaron Rodgers']
+player_stats_trans = player_stats.T
+
 # remove unnecessary dataframe rows
 game_data_unique = game_data.drop_duplicates('game_id')
 weather_data_unique = weather_data.drop_duplicates('game_id')
@@ -57,5 +74,6 @@ team_stats.to_csv('Data\\team_stats.csv', index=False)
 player_stats.to_csv('Data\\player_stats.csv', index=False)
 
 # testing print statements
-#print(player_stats.loc[player_stats['pos'] == 'WR'])
-print(player_stats)
+# print(player_stats.loc[player_stats['pos'] == 'QB'])
+# print((player_test['rush_yds'].sum() / player_test['rush_att'].sum()).round(2))
+# print(player_stats_trans)
