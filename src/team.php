@@ -47,7 +47,7 @@
             }
             ?>
 
-            <canvas id="teamChart" style="width:50%;max-width:700px;background-color:white"></canvas>
+            <canvas id="teamChart" style="width:70%;max-width:90vw;background-color:white"></canvas>
 
             <script>
                 var data1 =
