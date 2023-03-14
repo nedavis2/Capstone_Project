@@ -86,7 +86,7 @@ CREATE TABLE game_stats_team (
     rec_drops                       INT(4),
     offense                         INT(4),
     off_pct                         INT(4),
-    foreign key (player_id) references player(player_id)
+    foreign key (game_id) references game(game_id)
 );
 CREATE TABLE game_stats_player (
     game_date                       DATE            not null,
