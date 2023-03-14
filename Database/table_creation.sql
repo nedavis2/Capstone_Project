@@ -86,12 +86,6 @@ CREATE TABLE game_stats_team (
     rec_drops                       INT(4),
     offense                         INT(4),
     off_pct                         INT(4),
-    --Vis_team        VARCHAR(20),
-    --Opponent_abbrev VARCHAR(5),
-    --Home_team       VARCHAR(20),
-    --Team_abbrev     VARCHAR(5),
-    --Vis_score       INT(10),
-    --Home_score      INT(10),
     foreign key (player_id) references player(player_id)
 );
 CREATE TABLE game_stats_player (
