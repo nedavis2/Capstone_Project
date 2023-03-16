@@ -10,15 +10,17 @@ var startApp = function () {
 };
 
 function attachSignin(element) {
-    console.log(element.id);
+    console.log("Attaching Signin to:", element.id);
     auth2.attachClickHandler(element, {},
         function (googleUser) {
+            console.log("Google Sign-In successful");
             // Get the user's ID token
             var id_token = googleUser.getAuthResponse().id_token;
 
             // Redirect the user to the PHP script with the ID token as a URL parameter
             window.location.href = 'login.php?id_token=' + id_token;
         }, function (error) {
+            console.error("Google Sign-In error:", error);
             alert(JSON.stringify(error, undefined, 2));
         });
 }
