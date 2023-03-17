@@ -4,9 +4,8 @@
     "\\Data",
     "\\Database",
     "\\dist",
-    "\\Google_Auth",
     "\\src"
   ],
-  "SelectedNode": "\\composer.json",
+  "SelectedNode": "\\team_data_fetch.py",
   "PreviewInSolutionExplorer": false
 }

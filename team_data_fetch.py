@@ -51,6 +51,13 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
         _end_database_connection(db, cursor)
     return int(total)
 
+
+def get_weekly_or_monthly(weekly = True):
+    if weekly:
+        return "WEEK"
+    else:
+        return "MONTH"
+
 #TODO: ask if I should filter by when a player held a certion position.
 def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str, weekly : bool = True) -> tuple((list[int], list[date])):
     data = None
@@ -58,19 +65,26 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
     
         db, cursor = _connect_to_database()
 
-        query = ''' SELECT %s AS value, game_date AS date
+        
+
+        query = ''' SELECT %s AS value, CONCAT(YEAR(game_date), '/', %s(game_date)) AS date
                     FROM %s
                     WHERE player_id = \"%s\"
-        '''%(retreived_data, table_name, player_id)
+                    GROUP BY date ASC
+                    ORDER BY date ASC
+        '''%(retreived_data,get_weekly_or_monthly(weekly), table_name, player_id)
 
         data = ps.read_sql(query, db)
 
         data["date"] = ps.to_datetime(data["date"])
 
+        '''
+        #Was for when the date collum held ints
         if weekly:
             data["date"] = data["date"].dt.isocalendar().week
         else:
             data["date"] = data["date"].dt.month
+        '''
         #TODO Return values
 
         
@@ -95,24 +109,27 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
         query = ""
         if position == "ANY":
 
-            query = ''' SELECT %s AS value, game_date AS date
+            query = ''' SELECT %s AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE team = \"%s\"
-            '''%(retreived_data, table_name, team)
+            '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team)
         else:
-            query = ''' SELECT %s AS value, game_date AS date
+            query = ''' SELECT %s AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE team = \"%s\" AND pos = \"%s\"
-            '''%(retreived_data, table_name, team, position)
+            '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team, position)
 
         data = ps.read_sql(query, db)
 
         data["date"] = ps.to_datetime(data["date"])
 
+        '''
+        #Old code, from when this returned an int
         if weekly:
             data["date"] = data["date"].dt.isocalendar().week
         else:
             data["date"] = data["date"].dt.month
+        '''
         #TODO Return values
 
         
