@@ -9,7 +9,7 @@ $redirectUri = 'http://localhost/Capstone_Project/src/index.php';
 $client = new Google_Client();
 $client->setClientId($clientID);
 $client->setClientSecret($clientSecret);
-$client->setRedirectUri($redirectUri);
+$client->setRedirectUri($redirectUri); 
 $client->addScope("email");
 $client->addScope("profile");
 
@@ -24,7 +24,7 @@ if (isset($_GET['id_token'])) {
     $email = $payload['email'];
     $name = $payload['name'];
 
-    // use this profile info to create an account in your website and make the user logged in.
+    // use this profile info to create an account
   } else {
     // Invalid ID token
     echo "Invalid ID token.";
