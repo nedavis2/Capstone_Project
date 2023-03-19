@@ -1,29 +1,26 @@
-var googleUser = {};
-var startApp = function () {
-    gapi.load('auth2', function () {
-        auth2 = gapi.auth2.init({
-            client_id: '418675902686-6p06o7996m77v44jng2plhd969plknl0.apps.googleusercontent.com',
-            cookiepolicy: 'single_host_origin',
-        });
-        attachSignin(document.getElementById('customBtn'));
+function init() {
+    document.getElementById('customBtn').addEventListener('click', function () {
+        signInWithGoogle();
     });
-};
-
-function attachSignin(element) {
-    console.log("Attaching Signin to:", element.id);
-    auth2.attachClickHandler(element, {},
-        function (googleUser) {
-            console.log("Google Sign-In successful");
-            // Get the user's ID token
-            var id_token = googleUser.getAuthResponse().id_token;
-
-            // Redirect the user to the PHP script with the ID token as a URL parameter
-            window.location.href = 'login.php?id_token=' + id_token;
-        }, function (error) {
-            console.error("Google Sign-In error:", error);
-            alert(JSON.stringify(error, undefined, 2));
-        });
 }
 
-// Call startApp when the page is fully loaded
-document.addEventListener('DOMContentLoaded', startApp);
+document.addEventListener('DOMContentLoaded', init);
+
+function signInWithGoogle() {
+    // Replace with your own client ID
+    var clientId = '418675902686-6p06o7996m77v44jng2plhd969plknl0.apps.googleusercontent.com';
+    var authUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
+    var responseType = 'id_token';
+    var scope = 'email profile openid';
+    var redirectUri = 'http://localhost/Capstone_Project/src/index.php';
+    var nonce = Math.random().toString(36).substring(2, 15);
+
+    var url = authUrl + '?' +
+        'client_id=' + encodeURIComponent(clientId) + '&' +
+        'response_type=' + encodeURIComponent(responseType) + '&' +
+        'scope=' + encodeURIComponent(scope) + '&' +
+        'redirect_uri=' + encodeURIComponent(redirectUri) + '&' +
+        'nonce=' + encodeURIComponent(nonce);
+
+    window.location.href = url;
+}
