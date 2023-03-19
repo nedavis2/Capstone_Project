@@ -7,7 +7,7 @@ function init() {
 document.addEventListener('DOMContentLoaded', init);
 
 function signInWithGoogle() {
-    // Replace with your own client ID
+    // client ID
     var clientId = '418675902686-6p06o7996m77v44jng2plhd969plknl0.apps.googleusercontent.com';
     var authUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
     var responseType = 'id_token';
@@ -23,4 +23,5 @@ function signInWithGoogle() {
         'nonce=' + encodeURIComponent(nonce);
 
     window.location.href = url;
+    
 }
