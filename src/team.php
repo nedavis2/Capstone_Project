@@ -30,49 +30,55 @@
             <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>
             <button class="navLink" onclick="location.href='../src/support.php'">Support</button>
         </div>
-        <div id="teamDataDump">
-            <?php
-            $selectedTeam = $_POST['teamSelect'];
-            if (empty($selectedTeam)) {
-                echo ('no team found');
-            } else {
+        <div id="teamGraphContainer">
 
 
-                $result = exec('python ../src/team_data_chart.py ' . escapeshellarg($selectedTeam));
-                $finalResult = explode(",", $result);
-                $xVar =range(0,count($finalResult)-1);
-    
+            <div id='teamGraph'>
+                <?php
+                $selectedTeam = $_POST['teamSelect'];
+                if (empty($selectedTeam)) {
+                    echo ('no team found');
+                } else {
 
 
-            }
-            ?>
+                    $result = exec('python ../src/team_data_chart.py ' . escapeshellarg($selectedTeam));
+                    $finalResult = explode(",", $result);
+                    $xVar = range(0, count($finalResult) - 1);
+                }
+                ?>
 
-            <canvas id="teamChart" style="width:70%;max-width:90vw;background-color:white"></canvas>
+                <canvas id="teamChart" style="width:70%;max-width:90vw;background-color:white;border-radius: 8px;"></canvas>
 
-            <script>
-                var data1 =
-                    <?php echo json_encode($finalResult); ?>;
+                <script>
+                    var data1 =
+                        <?php echo json_encode($finalResult); ?>;
 
-                var xValues = <?php echo json_encode($xVar); ?>;
-                new Chart("teamChart", {
-                    type: "line",
-                    data: {
-                        labels: xValues,
-                        datasets: [{
-                            data: data1,
-                            borderColor: "red",
-                            fill: false
-                        }]
-                    },
-                    options: {
-                        legend: {
-                            display: false
+                    var xValues = <?php echo json_encode($xVar); ?>;
+                    new Chart("teamChart", {
+                        type: "line",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                data: data1,
+                                borderColor: "red",
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            }
                         }
-                    }
-                });
-            </script>
+                    });
+                </script>
 
 
+
+            </div>
+        </div>
+
+        <div id='teamTotalContainer'>
+                <p id='teamStatTest'>Test statement</p>
         </div>
 
     </div>

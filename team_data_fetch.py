@@ -1,10 +1,13 @@
+import sys
+import subprocess
+#subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
+# subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas', '--user'])
 
 import pandas as ps
 import datetime
 from datetime import date
-import sys
-import subprocess
-subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
+
+
 import mysql
 import mysql.connector
 from mysql.connector import errorcode

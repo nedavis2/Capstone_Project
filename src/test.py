@@ -17,9 +17,6 @@ try:
         def some_function():
             newPlayer = sys.argv[1].split(',')
         
-            #Our operations go here
-        
-            #result="Some calculations based on " + player
             
             query = ("SELECT player, team, SUM(rec) AS sumRec, SUM(pass_cmp) AS sumPassCmp, SUM(pass_att) AS sumPassAtt " 
                      + "FROM nfl_pass_rush_receive_raw_data WHERE player = %s")
@@ -29,18 +26,7 @@ try:
                 print("{}, {}, {}, {}, {}".format(player, team, sumRec, sumPassCmp, sumPassAtt))
         
         some_function()
-            #print(result)
-
-    #Your code goes between here
-    #query = ("SELECT player, team, SUM(rec) AS sumRec FROM nfl_pass_rush_receive_raw_data WHERE player = 'a.j. brown'")
-
-    #cursor.execute(query, ())
-
-    #for (player, team, sumRec) in cursor:
-    #    print("{}, {}, {}".format(
-    #        player, team, sumRec))
-
-    #and here
+      
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
