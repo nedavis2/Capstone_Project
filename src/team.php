@@ -5,8 +5,9 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!--<script src="../src/js/charts.js" type="module"></script>-->
     <link rel="stylesheet" href="/Capstone_project/dist/css/style.min.css">
-
     <title>Silicon Stadium</title>
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
@@ -29,24 +30,55 @@
             <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>
             <button class="navLink" onclick="location.href='../src/support.php'">Support</button>
         </div>
-        <div id="teamDataDump">
-            <?php
-            $selectedTeam = $_POST['teamSelect'];
-            if (empty($selectedTeam)) {
-                echo ('no team found');
-            } else {
+        <div id="teamGraphContainer">
 
-                $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data
-                    WHERE team = '$selectedTeam';");
-                $stmt->execute();
-                $results = $stmt->fetchAll();
-                $p = $results[0];
-                print("<option value=\"" . $p['team'] . "\">" . $p['team']  . "</option>");
 
-                echo $p[0];
-            }
-            ?>
+            <div id='teamGraph'>
+                <?php
+                $selectedTeam = $_POST['teamSelect'];
+                if (empty($selectedTeam)) {
+                    echo ('no team found');
+                } else {
 
+
+                    $result = exec('python ../src/team_data_chart.py ' . escapeshellarg($selectedTeam));
+                    $finalResult = explode(",", $result);
+                    $xVar = range(0, count($finalResult) - 1);
+                }
+                ?>
+
+                <canvas id="teamChart" style="width:70%;max-width:90vw;background-color:white;border-radius: 8px;"></canvas>
+
+                <script>
+                    var data1 =
+                        <?php echo json_encode($finalResult); ?>;
+
+                    var xValues = <?php echo json_encode($xVar); ?>;
+                    new Chart("teamChart", {
+                        type: "line",
+                        data: {
+                            labels: xValues,
+                            datasets: [{
+                                data: data1,
+                                borderColor: "red",
+                                fill: false
+                            }]
+                        },
+                        options: {
+                            legend: {
+                                display: false
+                            }
+                        }
+                    });
+                </script>
+
+
+
+            </div>
+        </div>
+
+        <div id='teamTotalContainer'>
+                <p id='teamStatTest'>Test statement</p>
         </div>
 
     </div>

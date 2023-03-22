@@ -43,7 +43,7 @@
                         <?php
                         $stmt = $connection->prepare("SELECT DISTINCT player_id, player 
                     FROM nfl_pass_rush_receive_raw_data ORDER BY player ASC;");
-                        $stmt->execute(); //execute the statement with no arguments (prepare statement has no ? attributes)
+                        $stmt->execute();
                         $results = $stmt->fetchAll();
                         for ($idx = 0; $idx < count($results); $idx++) {
                             $p = $results[$idx];
@@ -62,7 +62,7 @@
 
                         <?php
                         $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data;");
-                        $stmt->execute(); //execute the statement with no arguments (prepare statement has no ? attributes)
+                        $stmt->execute();
                         $results = $stmt->fetchAll();
                         for ($idx = 0; $idx < count($results); $idx++) {
                             $p = $results[$idx];

@@ -1,11 +1,7 @@
-import json
 import sys
-import subprocess
 import mysql.connector
 from mysql.connector import errorcode
 
-
-#subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
 
 
 try:
@@ -15,18 +11,24 @@ try:
     
     if __name__ == "__main__":
         def some_function():
-            newPlayer = sys.argv[1].split(',')
-        
             
-            query = ("SELECT player, team, SUM(rec) AS sumRec, SUM(pass_cmp) AS sumPassCmp, SUM(pass_att) AS sumPassAtt " 
-                     + "FROM nfl_pass_rush_receive_raw_data WHERE player = %s")
-            cursor.execute(query, newPlayer)
             
-            for (player, team, sumRec, sumPassCmp, sumPassAtt) in cursor:
-                print("{}, {}, {}, {}, {}".format(player, team, sumRec, sumPassCmp, sumPassAtt))
+            newTeam = sys.argv[1].split(',')
+            
+            
+            
+            
+            query = ("SELECT t_rush_yds FROM `team_table` WHERE team = %s")
+            cursor.execute(query,newTeam)
+                     
+            result = cursor.fetchall()
+            final_result = [float(i[0]) for i in result]
+            print(final_result)
+            #print(newTeam)
+
         
         some_function()
-      
+   
 except mysql.connector.Error as err:
   if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
     print("Something is wrong with your user name or password")
@@ -48,3 +50,7 @@ else:
 
 
     
+
+
+
+
