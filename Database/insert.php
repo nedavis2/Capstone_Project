@@ -72,6 +72,20 @@ try{
         $stmt->execute();
     }
 
+    // insert into weather table
+    while (($row = fgetcsv($file_5)) !== FALSE) {
+        $stmt = $connection->prepare($query_str_weather);
+
+        $stmt->bindParam(":game_id", $row[0], PDO::PARAM_STR);
+        $stmt->bindParam(":temperature", $row[1], PDO::PARAM_STR);
+        $stmt->bindParam(":humidity", $row[2], PDO::PARAM_STR);
+        $stmt->bindParam(":wind_speed", $row[3], PDO::PARAM_STR);
+        $stmt->bindParam(":roof", $row[4], PDO::PARAM_STR);
+        $stmt->bindParam(":surface", $row[5], PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
+
 } catch(PDOexecption $error){
     echo "Database connection error: " . $error->getmessage() . "<BR>";
     die;
