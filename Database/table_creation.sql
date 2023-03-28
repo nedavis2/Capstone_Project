@@ -32,7 +32,7 @@ CREATE TABLE weather (
     wind_speed      numeric(2,0),
     roof            varchar(20),
     surface         varchar(20),
-    foreign key (game_id) references game(game_id)
+    primary key (game_id) references game(game_id)
 );
 CREATE TABLE user (
     user_id         varchar(20)     not null,
