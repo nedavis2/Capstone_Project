@@ -99,7 +99,7 @@ try{
         $stmt->execute();
     }
 
-    //insert into team_stats // file_4
+    //insert into team_stats
     while (($row = fgetcsv($file_4)) !== FALSE) {
         $stmt = $connection->prepare($query_str_tStats);
 
@@ -161,69 +161,69 @@ try{
         $stmt->execute();
     }
 
-    //insert into player_stats // file_2
-    // while (($row = fgetcsv($file_2)) !== FALSE) {
-    //     $stmt = $connection->prepare($query_str_pStats);
+    //insert into player_stats
+    while (($row = fgetcsv($file_2)) !== FALSE) {
+        $stmt = $connection->prepare($query_str_pStats);
 
-    //     $stmt->bindParam(":game_date", $row[0], PDO::PARAM_STR);
-    //     $stmt->bindParam(":game_id", $row[1], PDO::PARAM_STR);
-    //     $stmt->bindParam(":player_id", $row[2], PDO::PARAM_STR);
-    //     $stmt->bindParam(":player", $row[3], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pos", $row[4], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_comp", $row[5], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_att", $row[6], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_yds", $row[7], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_td", $row[8], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_int", $row[9], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_sacked", $row[10], PDO::PARAM_STR);
+        $stmt->bindParam(":game_date", $row[0], PDO::PARAM_STR);
+        $stmt->bindParam(":game_id", $row[1], PDO::PARAM_STR);
+        $stmt->bindParam(":player_id", $row[2], PDO::PARAM_STR);
+        $stmt->bindParam(":player", $row[3], PDO::PARAM_STR);
+        $stmt->bindParam(":pos", $row[4], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_comp", $row[5], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_att", $row[6], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_yds", $row[7], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_td", $row[8], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_int", $row[9], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_sacked", $row[10], PDO::PARAM_STR);
 
-    //     $stmt->bindParam(":pass_sacked_yds", $row[11], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_long", $row[12], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_rating", $row[13], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rush_att", $row[14], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rush_yds", $row[15], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rush_td", $row[16], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rush_long", $row[17], PDO::PARAM_STR);
-    //     $stmt->bindParam(":targets", $row[18], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_sacked_yds", $row[11], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_long", $row[12], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_rating", $row[13], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_att", $row[14], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_yds", $row[15], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_td", $row[16], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_long", $row[17], PDO::PARAM_STR);
+        $stmt->bindParam(":targets", $row[18], PDO::PARAM_STR);
 
-    //     $stmt->bindParam(":rec", $row[19], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rec_yds", $row[20], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rec_td", $row[21], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rec_long", $row[22], PDO::PARAM_STR);
-    //     $stmt->bindParam(":fumbles_lost", $row[23], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rush_scrambles", $row[24], PDO::PARAM_STR);
-    //     $stmt->bindParam(":designed_rush_att", $row[25], PDO::PARAM_STR);
-    //     $stmt->bindParam(":comb_pass_rush_play", $row[26], PDO::PARAM_STR);
+        $stmt->bindParam(":rec", $row[19], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_yds", $row[20], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_td", $row[21], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_long", $row[22], PDO::PARAM_STR);
+        $stmt->bindParam(":fumbles_lost", $row[23], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_scrambles", $row[24], PDO::PARAM_STR);
+        $stmt->bindParam(":designed_rush_att", $row[25], PDO::PARAM_STR);
+        $stmt->bindParam(":comb_pass_rush_play", $row[26], PDO::PARAM_STR);
 
-    //     $stmt->bindParam(":comb_pass_play", $row[27], PDO::PARAM_STR);
-    //     $stmt->bindParam(":comb_rush_play", $row[28], PDO::PARAM_STR);
-    //     $stmt->bindParam(":two_point_conv", $row[29], PDO::PARAM_STR);
-    //     $stmt->bindParam(":total_ret_td", $row[30], PDO::PARAM_STR);
-    //     $stmt->bindParam(":offensive_fumble_recovery_td", $row[31], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_yds_bonus", $row[32], PDO::PARAM_STR);
+        $stmt->bindParam(":comb_pass_play", $row[27], PDO::PARAM_STR);
+        $stmt->bindParam(":comb_rush_play", $row[28], PDO::PARAM_STR);
+        $stmt->bindParam(":two_point_conv", $row[29], PDO::PARAM_STR);
+        $stmt->bindParam(":total_ret_td", $row[30], PDO::PARAM_STR);
+        $stmt->bindParam(":offensive_fumble_recovery_td", $row[31], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_yds_bonus", $row[32], PDO::PARAM_STR);
 
-    //     $stmt->bindParam(":rush_yds_bonus", $row[33], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rec_yds_bonus", $row[34], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_target_yds", $row[35], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_poor_throws", $row[36], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_blitzed", $row[37], PDO::PARAM_STR);
-    //     $stmt->bindParam(":pass_hurried", $row[38], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_yds_bonus", $row[33], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_yds_bonus", $row[34], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_target_yds", $row[35], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_poor_throws", $row[36], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_blitzed", $row[37], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_hurried", $row[38], PDO::PARAM_STR);
 
-    //     $stmt->bindParam(":rush_yds_before_contact", $row[39], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rush_yac", $row[40], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rush_broken_tackles", $row[41], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rec_air_yds", $row[42], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rec_yac", $row[43], PDO::PARAM_STR);
-    //     $stmt->bindParam(":rec_drops", $row[44], PDO::PARAM_STR);
-    //     $stmt->bindParam(":offense", $row[45], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_yds_before_contact", $row[39], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_yac", $row[40], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_broken_tackles", $row[41], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_air_yds", $row[42], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_yac", $row[43], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_drops", $row[44], PDO::PARAM_STR);
+        $stmt->bindParam(":offense", $row[45], PDO::PARAM_STR);
 
-    //     $stmt->bindParam(":off_pct", $row[46], PDO::PARAM_STR);
-    //     $stmt->bindParam(":yds_per_rec", $row[47], PDO::PARAM_STR);
-    //     $stmt->bindParam(":yds_per_rush", $row[48], PDO::PARAM_STR);
-    //     $stmt->bindParam(":yds_per_target", $row[49], PDO::PARAM_STR);
+        $stmt->bindParam(":off_pct", $row[46], PDO::PARAM_STR);
+        $stmt->bindParam(":yds_per_rec", $row[47], PDO::PARAM_STR);
+        $stmt->bindParam(":yds_per_rush", $row[48], PDO::PARAM_STR);
+        $stmt->bindParam(":yds_per_target", $row[49], PDO::PARAM_STR);
 
-    //     $stmt->execute();
-    // }
+        $stmt->execute();
+    }
 
 } catch(PDOexecption $error){
     echo "Database connection error: " . $error->getmessage() . "<BR>";

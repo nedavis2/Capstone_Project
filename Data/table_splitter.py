@@ -48,7 +48,7 @@ player_stats_trans = player_stats.T
 # remove unnecessary dataframe rows
 game_data_unique = game_data.drop_duplicates('game_id')
 weather_data_unique = weather_data.drop_duplicates('game_id')
-player_description_unique = player_description.drop_duplicates(['player'])
+player_description_unique = player_description.drop_duplicates(['player_id'])
 
 # remove old data files so new ones can be created
 if (os.path.exists('Data\\game_data.csv')) :
