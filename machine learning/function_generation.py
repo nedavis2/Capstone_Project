@@ -1,4 +1,4 @@
-
+generated_stat = input("enter needed stat")
 
 def gen_functions(stat):
     '''Makes functions for the given stat'''
@@ -45,4 +45,4 @@ def gen_out_team(stat):
     retreived_data = "%s"
     position = "QB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)'''%(stat, stat))
-gen_functions("pass_att")
+gen_functions(generated_stat)
