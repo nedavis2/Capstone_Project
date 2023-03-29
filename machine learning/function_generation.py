@@ -1,4 +1,4 @@
-generated_stat = "pass_att"
+generated_stat = input("enter needed stat")
 
 def gen_functions(stat):
     '''Makes functions for the given stat'''
