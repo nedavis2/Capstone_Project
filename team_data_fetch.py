@@ -87,19 +87,19 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
 
         if position == None:
 
-            query = ''' SELECT %s AS value, game_date AS date
+            query = ''' SELECT %s AS value
                         FROM %s
                         WHERE player_id = \"%s\"
             '''%(retreived_data, table_name, player_id)
         else:
-            query = ''' SELECT %s AS value, game_date AS date
+            query = ''' SELECT %s AS value
                         FROM %s
                         WHERE player_id = \"%s\" AND pos = \"%s\"
             '''%(retreived_data, table_name, player_id, position)
 
         data = ps.read_sql(query, db)
 
-        data["date"] = ps.to_datetime(data["date"])
+        
 
         '''
         #Was for when the date collum held ints
@@ -132,18 +132,18 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
         query = ""
         if position == None:
 
-            query = ''' SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+            query = ''' SELECT value FROM(SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE team = \"%s\"
                         GROUP BY date ASC
-                        ORDER BY date ASC
+                        ORDER BY date ASC)
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team)
         else:
-            query = ''' SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+            query = ''' SELECT value FROM(SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE team = \"%s\" AND pos = \"%s\"
                         GROUP BY date ASC
-                        ORDER BY date ASC
+                        ORDER BY date ASC)
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team, position)
 
         data = ps.read_sql(query, db)
