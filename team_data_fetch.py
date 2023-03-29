@@ -148,7 +148,7 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
 
         data = ps.read_sql(query, db)
 
-        data["date"] = ps.to_datetime(data["date"])
+        #data["date"] = ps.to_datetime(data["date"])
 
         '''
         #Old code, from when this returned an int
@@ -171,8 +171,8 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
         return [-1]
     else:
         _end_database_connection(db, cursor)
-    print(data["value"].to_list())
-    print(data["date"].to_list())
+    #print(data["value"].to_list())
+    #print(data["date"].to_list())
 
     return data["value"].to_list()
 
