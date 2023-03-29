@@ -78,7 +78,7 @@ def get_weekly_or_monthly(weekly = True):
         return "MONTH"
 
 #TODO: ask if I should filter by when a player held a certion position.
-def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str, weekly : bool = True, position = None) -> tuple((list[int], list[date])):
+def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str, weekly : bool = True, position = None) -> list[int]:
     data = None
     try:
     
@@ -124,7 +124,7 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
         _end_database_connection(db, cursor)
     return data["value"].to_list()
 
-def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True, position = None) -> tuple((list[int], list[date])):
+def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True, position = None) -> list[int]:
     data = None
     try:
     
@@ -251,7 +251,7 @@ def player_running_back_rec_total(player_id : str) -> int:
 #________________________________________
 
 #week
-def player_wide_receiver_targets_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_targets_weekly(player_id : str) -> list[int]:
   '''
   person picks player from home screen, call this function, returns total of the stats and the targets broken down by week, and by month
   '''
@@ -260,64 +260,64 @@ def player_wide_receiver_targets_weekly(player_id : str) -> tuple((list[int], li
   position = "WR"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_wide_receiver_rec_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_rec_weekly(player_id : str) -> list[int]:
     retreived_data = "rec"
     position = "WR"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_wide_receiver_rec_td_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_rec_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rec_td"
   position = "WR"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_wide_receiver_rec_yds_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_rec_yds_weekly(player_id : str) -> list[int]:
   retreived_data = "rec_yds"
   position = "WR"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
 
-def player_tight_end_targets_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_targets_weekly(player_id : str) -> list[int]:
   retreived_data = "targets"
   position = "TE"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_tight_end_rec_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_rec_weekly(player_id : str) -> list[int]:
   retreived_data = "rec"
   position = "TE"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_tight_end_rec_td_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_rec_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rec_td"
   position = "TE"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_tight_end_rec_yds_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_rec_yds_weekly(player_id : str) -> list[int]:
   retreived_data = "rec_yds"
   position = "TE"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
 
-def player_running_back_rush_td_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rush_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rush_td"
   position = "RB"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_running_back_rush_att_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rush_att_weekly(player_id : str) -> list[int]:
   retreived_data = "rush_att"
   position = "RB"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_running_back_rush_yds_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rush_yds_weekly(player_id : str) -> list[int]:
   retreived_data = "rush_yds"
   position = "RB"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_running_back_rec_td_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rec_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rec_td"
   position = "RB"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def player_running_back_rec_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rec_weekly(player_id : str) -> list[int]:
   retreived_data = "rec"
   position = "RB"
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
@@ -326,7 +326,7 @@ def player_running_back_rec_weekly(player_id : str) -> tuple((list[int], list[da
 #________________________________________
 
 #month
-def player_wide_receiver_targets_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_targets_monthly(player_id : str) -> list[int]:
     '''
     person picks player from home screen, call this function, returns total of the stats and the targets broken down by week, and by month
     '''
@@ -334,55 +334,55 @@ def player_wide_receiver_targets_monthly(player_id : str) -> tuple((list[int], l
     position = "WR"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
 
-def player_wide_receiver_rec_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_rec_monthly(player_id : str) -> list[int]:
     retreived_data = "rec"
     position = "WR"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
 
-def player_wide_receiver_rec_td_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_rec_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rec_td"
     position = "WR"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
 
-def player_wide_receiver_rec_yds_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_wide_receiver_rec_yds_monthly(player_id : str) -> list[int]:
     retreived_data = "rec_yds"
     position = "WR"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
 
-def player_tight_end_targets_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_targets_monthly(player_id : str) -> list[int]:
     retreived_data = "targets"
     position = "TE"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
-def player_tight_end_rec_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_rec_monthly(player_id : str) -> list[int]:
     retreived_data = "rec"
     position = "TE"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
-def player_tight_end_rec_td_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_rec_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rec_td"
     position = "TE"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
-def player_tight_end_rec_yds_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_tight_end_rec_yds_monthly(player_id : str) -> list[int]:
     retreived_data = "rec_yds"
     position = "TE"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
 
-def player_running_back_rush_td_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rush_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_td"
     position = "RB"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
-def player_running_back_rush_att_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rush_att_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_att"
     position = "RB"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
-def player_running_back_rush_yds_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rush_yds_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_yds"
     position = "RB"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
-def player_running_back_rec_td_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rec_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rec_td"
     position = "RB"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
-def player_running_back_rec_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_running_back_rec_monthly(player_id : str) -> list[int]:
     retreived_data = "rec"
     position = "RB"
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
@@ -392,113 +392,113 @@ def player_running_back_rec_monthly(player_id : str) -> tuple((list[int], list[d
 #________________________________________
 
 #week
-def team_wide_receiver_targets_weekly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_targets_weekly(team : str) -> list[int]:
     retreived_data = "targets"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def team_wide_receiver_rec_weekly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_rec_weekly(team : str) -> list[int]:
     retreived_data = "rec"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_wide_receiver_rec_td_weekly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_rec_td_weekly(team : str) -> list[int]:
     retreived_data = "rec_td"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_wide_receiver_rec_yds_weekly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_rec_yds_weekly(team : str) -> list[int]:
     retreived_data = "rec_yds"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def team_tight_end_targets_weekly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_targets_weekly(team : str) -> list[int]:
     retreived_data = "targets"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_tight_end_rec_weekly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_rec_weekly(team : str) -> list[int]:
     retreived_data = "rec"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_tight_end_rec_td_weekly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_rec_td_weekly(team : str) -> list[int]:
     retreived_data = "rec_td"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_tight_end_rec_yds_weekly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_rec_yds_weekly(team : str) -> list[int]:
     retreived_data = "rec_yds"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 
-def team_running_back_rush_td_weekly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rush_td_weekly(team : str) -> list[int]:
     retreived_data = "rush_td"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_running_back_rush_att_weekly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rush_att_weekly(team : str) -> list[int]:
     retreived_data = "rush_att"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_running_back_rush_yds_weekly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rush_yds_weekly(team : str) -> list[int]:
     retreived_data = "rush_yds"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_running_back_rec_td_weekly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rec_td_weekly(team : str) -> list[int]:
     retreived_data = "rec_td"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
-def team_running_back_rec_weekly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rec_weekly(team : str) -> list[int]:
     retreived_data = "rec"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True, position = position)
 #month
-def team_wide_receiver_targets_monthly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_targets_monthly(team : str) -> list[int]:
     retreived_data = "targets"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_wide_receiver_rec_monthly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_rec_monthly(team : str) -> list[int]:
     retreived_data = "rec"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_wide_receiver_rec_td_monthly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_rec_td_monthly(team : str) -> list[int]:
     retreived_data = "rec_td"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_wide_receiver_rec_yds_monthly(team : str) -> tuple((list[int], list[date])):
+def team_wide_receiver_rec_yds_monthly(team : str) -> list[int]:
     retreived_data = "rec_yds"
     position = "WR"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 
-def team_tight_end_targets_monthly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_targets_monthly(team : str) -> list[int]:
     retreived_data = "targets"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_tight_end_rec_monthly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_rec_monthly(team : str) -> list[int]:
     retreived_data = "rec"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_tight_end_rec_td_monthly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_rec_td_monthly(team : str) -> list[int]:
     retreived_data = "rec_td"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_tight_end_rec_yds_monthly(team : str) -> tuple((list[int], list[date])):
+def team_tight_end_rec_yds_monthly(team : str) -> list[int]:
     retreived_data = "rec_yds"
     position = "TE"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 
-def team_running_back_rush_td_monthly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rush_td_monthly(team : str) -> list[int]:
     retreived_data = "rush_td"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_running_back_rush_att_monthly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rush_att_monthly(team : str) -> list[int]:
     retreived_data = "rush_att"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_running_back_rush_yds_monthly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rush_yds_monthly(team : str) -> list[int]:
     retreived_data = "rush_yds"
     position = "RB"
     return  _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_running_back_rec_td_monthly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rec_td_monthly(team : str) -> list[int]:
     retreived_data = "rec_td"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
-def team_running_back_rec_monthly(team : str) -> tuple((list[int], list[date])):
+def team_running_back_rec_monthly(team : str) -> list[int]:
     retreived_data = "rec"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
@@ -535,93 +535,150 @@ def player_rec_total(player_id : str) -> int:
 
 
 
-def player_rush_td_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_rush_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rush_td"
   
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
-def player_rush_att_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_rush_att_weekly(player_id : str) -> list[int]:
   retreived_data = "rush_att"
   
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
-def player_rush_yds_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_rush_yds_weekly(player_id : str) -> list[int]:
   retreived_data = "rush_yds"
   
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
-def player_rec_td_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_rec_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rec_td"
   
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
-def player_rec_weekly(player_id : str) -> tuple((list[int], list[date])):
+def player_rec_weekly(player_id : str) -> list[int]:
   retreived_data = "rec"
   
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
 
-def player_rush_td_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_rush_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_td"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
-def player_rush_att_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_rush_att_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_att"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
-def player_rush_yds_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_rush_yds_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_yds"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
-def player_rec_td_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_rec_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rec_td"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
-def player_rec_monthly(player_id : str) -> tuple((list[int], list[date])):
+def player_rec_monthly(player_id : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
 
 
-def team_rush_td_weekly(team : str) -> tuple((list[int], list[date])):
+def team_rush_td_weekly(team : str) -> list[int]:
     retreived_data = "rush_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-def team_rush_att_weekly(team : str) -> tuple((list[int], list[date])):
+def team_rush_att_weekly(team : str) -> list[int]:
     retreived_data = "rush_att"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-def team_rush_yds_weekly(team : str) -> tuple((list[int], list[date])):
+def team_rush_yds_weekly(team : str) -> list[int]:
     retreived_data = "rush_yds"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-def team_rec_td_weekly(team : str) -> tuple((list[int], list[date])):
+def team_rec_td_weekly(team : str) -> list[int]:
     retreived_data = "rec_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-def team_rec_weekly(team : str) -> tuple((list[int], list[date])):
+def team_rec_weekly(team : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
 
 
-def team_rush_td_monthly(team : str) -> tuple((list[int], list[date])):
+def team_rush_td_monthly(team : str) -> list[int]:
     retreived_data = "rush_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-def team_rush_att_monthly(team : str) -> tuple((list[int], list[date])):
+def team_rush_att_monthly(team : str) -> list[int]:
     retreived_data = "rush_att"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-def team_rush_yds_monthly(team : str) -> tuple((list[int], list[date])):
+def team_rush_yds_monthly(team : str) -> list[int]:
     retreived_data = "rush_yds"
     
     return  _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-def team_rec_td_monthly(team : str) -> tuple((list[int], list[date])):
+def team_rec_td_monthly(team : str) -> list[int]:
     retreived_data = "rec_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-def team_rec_monthly(team : str) -> tuple((list[int], list[date])):
+def team_rec_monthly(team : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def player_quarterback_pass_att_weekly(player_id : str) -> list[int]:
+  retreived_data = "pass_att"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
+
+def player_quarterback_pass_att_monthly(player_id : str) -> list[int]:
+  retreived_data = "pass_att"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
+
+def player_quarterback_pass_att_total(player_id : str) -> int:
+    retreived_data = "pass_att"
+    position = "QB"
+    return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name, position = position)
+def player_quarterback_pass_cmp_weekly(player_id : str) -> list[int]:
+  retreived_data = "pass_cmp"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
+
+def player_quarterback_pass_cmp_monthly(player_id : str) -> list[int]:
+  retreived_data = "pass_cmp"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
+
+def player_quarterback_pass_cmp_total(player_id : str) -> int:
+    retreived_data = "pass_cmp"
+    position = "QB"
+    return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name, position = position)
+def player_quarterback_pass_yds_weekly(player_id : str) -> list[int]:
+  retreived_data = "pass_yds"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
+
+def player_quarterback_pass_yds_monthly(player_id : str) -> list[int]:
+  retreived_data = "pass_yds"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
+
+def player_quarterback_pass_yds_total(player_id : str) -> int:
+    retreived_data = "pass_yds"
+    position = "QB"
+    return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name, position = position)
+def player_quarterback_pass_td_weekly(player_id : str) -> list[int]:
+  retreived_data = "pass_td"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True, position = position)
+
+def player_quarterback_pass_td_monthly(player_id : str) -> list[int]:
+  retreived_data = "pass_td"
+  position = "QB"
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False, position = position)
+
+def player_quarterback_pass_td_total(player_id : str) -> int:
+    retreived_data = "pass_td"
+    position = "QB"
+    return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name, position = position)
