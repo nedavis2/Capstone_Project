@@ -30,6 +30,9 @@
             <button class="navLink" onclick="location.href='../src/fantasy.php'">Fantasy</button>
             <button class="navLink" onclick="location.href='../src/support.php'">Support</button>
         </div>
+
+
+        
         <div id="teamGraphContainer">
 
 
