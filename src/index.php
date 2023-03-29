@@ -1,4 +1,4 @@
-<html>
+<!DOCTYPE html>
 
 <!-- Tab name and css link-->
 
