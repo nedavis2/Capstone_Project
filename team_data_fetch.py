@@ -176,8 +176,63 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
 
     return data["value"].to_list()
 
+def get_player_dates(player_id : str):
+    data = None
+    try:
+    
+        db, cursor = _connect_to_database()
+        
+        query = ''' SELECT CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+                    FROM %s
+                    WHERE player_id = "%s"
+                    ORDER BY date ASC
+        '''%(table_name, team, position)
 
+        data = ps.read_sql(query, db)
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
 
+        return [-1]
+    else:
+        _end_database_connection(db, cursor)
+    #print(data["value"].to_list())
+    #print(data["date"].to_list())
+
+    return data["date"].to_list()
+
+def get_team_dates(team_id : str):
+    data = None
+    try:
+    
+        db, cursor = _connect_to_database()
+        
+        query = ''' SELECT CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+                    FROM %s
+                    WHERE team_id = "%s"
+                    ORDER BY date ASC
+        '''%(table_name, team, position)
+
+        data = ps.read_sql(query, db)
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+
+        return [-1]
+    else:
+        _end_database_connection(db, cursor)
+    #print(data["value"].to_list())
+    #print(data["date"].to_list())
+
+    return data["date"].to_list()
 #NOTE: Seperate data into weeks.
 #result includes gamedate + stat for weekly/monthly data
 #directly interact with database
