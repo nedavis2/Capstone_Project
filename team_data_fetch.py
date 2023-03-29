@@ -119,10 +119,10 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
         else:
             print(err)
 
-        return [-1], [-1]
+        return [-1]
     else:
         _end_database_connection(db, cursor)
-    return data["value"].to_list(), data["date"].to_list()
+    return data["value"].to_list()
 
 def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True, position = None) -> tuple((list[int], list[date])):
     data = None
@@ -168,13 +168,13 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
         else:
             print(err)
 
-        return [-1], [-1]
+        return [-1]
     else:
         _end_database_connection(db, cursor)
     print(data["value"].to_list())
     print(data["date"].to_list())
 
-    return data["value"].to_list(), data["date"].to_list()
+    return data["value"].to_list()
 
 
 
