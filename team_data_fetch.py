@@ -587,6 +587,15 @@ def team_running_back_rec_monthly(team : str) -> list[int]:
     retreived_data = "rec"
     position = "RB"
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
+#TODO get team rb rec, trgts, rec yds, and rec tds in separate columns
+# def team_running_back_rec_td_total(team : str) -> list[int]:
+    #retreived_data = "rec_td"
+    #position = "RB"
+    #return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
+#def team_running_back_rec_total(team : str) -> list[int]:
+    #retreived_data = "rec"
+    #position = "RB"
+    #return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False, position = position)
 
 
 
@@ -608,6 +617,11 @@ def player_rush_yds_total(player_id : str) -> int:
     
     return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name)
 
+def player_targets_total(player_id : str) -> int:
+    retreived_data = 'targets'
+    
+    return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name)
+
 def player_rec_td_total(player_id : str) -> int:
     retreived_data = "rec_td"
     
@@ -618,6 +632,10 @@ def player_rec_total(player_id : str) -> int:
     
     return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name)
 
+def player_rec_yds_total(player_id : str) -> int:
+    retreived_data = "rec_yds"
+    
+    return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name)
 
 
 def player_rush_td_weekly(player_id : str) -> list[int]:
@@ -635,6 +653,10 @@ def player_rush_yds_weekly(player_id : str) -> list[int]:
   
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
+def player_targets_weekly(player_id : str) -> list[int]:
+  retreived_data = 'targets'
+  
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 def player_rec_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rec_td"
   
@@ -645,136 +667,199 @@ def player_rec_weekly(player_id : str) -> list[int]:
   
   return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
+def player_rec_yds_weekly(player_id : str) -> list[int]:
+  retreived_data = "rec_yds"
+  
+  return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = True)
 
 def player_rush_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_td"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+
 def player_rush_att_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_att"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+
 def player_rush_yds_monthly(player_id : str) -> list[int]:
     retreived_data = "rush_yds"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+
+def player_targets_monthly(player_id : str) -> list[int]:
+    retreived_data = 'targets'
+    
+    return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+
 def player_rec_td_monthly(player_id : str) -> list[int]:
     retreived_data = "rec_td"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+
 def player_rec_monthly(player_id : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+
+def player_rec_yds_monthly(player_id : str) -> list[int]:
+    retreived_data = "rec_yds"
     
-    
-def team_qb_pass_att_weekly(team : str) -> list[int]:
+    return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+
+
+def team_pass_att_weekly(team : str) -> list[int]:
     retreived_data = "pass_att"
 
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-def team_qb_pass_cmp_weekly(team : str) -> list[int]:
+
+def team_pass_cmp_weekly(team : str) -> list[int]:
     retreived_data = "pass_cmp"
 
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-def team_qb_pass_yds_weekly(team : str) -> list[int]:
+
+def team_pass_yds_weekly(team : str) -> list[int]:
     retreived_data = "pass_yds"
 
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-def team_qb_pass_td_weekly(team : str) -> list[int]:
+
+def team_pass_td_weekly(team : str) -> list[int]:
     retreived_data = "pass_td"
 
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
-
-
-def team_qb_pass_att_monthly(team : str) -> list[int]:
-    retreived_data = "pass_att"
-
-    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-def team_qb_pass_cmp_monthly(team : str) -> list[int]:
-    retreived_data = "pass_cmp"
-
-    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-def team_qb_pass_yds_monthly(team : str) -> list[int]:
-    retreived_data = "pass_yds"
-
-    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-def team_qb_pass_td_monthly(team : str) -> list[int]:
-    retreived_data = "pass_td"
-
-    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
-
-def team_qb_pass_att_total(team : str) -> list[int]:
-    retreived_data = "pass_att"
-
-    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
-def team_qb_pass_cmp_total(team : str) -> list[int]:
-    retreived_data = "pass_cmp"
-
-    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
-def team_qb_pass_yds_total(team : str) -> list[int]:
-    retreived_data = "pass_yds"
-
-    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
-def team_qb_pass_td_total(team : str) -> list[int]:
-    retreived_data = "pass_td"
-
-    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
 
 def team_rush_td_weekly(team : str) -> list[int]:
     retreived_data = "rush_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
 def team_rush_att_weekly(team : str) -> list[int]:
     retreived_data = "rush_att"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
 def team_rush_yds_weekly(team : str) -> list[int]:
     retreived_data = "rush_yds"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_targets_weekly(team : str) -> list[int]:
+    retreived_data = "targets"
+    
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
 def team_rec_td_weekly(team : str) -> list[int]:
     retreived_data = "rec_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
 def team_rec_weekly(team : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
 
+def team_rec_yds_weekly(team : str) -> list[int]:
+    retreived_data = "rec_yds"
+    
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+
+def team_pass_att_monthly(team : str) -> list[int]:
+    retreived_data = "pass_att"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_pass_cmp_monthly(team : str) -> list[int]:
+    retreived_data = "pass_cmp"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_pass_yds_monthly(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_pass_td_monthly(team : str) -> list[int]:
+    retreived_data = "pass_td"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
 
 def team_rush_td_monthly(team : str) -> list[int]:
     retreived_data = "rush_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
 def team_rush_att_monthly(team : str) -> list[int]:
     retreived_data = "rush_att"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
 def team_rush_yds_monthly(team : str) -> list[int]:
     retreived_data = "rush_yds"
     
     return  _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_targets_monthly(team : str) -> list[int]:
+    retreived_data = "targets"
+    
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
 def team_rec_td_monthly(team : str) -> list[int]:
     retreived_data = "rec_td"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
 def team_rec_monthly(team : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
 
+def team_rec_yds_monthly(team : str) -> list[int]:
+    retreived_data = "rec_yds"
+    
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+
+def team_pass_att_total(team : str) -> list[int]:
+    retreived_data = "pass_att"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+def team_pass_cmp_total(team : str) -> list[int]:
+    retreived_data = "pass_cmp"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+def team_pass_yds_total(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+def team_pass_td_total(team : str) -> list[int]:
+    retreived_data = "pass_td"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
 def team_rush_td_total(team : str) -> list[int]:
     retreived_data = "rush_td"
 
     return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
 def team_rush_att_total(team : str) -> list[int]:
     retreived_data = "rush_att"
 
     return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
 def team_rush_yds_total(team : str) -> list[int]:
     retreived_data = "rush_yds"
 
     return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+def team_targets_total(team : str) -> list[int]:
+    retreived_data = "targets"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
 def team_rec_td_total(team : str) -> list[int]:
     retreived_data = "rec_td"
 
@@ -784,6 +869,7 @@ def team_rec_total(team : str) -> list[int]:
     retreived_data = "rec"
 
     return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
 def team_rec_yds_total(team : str) -> list[int]:
     retreived_data = "rec_yds"
 
