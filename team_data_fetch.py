@@ -682,3 +682,5 @@ def player_quarterback_pass_td_total(player_id : str) -> int:
     retreived_data = "pass_td"
     position = "QB"
     return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name, position = position)
+
+
