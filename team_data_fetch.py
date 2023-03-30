@@ -160,18 +160,18 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
         query = ""
         if position == None:
 
-            query = ''' SELECT value FROM(SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+            query = '''SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE team = \"%s\"
                         GROUP BY date ASC
-                        ORDER BY date ASC)
+                        ORDER BY date ASC
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team)
         else:
-            query = ''' SELECT value FROM(SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+            query = ''' SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE team = \"%s\" AND pos = \"%s\"
                         GROUP BY date ASC
-                        ORDER BY date ASC)
+                        ORDER BY date ASC
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team, position)
 
         data = ps.read_sql(query, db)

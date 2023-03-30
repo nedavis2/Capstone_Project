@@ -96,65 +96,65 @@ def player_primary_view(player_id: str, pos: str):
 
 
 def team_qb_view(team: str):
-    return ('pass_att' + team_pass_att_weekly(team)
-            + 'pass_cmp' + team_pass_cmp_weekly(team)
-            + 'pass_td' + team_pass_td_weekly(team)
-            + 'pass_yds' + team_pass_yds_weekly(team))
+    return ('pass_att' + str(team_pass_att_weekly(team))
+            + 'pass_cmp' + str(team_pass_cmp_weekly(team))
+            + 'pass_td' + str(team_pass_td_weekly(team))
+            + 'pass_yds' + str(team_pass_yds_weekly(team)))
     
 def team_qb_view_month(team: str):
-    return ('pass_att' + team_pass_att_monthly(team)
-            + 'pass_cmp' + team_pass_cmp_monthly(team)
-            + 'pass_td' + team_pass_td_monthly(team)
-            + 'pass_yds' + team_pass_yds_monthly(team))
+    return ('pass_att' + str(team_pass_att_monthly(team))
+            + 'pass_cmp' + str(team_pass_cmp_monthly(team))
+            + 'pass_td' + str(team_pass_td_monthly(team))
+            + 'pass_yds' + str(team_pass_yds_monthly(team)))
     
 def team_qb_view_total(team: str):
-    return ('pass_att' + team_pass_att_total(team)
-            + 'pass_cmp' + team_pass_cmp_total(team)
-            + 'pass_td' + team_pass_td_total(team)
-            + 'pass_yds' + team_pass_yds_total(team))
+    return ('pass_att' + str(team_pass_att_total(team))
+            + 'pass_cmp' + str(team_pass_cmp_total(team))
+            + 'pass_td' + str(team_pass_td_total(team))
+            + 'pass_yds' + str(team_pass_yds_total(team)))
     
 def team_rushing_view(team: str):
-    return ('rush_td_weekly' + team_rush_td_weekly(team) 
-            + 'rush_yds_weekly' + team_rush_yds_weekly(team) 
-            + 'rec_td_weekly' + team_rec_td_weekly(team) 
-            + 'rec_weekly' + team_rec_weekly(team))
+    return ('rush_td_weekly' + str(team_rush_td_weekly(team)) 
+            + 'rush_yds_weekly' + str(team_rush_yds_weekly(team)) 
+            + 'rec_td_weekly' + str(team_rec_td_weekly(team)) 
+            + 'rec_weekly' + str(team_rec_weekly(team)))
     
 def team_rushing_view_month(team: str):
-    return ('rush_td_monthly' + team_rush_td_monthly(team) 
-            +'rush_att_monthly' + team_rush_att_monthly(team) 
-            + 'rush_yds_monthly' + team_rush_yds_monthly(team) 
-            +'rec_td_monthly' + team_rec_td_monthly(team) 
-            + 'rec_monthly' + team_rec_monthly(team))
+    return ('rush_td_monthly' + str(team_rush_td_monthly(team)) 
+            +'rush_att_monthly' + str(team_rush_att_monthly(team)) 
+            + 'rush_yds_monthly' + str(team_rush_yds_monthly(team)) 
+            +'rec_td_monthly' + str(team_rec_td_monthly(team)) 
+            + 'rec_monthly' + str(team_rec_monthly(team)))
     
 def team_rushing_view_total(team: str):
-    return ('rush_td_total' + team_rush_td_total(team) 
-            +'rush_att_total' + team_rush_att_total(team) 
-            + 'rush_yds_total' + team_rush_yds_total(team)) 
+    return ('rush_td_total' + str(team_rush_td_total(team)) 
+            +'rush_att_total' + str(team_rush_att_total(team)) 
+            + 'rush_yds_total' + str(team_rush_yds_total(team))) 
     
 def team_receiever_view(team: str):
-    return ('targets_weekly' + team_targets_weekly(team)
-            + 'rec_weekly' + team_rec_weekly(team)
-            + 'rec_td_weekly' + team_rec_td_weekly(team)
-            + 'rec_yds_weekly' + team_rec_yds_weekly(team))
+    return ('targets_weekly' + str(team_targets_weekly(team))
+            + 'rec_weekly' + str(team_rec_weekly(team))
+            + 'rec_td_weekly' + str(team_rec_td_weekly(team))
+            + 'rec_yds_weekly' + str(team_rec_yds_weekly(team)))
     
 def team_receiever_view_month(team: str):
-    return ('targets_monthly' + team_targets_monthly(team)
-            + 'rec_monthly' + team_rec_monthly(team) 
-            + 'rec_td_monthly' + team_rec_td_monthly(team) 
-            + 'rec_yds_monthly' + team_rec_yds_monthly(team))
+    return ('targets_monthly' + str(team_targets_monthly(team))
+            + 'rec_monthly' + str(team_rec_monthly(team)) 
+            + 'rec_td_monthly' + str(team_rec_td_monthly(team)) 
+            + 'rec_yds_monthly' + str(team_rec_yds_monthly(team)))
     
 def team_receiever_view_total(team: str):
-    return ('targets_total' + team_targets_total(team)
-            + 'rec_total' + team_rec_total(team) 
-            + 'rec_td_total' + team_rec_td_total(team) 
-            + 'rec_yds_total' + team_rec_yds_total(team))
+    return ('targets_total' + str(team_targets_total(team))
+            + 'rec_total' + str(team_rec_total(team)) 
+            + 'rec_td_total' + str(team_rec_td_total(team)) 
+            + 'rec_yds_total' + str(team_rec_yds_total(team)))
     
 def team_primary_view(team: str):
-    return ('qb view' + team_qb_view(team) + 'qb view month' 
-            + team_qb_view_month(team) + 'qb view total' + team_qb_view_total(team)
-            + 'rb view' + team_rushing_view(team) + 'rb view month' + team_rushing_view_month(team) 
-            + 'rb view total' + team_rushing_view_total(team) + 'receiver view' + team_receiever_view(team) 
-            + 'receiever view month' + team_receiever_view_month(team) + 'receiver view total' 
-            + team_receiever_view_total(team))
+    return ('qb view' + str(team_qb_view(team)) + 'qb view month' 
+            + str(team_qb_view_month(team)) + 'qb view total' + str(team_qb_view_total(team))
+            + 'rb view' + str(team_rushing_view(team)) + 'rb view month' + str(team_rushing_view_month(team)) 
+            + 'rb view total' + str(team_rushing_view_total(team)) + 'receiver view' + str(team_receiever_view(team)) 
+            + 'receiever view month' + str(team_receiever_view_month(team)) + 'receiver view total' 
+            + str(team_receiever_view_total(team)))
     
 print(team_primary_view('GNB'))
