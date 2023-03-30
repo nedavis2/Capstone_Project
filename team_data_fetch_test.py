@@ -95,25 +95,64 @@ def player_primary_view(player_id: str, pos: str):
 
 
 
-#Team WR/TE stuff
-
-def team_wr_fetch(team: str):
-    print('team_wide_receiver_targets_weekly')
-    print(team_wide_receiver_targets_weekly('GNB'))
-    print('team_wide_receiver_rec_weekly')
-    print(team_wide_receiver_rec_weekly('GNB'))
-    print('team_wide_receiver_rec_td_weekly')
-    print(team_wide_receiver_rec_td_weekly('GNB'))
-    print('team_wide_receiver_rec_yds_weekly')
-    print(team_wide_receiver_rec_yds_weekly('GNB'))
-    print('team_tight_end_targets_weekly')
-    print(team_tight_end_targets_weekly('GNB'))
-    print('team_tight_end_rec_weekly')
-    print(team_tight_end_rec_weekly('GNB'))
-    print('team_tight_end_rec_td_weekly')
-    print(team_tight_end_rec_td_weekly('GNB'))
-    print('team_tight_end_rec_yds_weekly')
-    print(team_tight_end_rec_yds_weekly('GNB'))
+def team_qb_view(team: str):
+    return ('pass_att' + team_qb_pass_att_weekly(team)
+            + 'pass_cmp' + team_qb_pass_cmp_weekly(team)
+            + 'pass_td' + team_qb_pass_td_weekly(team)
+            + 'pass_yds' + team_qb_pass_yds_weekly(team))
+    
+def team_qb_view_month(team: str):
+    return ('pass_att' + team_qb_pass_att_monthly(team)
+            + 'pass_cmp' + team_qb_pass_cmp_monthly(team)
+            + 'pass_td' + team_qb_pass_td_monthly(team)
+            + 'pass_yds' + team_qb_pass_yds_monthly(team))
+    
+def team_qb_view_total(team: str):
+    return ('pass_att' + team_qb_pass_att_total(team)
+            + 'pass_cmp' + team_qb_pass_cmp_total(team)
+            + 'pass_td' + team_qb_pass_td_total(team)
+            + 'pass_yds' + team_qb_pass_yds_total(team))
+    
+def team_rushing_view(team: str):
+    return ('rush_td_weekly' + team_running_back_rush_td_weekly(team) 
+            + 'rush_yds_weekly' + team_running_back_rush_yds_weekly(team) 
+            + 'rec_td_weekly' + team_running_back_rec_td_weekly(team) 
+            + 'rec_weekly' + team_running_back_rec_weekly(team))
+    
+def team_rushing_view_month(team: str):
+    print('team_running_back_rush_td_monthly')
+    print(team_running_back_rush_td_monthly('GNB'))
+    print('team_running_back_rush_att_monthly')
+    print(team_running_back_rush_att_monthly('GNB'))
+    print('team_running_back_rush_yds_monthly')
+    print(team_running_back_rush_yds_monthly('GNB'))
+    print('team_running_back_rec_td_monthly')
+    print(team_running_back_rec_td_monthly('GNB'))
+    print('team_running_back_rec_monthly')
+    print(team_running_back_rec_monthly('GNB'))
+    
+#def team_rushing_view_total(team: str):
+    
+    
+#def team_receiever_view(team: str):
+#    print('team_wide_receiver_targets_weekly')
+#    print(team_wide_receiver_targets_weekly('GNB'))
+#    print('team_wide_receiver_rec_weekly')
+#    print(team_wide_receiver_rec_weekly('GNB'))
+#    print('team_wide_receiver_rec_td_weekly')
+#    print(team_wide_receiver_rec_td_weekly('GNB'))
+#    print('team_wide_receiver_rec_yds_weekly')
+#    print(team_wide_receiver_rec_yds_weekly('GNB'))
+#    print('team_tight_end_targets_weekly')
+#    print(team_tight_end_targets_weekly('GNB'))
+#    print('team_tight_end_rec_weekly')
+#    print(team_tight_end_rec_weekly('GNB'))
+#    print('team_tight_end_rec_td_weekly')
+#    print(team_tight_end_rec_td_weekly('GNB'))
+#    print('team_tight_end_rec_yds_weekly')
+#    print(team_tight_end_rec_yds_weekly('GNB'))
+    
+def team_receiever_view_month(team: str):
     print('team_wide_receiver_targets_monthly')
     print(team_wide_receiver_targets_monthly('GNB'))
     print('team_wide_receiver_rec_monthly')
@@ -130,27 +169,6 @@ def team_wr_fetch(team: str):
     print(team_tight_end_rec_td_monthly('GNB'))
     print('team_tight_end_rec_yds_monthly')
     print(team_tight_end_rec_yds_monthly('GNB'))
-
-#Team RB stuff
-
-def team_rb_fetch(team: str):
-    print('team_running_back_rush_td_weekly')
-    print(team_running_back_rush_td_weekly('GNB'))
-    print('team_running_back_rush_yds_weekly')
-    print(team_running_back_rush_yds_weekly('GNB'))
-    print('team_running_back_rec_td_weekly')
-    print(team_running_back_rec_td_weekly('GNB'))
-    print('team_running_back_rec_weekly')
-    print(team_running_back_rec_weekly('GNB'))
-    print('team_running_back_rush_td_monthly')
-    print(team_running_back_rush_td_monthly('GNB'))
-    print('team_running_back_rush_att_monthly')
-    print(team_running_back_rush_att_monthly('GNB'))
-    print('team_running_back_rush_yds_monthly')
-    print(team_running_back_rush_yds_monthly('GNB'))
-    print('team_running_back_rec_td_monthly')
-    print(team_running_back_rec_td_monthly('GNB'))
-    print('team_running_back_rec_monthly')
-    print(team_running_back_rec_monthly('GNB'))
-
-#Team QB stuff
+    
+#def team_receiever_view_total(team: str):
+    

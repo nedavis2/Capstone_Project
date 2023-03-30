@@ -70,6 +70,34 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
         return 0
     return int(total)
 
+def _retrieve_team_total_data(team : str, retreived_data : str, table_name: str) -> int:
+    total = -1
+    try:
+    
+        db, cursor = _connect_to_database()
+        query =  ''' SELECT SUM(%s) AS total
+                        FROM %s
+                        WHERE team = \"%s\"
+            '''%(retreived_data, table_name, team)
+        
+        data = ps.read_sql(query, db)
+
+        total = data["total"]
+        
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    else:
+        _end_database_connection(db, cursor)
+
+    #TODO: Check to make sure that it is ok to return 0 if no data is found.
+    if total[0] == None:
+        return 0
+    return int(total)
 
 def get_weekly_or_monthly(weekly = True):
     if weekly:
@@ -636,7 +664,59 @@ def player_rec_monthly(player_id : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_player_time_data(player_id, retreived_data, table_name = used_table_name, weekly = False)
+    
+    
+def team_qb_pass_att_weekly(team : str) -> list[int]:
+    retreived_data = "pass_att"
 
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+def team_qb_pass_cmp_weekly(team : str) -> list[int]:
+    retreived_data = "pass_cmp"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+def team_qb_pass_yds_weekly(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+def team_qb_pass_td_weekly(team : str) -> list[int]:
+    retreived_data = "pass_td"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+
+def team_qb_pass_att_monthly(team : str) -> list[int]:
+    retreived_data = "pass_att"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+def team_qb_pass_cmp_monthly(team : str) -> list[int]:
+    retreived_data = "pass_cmp"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+def team_qb_pass_yds_monthly(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+def team_qb_pass_td_monthly(team : str) -> list[int]:
+    retreived_data = "pass_td"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_qb_pass_att_total(team : str) -> list[int]:
+    retreived_data = "pass_att"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+def team_qb_pass_cmp_total(team : str) -> list[int]:
+    retreived_data = "pass_cmp"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+def team_qb_pass_yds_total(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+def team_qb_pass_td_total(team : str) -> list[int]:
+    retreived_data = "pass_td"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
 
 def team_rush_td_weekly(team : str) -> list[int]:
     retreived_data = "rush_td"
@@ -680,6 +760,32 @@ def team_rec_monthly(team : str) -> list[int]:
     retreived_data = "rec"
     
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_rush_td_total(team : str) -> list[int]:
+    retreived_data = "rush_td"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+def team_rush_att_total(team : str) -> list[int]:
+    retreived_data = "rush_att"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+def team_rush_yds_total(team : str) -> list[int]:
+    retreived_data = "rush_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+def team_rec_td_total(team : str) -> list[int]:
+    retreived_data = "rec_td"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+def team_rec_total(team : str) -> list[int]:
+    retreived_data = "rec"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+def team_rec_yds_total(team : str) -> list[int]:
+    retreived_data = "rec_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
 
 def player_quarterback_pass_att_weekly(player_id : str) -> list[int]:
   retreived_data = "pass_att"
