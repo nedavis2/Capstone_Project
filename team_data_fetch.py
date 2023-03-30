@@ -206,6 +206,7 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
 
 def get_player_dates(player_id : str):
     data = None
+    player_table = "nfl_pass_rush_receive_raw_data" #TODO: Change to new table after table spliting
     try:
     
         db, cursor = _connect_to_database()
@@ -214,7 +215,7 @@ def get_player_dates(player_id : str):
                     FROM %s
                     WHERE player_id = "%s"
                     ORDER BY date ASC
-        '''%(used_table_name, player_id)
+        '''%(player_table, player_id)
 
         data = ps.read_sql(query, db)
     except mysql.connector.Error as err:
@@ -235,6 +236,7 @@ def get_player_dates(player_id : str):
 
 def get_team_dates(team_id : str):
     data = None
+    team_table = "nfl_pass_rush_receive_raw_data" #TODO: Change to new table after table spliting
     try:
     
         db, cursor = _connect_to_database()
@@ -243,7 +245,7 @@ def get_team_dates(team_id : str):
                     FROM %s
                     WHERE team = "%s"
                     ORDER BY date ASC
-        '''%(used_table_name, team_id)
+        '''%(team_table, team_id)
 
         data = ps.read_sql(query, db)
     except mysql.connector.Error as err:
