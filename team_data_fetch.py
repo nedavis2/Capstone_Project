@@ -182,11 +182,11 @@ def get_player_dates(player_id : str):
     
         db, cursor = _connect_to_database()
         
-        query = ''' SELECT CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+        query = ''' SELECT DISTINCT game_date AS date
                     FROM %s
                     WHERE player_id = "%s"
                     ORDER BY date ASC
-        '''%(table_name, team, position)
+        '''%(used_table_name, player_id)
 
         data = ps.read_sql(query, db)
     except mysql.connector.Error as err:
@@ -211,11 +211,11 @@ def get_team_dates(team_id : str):
     
         db, cursor = _connect_to_database()
         
-        query = ''' SELECT CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+        query = ''' SELECT DISTINCT game_date AS date
                     FROM %s
-                    WHERE team_id = "%s"
+                    WHERE team = "%s"
                     ORDER BY date ASC
-        '''%(table_name, team, position)
+        '''%(used_table_name, team_id)
 
         data = ps.read_sql(query, db)
     except mysql.connector.Error as err:
