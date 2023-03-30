@@ -86,10 +86,12 @@ def player_primary_view(player_id: str, pos: str):
             
 
           
-print(player_primary_view('RodgAa00','QB'))
+#print(player_primary_view('RodgAa00','QB'))
 #print(player_primary_view('AdamDa01','WR'))
-#rint(player_primary_view('TonyRo00','TE'))
+#print(player_primary_view('TonyRo00','TE'))
 #print(player_primary_view('JoneAa00','RB'))
+#print(get_player_dates('RodgAa00'))
+#print(get_team_dates('GNB'))
 
 
 
