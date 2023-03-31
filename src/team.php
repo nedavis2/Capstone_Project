@@ -53,8 +53,7 @@
                 <canvas id="teamChart" style="width:70%;max-width:90vw;background-color:white;border-radius: 8px;"></canvas>
 
                 <script>
-                    var data1 =
-                        <?php echo json_encode($finalResult); ?>;
+                    var data1 = <?php echo json_encode($finalResult); ?>;
 
                     var xValues = <?php echo json_encode($xVar); ?>;
                     new Chart("teamChart", {
