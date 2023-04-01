@@ -1,6 +1,6 @@
 <?php
 session_start();
-if (isset($_SESSION['user'])) {
+if (isset($_SESSION['email'])) {
     // user is logged in, do something
 
 } else {
