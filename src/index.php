@@ -5,7 +5,7 @@ if (isset($_SESSION['user'])) {
 
 } else {
     // user is not logged in, redirect to login page
-    header("Location: localhost/Capstone_project/login.php");
+    header("Location: ./button.html");
     exit();
 } ?>
 
