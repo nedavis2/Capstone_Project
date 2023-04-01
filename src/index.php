@@ -23,6 +23,13 @@
     <?php
     error_reporting(E_ALL);
     ini_set('display_errors', True);
+    session_start();
+    if (isset($_SESSION['userid'])) {
+        echo "user is loggen in " . $_SESSION['name'] . "!";
+        if (isset($_SESSION['email'])) {
+            echo " Your email is " . $_SESSION['email'];
+        }
+    }
 
     require 'php/DBconnect.php';
     $connection = connect();

@@ -42,14 +42,5 @@ if (isset($_GET['id_token'])) {
 } else {
   echo "<a href='".$client->createAuthUrl()."'>Google Login</a>";
 }
-?> and this is my index.php file that is using the session <?php
-session_start();
-if (isset($_SESSION['user'])) {
-    // user is logged in, do something
-} else {
-    // user is not logged in, redirect to login page
-    header("Location: button.html");
-    exit();
-}
-?>
+?> 
 
