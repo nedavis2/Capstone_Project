@@ -32,6 +32,7 @@ CREATE TABLE weather (
     wind_speed      numeric(2,0),
     roof            varchar(20),
     surface         varchar(20),
+    primary key (game_id),
     foreign key (game_id) references game(game_id)
 );
 CREATE TABLE user (
@@ -44,7 +45,6 @@ CREATE TABLE game_stats_team (
     game_date                       DATE            not null,
     game_id                         varchar(20)     not null,
     teamName                        varchar(5)      not null,
-
     pass_cmp                        INT(4),
     pass_att                        INT(4),
     pass_yds                        INT(4),
@@ -90,6 +90,7 @@ CREATE TABLE game_stats_team (
     yds_per_rec                     numeric(3,2),
     yds_per_rush                    numeric(3,2),
     yds_per_target                  numeric(3,2),
+    primary key (game_date, game_id, teamName),
     foreign key (game_id) references game(game_id)
 );
 CREATE TABLE game_stats_player (
@@ -97,8 +98,7 @@ CREATE TABLE game_stats_player (
     game_id                         varchar(20)     not null,
     player_id                       varchar(20)     not null,
     player                          varchar(30)     not null,
-    POS                             varchar(5)      not null,
-
+    pos                             varchar(5)      not null,
     pass_cmp                        INT(4),
     pass_att                        INT(4),
     pass_yds                        INT(4),
@@ -141,6 +141,10 @@ CREATE TABLE game_stats_player (
     rec_drops                       INT(4),
     offense                         INT(4),
     off_pct                         INT(4),
+    yds_per_rec                     numeric(3,2),
+    yds_per_rush                    numeric(3,2),
+    yds_per_target                  numeric(3,2),
+    primary key (game_date, game_id, player_id, player, pos),
     foreign key (game_id) references game(game_id),
     foreign key (player_id) references player(player_id)
 );
