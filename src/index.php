@@ -1,11 +1,5 @@
 <!DOCTYPE html>
-<?php
-session_start();
-if (isset($_SESSION['email'])) {
-    // user is logged in, personalize the content
-    echo "Welcome! Your user email is $email.";
-}
-?>
+
 <!-- Tab name and css link-->
 
 <head>
