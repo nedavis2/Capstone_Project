@@ -23,7 +23,7 @@
     <?php
     
     session_start();
-    echo $_SESSION
+    echo $_SESSION;
     if (isset($_SESSION['user'])) {
         // user is logged in, do something
 
