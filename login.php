@@ -17,19 +17,20 @@ $client->addScope("profile");
 if (isset($_GET['id_token'])) {
   $id_token = $_GET['id_token'];
   $payload = $client->verifyIdToken($id_token);
-  echo "token if state";
+  
   if ($payload) {
     $userid = $payload['sub'];
     // get profile info 
     $email = $payload['email'];
-    echo "email if state";
+    $name = $payload['name'];
     
     // start a new session
     session_start();
-    
+
     // set session variables
     $_SESSION['userid'] = $userid;
     $_SESSION['email'] = $email;
+    $_SESSION['name'] = $name;
     
     // redirect to a page that requires authentication
     header('Location: authenticated_page.php');
@@ -43,6 +44,3 @@ if (isset($_GET['id_token'])) {
 }
 ?>
 
-In this example, after a user successfully authenticates with Google, we start a new session and set session variables for the user's ID, email, and name. Then, we redirect the user to an authenticated page (e.g., authenticated_page.php) that requires authentication.
-
-You can access the session variables on any page that has access to the session by calling session_start() at the beginning of the page and using the $_SESSION superglobal array to access the session variables.
