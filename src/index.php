@@ -27,6 +27,18 @@ if (isset($_SESSION['email'])) {
 
 
     <?php
+    
+    session_start();
+    echo $_SESSION;
+    if (isset($_SESSION['user'])) {
+        // user is logged in, do something
+
+    } else {
+        // user is not logged in, redirect to login page
+        header("Location: ../button.html");
+        exit();
+    }
+
     error_reporting(E_ALL);
     ini_set('display_errors', True);
 
