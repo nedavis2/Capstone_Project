@@ -15,7 +15,7 @@ $client->addScope("profile");
 
 // authenticate ID token from Google Sign-In
 if (isset($_GET['id_token'])) {
-    echo "id_token is set."
+    echo "id_token is set.";
   $id_token = $_GET['id_token'];
   $payload = $client->verifyIdToken($id_token);
   
