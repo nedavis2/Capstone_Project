@@ -23,7 +23,8 @@
     <?php
     
     session_start();
-    if (isset($_SESSION['email'])) {
+    echo $_SESSION
+    if (isset($_SESSION['user'])) {
         // user is logged in, do something
 
     } else {
