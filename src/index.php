@@ -3,11 +3,6 @@ session_start();
 if (isset($_SESSION['email'])) {
     // user is logged in, do something
 
-} else {
-    // user is not logged in, redirect to login page
-    header("Location: ../button.html");
-    exit();
-} ?>
 
 <!DOCTYPE html>
 
@@ -94,3 +89,10 @@ if (isset($_SESSION['email'])) {
 </body>
 
 </html>
+
+
+} else {
+    // user is not logged in, redirect to login page
+    header("Location: ../button.html");
+    exit();
+} ?>
