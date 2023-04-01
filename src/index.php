@@ -1,10 +1,12 @@
+<!DOCTYPE html>
+
 <?php
 session_start();
 if (isset($_SESSION['email'])) {
     // user is logged in, do something
 
 
-<!DOCTYPE html>
+
 
 <!-- Tab name and css link-->
 
