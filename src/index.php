@@ -1,13 +1,5 @@
 <!DOCTYPE html>
 
-<?php
-session_start();
-if (isset($_SESSION['email'])) {
-    // user is logged in, do something
-
-
-
-
 <!-- Tab name and css link-->
 
 <head>
@@ -29,6 +21,17 @@ if (isset($_SESSION['email'])) {
 
 
     <?php
+    
+    session_start();
+    if (isset($_SESSION['email'])) {
+        // user is logged in, do something
+
+    } else {
+        // user is not logged in, redirect to login page
+        header("Location: ../button.html");
+        exit();
+    }
+
     error_reporting(E_ALL);
     ini_set('display_errors', True);
 
@@ -91,10 +94,3 @@ if (isset($_SESSION['email'])) {
 </body>
 
 </html>
-
-
-} else {
-    // user is not logged in, redirect to login page
-    header("Location: ../button.html");
-    exit();
-} ?>
