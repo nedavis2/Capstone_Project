@@ -600,6 +600,7 @@ game_id,player_id,player,pos,team
 201912080nwe,WareSp00,Spencer Ware,RB,KAN
 201912080rai,GaffRi00,Rico Gafford,WR,LVR
 201912080tam,WillCh05,Chad Williams,WR,IND
+201912080tam,GrifRy01,Ryan Griffin,QB,TAM
 201912090phi,PerkJo02,Joshua Perkins,TE,PHI
 201912120rav,SmitJe03,Jeff Smith,WR,NYJ
 201912150car,FantGe00,George Fant,T,SEA
@@ -909,6 +910,7 @@ game_id,player_id,player,pos,team
 202109190cle,FeltDe00,Demetric Felton,RB,CLE
 202109190cle,MillDa02,Davis Mills,QB,HOU
 202109190clt,FunkJa00,Jake Funk,RB,LAR
+202109190clt,HarrDe09,De'Michael Harris,WR,IND
 202109190clt,EasoJa00,Jacob Eason,QB,IND
 202109190phi,SermTr00,Trey Sermon,RB,SFO
 202109190rav,WallTy00,Tylan Wallace,WR,BAL
@@ -933,7 +935,6 @@ game_id,player_id,player,pos,team
 202110170rav,BateRa00,Rashod Bateman,WR,BAL
 202110240crd,BenjEn00,Eno Benjamin,RB,ARI
 202110240nwe,WhitMi01,Mike White,QB,NYJ
-202110240nyg,WalkPh00,P.J. Walker,QB,CAR
 202110240nyg,SillDa01,David Sills,WR,NYG
 202110240oti,KinsMa00,Mason Kinsey,WR,TEN
 202110240oti,GoreDe00,Derrick Gore,RB,KAN
@@ -1019,11 +1020,9 @@ game_id,player_id,player,pos,team
 202201150buf,DoylTo00,Tommy Doyle,T,BUF
 202201160kan,AlleNi00,Nick Allegretti,G,KAN
 202209080ram,CookJa01,James Cook,RB,BUF
-202209110atl,HarrDe07,Deonte Harty,WR,NOR
 202209110atl,WillAv02,Avery Williams,RB,ATL
 202209110atl,LondDr00,Drake London,WR,ATL
 202209110atl,OlavCh00,Chris Olave,WR,NOR
-202209110car,AndeRo04,Robbie Anderson,WR,CAR
 202209110car,BellDa02,David Bell,WR,CLE
 202209110chi,TongJa00,Jake Tonges,TE,CHI
 202209110chi,EbneTr00,Trestan Ebner,RB,CHI
@@ -1087,7 +1086,6 @@ game_id,player_id,player,pos,team
 202210020nor,NailJa00,Jalen Nailor,WR,MIN
 202210020nor,WrigRy00,Ryan Wright,P,MIN
 202210020pit,PickKe00,Kenny Pickett,QB,PIT
-202210020tam,FortJo01,Jody Fortson,TE,KAN
 202210030sfo,McCuLa01,Lance McCutcheon,WR,LAR
 202210090buf,GentTa00,Tanner Gentry,WR,BUF
 202210090car,PurdBr00,Brock Purdy,QB,SFO
