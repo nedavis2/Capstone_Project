@@ -26,7 +26,7 @@ if (isset($_GET['id_token'])) {
     
     // start a new session
     session_start();
-    echo "session started";
+    
     // set session variables
     $_SESSION['userid'] = $userid;
     $_SESSION['email'] = $email;
