@@ -1,5 +1,11 @@
 <!DOCTYPE html>
-
+<?php
+session_start();
+if (isset($_SESSION['email'])) {
+    // user is logged in, personalize the content
+    echo "Welcome! Your user email is $email.";
+}
+?>
 <!-- Tab name and css link-->
 
 <head>
@@ -43,7 +49,7 @@
                         <?php
                         $stmt = $connection->prepare("SELECT DISTINCT player_id, player 
                     FROM nfl_pass_rush_receive_raw_data ORDER BY player ASC;");
-                        $stmt->execute();
+                        $stmt->execute(); //execute the statement with no arguments (prepare statement has no ? attributes)
                         $results = $stmt->fetchAll();
                         for ($idx = 0; $idx < count($results); $idx++) {
                             $p = $results[$idx];
@@ -62,7 +68,7 @@
 
                         <?php
                         $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data;");
-                        $stmt->execute();
+                        $stmt->execute(); //execute the statement with no arguments (prepare statement has no ? attributes)
                         $results = $stmt->fetchAll();
                         for ($idx = 0; $idx < count($results); $idx++) {
                             $p = $results[$idx];
