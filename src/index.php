@@ -5,7 +5,7 @@ if (isset($_SESSION['user'])) {
 
 } else {
     // user is not logged in, redirect to login page
-    header("Location: ./button.html");
+    header("Location: ../button.html");
     exit();
 } ?>
 
