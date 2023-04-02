@@ -15,6 +15,7 @@ $client->addScope("profile");
 
 // authenticate ID token from Google Sign-In
 if (isset($_GET['id_token'])) {
+    echo "id_token is set.";
   $id_token = $_GET['id_token'];
   $payload = $client->verifyIdToken($id_token);
   
@@ -23,8 +24,18 @@ if (isset($_GET['id_token'])) {
     // get profile info 
     $email = $payload['email'];
     $name = $payload['name'];
+    
+    // start a new session
+    session_start();
 
-    // use this profile info to create an account
+    // set session variables
+    $_SESSION['userid'] = $userid;
+    $_SESSION['email'] = $email;
+    $_SESSION['name'] = $name;
+    
+    // redirect to a page that requires authentication
+    header('Location: authenticated_page.php');
+    exit();
   } else {
     // Invalid ID token
     echo "Invalid ID token.";
