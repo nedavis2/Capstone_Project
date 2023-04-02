@@ -6,8 +6,8 @@ from team_data_fetch_test import *
 if __name__ == "__main__":
        def some_function():
 
-            player_id, pos = sys.argv[1].split(',')
+            #player_id, pos = sys.argv[1].split(',')
             
-            print(player_primary_view(player_id, pos))
+            print(player_primary_view('RodgAa00', 'QB'))
 
 some_function()

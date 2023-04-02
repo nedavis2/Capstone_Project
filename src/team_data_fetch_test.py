@@ -66,14 +66,16 @@ def player_primary_view(player_id: str, pos: str):
         case 'QB':
             return (player_qb_view(player_id) + "#" + player_qb_view_month(player_id) + "#" 
                     + player_qb_view_total(player_id) + "#" + player_rusher_view( player_id) + "#" 
-                    + player_rusher_view_month( player_id) + "#" + player_rusher_view_total( player_id))
+                    + player_rusher_view_month( player_id) + "#" + player_rusher_view_total( player_id) + "#"
+                    + str(get_player_dates(player_id)))
         case 'RB':
             return (player_rusher_view( player_id) + "#" + player_rusher_view_month( player_id) + "#" 
                     + player_rusher_view_total( player_id) + "#" + player_receiver_view(player_id) + "#" 
-                    + player_receiver_view_month(player_id) + "#" + player_receiver_view_total(player_id))
+                    + player_receiver_view_month(player_id) + "#" + player_receiver_view_total(player_id) + "#"
+                    + str(get_player_dates(player_id)))
         case _:
             return (player_receiver_view(player_id) + "#" + player_receiver_view_month(player_id) + "#" 
-                    + player_receiver_view_total(player_id))
+                    + player_receiver_view_total(player_id) + "#" + str(get_player_dates(player_id)))
         
             
 
