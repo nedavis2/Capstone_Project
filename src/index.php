@@ -26,8 +26,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors', True);
     echo session_save_path();
-    print_r($_SESSION);
-    print_r($_GET);
+    
 
    
 
