@@ -18,7 +18,7 @@ $_SESSION["works on login"] = True;
 print_r($_GET);
 print_r($_SESSION);
 // authenticate ID token from Google Sign-In
-if (True) {
+if (isset($_GET['id_token'])) {
   $id_token = $_GET['id_token'];
   $payload = $client->verifyIdToken($id_token);
   
