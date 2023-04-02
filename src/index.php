@@ -21,7 +21,6 @@
 
 
     <?php
-    session_start();
     $_SESSION["TEST"] = True;
     require_once 'config.php';
     error_reporting(E_ALL);

@@ -19,7 +19,7 @@ print_r($_GET);
 print_r($_SESSION);
 
 // authenticate ID token from Google Sign-In
-if (isset($client['id_token'])) {
+if (isset($_GET['id_token'])) {
   $id_token = $_GET['id_token'];
   $payload = $client->verifyIdToken($id_token);
   
