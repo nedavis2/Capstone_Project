@@ -21,9 +21,9 @@ print_r($_SESSION);
 
 // authenticate ID token from Google Sign-In
 if (isset($_GET['code'])) {
-  $id_token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
+  $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
   $client->setAccessToken($token['access_token']);
-  $payload = $client->verifyIdToken($id_token);
+  $payload = $client->verifyIdToken($token);
   
   if ($payload) {
     $userid = $payload['sub'];
