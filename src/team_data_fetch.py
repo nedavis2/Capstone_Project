@@ -272,6 +272,21 @@ def get_team_dates(team_id : str, weekly = True):
 #result includes gamedate + stat for weekly/monthly data
 #directly interact with database
 
+
+def get_team_weeks(team_id : str):
+    return get_team_dates(team_id, weekly = True)
+   
+def get_team_months(team_id : str):
+    return get_team_dates(team_id, weekly=False)
+
+def get_player_weeks(player_id):
+    return get_player_dates(player_id, weekly = True)
+
+def get_player_months(player_id):
+    return get_player_dates(player_id, weekly = False)
+
+
+
 #TODO: Ask if I need to change the functions for various positions.
 def player_wide_receiver_targets_total(player_id : str) -> int:
   '''
