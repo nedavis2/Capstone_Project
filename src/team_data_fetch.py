@@ -279,10 +279,10 @@ def get_team_weeks(team_id : str):
 def get_team_months(team_id : str):
     return get_team_dates(team_id, weekly=False)
 
-def get_player_weeks(player_id):
+def get_player_weeks(player_id : str):
     return get_player_dates(player_id, weekly = True)
 
-def get_player_months(player_id):
+def get_player_months(player_id : str):
     return get_player_dates(player_id, weekly = False)
 
 
