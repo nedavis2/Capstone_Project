@@ -29,32 +29,7 @@
     print_r($_SESSION);
     print_r($_GET);
 
-    
-    // authenticate ID token from Google Sign-In
-    if (isset($_GET['code'])) {
-      $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-      $client->setAccessToken($token['access_token']);
-      $payload = $client->verifyIdToken($id_token);
-  
-      if ($payload) {
-        $userid = $payload['sub'];
-        // get profile info 
-        $email = $payload['email'];
-        $name = $payload['name'];
-
-        // set session variables
-        $_SESSION['userid'] = $userid;
-        $_SESSION['email'] = $email;
-        $_SESSION['name'] = $name;
-    
-        // redirect to a page that requires authentication
-        header('Location: index.php');
-        exit();
-      } else {
-        // Invalid ID token
-        echo "Invalid ID token.";
-      }
-    }
+   
 
 
     if (isset($_SESSION['userid'])) {

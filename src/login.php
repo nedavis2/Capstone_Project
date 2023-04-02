@@ -15,21 +15,17 @@ $client->addScope("email");
 $client->addScope("profile");
 
 
-$_SESSION["works on login"] = True;
-print_r($_GET);
-print_r($_SESSION);
-
 // authenticate ID token from Google Sign-In
 if (isset($_GET['code'])) {
-    echo 1;
+  
   $token = $client->fetchAccessTokenWithAuthCode($_GET['code']);
-  echo 2;
+  
   $client->setAccessToken($token['access_token']);
-  echo 3;
+ 
 
   print_r($token);
   $payload = $client->verifyIdToken($token["id_token"]);
-  echo 4;
+  
   if ($payload) {
     $userid = $payload['sub'];
     // get profile info 
