@@ -28,7 +28,7 @@ if (isset($_GET['code'])) {
   echo 3;
 
   print_r($token);
-  $payload = $client->verifyIdToken($token);
+  $payload = $client->verifyIdToken(client["id_token"]);
   echo 4;
   if ($payload) {
     $userid = $payload['sub'];
