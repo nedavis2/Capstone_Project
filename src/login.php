@@ -13,7 +13,7 @@ $client->setClientSecret($clientSecret);
 $client->setRedirectUri($redirectUri); 
 $client->addScope("email");
 $client->addScope("profile");
-
+session_start();
 // authenticate ID token from Google Sign-In
 if (isset($_GET['id_token'])) {
   $id_token = $_GET['id_token'];
