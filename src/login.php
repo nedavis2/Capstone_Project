@@ -17,6 +17,7 @@ session_start();
 $_SESSION["works on login"] = True;
 print_r($_GET);
 print_r($_SESSION);
+echo $id_token
 // authenticate ID token from Google Sign-In
 if (isset($_GET['id_token'])) {
   $id_token = $_GET['id_token'];
