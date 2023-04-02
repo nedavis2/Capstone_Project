@@ -26,6 +26,8 @@ if (isset($_GET['code'])) {
   echo 2;
   $client->setAccessToken($token['access_token']);
   echo 3;
+
+  print_r($token);
   $payload = $client->verifyIdToken($token);
   echo 4;
   if ($payload) {
