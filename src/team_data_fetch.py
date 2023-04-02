@@ -204,20 +204,24 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
 
     return data["value"].to_list()
 
-def get_player_dates(player_id : str):
+def get_player_dates(player_id : str, weekly = True):
     data = None
     player_table = "nfl_pass_rush_receive_raw_data" #TODO: Change to new table after table spliting
     try:
     
         db, cursor = _connect_to_database()
+        query = ""
+
         
         query = ''' SELECT DISTINCT game_date AS date
                     FROM %s
                     WHERE player_id = "%s"
+                    GROUP BY CONCAT(YEAR(game_date), '/', %s(game_date))
                     ORDER BY date ASC
-        '''%(player_table, player_id)
+        '''%(player_table, player_id, get_weekly_or_monthly(weekly))
 
         data = ps.read_sql(query, db)
+        print(data)
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
@@ -234,7 +238,7 @@ def get_player_dates(player_id : str):
 
     return data["date"].to_list()
 
-def get_team_dates(team_id : str):
+def get_team_dates(team_id : str, weekly = True):
     data = None
     team_table = "nfl_pass_rush_receive_raw_data" #TODO: Change to new table after table spliting
     try:
@@ -244,8 +248,9 @@ def get_team_dates(team_id : str):
         query = ''' SELECT DISTINCT game_date AS date
                     FROM %s
                     WHERE team = "%s"
+                    GROUP BY CONCAT(YEAR(game_date), '/', %s(game_date))
                     ORDER BY date ASC
-        '''%(team_table, team_id)
+        '''%(team_table, team_id, get_weekly_or_monthly(weekly))
 
         data = ps.read_sql(query, db)
     except mysql.connector.Error as err:
@@ -931,3 +936,7 @@ def player_quarterback_pass_td_total(player_id : str) -> int:
     retreived_data = "pass_td"
     position = "QB"
     return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name, position = position)
+
+
+print(get_team_dates("MIN"))
+print(get_team_dates("MIN", weekly = False))
