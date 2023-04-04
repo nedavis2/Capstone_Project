@@ -47,12 +47,12 @@ def player_rusher_view(player_id: str):
 
     
 def player_rusher_view_month(player_id: str): 
-    return(str(player_rush_td_monthly(player_id)) + "#"
-           + str(player_rush_att_monthly(player_id)) + "#"
+    return(str(player_rush_td_monthly(player_id)) + "#" 
+           + str(player_rush_att_monthly(player_id)) + "#" 
            + str(player_rush_yds_monthly(player_id)))
     
 def player_rusher_view_total(player_id: str):   
-    return(str(player_rush_td_total(player_id)) + "#"
+    return(str(player_rush_td_total(player_id)) + "#" 
            + str(player_rush_att_total(player_id)) + "#" 
            + str(player_rush_yds_total(player_id)))
 
@@ -67,15 +67,16 @@ def player_primary_view(player_id: str, pos: str):
             return (player_qb_view(player_id) + "#" + player_qb_view_month(player_id) + "#" 
                     + player_qb_view_total(player_id) + "#" + player_rusher_view( player_id) + "#" 
                     + player_rusher_view_month( player_id) + "#" + player_rusher_view_total( player_id) + "#"
-                    + str(get_player_dates(player_id)))
+                    + str(get_player_dates(player_id)) + "#" + str(get_player_dates(player_id, False)))
         case 'RB':
             return (player_rusher_view( player_id) + "#" + player_rusher_view_month( player_id) + "#" 
                     + player_rusher_view_total( player_id) + "#" + player_receiver_view(player_id) + "#" 
                     + player_receiver_view_month(player_id) + "#" + player_receiver_view_total(player_id) + "#"
-                    + str(get_player_dates(player_id)))
-        case _:
+                    + str(get_player_dates(player_id))  + "#" + str(get_player_dates(player_id, False)))
+        case 'WR':
             return (player_receiver_view(player_id) + "#" + player_receiver_view_month(player_id) + "#" 
-                    + player_receiver_view_total(player_id) + "#" + str(get_player_dates(player_id)))
+                    + player_receiver_view_total(player_id) + "#" + str(get_player_dates(player_id))
+                     + "#" + str(get_player_dates(player_id, False)))
         
             
 
@@ -86,6 +87,15 @@ def player_primary_view(player_id: str, pos: str):
 #print(player_primary_view('JoneAa00','RB'))
 #print(get_player_dates('RodgAa00'))
 #print(get_team_dates(team))
+
+#print(player_receiver_view('JoneAa00'))
+#player_receiver_view_month('JoneAa00')
+#player_receiver_view_total('JoneAa00')
+
+#print(player_targets_weekly('JoneAa00'))
+#print(player_rec_weekly('JoneAa00'))
+#print(player_rec_td_weekly('JoneAa00'))
+#print(player_rec_yds_weekly('JoneAa00'))
 
 
 
