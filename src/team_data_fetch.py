@@ -956,3 +956,8 @@ def player_quarterback_pass_td_total(player_id : str) -> int:
 
 print(get_player_weeks("RodgAa00"))
 print(get_player_months("RodgAa00"))
+
+print("_____________________________________")
+
+print(get_team_weeks("GNB"))
+print(get_team_months("GNB"))
