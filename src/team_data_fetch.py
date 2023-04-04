@@ -221,7 +221,7 @@ def get_player_dates(player_id : str, weekly = True):
         '''%(player_table, player_id, get_weekly_or_monthly(weekly))
 
         data = ps.read_sql(query, db)
-        print(data)
+        
     except mysql.connector.Error as err:
         if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
             print("Something is wrong with your user name or password")
@@ -953,5 +953,6 @@ def player_quarterback_pass_td_total(player_id : str) -> int:
     return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name, position = position)
 
 
-print(get_team_dates("MIN"))
-print(get_team_dates("MIN", weekly = False))
+
+print(get_player_weeks("RodgAa00"))
+print(get_player_months("RodgAa00"))
