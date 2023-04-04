@@ -115,14 +115,14 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
 
         if position == None:
 
-            query = ''' SELECT %s AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+            query = ''' SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE player_id = \"%s\"
                         GROUP BY date ASC
                         ORDER BY date ASC
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, player_id)
         else:
-            query = ''' SELECT %s AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
+            query = ''' SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
                         WHERE player_id = \"%s\" AND pos = \"%s\"
                         GROUP BY date ASC
