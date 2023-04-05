@@ -280,6 +280,7 @@ def get_team_dates(team_id : str, weekly = True):
 
 def _get_player_prediction_value(player_id : str,retreived_data : str, table_name: str = PREDICTION_TABLE_NAME):
 
+    #TODO: Remove this section once the prediction table is added.
     print("NOTE: The prediction table needs to be implemented before this function can be used.")
     return 0
     data = -1
