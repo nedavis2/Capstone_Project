@@ -83,7 +83,7 @@
 
             <p id="demo"></p>
 
-            
+
             <script>
                 const triggerTabList = document.querySelectorAll('#myTab button')
                 triggerTabList.forEach(triggerEl => {
@@ -101,32 +101,32 @@
                 if (pos == "QB") {
 
                     var [pass_att_weekly, pass_cmp_weekly, pass_yds_weekly, pass_td_weekly,
-                            pass_att_monthly, pass_cmp_monthly, pass_yds_monthly, pass_td_monthly,
-                            pass_att_total, pass_cmp_total, pass_yds_total, pass_td_total,
-                            rush_td_weekly, rush_att_weekly, rush_yds_weekly,
-                            rush_td_monthly, rush_att_monthly, rush_yds_monthly,
-                            rush_td_total, rush_att_total, rush_yds_total, player_dates
-                        ] = data.split('#');
+                        pass_att_monthly, pass_cmp_monthly, pass_yds_monthly, pass_td_monthly,
+                        pass_att_total, pass_cmp_total, pass_yds_total, pass_td_total,
+                        rush_td_weekly, rush_att_weekly, rush_yds_weekly,
+                        rush_td_monthly, rush_att_monthly, rush_yds_monthly,
+                        rush_td_total, rush_att_total, rush_yds_total, player_dates, player_dates_months
+                    ] = data.split('#');
 
-                }else if (pos == "RB") {
-                    
+                } else if (pos == "RB") {
+
                     var [
-                            rush_td_weekly, rush_att_weekly, rush_yds_weekly,
-                            rush_td_monthly, rush_att_monthly, rush_yds_monthly,
-                            rush_td_total, rush_att_total, rush_yds_total,
-                            targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
-                            targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
-                            targets_total, rec_total, rec_td_total, rec_yds_total, 
-                            player_dates, player_dates_months
-                        ] = data.split('#');
+                        rush_td_weekly, rush_att_weekly, rush_yds_weekly,
+                        rush_td_monthly, rush_att_monthly, rush_yds_monthly,
+                        rush_td_total, rush_att_total, rush_yds_total,
+                        targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
+                        targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
+                        targets_total, rec_total, rec_td_total, rec_yds_total,
+                        player_dates, player_dates_months
+                    ] = data.split('#');
 
-                }else {
+                } else {
 
                     var [targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
-                            targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
-                            targets_total, rec_total, rec_td_total, rec_yds_total, 
-                            player_dates, player_dates_months
-                        ] = data.split('#');
+                        targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
+                        targets_total, rec_total, rec_td_total, rec_yds_total,
+                        player_dates, player_dates_months
+                    ] = data.split('#');
 
                 }
             </script>
@@ -152,11 +152,11 @@
             <div class="tab-pane fade show active" id="weekly-tab-pane" role="tabpanel" aria-labelledby="weekly-tab" tabindex="0">
 
 
-            <canvas id="weeklyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="weeklyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-            <canvas id="weeklyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="weeklyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-            <canvas id="weeklyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="weeklyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
 
                 <script>
@@ -253,11 +253,11 @@
                         rush_att_weekly = rush_att_weekly.split(",").slice(-17);
                         rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
                         targets_weekly = targets_weekly.split(",").slice(-17);
-                        rec_weekly = rec_weekly.split(",").slice(-17); 
+                        rec_weekly = rec_weekly.split(",").slice(-17);
                         rec_td_weekly = rec_td_weekly.split(",").slice(-17);
                         rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
                         player_dates = player_dates.split(",").slice(-17);
-                        
+
 
                         new Chart("weeklyChart1", {
                             type: "line",
@@ -336,7 +336,7 @@
                         rec_td_weekly = rec_td_weekly.split(",").slice(-17);
                         rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
                         player_dates = player_dates.split(",").slice(-17);
-                             
+
 
                         new Chart("weeklyChart1", {
                             type: "line",
@@ -398,23 +398,22 @@
                         });
 
                     }
-                    
                 </script>
 
                 <p id="demo"></p>
 
             </div>
             <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
-                
 
 
-            <canvas id="weeklyChart1M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-            <canvas id="weeklyChart2M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="weeklyChart1M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-            <canvas id="weeklyChart3M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="weeklyChart2M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-            <script>
+                <canvas id="weeklyChart3M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+                <script>
                     if (pos == 'QB') {
 
                         pass_att_monthly = pass_att_monthly.split(",").slice(-17);
@@ -507,13 +506,13 @@
                         rush_td_monthly = rush_td_monthly.split(",").slice(-17);
                         rush_att_monthly = rush_att_monthly.split(",").slice(-17);
                         rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
-                        
+
                         targets_monthly = targets_monthly.split(",").slice(-17);
-                        rec_monthly = rec_monthly.split(",").slice(-17); 
+                        rec_monthly = rec_monthly.split(",").slice(-17);
                         rec_td_monthly = rec_td_monthly.split(",").slice(-17);
                         rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
                         player_dates_months = player_dates_months.split(",").slice(-17);
-                        
+
 
                         new Chart("weeklyChart1M", {
                             type: "line",
@@ -592,7 +591,7 @@
                         rec_td_monthly = rec_td_monthly.split(",").slice(-17);
                         rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
                         player_dates_months = player_dates_months.split(",").slice(-17);
-                             
+
 
                         new Chart("weeklyChart1M", {
                             type: "line",
@@ -654,9 +653,10 @@
                         });
 
                     }
-                    
+
+
                 </script>
-                    
+
             </div>
             <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">This is where the receiving chart goes</div>
             <div class="tab-pane fade" id="comparison-tab-pane" role="tabpanel" aria-labelledby="comparison-tab" tabindex="0">...</div>
