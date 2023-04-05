@@ -995,10 +995,41 @@ def player_quarterback_pass_td_total(player_id : str) -> int:
 
 
 
+def team_comb_pass_rush_play_weekly(team : str) -> list[int]:
+    retreived_data = "comb_pass_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_comb_pass_rush_play_monthly(team : str) -> list[int]:
+    retreived_data = "comb_pass_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_comb_pass_play_weekly(team : str) -> list[int]:
+    retreived_data = "comb_pass_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_comb_pass_play_monthly(team : str) -> list[int]:
+    retreived_data = "comb_pass_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+
+def team_comb_rush_play_weekly(team : str) -> list[int]:
+    retreived_data = "comb_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_comb_rush_play_monthly(team : str) -> list[int]:
+    retreived_data = "comb_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
 print(get_player_weeks("RodgAa00"))
 print(get_player_months("RodgAa00"))
 
 print("_____________________________________")
 
 print(get_team_weeks("GNB"))
-print(get_team_months("GNB"))
+print(team_comb_rush_play_weekly("GNB"))
