@@ -1047,6 +1047,18 @@ def team_pass_yds_monthly(team : str) -> list[int]:
 
     return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
 
+
+def team_rush_yds_total(team : str) -> list[int]:
+    retreived_data = "rush_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+def team_pass_yds_total(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+
 print(get_player_weeks("RodgAa00"))
 print(get_player_months("RodgAa00"))
 
