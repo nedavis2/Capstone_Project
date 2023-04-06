@@ -28,7 +28,7 @@ try{
     //$connection->query("DELETE FROM injury");
     $connection->query("DELETE FROM game_stats_player");
     $connection->query("DELETE FROM game_stats_team");
-    //$connection->query("DELETE FROM user");
+    $connection->query("DELETE FROM user");
     $connection->query("DELETE FROM weather");
     $connection->query("DELETE FROM game");
     $connection->query("DELETE FROM player");
@@ -56,7 +56,11 @@ try{
                             :rush_yds_bonus, :rec_yds_bonus, :pass_target_yds, :pass_poor_throws, :pass_blitzed, :pass_hurried,
                             :rush_yds_before_contact, :rush_yac, :rush_broken_tackles, :rec_air_yds, :rec_yac, :rec_drops, :offense,
                             :off_pct, :yds_per_rec, :yds_per_rush, :yds_per_target)";
-
+    $person1_qry = "INSERT INTO user (user_email) VALUES ('winters1291@gmail.com')";
+    $person2_qry = "INSERT INTO user (user_email) VALUES ('nivek694@gmail.com')";
+    $person3_qry = "INSERT INTO user (user_email) VALUES ('lww1117@gmail.com')";
+    $person4_qry = "INSERT INTO user (user_email) VALUES ('crwinter@uncg.edu')";
+    
     // insert into player table
     while (($row = fgetcsv($file_1)) !== FALSE) {
         $stmt = $connection->prepare($query_str_plr);
@@ -224,6 +228,21 @@ try{
 
         $stmt->execute();
     }
+
+    //insert into injury table
+
+    //insert into user table (hardcoded for now)
+    $stmt = $connection->prepare($person1_qry);
+    $stmt->execute();
+
+    $stmt = $connection->prepare($person2_qry);
+    $stmt->execute();
+
+    $stmt = $connection->prepare($person3_qry);
+    $stmt->execute();
+
+    $stmt = $connection->prepare($person4_qry);
+    $stmt->execute();
 
 } catch(PDOexecption $error){
     echo "Database connection error: " . $error->getmessage() . "<BR>";
