@@ -70,6 +70,82 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
         return 0
     return int(total)
 
+
+def _retrieve_player_avg_data(player_id : str, retreived_data : str, table_name: str, position = None) -> int:
+    total = -1
+    try:
+    
+        db, cursor = _connect_to_database()
+        query = None
+        if position == None:
+
+            query = ''' SELECT SUM(%s) AS total, COUNT(*) AS cnt
+                        FROM %s
+                        WHERE player_id = \"%s\"
+            '''%(retreived_data, table_name, player_id)
+        else:
+            query = ''' SELECT SUM(%s) AS total
+                        FROM %s
+                        WHERE player_id = \"%s\" AND pos = \"%s\"
+            '''%(retreived_data, table_name, player_id, position)
+        data = ps.read_sql(query, db)
+
+        total = data["total"] / data["cnt"]
+        
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    else:
+        _end_database_connection(db, cursor)
+
+    #TODO: Check to make sure that it is ok to return 0 if no data is found.
+    if total[0] == None:
+        return 0
+    return int(total)
+
+
+
+def _retrieve_player_max_data(player_id : str, retreived_data : str, table_name: str, position = None) -> int:
+    total = -1
+    try:
+    
+        db, cursor = _connect_to_database()
+        query = None
+        if position == None:
+
+            query = ''' SELECT MAX(%s) AS total
+                        FROM %s
+                        WHERE player_id = \"%s\"
+            '''%(retreived_data, table_name, player_id)
+        else:
+            query = ''' SELECT MAX(%s) AS total
+                        FROM %s
+                        WHERE player_id = \"%s\" AND pos = \"%s\"
+            '''%(retreived_data, table_name, player_id, position)
+        data = ps.read_sql(query, db)
+
+        total = data["total"]
+        
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    else:
+        _end_database_connection(db, cursor)
+
+    #TODO: Check to make sure that it is ok to return 0 if no data is found.
+    if total[0] == None:
+        return 0
+    return int(total)
+
+
 def _retrieve_team_total_data(team : str, retreived_data : str, table_name: str) -> int:
     total = -1
     try:
@@ -699,6 +775,9 @@ def player_rec_yds_total(player_id : str) -> int:
     return  _retrieve_player_total_data(player_id, retreived_data, table_name = used_table_name)
 
 
+
+
+
 def player_rush_td_weekly(player_id : str) -> list[int]:
   retreived_data = "rush_td"
   
@@ -1059,8 +1138,152 @@ def team_pass_yds_total(team : str) -> list[int]:
     return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
 
 
-print(get_player_weeks("RodgAa00"))
-print(get_player_months("RodgAa00"))
+
+def player_avg_rec_yds(player_id : str) -> int:
+
+    retreived_data = "rec_yds"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_rec_yds(player_id : str) -> int:
+
+    retreived_data = "rec_yds"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_pass_cmp(player_id : str) -> int:
+
+    retreived_data = "pass_cmp"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_pass_cmp(player_id : str) -> int:
+
+    retreived_data = "pass_cmp"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_pass_td(player_id : str) -> int:
+
+    retreived_data = "pass_td"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_pass_td(player_id : str) -> int:
+
+    retreived_data = "pass_td"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_rush_td(player_id : str) -> int:
+
+    retreived_data = "rush_td"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_rush_td(player_id : str) -> int:
+
+    retreived_data = "rush_td"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_pass_yds(player_id : str) -> int:
+
+    retreived_data = "pass_yds"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_pass_yds(player_id : str) -> int:
+
+    retreived_data = "pass_yds"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_rush_yds(player_id : str) -> int:
+
+    retreived_data = "rush_yds"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_rush_yds(player_id : str) -> int:
+
+    retreived_data = "rush_yds"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_rush_att(player_id : str) -> int:
+
+    retreived_data = "rush_att"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_rush_att(player_id : str) -> int:
+
+    retreived_data = "rush_att"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_rec_td(player_id : str) -> int:
+
+    retreived_data = "rec_td"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_rec_td(player_id : str) -> int:
+
+    retreived_data = "rec_td"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_targets(player_id : str) -> int:
+
+    retreived_data = "targets"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_targets(player_id : str) -> int:
+
+    retreived_data = "targets"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_comb_pass_rush_play(player_id : str) -> int:
+
+    retreived_data = "comb_pass_rush_play"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_comb_pass_rush_play(player_id : str) -> int:
+
+    retreived_data = "comb_pass_rush_play"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+        
+
+def player_avg_comb_pass_play(player_id : str) -> int:
+
+    retreived_data = "comb_pass_play"
+
+    return _retrieve_player_avg_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+def player_max_comb_pass_play(player_id : str) -> int:
+
+    retreived_data = "comb_pass_play"
+
+    return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
+
+
+print(player_avg_rec_yds("ValdMa00"))
+print(player_max_rec_yds("ValdMa00"))
 
 print("_____________________________________")
 
