@@ -1,4 +1,5 @@
 DROP TABLE IF EXISTS nfl_pass_rush_receive_raw_data;
+DROP TABLE IF EXISTS predictions;
 DROP TABLE IF EXISTS injury;
 DROP TABLE IF EXISTS game_stats_player;
 DROP TABLE IF EXISTS game_stats_team;
@@ -162,10 +163,45 @@ CREATE TABLE game_stats_player (
     foreign key (player_id) references player(player_id)
 );
 CREATE TABLE injury (
-    player_id       varchar(20)     not null,
-    startDate       DATE,
-    endDate         DATE,
-    type            varchar(20),
-    severity        numeric(2,0),
+    player_name        varchar(20)      not null,
+    position           varchar(20)      not null,
+    injury_type        varchar(20),
+    practice_status    varchar(20),
+    game_status        varchar(20),
+    primary key (player_name, position)
+);
+CREATE TABLE predictions (
+    player_id        varchar(20)     not null,
+    pass_att_weekly  int(3),
+    pass_cmp_weekly  int(3),
+    pass_yds_weekly  int(3),
+    pass_td_weekly   int(3),
+    pass_att_monthly int(3),
+    pass_cmp_monthly int(3),
+    pass_yds_monthly int(3),
+    pass_td_monthly  int(3),
+    pass_att_total   int(3),
+    pass_cmp_total   int(3),
+    pass_yds_total   int(3),
+    pass_td_total    int(3),
+    targets_weekly   int(3),
+    rec_weekly       int(3),
+    rec_td_weekly    int(3),
+    rec_yds_weekly   int(3),
+    targets_monthly  int(3),
+    rec_monthly      int(3),
+    rec_td_monthly   int(3),
+    rec_yds_monthly  int(3),
+    targets_total    int(3),
+    rush_td_weekly   int(3),
+    rush_att_weekly  int(3),
+    rush_yds_weekly  int(3),
+    rush_td_monthly  int(3),
+    rush_att_monthly int(3),
+    rush_yds_monthly int(3),
+    rush_td_total    int(3),
+    rush_att_total   int(3),
+    rush_yds_total   int(3),
+    primary key (player_id),
     foreign key (player_id) references player(player_id)
 );
