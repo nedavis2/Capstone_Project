@@ -18,7 +18,7 @@ db_password = ""
 db_user = "root"
 
 used_table_name = "nfl_pass_rush_receive_raw_data"
-
+PREDICTION_TABLE_NAME = "prediction" #TODO: Replace with actual prediction table name
 
 RETRIEVE_PLAYER_TOTAL_DATA = 1
 RETRIEVE_PLAYER_TIME_DATA = 2
@@ -275,6 +275,43 @@ def get_team_dates(team_id : str, weekly = True):
 #NOTE: Seperate data into weeks.
 #result includes gamedate + stat for weekly/monthly data
 #directly interact with database
+
+
+
+def _get_player_prediction_value(player_id : str,retreived_data : str, table_name: str = PREDICTION_TABLE_NAME):
+
+    #TODO: Remove this section once the prediction table is added.
+    print("NOTE: The prediction table needs to be implemented before this function can be used.")
+    return 0
+    data = -1
+    try:
+    
+        db, cursor = _connect_to_database()
+        query =  ''' SELECT * AS data
+                        FROM %s
+                        WHERE player_id = \"%s\"
+            '''%(table_name, player_id)
+        
+        data = ps.read_sql(query, db)
+
+        output = data[retreived_data]
+        
+    except mysql.connector.Error as err:
+        if err.errno == errorcode.ER_ACCESS_DENIED_ERROR:
+            print("Something is wrong with your user name or password")
+        elif err.errno == errorcode.ER_BAD_DB_ERROR:
+            print("Database does not exist")
+        else:
+            print(err)
+    else:
+        _end_database_connection(db, cursor)
+
+    #TODO: Check to make sure that it is ok to return 0 if no data is found.
+    if output[0] == None:
+        return 0
+    return int(output[retreived_data])
+
+
 
 
 def get_team_weeks(team_id : str):
@@ -958,10 +995,74 @@ def player_quarterback_pass_td_total(player_id : str) -> int:
 
 
 
+def team_comb_pass_rush_play_weekly(team : str) -> list[int]:
+    retreived_data = "comb_pass_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_comb_pass_rush_play_monthly(team : str) -> list[int]:
+    retreived_data = "comb_pass_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_comb_pass_play_weekly(team : str) -> list[int]:
+    retreived_data = "comb_pass_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_comb_pass_play_monthly(team : str) -> list[int]:
+    retreived_data = "comb_pass_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+
+def team_comb_rush_play_weekly(team : str) -> list[int]:
+    retreived_data = "comb_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_comb_rush_play_monthly(team : str) -> list[int]:
+    retreived_data = "comb_rush_play"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+
+def team_rush_yds_weekly(team : str) -> list[int]:
+    retreived_data = "rush_yds"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_rush_yds_monthly(team : str) -> list[int]:
+    retreived_data = "rush_yds"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+def team_pass_yds_weekly(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = True)
+
+def team_pass_yds_monthly(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_data(team,retreived_data = retreived_data, table_name = used_table_name, weekly = False)
+
+
+def team_rush_yds_total(team : str) -> list[int]:
+    retreived_data = "rush_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+def team_pass_yds_total(team : str) -> list[int]:
+    retreived_data = "pass_yds"
+
+    return _retrieve_team_total_data(team,retreived_data = retreived_data, table_name = used_table_name)
+
+
 print(get_player_weeks("RodgAa00"))
 print(get_player_months("RodgAa00"))
 
 print("_____________________________________")
 
 print(get_team_weeks("GNB"))
-print(get_team_months("GNB"))
+print(team_comb_rush_play_weekly("GNB"))
