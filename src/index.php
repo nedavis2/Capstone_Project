@@ -20,13 +20,18 @@ if (isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <link rel="stylesheet" href="/resources/demos/style.css">
+    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
+
 
     <title>Silicon Stadium</title>
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
@@ -63,50 +68,70 @@ if (isset($_SESSION['email'])) {
     ?>
 
     <div id="homePageData">
-        
 
-        <div class="homeSearchBar">
-            <form method="post" action="player.php">
-                <div id="playerSearchBar">
-                    <select id="playerSelect" name="playerSelect">
 
-                        <?php
-                        $stmt = $connection->prepare("SELECT DISTINCT player_id, player, pos 
+        <?php
+        $stmt = $connection->prepare("SELECT DISTINCT player_id, player, pos 
+    FROM nfl_pass_rush_receive_raw_data ORDER BY player ASC;");
+        $stmt->execute();
+        $results = $stmt->fetchAll();
+        //$final = array_column($results, 'player', 'player_id');
+
+
+        ?>
+
+    
+        </head>
+
+        <body>
+
+            <div class="ui-widget">
+                <label for="tags">Tags: </label>
+                <input id="tags">
+            </div>
+
+            <div class="homeSearchBar">
+                <form method="post" action="player.php">
+                    <div id="playerSearchBar">
+                        <select id="playerSelect" name="playerSelect">
+
+                            <?php
+                            $stmt = $connection->prepare("SELECT DISTINCT player_id, player, pos 
                     FROM nfl_pass_rush_receive_raw_data ORDER BY player ASC;");
-                        $stmt->execute();
-                        $results = $stmt->fetchAll();
-                        for ($idx = 0; $idx < count($results); $idx++) {
-                            $p = $results[$idx];
-                            print("<option value=\"" . $p['player_id'] . "," . $p['player'] . "," . $p['pos'] . "\">"
-                                . $p['player'] . "</option>");
-                        }
-                        ?>
+                            $stmt->execute();
+                            $results = $stmt->fetchAll();
+                            for ($idx = 0; $idx < count($results); $idx++) {
+                                $p = $results[$idx];
+                                print("<option value=\"" . $p['player_id'] . "," . $p['player'] . "," . $p['pos'] . "\">"
+                                    . $p['player'] . "</option>");
+                            }
+                            ?>
 
-                    </select>
-                    <button onclick="location.href='../src/player'" id="playerButton">Search</button>
-                </div>
-            </form>
+                        </select>
+                        <button onclick="location.href='../src/player'" id="playerButton">Search</button>
+                    </div>
+                </form>
 
-            <form method="post" class="searchBar" action="team.php">
-                <div id="teamSearchBar">
-                    <select id="teamSelect" name="teamSelect">
+                <form method="post" class="searchBar" action="team.php">
+                    <div id="teamSearchBar">
+                        <select id="teamSelect" name="teamSelect">
 
-                        <?php
-                        $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data;");
-                        $stmt->execute();
-                        $results = $stmt->fetchAll();
-                        for ($idx = 0; $idx < count($results); $idx++) {
-                            $p = $results[$idx];
-                            print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
-                        }
-                        $connection = null;
-                        ?>
+                            <?php
+                            $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data;");
+                            $stmt->execute();
+                            $results = $stmt->fetchAll();
+                            for ($idx = 0; $idx < count($results); $idx++) {
+                                $p = $results[$idx];
+                                print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
+                            }
+                            $connection = null;
+                            ?>
 
-                    </select>
-                    <button onclick="location.href='../src/team.php'" id="teamButton">Search</button>
-                </div>
-            </form>
-        </div>
+                        </select>
+                        <button onclick="location.href='../src/team.php'" id="teamButton">Search</button>
+                    </div>
+                </form>
+            </div>
 
     </div>
     <script>
@@ -151,4 +176,3 @@ if (isset($_SESSION['email'])) {
 </body>
 
 </html>
-

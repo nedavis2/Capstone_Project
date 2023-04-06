@@ -62,18 +62,17 @@ def player_rusher_view_total(player_id: str):
 
 
 def player_primary_view(player_id: str, pos: str):
-    match pos:
-        case 'QB':
+    if (pos == 'QB'):
             return (player_qb_view(player_id) + "#" + player_qb_view_month(player_id) + "#" 
                     + player_qb_view_total(player_id) + "#" + player_rusher_view( player_id) + "#" 
                     + player_rusher_view_month( player_id) + "#" + player_rusher_view_total( player_id) + "#"
                     + str(get_player_dates(player_id)) + "#" + str(get_player_dates(player_id, False)))
-        case 'RB':
+    elif(pos == 'RB'):
             return (player_rusher_view( player_id) + "#" + player_rusher_view_month( player_id) + "#" 
                     + player_rusher_view_total( player_id) + "#" + player_receiver_view(player_id) + "#" 
                     + player_receiver_view_month(player_id) + "#" + player_receiver_view_total(player_id) + "#"
                     + str(get_player_dates(player_id))  + "#" + str(get_player_dates(player_id, False)))
-        case 'WR':
+    else:
             return (player_receiver_view(player_id) + "#" + player_receiver_view_month(player_id) + "#" 
                     + player_receiver_view_total(player_id) + "#" + str(get_player_dates(player_id))
                      + "#" + str(get_player_dates(player_id, False)))
@@ -82,7 +81,7 @@ def player_primary_view(player_id: str, pos: str):
 
           
 #print(player_primary_view('RodgAa00','QB'))
-print(player_primary_view('FullAa01','WR'))
+#print(player_primary_view('FullAa01','WR'))
 #print(player_primary_view('TonyRo00','TE'))
 #print(player_primary_view('JoneAa00','RB'))
 #print(get_player_dates('RodgAa00'))
@@ -153,11 +152,11 @@ def team_receiever_view_total(team: str):
             + 'rec_td_total' + str(team_rec_td_total(team)) 
             + 'rec_yds_total' + str(team_rec_yds_total(team)))
     
-def team_primary_view(team: str):
-    return ('qb view' + str(team_qb_view(team)) + 'qb view month' 
-            + str(team_qb_view_month(team)) + 'qb view total' + str(team_qb_view_total(team))
-            + 'rb view' + str(team_rushing_view(team)) + 'rb view month' + str(team_rushing_view_month(team)) 
-            + 'rb view total' + str(team_rushing_view_total(team)) + 'receiver view' + str(team_receiever_view(team)) 
-            + 'receiever view month' + str(team_receiever_view_month(team)) + 'receiver view total' 
-            + str(team_receiever_view_total(team)))
     
+def team_primary_view(team: str):
+    return (str(team_qb_view(team)) + '#' + str(team_qb_view_month(team)) + '#' + str(team_qb_view_total(team)) + '#' 
+            + str(team_rushing_view(team)) + '#' + str(team_rushing_view_month(team)) + '#' 
+            + str(team_rushing_view_total(team)) + '#' + str(team_receiever_view(team)) + '#' 
+            + str(team_receiever_view_month(team)) + '#' + str(team_receiever_view_total(team)) + "#"
+            + str(get_team_dates(team, True)) + "#" + str(get_team_dates(team, False)))
+
