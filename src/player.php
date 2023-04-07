@@ -20,6 +20,8 @@
 
     <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>-->
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
+    <script src="https://malsup.github.io/jquery.form.js"></script>
 
 
     <title>Silicon Stadium</title>
@@ -71,6 +73,18 @@
         $result_set = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input));
     }
 
+    /*$selectedPlayer_2 = $_POST['playerSelect_2'];
+    if (empty($selectedPlayer_2)) {
+        echo ('No player 2 selected');
+    } else {
+
+        $player_2 = explode(",", $selectedPlayer_2);
+        $pos_2 = $player_2[2];
+        $player_input_2 = $player_2[0] . "," . $player_2[2];
+
+        $result_set_2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input_2));
+    }*/
+
     ?>
 
 
@@ -103,6 +117,9 @@
                 var data = <?php echo json_encode($result_set); ?>;
                 var pos = <?php echo json_encode($pos); ?>;
 
+                /*var data_2 = <?php echo json_encode($result_set_2); ?>;
+                var pos_2 = <?php echo json_encode($pos_2); ?>;*/
+
                 if (pos == "QB") {
 
                     var [pass_att_weekly, pass_cmp_weekly, pass_yds_weekly, pass_td_weekly,
@@ -112,6 +129,14 @@
                         rush_td_monthly, rush_att_monthly, rush_yds_monthly,
                         rush_td_total, rush_att_total, rush_yds_total, player_dates, player_dates_months
                     ] = data.split('#');
+
+                    /*var [p2_pass_att_weekly, p2_pass_cmp_weekly, p2_pass_yds_weekly, p2_pass_td_weekly,
+                        p2_pass_att_monthly, p2_pass_cmp_monthly, p2_pass_yds_monthly, p2_pass_td_monthly,
+                        p2_pass_att_total, p2_pass_cmp_total, p2_pass_yds_total, p2_pass_td_total,
+                        p2_rush_td_weekly, p2_rush_att_weekly, p2_rush_yds_weekly,
+                        p2_rush_td_monthly, p2_rush_att_monthly, p2_rush_yds_monthly,
+                        p2_rush_td_total, p2_rush_att_total, p2_rush_yds_total, p2_player_dates, p2_player_dates_months
+                    ] = data_2.split('#');*/
 
                 } else if (pos == "RB") {
 
@@ -125,6 +150,16 @@
                         player_dates, player_dates_months
                     ] = data.split('#');
 
+                    /*var [
+                        p2_rush_td_weekly, p2_rush_att_weekly, p2_rush_yds_weekly,
+                        p2_rush_td_monthly, p2_rush_att_monthly, p2_rush_yds_monthly,
+                        p2_rush_td_total, p2_rush_att_total, p2_rush_yds_total,
+                        p2_targets_weekly, p2_rec_weekly, p2_rec_td_weekly, p2_rec_yds_weekly,
+                        p2_targets_monthly, p2_rec_monthly, p2_rec_td_monthly, p2_rec_yds_monthly,
+                        p2_targets_total, p2_rec_total, p2_rec_td_total, p2_rec_yds_total,
+                        p2_player_dates, p2_player_dates_months
+                    ] = data_2.split('#');*/
+
                 } else {
 
                     var [targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
@@ -132,6 +167,12 @@
                         targets_total, rec_total, rec_td_total, rec_yds_total,
                         player_dates, player_dates_months
                     ] = data.split('#');
+
+                    /*var [p2_targets_weekly, p2_rec_weekly, p2_rec_td_weekly, p2_rec_yds_weekly,
+                        p2_targets_monthly, p2_rec_monthly, p2_rec_td_monthly, p2_rec_yds_monthly,
+                        p2_targets_total, p2_rec_total, p2_rec_td_total, p2_rec_yds_total,
+                        p2_player_dates, p2_player_dates_months
+                    ] = data_2.split('#');*/
 
                 }
             </script>
@@ -715,13 +756,20 @@
                             }
                         });
 
-                    }else if(pos == 'RB') {
+                    } else if (pos == 'RB') {
 
-                        pass_cmp_pie = pass_cmp_total / pass_att_total
-                        pass_td_pie = pass_td_total / pass_cmp_total
+
                         rush_td_pie = rush_td_total / rush_att_total
+                        rec_td_pie = rec_td_total / targets_total
+                        rush_td_total
+                        rush_att_total
+                        rush_yds_total
+                        targets_total
+                        rec_total
+                        rec_td_total
+                        rec_yds_total
 
-                        var pieLabels = ['pass_cmp', 'pass_inc', ];
+                        var pieLabels = ['rush_yds_pct', 'rec_yds_ct', ];
 
                         new Chart("totalChart1", {
                             type: "pie",
@@ -730,16 +778,16 @@
                                 datasets: [{
 
                                     backgroundColor: ["green", "red"],
-                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
-                                    labels: ['pass_cmp', 'pass_inc']
+                                    data: [rush_att_total, targets_total],
+                                    labels: ['rush_att', 'targets']
                                 }, {
                                     backgroundColor: ["orange", "yellow"],
-                                    data: [pass_td_pie, 1 - pass_td_pie],
-                                    labels: ['pass_td', 'pass_no_td']
-                                }, {
-                                    backgroundColor: ["indigo", "cornflowerblue"],
                                     data: [rush_td_pie, 1 - rush_td_pie],
                                     labels: ['rush_td', 'rush_no_td']
+                                }, {
+                                    backgroundColor: ["indigo", "cornflowerblue"],
+                                    data: [rec_td_pie, 1 - rec_td_pie],
+                                    labels: ['rec_td', 'rec_no_td']
                                 }]
                             },
                             options: {
@@ -759,13 +807,13 @@
                             }
                         });
 
-                    }else {
+                    } else {
 
-                        pass_cmp_pie = pass_cmp_total / pass_att_total
-                        pass_td_pie = pass_td_total / pass_cmp_total
-                        rush_td_pie = rush_td_total / rush_att_total
+                        rec_pie = rec_total / targets_total
+                        rec_td_total_pie = rec_td_total / targets_total
+                        rec_td_cmp_pie = rec_td_total / rec_total
 
-                        var pieLabels = ['pass_cmp', 'pass_inc', ];
+                        var pieLabels = ['rec_pie', 'incompletes', ];
 
                         new Chart("totalChart1", {
                             type: "pie",
@@ -774,16 +822,16 @@
                                 datasets: [{
 
                                     backgroundColor: ["green", "red"],
-                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
-                                    labels: ['pass_cmp', 'pass_inc']
+                                    data: [rec_pie, 1 - rec_pie],
+                                    labels: ['rec_pie', 'incompletes']
                                 }, {
                                     backgroundColor: ["orange", "yellow"],
-                                    data: [pass_td_pie, 1 - pass_td_pie],
-                                    labels: ['pass_td', 'pass_no_td']
+                                    data: [rec_td_total_pie, 1 - rec_td_total_pie],
+                                    labels: ['rec_td_all', 'target_no_td']
                                 }, {
                                     backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rush_td_pie, 1 - rush_td_pie],
-                                    labels: ['rush_td', 'rush_no_td']
+                                    data: [rec_td_cmp_pie, 1 - rec_td_cmp_pie],
+                                    labels: ['rec_td_cmp', 'rec_cmp_no_td']
                                 }]
                             },
                             options: {
@@ -807,9 +855,280 @@
                 </script>
 
             </div>
-            <div class="tab-pane fade" id="comparison-tab-pane" role="tabpanel" aria-labelledby="comparison-tab" tabindex="0">
+            <!--<div class="tab-pane fade" id="comparison-tab-pane" role="tabpanel" aria-labelledby="comparison-tab" tabindex="0">
                 comparison-tab
-            </div>
+                <div id="test"></div>
+
+
+
+                <form id="myForm" action="team_data_fetch_test.py" method="post">
+                    Choose a second player for comparison
+                    <select id="player2Select" name="player2Select">
+
+                        <?php
+                        $stmt = $connection->prepare("SELECT DISTINCT player_id, player, pos 
+                            FROM nfl_pass_rush_receive_raw_data WHERE pos = ? ORDER BY player ASC;");
+                        $stmt->bindParam(1, $pos, PDO::PARAM_STR);
+                        $stmt->execute();
+                        $results = $stmt->fetchAll();
+                        for ($idx = 0; $idx < count($results); $idx++) {
+                            $p = $results[$idx];
+                            print("<option value=\"" . $p['player_id'] . "," . $p['player'] . "," . $p['pos'] . "\">"
+                                . $p['player'] . "</option>");
+                        }
+
+                        ?>
+
+                    </select>
+                    <input type="submit" value="Choose player" />
+                </form>
+
+
+                <form action="" method="post">
+                    
+                    <select name="state" onchange="getValue(this)">
+
+                        <?php
+                        $stmt = $connection->prepare("SELECT DISTINCT player_id, player, pos 
+                            FROM nfl_pass_rush_receive_raw_data WHERE pos = ? ORDER BY player ASC;");
+                        $stmt->bindParam(1, $pos, PDO::PARAM_STR);
+                        $stmt->execute();
+                        $results = $stmt->fetchAll();
+                        for ($idx = 0; $idx < count($results); $idx++) {
+                            $p = $results[$idx];
+                            print("<option value=\"" . $p['player_id'] . "," . $p['player'] . "," . $p['pos'] . "\">"
+                                . $p['player'] . "</option>");
+                        }
+
+                        ?>
+
+                    </select>
+                    <input type="submit" value="Submit">
+                </form>
+                <script>
+                    function getValue(obj) {
+                        var player_2 = obj.value;
+                        alert(obj.value);
+                    }
+                </script>
+                <?php
+
+
+                if (isset($_POST["submit"])) {
+
+                    $selected_player_2 = $_POST["submit"];
+                    $player_2 = explode(",", $player_2);
+                    $pos_2 = $player_2[2];
+                    $player_input = $player_2[0] . "," . $player_2[2];
+
+                    $result_set_2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input_2));
+                }
+
+                ?>
+
+                <script>
+                    var data_2 = <?php echo json_encode($result_set_2); ?>;
+                    var pos_2 = <?php echo json_encode($pos_2); ?>;
+
+                    if (pos == "QB") {
+
+                        var [p2_pass_att_weekly, p2_pass_cmp_weekly, p2_pass_yds_weekly, p2_pass_td_weekly,
+                            p2_pass_att_monthly, p2_pass_cmp_monthly, p2_pass_yds_monthly, p2_pass_td_monthly,
+                            p2_pass_att_total, p2_pass_cmp_total, p2_pass_yds_total, p2_pass_td_total,
+                            p2_rush_td_weekly, p2_rush_att_weekly, p2_rush_yds_weekly,
+                            p2_rush_td_monthly, p2_rush_att_monthly, p2_rush_yds_monthly,
+                            p2_rush_td_total, p2_rush_att_total, p2_rush_yds_total, p2_player_dates, p2_player_dates_months
+                        ] = data.split('#');
+
+                    } else if (pos == "RB") {
+
+                        var [
+                            p2_rush_td_weekly, p2_rush_att_weekly, p2_rush_yds_weekly,
+                            p2_rush_td_monthly, p2_rush_att_monthly, p2_rush_yds_monthly,
+                            p2_rush_td_total, p2_rush_att_total, p2_rush_yds_total,
+                            p2_targets_weekly, p2_rec_weekly, p2_rec_td_weekly, p2_rec_yds_weekly,
+                            p2_targets_monthly, p2_rec_monthly, p2_rec_td_monthly, p2_rec_yds_monthly,
+                            p2_targets_total, p2_rec_total, p2_rec_td_total, p2_rec_yds_total,
+                            p2_player_dates, p2_player_dates_months
+                        ] = data.split('#');
+
+                    } else {
+
+                        var [p2_targets_weekly, p2_rec_weekly, p2_rec_td_weekly, p2_rec_yds_weekly,
+                            p2_targets_monthly, p2_rec_monthly, p2_rec_td_monthly, p2_rec_yds_monthly,
+                            p2_targets_total, p2_rec_total, p2_rec_td_total, p2_rec_yds_total,
+                            p2_player_dates, p2_player_dates_months
+                        ] = data.split('#');
+
+                    }
+                </script>
+
+                <canvas id="compareChart1" style="width:40%; max-width:1000px"></canvas>
+                <canvas id="totalChart1" style="width:70%;max-width:700px"></canvas>
+                <canvas id="totalChart2" style="width:30%;max-width:400px"></canvas>
+                <canvas id="totalChart3" style="width:30%;max-width:400px"></canvas>
+
+
+                <script>
+                    if (pos == 'QB') {
+
+                        pass_cmp_pie = pass_cmp_total / pass_att_total
+                        pass_td_pie = pass_td_total / pass_cmp_total
+                        rush_td_pie = rush_td_total / rush_att_total
+                        pass_att_weekly, pass_cmp_weekly, pass_yds_weekly, pass_td_weekly,
+                        pass_att_monthly, pass_cmp_monthly, pass_yds_monthly, pass_td_monthly,
+                        pass_att_total, pass_cmp_total, pass_yds_total, pass_td_total,
+                        rush_td_weekly, rush_att_weekly, rush_yds_weekly,
+                        rush_td_monthly, rush_att_monthly, rush_yds_monthly,
+                        rush_td_total, rush_att_total, rush_yds_total, player_dates, player_dates_months
+
+
+
+
+
+
+
+
+                        var pieLabels = ['pass_cmp', 'pass_inc', ];
+
+                        new Chart("totalChart1", {
+                            type: "pie",
+                            data: {
+                                labels: pieLabels,
+                                datasets: [{
+
+                                    backgroundColor: ["green", "red"],
+                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                    labels: ['pass_cmp', 'pass_inc']
+                                }, {
+                                    backgroundColor: ["orange", "yellow"],
+                                    data: [pass_td_pie, 1 - pass_td_pie],
+                                    labels: ['pass_td', 'pass_no_td']
+                                }, {
+                                    backgroundColor: ["indigo", "cornflowerblue"],
+                                    data: [rush_td_pie, 1 - rush_td_pie],
+                                    labels: ['rush_td', 'rush_no_td']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                                            var index = tooltipItem.index;
+                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                    } else if (pos == 'RB') {
+
+                        p1_games = player_dates.split(",")
+                        p1_games_count = p1_games.size()
+                        p1_rush_td_cmp = rush_td_total / p1_games_count
+                        p1_rec_td_cmp = rec_td_total / p1_games_count
+                        p1_comb_att_cmp = rush_att_total + p2_targets_total
+
+                        p2_games = p2_player_dates.split(",")
+                        p2_games_count = p2_games.size()
+                        p2_rush_td_cmp = p2_rush_td_total / p2_games_count
+                        p2_rec_td_cmp = p2_rec_td_total / p2_games_count
+                        p2_comb_att_cmp = p2_rush_att_total + p2_targets_total
+
+
+
+                        var pieLabels = ['p1_rush_td', 'p1_rec_td', 'non_td_play', ];
+
+                        new Chart("totalChart1", {
+                            type: "pie",
+                            data: {
+                                labels: pieLabels,
+                                datasets: [{
+
+                                    backgroundColor: ["blue", "red", "yellow"],
+                                    data: [p1_rush_td_cmp, p1_rec_td_cmp, rush_att_total - p1_rush_td_cmp],
+                                    labels: ['p1_rush_td', 'p1_rec_td', 'p2_non_td_play']
+                                }, {
+                                    backgroundColor: ["orange", "yellow"],
+                                    data: [p2_rush_td_cmp, p2_rec_td_cmp, p2_rush_att_total - p2_rush_td_cmp],
+                                    labels: ['p2_rush_td', 'p2_rec_td', 'p2_non_td_play']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                                            var index = tooltipItem.index;
+                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                    } else {
+
+                        rec_pie = rec_total / targets_total
+                        rec_td_total_pie = rec_td_total / targets_total
+                        rec_td_cmp_pie = rec_td_total / rec_total
+
+                        targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
+                        targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
+                        targets_total, rec_total, rec_td_total, rec_yds_total,
+                        player_dates, player_dates_months
+
+                        var pieLabels = ['rec_pie', 'incompletes', ];
+
+                        new Chart("totalChart1", {
+                            type: "pie",
+                            data: {
+                                labels: pieLabels,
+                                datasets: [{
+
+                                    backgroundColor: ["green", "red"],
+                                    data: [rec_pie, 1 - rec_pie],
+                                    labels: ['rec_pie', 'incompletes']
+                                }, {
+                                    backgroundColor: ["orange", "yellow"],
+                                    data: [rec_td_total_pie, 1 - rec_td_total_pie],
+                                    labels: ['rec_td_all', 'target_no_td']
+                                }, {
+                                    backgroundColor: ["indigo", "cornflowerblue"],
+                                    data: [rec_td_cmp_pie, 1 - rec_td_cmp_pie],
+                                    labels: ['rec_td_cmp', 'rec_cmp_no_td']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                                            var index = tooltipItem.index;
+                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+                </script>
+            </div>-->
         </div>
 
 
