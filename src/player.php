@@ -16,6 +16,11 @@
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+    <!--<script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.5.0/Chart.js"></script>-->
+    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
+
 
     <title>Silicon Stadium</title>
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
@@ -407,11 +412,11 @@
 
 
 
-                <canvas id="weeklyChart1M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="monthlyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-                <canvas id="weeklyChart2M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="monthlyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-                <canvas id="weeklyChart3M" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                <canvas id="monthlyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
                 <script>
                     if (pos == 'QB') {
@@ -426,7 +431,7 @@
                         player_dates_months = player_dates_months.split(",").slice(-17);
 
 
-                        new Chart("weeklyChart1M", {
+                        new Chart("monthlyChart1", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -454,7 +459,7 @@
                             }
                         });
 
-                        new Chart("weeklyChart2M", {
+                        new Chart("monthlyChart2", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -477,7 +482,7 @@
                             }
                         });
 
-                        new Chart("weeklyChart3M", {
+                        new Chart("monthlyChart3", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -514,7 +519,7 @@
                         player_dates_months = player_dates_months.split(",").slice(-17);
 
 
-                        new Chart("weeklyChart1M", {
+                        new Chart("monthlyChart1", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -537,7 +542,7 @@
                             }
                         });
 
-                        new Chart("weeklyChart2M", {
+                        new Chart("monthlyChart2", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -560,7 +565,7 @@
                             }
                         });
 
-                        new Chart("weeklyChart3M", {
+                        new Chart("monthlyChart3", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -593,7 +598,7 @@
                         player_dates_months = player_dates_months.split(",").slice(-17);
 
 
-                        new Chart("weeklyChart1M", {
+                        new Chart("monthlyChart1", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -616,7 +621,7 @@
                             }
                         });
 
-                        new Chart("weeklyChart2M", {
+                        new Chart("monthlyChart2", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -634,7 +639,7 @@
                             }
                         });
 
-                        new Chart("weeklyChart3M", {
+                        new Chart("monthlyChart3", {
                             type: "line",
                             data: {
                                 labels: player_dates_months,
@@ -653,13 +658,158 @@
                         });
 
                     }
-
-
                 </script>
 
             </div>
-            <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">This is where the receiving chart goes</div>
-            <div class="tab-pane fade" id="comparison-tab-pane" role="tabpanel" aria-labelledby="comparison-tab" tabindex="0">...</div>
+            <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">
+
+                This is where the receiving chart goes
+                <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
+                <!--<canvas id="totalChart1" style="width:70%;max-width:700px"></canvas>
+                <canvas id="totalChart2" style="width:30%;max-width:400px"></canvas>
+                <canvas id="totalChart3" style="width:30%;max-width:400px"></canvas>-->
+
+
+                <script>
+                    if (pos == 'QB') {
+
+                        pass_cmp_pie = pass_cmp_total / pass_att_total
+                        pass_td_pie = pass_td_total / pass_cmp_total
+                        rush_td_pie = rush_td_total / rush_att_total
+
+                        var pieLabels = ['pass_cmp', 'pass_inc', ];
+
+                        new Chart("totalChart1", {
+                            type: "pie",
+                            data: {
+                                labels: pieLabels,
+                                datasets: [{
+
+                                    backgroundColor: ["green", "red"],
+                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                    labels: ['pass_cmp', 'pass_inc']
+                                }, {
+                                    backgroundColor: ["orange", "yellow"],
+                                    data: [pass_td_pie, 1 - pass_td_pie],
+                                    labels: ['pass_td', 'pass_no_td']
+                                }, {
+                                    backgroundColor: ["indigo", "cornflowerblue"],
+                                    data: [rush_td_pie, 1 - rush_td_pie],
+                                    labels: ['rush_td', 'rush_no_td']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                                            var index = tooltipItem.index;
+                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                    }else if(pos == 'RB') {
+
+                        pass_cmp_pie = pass_cmp_total / pass_att_total
+                        pass_td_pie = pass_td_total / pass_cmp_total
+                        rush_td_pie = rush_td_total / rush_att_total
+
+                        var pieLabels = ['pass_cmp', 'pass_inc', ];
+
+                        new Chart("totalChart1", {
+                            type: "pie",
+                            data: {
+                                labels: pieLabels,
+                                datasets: [{
+
+                                    backgroundColor: ["green", "red"],
+                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                    labels: ['pass_cmp', 'pass_inc']
+                                }, {
+                                    backgroundColor: ["orange", "yellow"],
+                                    data: [pass_td_pie, 1 - pass_td_pie],
+                                    labels: ['pass_td', 'pass_no_td']
+                                }, {
+                                    backgroundColor: ["indigo", "cornflowerblue"],
+                                    data: [rush_td_pie, 1 - rush_td_pie],
+                                    labels: ['rush_td', 'rush_no_td']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                                            var index = tooltipItem.index;
+                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                    }else {
+
+                        pass_cmp_pie = pass_cmp_total / pass_att_total
+                        pass_td_pie = pass_td_total / pass_cmp_total
+                        rush_td_pie = rush_td_total / rush_att_total
+
+                        var pieLabels = ['pass_cmp', 'pass_inc', ];
+
+                        new Chart("totalChart1", {
+                            type: "pie",
+                            data: {
+                                labels: pieLabels,
+                                datasets: [{
+
+                                    backgroundColor: ["green", "red"],
+                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                    labels: ['pass_cmp', 'pass_inc']
+                                }, {
+                                    backgroundColor: ["orange", "yellow"],
+                                    data: [pass_td_pie, 1 - pass_td_pie],
+                                    labels: ['pass_td', 'pass_no_td']
+                                }, {
+                                    backgroundColor: ["indigo", "cornflowerblue"],
+                                    data: [rush_td_pie, 1 - rush_td_pie],
+                                    labels: ['rush_td', 'rush_no_td']
+                                }]
+                            },
+                            options: {
+                                responsive: true,
+                                legend: {
+                                    display: false,
+                                },
+                                tooltips: {
+                                    callbacks: {
+                                        label: function(tooltipItem, data) {
+                                            var dataset = data.datasets[tooltipItem.datasetIndex];
+                                            var index = tooltipItem.index;
+                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                        }
+                                    }
+                                }
+                            }
+                        });
+
+                    }
+                </script>
+
+            </div>
+            <div class="tab-pane fade" id="comparison-tab-pane" role="tabpanel" aria-labelledby="comparison-tab" tabindex="0">
+                comparison-tab
+            </div>
         </div>
 
 
