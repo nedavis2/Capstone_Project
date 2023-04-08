@@ -26,9 +26,7 @@
     error_reporting(E_ALL);
     ini_set('display_errors', True);
     echo session_save_path();
-    
-
-   
+    echo "<a href='logout.php'>Logout</a>";
 
 
     if (isset($_SESSION['userid'])) {
@@ -41,7 +39,6 @@
     require 'php/DBconnect.php';
     $connection = connect();
     ?>
-
     <div id="homePageData">
         <div class="all">
             <button class="navLink" onclick="location.href='../src/index.php'">Home</button>

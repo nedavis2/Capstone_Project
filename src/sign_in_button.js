@@ -1,6 +1,7 @@
 function init() {
     document.getElementById('customBtn').addEventListener('click', function () {
-        signInWithGoogle();
+        window.location.href = "http://localhost/capstone_project/src/login.php"
+        //signInWithGoogle();
     });
 }
 
@@ -12,7 +13,7 @@ function signInWithGoogle() {
     var authUrl = 'https://accounts.google.com/o/oauth2/v2/auth';
     var responseType = 'id_token';
     var scope = 'email profile openid';
-    var redirectUri = 'http://localhost/Capstone_Project/src/index.php';
+    var redirectUri = 'http://localhost/Capstone_Project/src/login.php';
     var nonce = Math.random().toString(36).substring(2, 15);
 
     var url = authUrl + '?' +
