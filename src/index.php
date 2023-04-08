@@ -25,17 +25,19 @@
     require_once 'config.php';
     error_reporting(E_ALL);
     ini_set('display_errors', True);
-    echo session_save_path();
-    echo "<a href='logout.php'>Logout</a>";
+
 
 
     if (isset($_SESSION['userid'])) {
-        echo "user is loggen in " . $_SESSION['name'] . "!";
+        echo " Welcome " . $_SESSION['name'] . "!";
         if (isset($_SESSION['email'])) {
             echo " Your email is " . $_SESSION['email'];
+            echo " ";
         }
     }
-
+    echo " To exit click ";
+    echo "<a href='logout.php'>Logout</a>";
+    echo " ";
     require 'php/DBconnect.php';
     $connection = connect();
     ?>
