@@ -25,6 +25,14 @@ RETRIEVE_PLAYER_TIME_DATA = 2
 RETRiEVE_TEAM_DATA = 3
 
 
+PLAYER_TABLE = "game_stats_player" 
+GAME_TABLE = "game"
+WEATHER_TABLE = "weather"
+USER_TABLE = "user"
+TEAM_TABLE = "game_stats_team"
+INJURY_TABLE = "injury"
+PREDICTIONS_TABLE = "predictions"
+
 def _connect_to_database(db_user = db_user, db_host = db_host, db_password = db_password, db_name = db_name):
     db = mysql.connector.connect(user=db_user, password=db_password, host=db_host, database=db_name)
     cursor = db.cursor()
@@ -34,7 +42,7 @@ def _end_database_connection(db, cursor):
     db.close()
     cursor.close()
 
-def _retrieve_player_total_data(player_id : str, retreived_data : str, table_name: str, position = None) -> int:
+def _retrieve_player_total_data(player_id : str, retreived_data : str, table_name: str = PLAYER_TABLE, position = None) -> int:
     total = -1
     try:
     
@@ -71,7 +79,7 @@ def _retrieve_player_total_data(player_id : str, retreived_data : str, table_nam
     return int(total)
 
 
-def _retrieve_player_avg_data(player_id : str, retreived_data : str, table_name: str, position = None) -> int:
+def _retrieve_player_avg_data(player_id : str, retreived_data : str, table_name: str = PLAYER_TABLE, position = None) -> int:
     total = -1
     try:
     
@@ -109,7 +117,7 @@ def _retrieve_player_avg_data(player_id : str, retreived_data : str, table_name:
 
 
 
-def _retrieve_player_max_data(player_id : str, retreived_data : str, table_name: str, position = None) -> int:
+def _retrieve_player_max_data(player_id : str, retreived_data : str, table_name: str = PLAYER_TABLE, position = None) -> int:
     total = -1
     try:
     
@@ -146,7 +154,7 @@ def _retrieve_player_max_data(player_id : str, retreived_data : str, table_name:
     return int(total)
 
 
-def _retrieve_team_total_data(team : str, retreived_data : str, table_name: str) -> int:
+def _retrieve_team_total_data(team : str, retreived_data : str, table_name: str = TEAM_TABLE) -> int:
     total = -1
     try:
     
@@ -182,7 +190,7 @@ def get_weekly_or_monthly(weekly = True):
         return "MONTH"
 
 #TODO: ask if I should filter by when a player held a certion position.
-def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str, weekly : bool = True, position = None) -> list[int]:
+def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name: str = PLAYER_TABLE, weekly : bool = True, position = None) -> list[int]:
     data = None
     try:
     
@@ -232,7 +240,7 @@ def _retrieve_player_time_data(player_id : str, retreived_data : str, table_name
         _end_database_connection(db, cursor)
     return data["value"].to_list()
 
-def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly : bool = True, position = None) -> list[int]:
+def _retrieve_team_data(team : str,retreived_data : str, table_name: str = TEAM_TABLE, weekly : bool = True, position = None) -> list[int]:
     data = None
     try:
     
@@ -286,7 +294,6 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
 
 def get_player_dates(player_id : str, weekly = True):
     data = None
-    player_table = "nfl_pass_rush_receive_raw_data" #TODO: Change to new table after table spliting
     try:
     
         db, cursor = _connect_to_database()
@@ -298,7 +305,7 @@ def get_player_dates(player_id : str, weekly = True):
                     WHERE player_id = "%s"
                     GROUP BY CONCAT(YEAR(game_date), '/', %s(game_date))
                     ORDER BY date ASC
-        '''%(player_table, player_id, get_weekly_or_monthly(weekly))
+        '''%(PLAYER_TABLE, player_id, get_weekly_or_monthly(weekly))
 
         data = ps.read_sql(query, db)
         
@@ -320,7 +327,6 @@ def get_player_dates(player_id : str, weekly = True):
 
 def get_team_dates(team_id : str, weekly = True):
     data = None
-    team_table = "nfl_pass_rush_receive_raw_data" #TODO: Change to new table after table spliting
     try:
     
         db, cursor = _connect_to_database()
@@ -330,7 +336,7 @@ def get_team_dates(team_id : str, weekly = True):
                     WHERE team = "%s"
                     GROUP BY CONCAT(YEAR(game_date), '/', %s(game_date))
                     ORDER BY date ASC
-        '''%(team_table, team_id, get_weekly_or_monthly(weekly))
+        '''%(TEAM_TABLE, team_id, get_weekly_or_monthly(weekly))
 
         data = ps.read_sql(query, db)
     except mysql.connector.Error as err:
