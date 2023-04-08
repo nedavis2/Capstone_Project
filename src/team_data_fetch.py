@@ -1282,10 +1282,10 @@ def player_max_comb_pass_play(player_id : str) -> int:
     return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data, table_name = used_table_name)
 
 
-print(player_avg_rec_yds("ValdMa00"))
-print(player_max_rec_yds("ValdMa00"))
+#print(player_avg_rec_yds("ValdMa00"))
+#print(player_max_rec_yds("ValdMa00"))
 
 print("_____________________________________")
 
-print(get_team_weeks("GNB"))
-print(team_comb_rush_play_weekly("GNB"))
+#print(get_team_weeks("GNB"))
+#print(team_comb_rush_play_weekly("GNB"))
