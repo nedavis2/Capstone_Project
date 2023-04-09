@@ -107,14 +107,14 @@ if (isset($_SESSION['email'])) {
                         <select id="playerSelect" name="playerSelect">
 
                             <?php
-                            $stmt = $connection->prepare("SELECT DISTINCT player_id, player, pos 
-                    FROM nfl_pass_rush_receive_raw_data ORDER BY player ASC;");
+                            $stmt = $connection->prepare("SELECT DISTINCT player_id, pName, pos 
+                    FROM player ORDER BY pName ASC;");
                             $stmt->execute();
                             $results = $stmt->fetchAll();
                             for ($idx = 0; $idx < count($results); $idx++) {
                                 $p = $results[$idx];
-                                print("<option value=\"" . $p['player_id'] . "," . $p['player'] . "," . $p['pos'] . "\">"
-                                    . $p['player'] . "</option>");
+                                print("<option value=\"" . $p['player_id'] . "," . $p['pName'] . "," . $p['pos'] . "\">"
+                                    . $p['pName'] . "</option>");
                             }
                             ?>
 
@@ -128,7 +128,7 @@ if (isset($_SESSION['email'])) {
                         <select id="teamSelect" name="teamSelect">
 
                             <?php
-                            $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data;");
+                            $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table;");
                             $stmt->execute();
                             $results = $stmt->fetchAll();
                             for ($idx = 0; $idx < count($results); $idx++) {
