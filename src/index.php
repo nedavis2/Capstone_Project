@@ -84,22 +84,9 @@ if (isset($_SESSION['email'])) {
     <div id="homePageData">
 
 
-        <?php
-        $stmt = $connection->prepare("SELECT DISTINCT player_id, player, pos 
-    FROM nfl_pass_rush_receive_raw_data ORDER BY player ASC;");
-        $stmt->execute();
-        $results = $stmt->fetchAll();
-        
-        ?>
-
         </head>
 
         <body>
-
-            <div class="ui-widget">
-                <label for="tags">Tags: </label>
-                <input id="tags">
-            </div>
 
             <div class="homeSearchBar">
                 <form method="post" action="player.php">

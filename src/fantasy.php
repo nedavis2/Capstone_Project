@@ -38,11 +38,11 @@
 
     <?php
     require 'php/DBconnect.php';
-    $user_name = 'lww1117';
+    $user_email = 'lww1117';
 
     $connection = connect();
-    $stmt = $connection->prepare("SELECT * FROM user WHERE user_id=?");
-    $stmt->execute([$user_name]);
+    $stmt = $connection->prepare("SELECT * FROM user WHERE user_email=?");
+    $stmt->execute([$user_email]);
     $result = $stmt->fetch();
     ?>
 
