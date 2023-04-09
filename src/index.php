@@ -62,6 +62,7 @@ if (isset($_SESSION['email'])) {
     <?php
     $_SESSION["TEST"] = True;
     require_once 'config.php';
+    require 'php/DBconnect.php';
     error_reporting(E_ALL);
     ini_set('display_errors', True);
 
@@ -77,7 +78,7 @@ if (isset($_SESSION['email'])) {
     echo " To exit click ";
     echo "<a href='logout.php'>Logout</a>";
     echo " ";
-    require 'php/DBconnect.php';
+    
     $connection = connect();
     ?>
     <div id="homePageData">
@@ -88,12 +89,9 @@ if (isset($_SESSION['email'])) {
     FROM nfl_pass_rush_receive_raw_data ORDER BY player ASC;");
         $stmt->execute();
         $results = $stmt->fetchAll();
-        //$final = array_column($results, 'player', 'player_id');
-
-
+        
         ?>
 
-    
         </head>
 
         <body>
@@ -147,43 +145,11 @@ if (isset($_SESSION['email'])) {
             </div>
 
     </div>
-    <script>
-        const triggerTabList = document.querySelectorAll('#myTab button')
-        triggerTabList.forEach(triggerEl => {
-            const tabTrigger = new bootstrap.Tab(triggerEl)
-
-            triggerEl.addEventListener('click', event => {
-                event.preventDefault()
-                tabTrigger.show()
-            })
-        })
-    </script>
+    
 
     </div>
-    <ul class="nav nav-tabs" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home-tab-pane" type="button" role="tab" aria-controls="home-tab-pane" aria-selected="true">Passer</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile-tab-pane" type="button" role="tab" aria-controls="profile-tab-pane" aria-selected="false">Rushing</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="false">Receiving</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="disabled-tab" data-bs-toggle="tab" data-bs-target="#disabled-tab-pane" type="button" role="tab" aria-controls="disabled-tab-pane" aria-selected="false" disabled>Disabled</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="home-tab-pane" role="tabpanel" aria-labelledby="home-tab" tabindex="0">
-            This is where the Passer chart will be</div>
-        <div class="tab-pane fade" id="profile-tab-pane" role="tabpanel" aria-labelledby="profile-tab" tabindex="0">
-            This is where the rusher chart will be</div>
-        <div class="tab-pane fade" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-            This is where the receiving chart goes</div>
-        <div class="tab-pane fade" id="disabled-tab-pane" role="tabpanel" aria-labelledby="disabled-tab" tabindex="0">
-            ...</div>
-    </div>
+    
+    
 
 
 </body>
