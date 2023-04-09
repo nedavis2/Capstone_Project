@@ -157,4 +157,4 @@ def team_primary_view(team: str):
             + team_receiever_view_month(team) + '#' + team_receiever_view_total(team) + "#"
             + str(get_team_dates(team, True)) + "#" + str(get_team_dates(team, False)))
 
-#team_qb_view_total('GNB')
+print(get_team_dates('GNB'))

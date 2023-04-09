@@ -73,20 +73,7 @@
         $result_set = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input));
     }
 
-    /*$selectedPlayer_2 = $_POST['playerSelect_2'];
-    if (empty($selectedPlayer_2)) {
-        echo ('No player 2 selected');
-    } else {
-
-        $player_2 = explode(",", $selectedPlayer_2);
-        $pos_2 = $player_2[2];
-        $player_input_2 = $player_2[0] . "," . $player_2[2];
-
-        $result_set_2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input_2));
-    }*/
-
     ?>
-
 
     <div id="playerPageData">
 
@@ -97,11 +84,6 @@
         </div>
 
         <div id="playerPageData">
-
-
-
-            <p id="demo"></p>
-
 
             <script>
                 const triggerTabList = document.querySelectorAll('#myTab button')
@@ -117,9 +99,6 @@
                 var data = <?php echo json_encode($result_set); ?>;
                 var pos = <?php echo json_encode($pos); ?>;
 
-                /*var data_2 = <?php echo json_encode($result_set_2); ?>;
-                var pos_2 = <?php echo json_encode($pos_2); ?>;*/
-
                 if (pos == "QB") {
 
                     var [pass_att_weekly, pass_cmp_weekly, pass_yds_weekly, pass_td_weekly,
@@ -129,14 +108,6 @@
                         rush_td_monthly, rush_att_monthly, rush_yds_monthly,
                         rush_td_total, rush_att_total, rush_yds_total, player_dates, player_dates_months
                     ] = data.split('#');
-
-                    /*var [p2_pass_att_weekly, p2_pass_cmp_weekly, p2_pass_yds_weekly, p2_pass_td_weekly,
-                        p2_pass_att_monthly, p2_pass_cmp_monthly, p2_pass_yds_monthly, p2_pass_td_monthly,
-                        p2_pass_att_total, p2_pass_cmp_total, p2_pass_yds_total, p2_pass_td_total,
-                        p2_rush_td_weekly, p2_rush_att_weekly, p2_rush_yds_weekly,
-                        p2_rush_td_monthly, p2_rush_att_monthly, p2_rush_yds_monthly,
-                        p2_rush_td_total, p2_rush_att_total, p2_rush_yds_total, p2_player_dates, p2_player_dates_months
-                    ] = data_2.split('#');*/
 
                 } else if (pos == "RB") {
 
@@ -150,16 +121,6 @@
                         player_dates, player_dates_months
                     ] = data.split('#');
 
-                    /*var [
-                        p2_rush_td_weekly, p2_rush_att_weekly, p2_rush_yds_weekly,
-                        p2_rush_td_monthly, p2_rush_att_monthly, p2_rush_yds_monthly,
-                        p2_rush_td_total, p2_rush_att_total, p2_rush_yds_total,
-                        p2_targets_weekly, p2_rec_weekly, p2_rec_td_weekly, p2_rec_yds_weekly,
-                        p2_targets_monthly, p2_rec_monthly, p2_rec_td_monthly, p2_rec_yds_monthly,
-                        p2_targets_total, p2_rec_total, p2_rec_td_total, p2_rec_yds_total,
-                        p2_player_dates, p2_player_dates_months
-                    ] = data_2.split('#');*/
-
                 } else {
 
                     var [targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
@@ -168,16 +129,12 @@
                         player_dates, player_dates_months
                     ] = data.split('#');
 
-                    /*var [p2_targets_weekly, p2_rec_weekly, p2_rec_td_weekly, p2_rec_yds_weekly,
-                        p2_targets_monthly, p2_rec_monthly, p2_rec_td_monthly, p2_rec_yds_monthly,
-                        p2_targets_total, p2_rec_total, p2_rec_td_total, p2_rec_yds_total,
-                        p2_player_dates, p2_player_dates_months
-                    ] = data_2.split('#');*/
-
                 }
+
+                player_dates = player_dates.split(",").slice(-17);
+                player_dates_months = player_dates_months.split(",").slice(-17);
+
             </script>
-
-
 
         </div>
         <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -204,7 +161,6 @@
 
                 <canvas id="weeklyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
-
                 <script>
                     if (pos == 'QB') {
 
@@ -215,8 +171,6 @@
                         rush_td_weekly = rush_td_weekly.split(",").slice(-17);
                         rush_att_weekly = rush_att_weekly.split(",").slice(-17);
                         rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
-                        player_dates = player_dates.split(",").slice(-17);
-
 
                         new Chart("weeklyChart1", {
                             type: "line",
@@ -292,7 +246,6 @@
                             }
                         });
 
-
                     } else if (pos == 'RB') {
 
                         rush_td_weekly = rush_td_weekly.split(",").slice(-17);
@@ -302,8 +255,6 @@
                         rec_weekly = rec_weekly.split(",").slice(-17);
                         rec_td_weekly = rec_td_weekly.split(",").slice(-17);
                         rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
-                        player_dates = player_dates.split(",").slice(-17);
-
 
                         new Chart("weeklyChart1", {
                             type: "line",
@@ -374,15 +325,12 @@
                             }
                         });
 
-
                     } else {
 
                         targets_weekly = targets_weekly.split(",").slice(-17);
                         rec_weekly = rec_weekly.split(",").slice(-17);
                         rec_td_weekly = rec_td_weekly.split(",").slice(-17);
                         rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
-                        player_dates = player_dates.split(",").slice(-17);
-
 
                         new Chart("weeklyChart1", {
                             type: "line",
@@ -446,17 +394,11 @@
                     }
                 </script>
 
-                <p id="demo"></p>
-
             </div>
             <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
 
-
-
                 <canvas id="monthlyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
                 <canvas id="monthlyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
                 <canvas id="monthlyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
                 <script>
@@ -469,8 +411,6 @@
                         rush_td_monthly = rush_td_monthly.split(",").slice(-17);
                         rush_att_monthly = rush_att_monthly.split(",").slice(-17);
                         rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
-                        player_dates_months = player_dates_months.split(",").slice(-17);
-
 
                         new Chart("monthlyChart1", {
                             type: "line",
@@ -546,7 +486,6 @@
                             }
                         });
 
-
                     } else if (pos == 'RB') {
 
                         rush_td_monthly = rush_td_monthly.split(",").slice(-17);
@@ -557,8 +496,7 @@
                         rec_monthly = rec_monthly.split(",").slice(-17);
                         rec_td_monthly = rec_td_monthly.split(",").slice(-17);
                         rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
-                        player_dates_months = player_dates_months.split(",").slice(-17);
-
+                        
 
                         new Chart("monthlyChart1", {
                             type: "line",
@@ -629,15 +567,12 @@
                             }
                         });
 
-
                     } else {
 
                         targets_monthly = targets_monthly.split(",").slice(-17);
                         rec_monthly = rec_monthly.split(",").slice(-17);
                         rec_td_monthly = rec_td_monthly.split(",").slice(-17);
                         rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
-                        player_dates_months = player_dates_months.split(",").slice(-17);
-
 
                         new Chart("monthlyChart1", {
                             type: "line",
@@ -703,14 +638,9 @@
 
             </div>
             <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">
-
-                This is where the receiving chart goes
+                
                 <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
-                <!--<canvas id="totalChart1" style="width:70%;max-width:700px"></canvas>
-                <canvas id="totalChart2" style="width:30%;max-width:400px"></canvas>
-                <canvas id="totalChart3" style="width:30%;max-width:400px"></canvas>-->
-
-
+                
                 <script>
                     if (pos == 'QB') {
 
@@ -758,17 +688,6 @@
 
                     } else if (pos == 'RB') {
 
-
-                        rush_td_pie = rush_td_total / rush_att_total
-                        rec_td_pie = rec_td_total / targets_total
-                        rush_td_total
-                        rush_att_total
-                        rush_yds_total
-                        targets_total
-                        rec_total
-                        rec_td_total
-                        rec_yds_total
-
                         var pieLabels = ['rush_yds_pct', 'rec_yds_ct', ];
 
                         new Chart("totalChart1", {
@@ -782,11 +701,11 @@
                                     labels: ['rush_att', 'targets']
                                 }, {
                                     backgroundColor: ["orange", "yellow"],
-                                    data: [rush_td_pie, 1 - rush_td_pie],
+                                    data: [rush_td_total, rush_att_total - rush_td_total],
                                     labels: ['rush_td', 'rush_no_td']
                                 }, {
                                     backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rec_td_pie, 1 - rec_td_pie],
+                                    data: [rec_td_total, rec_total - rec_td_total],
                                     labels: ['rec_td', 'rec_no_td']
                                 }]
                             },
@@ -809,10 +728,6 @@
 
                     } else {
 
-                        rec_pie = rec_total / targets_total
-                        rec_td_total_pie = rec_td_total / targets_total
-                        rec_td_cmp_pie = rec_td_total / rec_total
-
                         var pieLabels = ['rec_pie', 'incompletes', ];
 
                         new Chart("totalChart1", {
@@ -822,16 +737,16 @@
                                 datasets: [{
 
                                     backgroundColor: ["green", "red"],
-                                    data: [rec_pie, 1 - rec_pie],
-                                    labels: ['rec_pie', 'incompletes']
+                                    data: [rec_total, targets_total - rec_total],
+                                    labels: ['receptions', 'incompletes']
                                 }, {
                                     backgroundColor: ["orange", "yellow"],
-                                    data: [rec_td_total_pie, 1 - rec_td_total_pie],
-                                    labels: ['rec_td_all', 'target_no_td']
+                                    data: [rec_td_total, targets_total - rec_td_total],
+                                    labels: ['reception td: all targets', 'target no td']
                                 }, {
                                     backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rec_td_cmp_pie, 1 - rec_td_cmp_pie],
-                                    labels: ['rec_td_cmp', 'rec_cmp_no_td']
+                                    data: [rec_td_total, rec_total - rec_td_total],
+                                    labels: ['reception td: all completions', 'completion no td']
                                 }]
                             },
                             options: {
