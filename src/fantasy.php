@@ -38,7 +38,7 @@
 
     <?php
     require 'php/DBconnect.php';
-    $user_email = 'lww1117';
+    $user_email = 'lww1117@gmail.com';
 
     $connection = connect();
     $stmt = $connection->prepare("SELECT * FROM user WHERE user_email=?");
