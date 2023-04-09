@@ -354,7 +354,7 @@ def get_team_dates(team_id : str, weekly = True):
     #print(data["date"].to_list())
     
     
-    data["date"] = str(data["date"])
+    
     return data["date"].to_list()
 #NOTE: Seperate data into weeks.
 #result includes gamedate + stat for weekly/monthly data
