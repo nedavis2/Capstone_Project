@@ -322,7 +322,8 @@ def get_player_dates(player_id : str, weekly = True):
         _end_database_connection(db, cursor)
     #print(data["value"].to_list())
     #print(data["date"].to_list())
-
+    
+    data["date"] = ps.to_datetime(data["date"])
     return data["date"].to_list()
 
 def get_team_dates(team_id : str, weekly = True):
@@ -346,13 +347,14 @@ def get_team_dates(team_id : str, weekly = True):
             print("Database does not exist")
         else:
             print(err)
-
         return [-1]
     else:
         _end_database_connection(db, cursor)
     #print(data["value"].to_list())
     #print(data["date"].to_list())
-
+    
+    
+    data["date"] = ps.to_datetime(data["date"])
     return data["date"].to_list()
 #NOTE: Seperate data into weeks.
 #result includes gamedate + stat for weekly/monthly data
