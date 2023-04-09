@@ -77,7 +77,7 @@ def _retrieve_team_total_data(team : str, retreived_data : str, table_name: str)
         db, cursor = _connect_to_database()
         query =  ''' SELECT SUM(%s) AS total
                         FROM %s
-                        WHERE team = \"%s\"
+                        WHERE teamName = \"%s\"
             '''%(retreived_data, table_name, team)
         
         data = ps.read_sql(query, db)
@@ -162,14 +162,14 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str, weekly
 
             query = '''SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
-                        WHERE team = \"%s\"
+                        WHERE teamName = \"%s\"
                         GROUP BY date ASC
                         ORDER BY date ASC
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team)
         else:
             query = ''' SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
-                        WHERE team = \"%s\" AND pos = \"%s\"
+                        WHERE teamName = \"%s\" AND pos = \"%s\"
                         GROUP BY date ASC
                         ORDER BY date ASC
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team, position)
@@ -243,7 +243,7 @@ def get_team_dates(team_id : str):
         
         query = ''' SELECT DISTINCT game_date AS date
                     FROM %s
-                    WHERE team = "%s"
+                    WHERE teamName = "%s"
                     ORDER BY date ASC
         '''%(team_table, team_id)
 
