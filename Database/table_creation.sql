@@ -36,10 +36,23 @@ CREATE TABLE weather (
     foreign key (game_id) references game(game_id)
 );
 CREATE TABLE user (
-    user_id         varchar(20)     not null,
-    saved_player    varchar(20),
-    primary key (user_id),
-    foreign key (saved_player) references player(player_id)
+    user_email      varchar(30)     not null,
+    QB              varchar(20),
+    RB_1            varchar(20),
+    RB_2            varchar(20),
+    WR_1            varchar(20),
+    WR_2            varchar(20),
+    TE              varchar(20),
+    Flex            varchar(20),
+    team            varchar(20),
+    primary key (user_email),
+    foreign key (QB) references player(player_id),
+    foreign key (RB_1) references player(player_id),
+    foreign key (RB_2) references player(player_id),
+    foreign key (WR_1) references player(player_id),
+    foreign key (WR_2) references player(player_id),
+    foreign key (TE) references player(player_id),
+    foreign key (Flex) references player(player_id)
 );
 CREATE TABLE game_stats_team (
     game_date                       DATE            not null,

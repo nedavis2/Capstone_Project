@@ -60,8 +60,22 @@ if (isset($_SESSION['email'])) {
     </nav>
 
     <?php
+    $_SESSION["TEST"] = True;
+    require_once 'config.php';
     error_reporting(E_ALL);
     ini_set('display_errors', True);
+    echo session_save_path();
+    
+
+   
+
+
+    if (isset($_SESSION['userid'])) {
+        echo "user is loggen in " . $_SESSION['name'] . "!";
+        if (isset($_SESSION['email'])) {
+            echo " Your email is " . $_SESSION['email'];
+        }
+    }
 
     require 'php/DBconnect.php';
     $connection = connect();
