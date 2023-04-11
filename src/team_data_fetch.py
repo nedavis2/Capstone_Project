@@ -323,7 +323,7 @@ def get_player_dates(player_id : str, weekly = True):
     #print(data["value"].to_list())
     #print(data["date"].to_list())
     
-    data["date"] = data["date"].apply(strftime('%Y-%m-%d'))
+    
     
     return data["date"].to_list()
 

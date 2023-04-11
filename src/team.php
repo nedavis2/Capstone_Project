@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../dist/css/style.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <title>Silicon Stadium</title>
@@ -32,16 +33,37 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../src/support.php">Support</a>
                     </li>
+                    <li class="nav-item nav-justify-content-end">
+                        <a class="nav-link" href="../src/logout.php">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <li class="nav-item" style="color:aliceblue">
+                <?php
+                $_SESSION["TEST"] = True;
+                require_once 'config.php';
+                require 'php/DBconnect.php';
+                error_reporting(E_ALL);
+                ini_set('display_errors', True);
+                $connection = connect();
+                if (isset($_SESSION['userid'])) {
+                    $user_id = $_SESSION['userid'];
+                    if (isset($_SESSION['email'])) {
+                        $user_email = $_SESSION['email'];
+                    } else {
+                        $user_email = 'dummyBOI@aol.com';
+                    }
+                } else {
+                    $user_name = 'guest';
+                }
+                echo $user_email;
+                ?>
+            </li>
         </div>
     </nav>
 
-    <?php
-    error_reporting(E_ALL);
-    ini_set('display_errors', True);
-    require 'php/DBconnect.php';
-    $connection = connect();
-    ?>
     <div id="teamPageData">
         <?php
         $selectedTeam = $_POST['teamSelect'];
@@ -81,7 +103,7 @@
         </script>
 
     </div>
-    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+    <ul class="nav nav-tabs nav-fill " id="myTab" role="tablist">
         <li class="nav-item" role="presentation">
             <button class="nav-link active" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly-tab-pane" type="button" role="tab" aria-controls="weekly-tab-pane" aria-selected="true">Weekly data</button>
         </li>
@@ -588,71 +610,14 @@
                 <div class="tab-pane fade show active" id="t-passing-tab-pane" role="tabpanel" aria-labelledby="t-passing-tab" tabindex="0">
 
                     <canvas id="totalChart1P" style="width:40%; max-width:1000px"></canvas>
-                    <canvas id="totalChart1P2" style="width:40%; max-width:1000px"></canvas>
-
-
 
                     <script>
                         pass_cmp_pie = pass_cmp_total / pass_att_total
                         pass_td_pie = pass_td_total / pass_cmp_total
 
-                        var pieLabels = ['pass_cmp', 'pass_inc', ];
+                        var pieLabels = [];
 
                         new Chart("totalChart1P", {
-                            type: "pie",
-                            data: {
-                                labels: pieLabels,
-                                datasets: [{
-
-                                    backgroundColor: ["green", "red"],
-                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
-                                    labels: ['completed pass', 'incomplete pass']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [pass_td_pie, 1 - pass_td_pie],
-                                    labels: ['passing td', 'pass no td']
-                                }, {
-
-                                    backgroundColor: ["green", "red"],
-                                    data: [rush_att_total, targets_total],
-                                    labels: ['rush attempt', 'passing attempt']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [rush_td_total, rush_att_total - rush_td_total],
-                                    labels: ['rushing td', 'rush no td']
-                                }, {
-                                    backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rush_yds_total, rec_yds_total],
-                                    labels: ['rush yds', 'reception yds']
-                                }, {
-
-                                    backgroundColor: ["green", "red"],
-                                    data: [rec_total, targets_total - rec_total],
-                                    labels: ['receptions', 'incompletes']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [rec_td_total, targets_total - rec_td_total],
-                                    labels: ['reception tds', 'target no td']
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                legend: {
-                                    display: false,
-                                },
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                                            var index = tooltipItem.index;
-                                            return dataset.labels[index] + ': ' + dataset.data[index];
-                                        }
-                                    }
-                                }
-                            }
-                        });
-
-                        new Chart("totalChart1P2", {
                             type: "pie",
                             data: {
                                 labels: pieLabels,
@@ -692,7 +657,7 @@
                     <canvas id="totalChart1R" style="width:40%; max-width:1000px"></canvas>
 
                     <script>
-                        var pieLabels = ['rush_yds_pct', 'rec_yds_ct', ];
+                        var pieLabels = [];
 
                         new Chart("totalChart1R", {
                             type: "pie",
@@ -779,53 +744,7 @@
 
             <div id=comparison-test-container>
 
-                <!--<form method="post" class="searchBar" action="team.php" target="_self">
 
-
-                    TODO- work on keeping originally selected
-                    <div id="teamSearchBar2">
-                        <select id="teamSelect2" name="teamSelect2">
-
-                            <?php
-                            if (isset($_POST['teamSelect2'])) {
-                                $selectedTeam2 = $_POST['teamSelect2'];
-                                echo "success";
-                            } else {
-                                $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data;");
-                                $stmt->execute();
-                                $results = $stmt->fetchAll();
-                                for ($idx = 0; $idx < count($results); $idx++) {
-                                    $p = $results[$idx];
-                                    print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
-                                }
-                            }
-                            $connection = null;
-
-
-                            ?>
-
-                            <script>
-                                $('#teamButton2').click(function() {
-                                    $.ajax({
-                                        url: "team.php",
-                                        data: {
-                                            txtsearch: $('#teamSelect2').val()
-                                        },
-                                        type: "GET",
-                                        dataType: "html",
-                                        success: function(data) {
-                                            $('#comparison-test-container').html($('#comparison-test-container', data).html());
-
-                                        },
-                                    });
-                                });
-                            </script>
-
-                        </select>
-                        <button onclick="location.href='../src/team.php'" id="teamButton2">Search</button>
-
-                    </div>
-                </form>-->
 
             </div>
 

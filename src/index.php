@@ -1,15 +1,3 @@
-<?php
-/*session_start();
-if (isset($_SESSION['email'])) {
-    $user_id = $_SESSION['email'];
-    // user is logged in, do something
-
-} else {
-    // user is not logged in, redirect to login page
-    header("Location: ../button.html");
-    exit();
-}*/ ?>
-
 <!DOCTYPE html>
 
 <!-- Tab name and css link-->
@@ -20,19 +8,16 @@ if (isset($_SESSION['email'])) {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <!--<link rel="stylesheet" href="/resources/demos/style.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
     <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-
     <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
     <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-
-
     <title>Silicon Stadium</title>
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
@@ -55,88 +40,82 @@ if (isset($_SESSION['email'])) {
                     <li class="nav-item">
                         <a class="nav-link" href="../src/support.php">Support</a>
                     </li>
+                    <li class="nav-item nav-justify-content-end">
+                        <a class="nav-link" href="../src/logout.php">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <li class="nav-item" style="color:aliceblue">
+                <?php
+                $_SESSION["TEST"] = True;
+                require_once 'config.php';
+                require 'php/DBconnect.php';
+                error_reporting(E_ALL);
+                ini_set('display_errors', True);
+                $connection = connect();
+                if (isset($_SESSION['userid'])) {
+                    $user_id = $_SESSION['userid'];
+                    if (isset($_SESSION['email'])) {
+                        $user_email = $_SESSION['email'];
+                    } else {
+                        $user_email = 'dummyBOI@aol.com';
+                    }
+                } else {
+                    $user_name = 'guest';
+                }
+                echo $user_email;
+                ?>
+            </li>
         </div>
     </nav>
 
-    <?php
-    $_SESSION["TEST"] = True;
-    require_once 'config.php';
-    require 'php/DBconnect.php';
-    error_reporting(E_ALL);
-    ini_set('display_errors', True);
-
-
-
-    if (isset($_SESSION['userid'])) {
-        echo " Welcome " . $_SESSION['name'] . "!";
-        if (isset($_SESSION['email'])) {
-            echo " Your email is " . $_SESSION['email'];
-            echo " ";
-        }
-    }
-    echo " To exit click ";
-    echo "<a href='logout.php'>Logout</a>";
-    echo " ";
-    
-    $connection = connect();
-    ?>
     <div id="homePageData">
 
+        <form method="post" action="player.php">
+            <div id="playerSearchBar">
+                <select id="playerSelect" name="playerSelect">
 
-        </head>
-
-        <body>
-
-            <div class="homeSearchBar">
-                <form method="post" action="player.php">
-                    <div id="playerSearchBar">
-                        <select id="playerSelect" name="playerSelect">
-
-                            <?php
-                            $stmt = $connection->prepare("SELECT DISTINCT player_id, pName, pos 
+                    <?php
+                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName, pos 
                     FROM player ORDER BY pName ASC;");
-                            $stmt->execute();
-                            $results = $stmt->fetchAll();
-                            for ($idx = 0; $idx < count($results); $idx++) {
-                                $p = $results[$idx];
-                                print("<option value=\"" . $p['player_id'] . "," . $p['pName'] . "," . $p['pos'] . "\">"
-                                    . $p['pName'] . "</option>");
-                            }
-                            ?>
+                    $stmt->execute();
+                    $results = $stmt->fetchAll();
+                    for ($idx = 0; $idx < count($results); $idx++) {
+                        $p = $results[$idx];
+                        print("<option value=\"" . $p['player_id'] . "," . $p['pName'] . "," . $p['pos'] . "\">"
+                            . $p['pName'] . "</option>");
+                    }
+                    ?>
 
-                        </select>
-                        <button onclick="location.href='../src/player'" id="playerButton">Search</button>
-                    </div>
-                </form>
-
-                <form method="post" class="searchBar" action="team.php">
-                    <div id="teamSearchBar">
-                        <select id="teamSelect" name="teamSelect">
-
-                            <?php
-                            $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table;");
-                            $stmt->execute();
-                            $results = $stmt->fetchAll();
-                            for ($idx = 0; $idx < count($results); $idx++) {
-                                $p = $results[$idx];
-                                print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
-                            }
-                            $connection = null;
-                            ?>
-
-                        </select>
-                        <button onclick="location.href='../src/team.php'" id="teamButton">Search</button>
-                    </div>
-                </form>
+                </select>
+                <button onclick="location.href='../src/player'" id="playerButton">Search</button>
             </div>
+        </form>
+
+        <form method="post" class="searchBar" action="team.php">
+            <div id="teamSearchBar">
+                <select id="teamSelect" name="teamSelect">
+
+                    <?php
+                    $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table ORDER BY team ASC;");
+                    $stmt->execute();
+                    $results = $stmt->fetchAll();
+                    for ($idx = 0; $idx < count($results); $idx++) {
+                        $p = $results[$idx];
+                        print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
+                    }
+                    $connection = null;
+                    ?>
+
+                </select>
+                <button onclick="location.href='../src/team.php'" id="teamButton">Search</button>
+            </div>
+        </form>
+
 
     </div>
-    
-
-    </div>
-    
-    
 
 
 </body>

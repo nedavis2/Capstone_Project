@@ -1,6 +1,7 @@
 from team_data_fetch import *
 
 
+
 def player_qb_view(player_id: str):
     return (str(player_quarterback_pass_att_weekly(player_id)) + '#' 
             + str(player_quarterback_pass_cmp_weekly(player_id)) + '#' 
@@ -39,6 +40,11 @@ def player_receiver_view_total(player_id: str):
            + str(player_rec_total(player_id)) + "#"
            + str(player_rec_td_total(player_id)) + "#"
            + str(player_rec_yds_total(player_id)))
+    
+def player_avg_rec_view(player_id: str):
+    return(str(player_avg_rec_yds(player_id)) + "#"
+           + str(player_avg_rec_td(player_id)) + "#"
+           + str(player_avg_targets(player_id)))
     
 def player_rusher_view(player_id: str):
     return(str(player_rush_td_weekly(player_id)) + "#"
@@ -80,11 +86,12 @@ def player_primary_view(player_id: str, pos: str):
             
 
           
+
 #print(player_primary_view('RodgAa00','QB'))
 #print(player_primary_view('FullAa01','WR'))
 #print(player_primary_view('TonyRo00','TE'))
 #print(player_primary_view('JoneAa00','RB'))
-print(get_player_dates('RodgAa00'))
+#print(get_player_dates('RodgAa00'))
 #print(get_team_dates(team))
 
 #print(player_receiver_view('JoneAa00'))
@@ -95,6 +102,8 @@ print(get_player_dates('RodgAa00'))
 #print(player_rec_weekly('JoneAa00'))
 #print(player_rec_td_weekly('JoneAa00'))
 #print(player_rec_yds_weekly('JoneAa00'))
+
+#print(player_avg_rec_view('JoneAa00'))
 
 
 
@@ -157,4 +166,4 @@ def team_primary_view(team: str):
             + team_receiever_view_month(team) + '#' + team_receiever_view_total(team) + "#"
             + str(get_team_dates(team, True)) + "#" + str(get_team_dates(team, False)))
 
-print(get_team_dates('GNB'))
+#print(get_team_dates('GNB'))

@@ -8,6 +8,7 @@
     <link rel="stylesheet" href="../dist/css/style.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <title>Silicon Stadium</title>
@@ -16,7 +17,7 @@
 
 <body id="fantasyPage">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="../src/index.php">
                 <img src="../src/picSource/favicon.ico" alt="Bootstrap" width="30" height="24">
@@ -32,18 +33,65 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../src/support.php">Support</a>
                     </li>
+                    <li class="nav-item nav-justify-content-end">
+                        <a class="nav-link" href="../src/logout.php">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <li class="nav-item" style="color:aliceblue">
+                <?php
+                $_SESSION["TEST"] = True;
+                require_once 'config.php';
+                require 'php/DBconnect.php';
+                error_reporting(E_ALL);
+                ini_set('display_errors', True);
+                $connection = connect();
+                if (isset($_SESSION['userid'])) {
+                    $user_id = $_SESSION['userid'];
+                    if (isset($_SESSION['email'])) {
+                        $user_email = $_SESSION['email'];
+                    } else {
+                        $user_email = 'dummyBOI@aol.com';
+                    }
+                } else {
+                    $user_name = 'guest';
+                }
+                echo $user_email;
+                ?>
+            </li>
         </div>
     </nav>
 
     <?php
+    /*$_SESSION["TEST"] = True;
+    require_once 'config.php';
     require 'php/DBconnect.php';
-    $user_email = 'lww1117@gmail.com';
+    error_reporting(E_ALL);
+    ini_set('display_errors', True);
+
+
+
+    if (isset($_SESSION['userid'])) {
+        echo " Welcome " . $_SESSION['name'] . "!";
+        if (isset($_SESSION['email'])) {
+            $user_email = $_SESSION['email'];
+            echo " Your email is " . $_SESSION['email'];
+            echo " ";
+        }
+    }
+    echo " To exit click ";
+    echo "<a href='logout.php'>Logout</a>";
+    echo " ";*/
+
+
 
     $connection = connect();
     $stmt = $connection->prepare("SELECT * FROM user WHERE user_email=?");
     $stmt->execute([$user_email]);
     $result = $stmt->fetch();
+
     ?>
 
 
@@ -92,6 +140,11 @@
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade show active" id="qb-tab-pane" role="tabpanel" aria-labelledby="qb-tab" tabindex="0">
                     test qb
+                    <?php
+                    $qb =  $result[1];
+
+                    ?>
+
                 </div>
                 <div class="tab-pane fade" id="rb-tab-pane" role="tabpanel" aria-labelledby="rb-tab" tabindex="0">
                     test rb
@@ -113,24 +166,24 @@
 
                     <div>
                         qb
-                        <form method="post" class="searchBar" action="fantasy.php">
+                        <form method="post" class="searchBar" action="fantasy_update.php">
                             <div id="qb-button">
                                 <select id="qb-button" name="qb-button">
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, player FROM nfl_pass_rush_receive_raw_data 
-                        WHERE pos = 'QB' ORDER BY player ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'QB' ORDER BY pName ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
                                         $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['player'] . "</option>");
+                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
                                     }
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="qb-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="qb-button">Search</button>
 
                             </div>
                         </form>
@@ -143,18 +196,18 @@
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, player FROM nfl_pass_rush_receive_raw_data 
-                        WHERE pos = 'RB' ORDER BY player ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'RB' ORDER BY pName ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
                                         $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['player'] . "</option>");
+                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
                                     }
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="rb1-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="rb1-button">Search</button>
 
                             </div>
                         </form>
@@ -167,18 +220,18 @@
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, player FROM nfl_pass_rush_receive_raw_data 
-                        WHERE pos = 'RB' ORDER BY player ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'RB' ORDER BY pName ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
                                         $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['player'] . "</option>");
+                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
                                     }
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="rb2-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="rb2-button">Search</button>
 
                             </div>
                         </form>
@@ -191,18 +244,18 @@
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, player FROM nfl_pass_rush_receive_raw_data 
-                        WHERE pos = 'WR' ORDER BY player ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'WR' ORDER BY pName ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
                                         $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['player'] . "</option>");
+                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
                                     }
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="wr1-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="wr1-button">Search</button>
 
                             </div>
                         </form>
@@ -215,18 +268,18 @@
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, player FROM nfl_pass_rush_receive_raw_data
-                        WHERE pos = 'WR' ORDER BY player ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player
+                        WHERE pos = 'WR' ORDER BY pName ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
                                         $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['player'] . "</option>");
+                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
                                     }
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="wr2-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="wr2-button">Search</button>
 
                             </div>
                         </form>
@@ -239,18 +292,18 @@
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, player FROM nfl_pass_rush_receive_raw_data 
-                        WHERE pos = 'TE' ORDER BY player ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'TE' ORDER BY pName ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
                                         $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['player'] . "</option>");
+                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
                                     }
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="te-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="te-button">Search</button>
 
                             </div>
                         </form>
@@ -263,18 +316,18 @@
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, player FROM nfl_pass_rush_receive_raw_data 
-                        WHERE pos = 'RB' OR pos = 'WR' OR pos = 'TE' ORDER BY player ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'RB' OR pos = 'WR' OR pos = 'TE' ORDER BY pName ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
                                         $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['player'] . "</option>");
+                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
                                     }
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="flx-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="flx-button">Search</button>
 
                             </div>
                         </form>
@@ -283,11 +336,11 @@
                         team
                         <form method="post" class="searchBar" action="fantasy.php">
                             <div id="team-button">
-                                <select id="team-button" name="team-button">
+                                <select id="f-team-button" name="f-team-button">
 
                                     <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT team FROM nfl_pass_rush_receive_raw_data ORDER BY team ASC;");
+                                    $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table ORDER BY team ASC;");
                                     $stmt->execute();
                                     $results = $stmt->fetchAll();
                                     for ($idx = 0; $idx < count($results); $idx++) {
@@ -297,7 +350,7 @@
                                     ?>
 
                                 </select>
-                                <button onclick="location.href='../src/fantasy.php'" id="team-button">Search</button>
+                                <button onclick="location.href='../src/fantasy_update.php'" id="f-team-button">Search</button>
 
                             </div>
                         </form>

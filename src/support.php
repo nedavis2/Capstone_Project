@@ -8,15 +8,16 @@
     <link rel="stylesheet" href="../dist/css/style.min.css">
     <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
+    <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
     <title>Silicon Stadium</title>
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
 
-<body id="supportPage">
+<body id="supportPage" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black, -4px 4px 0px yellow;">
 
-    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
+<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="../src/index.php">
                 <img src="../src/picSource/favicon.ico" alt="Bootstrap" width="30" height="24">
@@ -32,7 +33,34 @@
                     <li class="nav-item">
                         <a class="nav-link" href="../src/support.php">Support</a>
                     </li>
+                    <li class="nav-item nav-justify-content-end">
+                        <a class="nav-link" href="../src/logout.php">
+                            Logout
+                        </a>
+                    </li>
+                </ul>
             </div>
+            <li class="nav-item" style="color:aliceblue">
+                <?php
+                $_SESSION["TEST"] = True;
+                require_once 'config.php';
+                require 'php/DBconnect.php';
+                error_reporting(E_ALL);
+                ini_set('display_errors', True);
+                $connection = connect();
+                if (isset($_SESSION['userid'])) {
+                    $user_id = $_SESSION['userid'];
+                    if (isset($_SESSION['email'])) {
+                        $user_email = $_SESSION['email'];
+                    } else {
+                        $user_email = 'dummyBOI@aol.com';
+                    }
+                } else {
+                    $user_name = 'guest';
+                }
+                echo $user_email;
+                ?>
+            </li>
         </div>
     </nav>
 
