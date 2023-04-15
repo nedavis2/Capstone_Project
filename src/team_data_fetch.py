@@ -1,5 +1,6 @@
 import sys
 import subprocess
+from xmlrpc.client import DateTime
 #subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'mysql-connector-python'])
 # subprocess.check_call([sys.executable, '-m', 'pip', 'install', 'pandas', '--user'])
 
@@ -292,6 +293,11 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str = TEAM_
 
     return data["value"].to_list()
 
+def date_to_string(date : datetime.date):
+    '''Takes a date and returns it as an apropriate string'''
+    r = date
+
+    return r.strftime('%Y/%m/%d')
 def get_player_dates(player_id : str, weekly = True):
     data = None
     try:
@@ -323,9 +329,11 @@ def get_player_dates(player_id : str, weekly = True):
     #print(data["value"].to_list())
     #print(data["date"].to_list())
     
+    #TODO: Convert date to string
     
     
-    return data["date"].to_list()
+    data["date_string"] = data["date"].apply(date_to_string)
+    return data["date_string"].to_list()
 
 def get_team_dates(team_id : str, weekly = True):
     data = None
@@ -354,9 +362,9 @@ def get_team_dates(team_id : str, weekly = True):
     #print(data["value"].to_list())
     #print(data["date"].to_list())
     
-    
-    
-    return data["date"].to_list()
+    #TODO: Convert date to string
+    data["date_string"] = data["date"].apply(date_to_string)
+    return data["date_string"].to_list()
 #NOTE: Seperate data into weeks.
 #result includes gamedate + stat for weekly/monthly data
 #directly interact with database
@@ -1291,10 +1299,10 @@ def player_max_comb_pass_play(player_id : str) -> int:
     return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data)
 
 
-print(player_avg_rec_yds("ValdMa00"))
-print(player_max_rec_yds("ValdMa00"))
+#print(player_avg_rec_yds("ValdMa00"))
+#print(player_max_rec_yds("ValdMa00"))
 
 print("_____________________________________")
 
 print(get_team_weeks("GNB"))
-print(team_comb_rush_play_weekly("GNB"))
+#print(team_comb_rush_play_weekly("GNB"))
