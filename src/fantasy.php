@@ -17,7 +17,7 @@
 
 <body id="fantasyPage">
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="../src/index.php">
                 <img src="../src/picSource/favicon.ico" alt="Bootstrap" width="30" height="24">
@@ -65,25 +65,6 @@
     </nav>
 
     <?php
-    /*$_SESSION["TEST"] = True;
-    require_once 'config.php';
-    require 'php/DBconnect.php';
-    error_reporting(E_ALL);
-    ini_set('display_errors', True);
-
-
-
-    if (isset($_SESSION['userid'])) {
-        echo " Welcome " . $_SESSION['name'] . "!";
-        if (isset($_SESSION['email'])) {
-            $user_email = $_SESSION['email'];
-            echo " Your email is " . $_SESSION['email'];
-            echo " ";
-        }
-    }
-    echo " To exit click ";
-    echo "<a href='logout.php'>Logout</a>";
-    echo " ";*/
 
 
 
@@ -93,272 +74,418 @@
     $result = $stmt->fetch();
 
     ?>
+    <div id="fantasy-page-content" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
-
-    <div>
-        test
-    </div>
-    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved-tab-pane" type="button" role="tab" aria-controls="saved-tab-pane" aria-selected="true">Saved Players</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="change-tab" data-bs-toggle="tab" data-bs-target="#change-tab-pane" type="button" role="tab" aria-controls="change-tab-pane" aria-selected="false">Change payers</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="saved-tab-pane" role="tabpanel" aria-labelledby="saved-tab" tabindex="0">
-
-
-            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="qb-tab" data-bs-toggle="tab" data-bs-target="#qb-tab-pane" type="button" role="tab" aria-controls="qb-tab-pane" aria-selected="true">
-                        Passing data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="rb-tab" data-bs-toggle="tab" data-bs-target="#rb-tab-pane" type="button" role="tab" aria-controls="rb-tab-pane" aria-selected="false">
-                        Rushing data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="rec-tab" data-bs-toggle="tab" data-bs-target="#rec-tab-pane" type="button" role="tab" aria-controls="rec-tab-pane" aria-selected="false">
-                        Receiving data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="flx-tab" data-bs-toggle="tab" data-bs-target="#flx-tab-pane" type="button" role="tab" aria-controls="flx-tab-pane" aria-selected="false">
-                        flex data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="f-team-tab" data-bs-toggle="tab" data-bs-target="#f-team-tab-pane" type="button" role="tab" aria-controls="f-team-tab-pane" aria-selected="false">
-                        team data
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="qb-tab-pane" role="tabpanel" aria-labelledby="qb-tab" tabindex="0">
-                    test qb
-                    <?php
-                    $qb =  $result[1];
-
-                    ?>
-
-                </div>
-                <div class="tab-pane fade" id="rb-tab-pane" role="tabpanel" aria-labelledby="rb-tab" tabindex="0">
-                    test rb
-                </div>
-                <div class="tab-pane fade" id="rec-tab-pane" role="tabpanel" aria-labelledby="rec-tab" tabindex="0">
-                    test wr
-                </div>
-                <div class="tab-pane fade" id="flx-tab-pane" role="tabpanel" aria-labelledby="flx-tab" tabindex="0">
-                    test flex
-                </div>
-                <div class="tab-pane fade" id="f-team-tab-pane" role="tabpanel" aria-labelledby="f-team-tab" tabindex="0">
-                    test team
-                </div>
-            </div>
-        </div>
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="saved-tab" data-bs-toggle="tab" data-bs-target="#saved-tab-pane" type="button" role="tab" aria-controls="saved-tab-pane" aria-selected="true">Saved Players</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="change-tab" data-bs-toggle="tab" data-bs-target="#change-tab-pane" type="button" role="tab" aria-controls="change-tab-pane" aria-selected="false">Change payers</button>
+            </li>
+        </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade" id="change-tab-pane" role="tabpanel" aria-labelledby="change-tab" tabindex="0">
-                <div>
+            <div class="tab-pane fade show active" id="saved-tab-pane" role="tabpanel" aria-labelledby="saved-tab" tabindex="0">
 
-                    <div>
+
+                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="qb-tab" data-bs-toggle="tab" data-bs-target="#qb-tab-pane" type="button" role="tab" aria-controls="qb-tab-pane" aria-selected="true">
+                            Passing data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="rb-tab" data-bs-toggle="tab" data-bs-target="#rb-tab-pane" type="button" role="tab" aria-controls="rb-tab-pane" aria-selected="false">
+                            Rushing data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="rec-tab" data-bs-toggle="tab" data-bs-target="#rec-tab-pane" type="button" role="tab" aria-controls="rec-tab-pane" aria-selected="false">
+                            Receiving data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="flx-tab" data-bs-toggle="tab" data-bs-target="#flx-tab-pane" type="button" role="tab" aria-controls="flx-tab-pane" aria-selected="false">
+                            flex data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="f-team-tab" data-bs-toggle="tab" data-bs-target="#f-team-tab-pane" type="button" role="tab" aria-controls="f-team-tab-pane" aria-selected="false">
+                            team data
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="qb-tab-pane" role="tabpanel" aria-labelledby="qb-tab" tabindex="0">
                         qb
-                        <form method="post" class="searchBar" action="fantasy_update.php">
-                            <div id="qb-button">
-                                <select id="qb-button" name="qb-button">
+                        <?php
+                        $qb =  $result[1];
+                        $player_input1 = $player[0] . ", 'QB'";
+                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        WHERE player_id = ?;");
+                        $stmt->execute([$qb]);
+                        $qb_name = $stmt->fetchAll();
+                        $result_set1 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input1));
+                        echo $qb_name;
+                        ?>
 
-                                    <?php
+                        <script>
+                            var data = <?php echo json_encode($result_set1); ?>;
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
-                        WHERE pos = 'QB' ORDER BY pName ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
-                                    }
-                                    ?>
+                            var [pass_att_weekly_qb, pass_cmp_weekly_qb, pass_yds_weekly_qb, pass_td_weekly_qb,
+                                pass_att_monthly_qb, pass_cmp_monthly_qb, pass_yds_monthly_qb, pass_td_monthly_qb,
+                                pass_att_total_qb, pass_cmp_total_qb, pass_yds_total_qb, pass_td_total_qb,
+                                rush_td_weekly_qb, rush_att_weekly_qb, rush_yds_weekly_qb,
+                                rush_td_monthly_qb, rush_att_monthly_qb, rush_yds_monthly_qb,
+                                rush_td_total_qb, rush_att_total_qb, rush_yds_total_qb, player_dates_qb, player_dates_months_qb
+                            ] = data.split('#');
+                        </script>
 
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="qb-button">Search</button>
-
-                            </div>
-                        </form>
                     </div>
-                    <div>
-                        rb1
-                        <form method="post" class="searchBar" action="fantasy.php">
-                            <div id="rb1-button">
-                                <select id="rb1-button" name="rb1-button">
+                    <div class="tab-pane fade" id="rb-tab-pane" role="tabpanel" aria-labelledby="rb-tab" tabindex="0">
+                        rb1, rb2
+                        <?php
+                        $rb1 =  $result[2];
+                        $player_input2 = $player[0] . ", 'RB'";
+                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        WHERE player_id = ?;");
+                        $stmt->execute([$rb1]);
+                        $rb1_name = $stmt->fetchAll();
+                        $result_set2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input2));
 
-                                    <?php
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
-                        WHERE pos = 'RB' ORDER BY pName ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
-                                    }
-                                    ?>
+                        $rb2 =  $result[3];
+                        $player_input3 = $player[0] . ", 'RB'";
+                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        WHERE player_id = ?;");
+                        $stmt->execute([$rb2]);
+                        $rb2_name = $stmt->fetchAll();
+                        $result_set3 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input3));
 
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="rb1-button">Search</button>
+                        echo $rb1_name;
+                        echo $rb2_name;
+                        ?>
 
-                            </div>
-                        </form>
+                        <script>
+                            var data = <?php echo json_encode($result_set2); ?>;
+                            var data = <?php echo json_encode($result_set3); ?>;
+
+                            var [rush_td_weekly_rb1, rush_att_weekly_rb1, rush_yds_weekly_rb1,
+                                rush_td_monthly_rb1, rush_att_monthly_rb1, rush_yds_monthly_rb1,
+                                rush_td_total_rb1, rush_att_total_rb1, rush_yds_total_rb1,
+                                targets_weekly_rb1, rec_weekly_rb1, rec_td_weekly_rb1, rec_yds_weekly_rb1,
+                                targets_monthly_rb1, rec_monthly_rb1, rec_td_monthly_rb1, rec_yds_monthly_rb1,
+                                targets_total_rb1, rec_total_rb1, rec_td_total_rb1, rec_yds_total_rb1,
+                                player_dates_rb1, player_dates_months_rb1
+                            ] = data.split('#');
+
+                            var [rush_td_weekly_rb2, rush_att_weekly_rb2, rush_yds_weekly_rb2,
+                                rush_td_monthly_rb2, rush_att_monthly_rb2, rush_yds_monthly_rb2,
+                                rush_td_total_rb2, rush_att_total_rb2, rush_yds_total_rb2,
+                                targets_weekly_rb2, rec_weekly_rb2, rec_td_weekly_rb2, rec_yds_weekly_rb2,
+                                targets_monthly_rb2, rec_monthly_rb2, rec_td_monthly_rb2, rec_yds_monthly_rb2,
+                                targets_total_rb2, rec_total_rb2, rec_td_total_rb2, rec_yds_total_rb2,
+                                player_dates_rb2, player_dates_months_rb2
+                            ] = data.split('#');
+                        </script>
                     </div>
-                    <div>
-                        rb2
-                        <form method="post" class="searchBar" action="fantasy.php">
-                            <div id="rb2-button">
-                                <select id="rb2-button" name="rb2-button">
+                    <div class="tab-pane fade" id="rec-tab-pane" role="tabpanel" aria-labelledby="rec-tab" tabindex="0">
+                        wr1, wr2, te
+                        <?php
+                        $wr1 =  $result[4];
+                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        WHERE player_id = ?;");
+                        $stmt->execute([$wr1]);
+                        $wr1_name = $stmt->fetchAll();
+                        $player_input4 = $player[0] . ", WR";
+                        $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
 
-                                    <?php
+                        $wr2 =  $result[5];
+                        $player_input5 = $player[0] . ", WR";
+                        $result_set5 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input5));
+                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        WHERE player_id = ?;");
+                        $stmt->execute([$wr2]);
+                        $wr2_name = $stmt->fetchAll();
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
-                        WHERE pos = 'RB' ORDER BY pName ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
-                                    }
-                                    ?>
+                        $te =  $result[6];
+                        $player_input6 = $player[0] . ", TE";
+                        $result_set6 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input6));
+                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        WHERE player_id = ?;");
+                        $stmt->execute([$te]);
+                        $te_name = $stmt->fetchAll();
 
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="rb2-button">Search</button>
+                        echo $wr1_name;
+                        echo $wr2_name;
+                        echo $te_name;
+                        ?>
 
-                            </div>
-                        </form>
+                        <script>
+                            var data = <?php echo json_encode($result_set4); ?>;
+                            var data = <?php echo json_encode($result_set5); ?>;
+                            var data = <?php echo json_encode($result_set6); ?>;
+
+                            var [targets_weekly_wr1, rec_weekly_wr1, rec_td_weekly_wr1, rec_yds_weekly_wr1,
+                                targets_monthly_wr1, rec_monthly_wr1, rec_td_monthly_wr1, rec_yds_monthly_wr1,
+                                targets_total_wr1, rec_total_wr1, rec_td_total_wr1, rec_yds_total_wr1,
+                                player_dates_wr1, player_dates_months_wr1
+                            ] = data.split('#');
+
+                            var [targets_weekly_wr2, rec_weekly_wr2, rec_td_weekly_wr2, rec_yds_weekly_wr2,
+                                targets_monthly_wr2, rec_monthly_wr2, rec_td_monthly_wr2, rec_yds_monthly_wr2,
+                                targets_total_wr2, rec_total_wr2, rec_td_total_wr2, rec_yds_total_wr2,
+                                player_dates_wr2, player_dates_months_wr2
+                            ] = data.split('#');
+
+                            var [targets_weekly_te, rec_weekly_te, rec_td_weekly_te, rec_yds_weekly_te,
+                                targets_monthly_te, rec_monthly_te, rec_td_monthly_te, rec_yds_monthly_te,
+                                targets_total_te, rec_total_te, rec_td_total_te, rec_yds_total_te,
+                                player_dates_te, player_dates_months_te
+                            ] = data.split('#');
+
+                        </script>
                     </div>
-                    <div>
-                        wr1
-                        <form method="post" class="searchBar" action="fantasy.php">
-                            <div id="wr1-button">
-                                <select id="wr1-button" name="wr1-button">
-
-                                    <?php
-
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
-                        WHERE pos = 'WR' ORDER BY pName ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
-                                    }
-                                    ?>
-
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="wr1-button">Search</button>
-
-                            </div>
-                        </form>
-                    </div>
-                    <div>
-                        wr2
-                        <form method="post" class="searchBar" action="fantasy.php">
-                            <div id="wr2-button">
-                                <select id="wr2-button" name="wr2-button">
-
-                                    <?php
-
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player
-                        WHERE pos = 'WR' ORDER BY pName ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
-                                    }
-                                    ?>
-
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="wr2-button">Search</button>
-
-                            </div>
-                        </form>
-                    </div>
-                    <div>
-                        te
-                        <form method="post" class="searchBar" action="fantasy.php">
-                            <div id="te-button">
-                                <select id="te-button" name="te-button">
-
-                                    <?php
-
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
-                        WHERE pos = 'TE' ORDER BY pName ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
-                                    }
-                                    ?>
-
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="te-button">Search</button>
-
-                            </div>
-                        </form>
-                    </div>
-                    <div>
+                    <div class="tab-pane fade" id="flx-tab-pane" role="tabpanel" aria-labelledby="flx-tab" tabindex="0">
                         flex
-                        <form method="post" class="searchBar" action="fantasy.php">
-                            <div id="flx-button">
-                                <select id="flx-button" name="flx-button">
-
-                                    <?php
-
-                                    $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
-                        WHERE pos = 'RB' OR pos = 'WR' OR pos = 'TE' ORDER BY pName ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
-                                    }
-                                    ?>
-
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="flx-button">Search</button>
-
-                            </div>
-                        </form>
+                        <?php
+                        $flx =  $result[7];
+                        $stmt = $connection->prepare("SELECT pName, pos FROM player 
+                        WHERE player_id = ?;");
+                        $stmt->execute([$flx]);
+                        $flx_res = $stmt->fetchAll();
+                        $flx_res = explode($flx_res, ',');
+                        $flx_name = $flx_res[0];
+                        $flx_pos = $flx_res[1];
+                        if($flx_pos == 'RB'){
+                            $player_input4 = $player[0] . ", RB";
+                            $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
+                        }else if($flx_pos == 'WR'){
+                                $player_input4 = $player[0] . ", WR";
+                                $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
+                        } else {
+                                $player_input4 = $player[0] . ", TE";
+                                $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
+                        }
+                        echo $flex_name;
+                        
+                        ?>
                     </div>
-                    <div>
+                    <div class="tab-pane fade" id="f-team-tab-pane" role="tabpanel" aria-labelledby="f-team-tab" tabindex="0">
                         team
-                        <form method="post" class="searchBar" action="fantasy.php">
-                            <div id="team-button">
-                                <select id="f-team-button" name="f-team-button">
+                        <?php
+                        $team =  $result[8];
+                        echo $team;
+                        ?>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="change-tab-pane" role="tabpanel" aria-labelledby="change-tab" tabindex="0">
 
-                                    <?php
+                    <div class="container p-3">
+                        <div class="row">
+                            <div class="col">
+                                <div>
+                                    qb
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="qb-button">
+                                            <select id="qb-button" name="qb-button">
 
-                                    $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table ORDER BY team ASC;");
-                                    $stmt->execute();
-                                    $results = $stmt->fetchAll();
-                                    for ($idx = 0; $idx < count($results); $idx++) {
-                                        $p = $results[$idx];
-                                        print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
-                                    }
-                                    ?>
+                                                <?php
 
-                                </select>
-                                <button onclick="location.href='../src/fantasy_update.php'" id="f-team-button">Search</button>
+                                                $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'QB' ORDER BY pName ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
+                                                }
+                                                ?>
 
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="qb-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    rb1
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="rb1-button">
+                                            <select id="rb1-button" name="rb1-button">
+
+                                                <?php
+
+                                                $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'RB' ORDER BY pName ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
+                                                }
+                                                ?>
+
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="rb1-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    rb2
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="rb2-button">
+                                            <select id="rb2-button" name="rb2-button">
+
+                                                <?php
+
+                                                $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'RB' ORDER BY pName ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
+                                                }
+                                                ?>
+
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="rb2-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    wr1
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="wr1-button">
+                                            <select id="wr1-button" name="wr1-button">
+
+                                                <?php
+
+                                                $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'WR' ORDER BY pName ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
+                                                }
+                                                ?>
+
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="wr1-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
                             </div>
-                        </form>
+                            <div class="col">
+                                <div>
+                                    wr2
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="wr2-button">
+                                            <select id="wr2-button" name="wr2-button">
+
+                                                <?php
+
+                                                $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player
+                        WHERE pos = 'WR' ORDER BY pName ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
+                                                }
+                                                ?>
+
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="wr2-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    te
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="te-button">
+                                            <select id="te-button" name="te-button">
+
+                                                <?php
+
+                                                $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'TE' ORDER BY pName ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
+                                                }
+                                                ?>
+
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="te-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    flex
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="flx-button">
+                                            <select id="flx-button" name="flx-button">
+
+                                                <?php
+
+                                                $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
+                        WHERE pos = 'RB' OR pos = 'WR' OR pos = 'TE' ORDER BY pName ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['player_id'] . "\">" . $p['pName'] . "</option>");
+                                                }
+                                                ?>
+
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="flx-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                                <div>
+                                    team
+                                    <form method="post" class="searchBar" action="fantasy_update.php">
+                                        <div id="team-button">
+                                            <select id="f-team-button" name="f-team-button">
+
+                                                <?php
+
+                                                $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table ORDER BY team ASC;");
+                                                $stmt->execute();
+                                                $results = $stmt->fetchAll();
+                                                for ($idx = 0; $idx < count($results); $idx++) {
+                                                    $p = $results[$idx];
+                                                    print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
+                                                }
+                                                ?>
+
+                                            </select>
+                                            <button onclick="location.href='../src/fantasy.php'" id="f-team-button-click">Update</button>
+
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
         </div>
-
+    </div>
 
 </body>
 

@@ -88,7 +88,7 @@
 
     ?>
 
-    <div id="playerPageData">
+    <div id="playerPageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
 
 
@@ -156,13 +156,15 @@
                 <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison-tab-pane" type="button" role="tab" aria-controls="comparison-tab-pane" aria-selected="false">Comparison</button>
             </li>
         </ul>
+
+        <div id="player-page-container">
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="weekly-tab-pane" role="tabpanel" aria-labelledby="weekly-tab" tabindex="0">
 
                 <div class="container p-3">
 
                     <div class="row">
-                        <div class="col" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black, -4px 4px 0px yellow;">
+                        <div class="col" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
                             Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
@@ -424,7 +426,7 @@
                 <div class="container p-3">
 
                     <div class="row">
-                        <div class="col" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black, -4px 4px 0px yellow;">
+                        <div class="col">
 
                             Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
@@ -689,7 +691,7 @@
                 <div class="container p-3">
 
                     <div class="row">
-                        <div class="col" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black, -4px 4px 0px yellow;">
+                        <div class="col">
 
                             Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>

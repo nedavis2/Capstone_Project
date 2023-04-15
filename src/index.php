@@ -60,10 +60,10 @@
                     if (isset($_SESSION['email'])) {
                         $user_email = $_SESSION['email'];
                     } else {
-                        $user_email = 'dummyBOI@aol.com';
+                        $user_email = 'guest@aol.com';
                     }
                 } else {
-                    $user_name = 'guest';
+                    $user_name = 'guest@aol.com';
                 }
                 echo $user_email;
                 ?>
@@ -71,7 +71,7 @@
         </div>
     </nav>
 
-    <div id="homePageData">
+    <div id="homePageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
         <form method="post" action="player.php">
             <div id="playerSearchBar">

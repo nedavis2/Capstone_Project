@@ -46,14 +46,7 @@ CREATE TABLE user (
     TE              varchar(20),
     Flex            varchar(20),
     team            varchar(20),
-    primary key (user_email),
-    foreign key (QB) references player(player_id),
-    foreign key (RB_1) references player(player_id),
-    foreign key (RB_2) references player(player_id),
-    foreign key (WR_1) references player(player_id),
-    foreign key (WR_2) references player(player_id),
-    foreign key (TE) references player(player_id),
-    foreign key (Flex) references player(player_id)
+    primary key (user_email)
 );
 CREATE TABLE game_stats_team (
     game_date                       DATE            not null,

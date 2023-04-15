@@ -15,9 +15,9 @@
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
 
-<body id="supportPage" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black, -4px 4px 0px yellow;">
+<body id="supportPage">
 
-<nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
+    <nav class="navbar navbar-expand-lg bg-body-tertiary bg-dark navbar-dark">
         <div class="container-fluid">
             <a class="navbar-brand" href="../src/index.php">
                 <img src="../src/picSource/favicon.ico" alt="Bootstrap" width="30" height="24">
@@ -63,31 +63,33 @@
             </li>
         </div>
     </nav>
+    <div id="support-page-content" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
-    <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="true">Contact Us</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="documentation-tab" data-bs-toggle="tab" data-bs-target="#documentation-tab-pane" type="button" role="tab" aria-controls="documentation-tab-pane" aria-selected="false">Documentation</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-tab-pane" type="button" role="tab" aria-controls="faq-tab-pane" aria-selected="false">FAQ</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-            Please don't!
-        </div>
+        <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="true">Contact Us</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="documentation-tab" data-bs-toggle="tab" data-bs-target="#documentation-tab-pane" type="button" role="tab" aria-controls="documentation-tab-pane" aria-selected="false">Documentation</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-tab-pane" type="button" role="tab" aria-controls="faq-tab-pane" aria-selected="false">FAQ</button>
+            </li>
+        </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade" id="documentation-tab-pane" role="tabpanel" aria-labelledby="documentation-tab" tabindex="0">
-                Just trust us!
+            <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                Please don't!
             </div>
-        </div>
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade" id="faq-tab-pane" role="tabpanel" aria-labelledby="faq-tab" tabindex="0">
-                Q: Why are you all so awesome?
-                A: We just are!
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="documentation-tab-pane" role="tabpanel" aria-labelledby="documentation-tab" tabindex="0">
+                    Just trust us!
+                </div>
+            </div>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="faq-tab-pane" role="tabpanel" aria-labelledby="faq-tab" tabindex="0">
+                    Q: Why are you all so awesome?
+                    A: We just are!
+                </div>
             </div>
         </div>
 </body>

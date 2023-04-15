@@ -21,13 +21,13 @@
 }
 
 #playerSelect {
-    font-size: 35px;
-    border-radius: 15px 0px 0px 15px;
+    vertical-align: top;
+    font-size: 35px;  
 }
 
 #playerButton {
-    font-size: 35px;
-    border-radius: 0px 15px 15px 0px;
+    vertical-align: top;
+    font-size: 24px;
 }
 
 #teamSearchBar {
@@ -36,12 +36,12 @@
 }
 
 #teamSelect {
+    vertical-align: top;
     font-size: 35px;
-    border-radius: 15px 0px 0px 15px;
 }
 
 #teamButton {
-    font-size: 35px;
-    border-radius: 0px 15px 15px 0px;
+    vertical-align: top;
+    font-size: 24px;
 }
 

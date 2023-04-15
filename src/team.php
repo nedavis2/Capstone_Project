@@ -64,7 +64,7 @@
         </div>
     </nav>
 
-    <div id="teamPageData">
+    <div id="teamPageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
         <?php
         $selectedTeam = $_POST['teamSelect'];
         if (empty($selectedTeam)) {
@@ -102,655 +102,656 @@
             get_months = get_months.split(",").slice(-17);
         </script>
 
-    </div>
-    <ul class="nav nav-tabs nav-fill " id="myTab" role="tablist">
-        <li class="nav-item" role="presentation">
-            <button class="nav-link active" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly-tab-pane" type="button" role="tab" aria-controls="weekly-tab-pane" aria-selected="true">Weekly data</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="monthly-tab" data-bs-toggle="tab" data-bs-target="#monthly-tab-pane" type="button" role="tab" aria-controls="monthly-tab-pane" aria-selected="false">Monthly data</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="total-tab" data-bs-toggle="tab" data-bs-target="#total-tab-pane" type="button" role="tab" aria-controls="total-tab-pane" aria-selected="false">Total data</button>
-        </li>
-        <li class="nav-item" role="presentation">
-            <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison-tab-pane" type="button" role="tab" aria-controls="comparison-tab-pane" aria-selected="false">Comparison</button>
-        </li>
-    </ul>
-    <div class="tab-content" id="myTabContent">
-        <div class="tab-pane fade show active" id="weekly-tab-pane" role="tabpanel" aria-labelledby="weekly-tab" tabindex="0">
 
-
-            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="w-passing-tab" data-bs-toggle="tab" data-bs-target="#w-passing-tab-pane" type="button" role="tab" aria-controls="w-passing-tab-pane" aria-selected="true">
-                        Passing data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="w-rushing-tab" data-bs-toggle="tab" data-bs-target="#w-rushing-tab-pane" type="button" role="tab" aria-controls="w-rushing-tab-pane" aria-selected="false">
-                        Rushing data
-
-
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="w-receiving-tab" data-bs-toggle="tab" data-bs-target="#w-receiving-tab-pane" type="button" role="tab" aria-controls="w-receiving-tab-pane" aria-selected="false">
-                        Receiving data
-
-
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="w-passing-tab-pane" role="tabpanel" aria-labelledby="w-passing-tab" tabindex="0">
-
-
-                    <canvas id="weeklyChart1P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="weeklyChart2P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
-
-
-
-                    <script>
-                        pass_att_weekly = pass_att_weekly.split(",").slice(-17);
-                        pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
-                        pass_yds_weekly = pass_yds_weekly.split(",").slice(-17);
-                        pass_td_weekly = pass_td_weekly.split(",").slice(-17);
-
-
-
-                        new Chart("weeklyChart1P", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'pass att',
-                                    data: pass_att_weekly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'pass cmp',
-                                    data: pass_cmp_weekly,
-                                    borderColor: "green",
-                                    fill: false
-                                }, {
-                                    label: 'pass td',
-                                    data: pass_td_weekly,
-                                    borderColor: "blue",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart2P", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'pass yds',
-                                    data: pass_yds_weekly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-
-
-
-
-                        let text = data;
-                        document.getElementById("demo").innerHTML = text;
-                    </script>
-
-                </div>
-                <div class="tab-pane fade" id="w-rushing-tab-pane" role="tabpanel" aria-labelledby="w-rushing-tab" tabindex="0">
-
-                    <canvas id="weeklyChart1R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="weeklyChart2R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="weeklyChart3R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
-
-                    <script>
-                        rush_td_weekly = rush_td_weekly.split(",").slice(-17);
-                        rush_att_weekly = rush_att_weekly.split(",").slice(-17);
-                        rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
-
-                        new Chart("weeklyChart1R", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rush att',
-                                    data: rush_att_weekly,
-                                    borderColor: "green",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart2R", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rush yds',
-                                    data: rush_yds_weekly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart3R", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rush td',
-                                    data: rush_td_weekly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-                    </script>
-                </div>
-                <div class="tab-pane fade" id="w-receiving-tab-pane" role="tabpanel" aria-labelledby="w-receiving-tab" tabindex="0">
-
-                    <canvas id="weeklyChart1C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="weeklyChart2C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="weeklyChart3C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
-
-
-                    <script>
-                        targets_weekly = targets_weekly.split(",").slice(-17);
-                        rec_weekly = rec_weekly.split(",").slice(-17);
-                        rec_td_weekly = rec_td_weekly.split(",").slice(-17);
-                        rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
-
-                        new Chart("weeklyChart1C", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'receptions',
-                                    data: rec_weekly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'targets',
-                                    data: targets_weekly,
-                                    borderColor: "green",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart2C", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rec yds',
-                                    data: rec_yds_weekly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart3C", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rec td',
-                                    data: rec_td_weekly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-                    </script>
-                </div>
-            </div>
-        </div>
-        <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
-
-            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="m-passing-tab" data-bs-toggle="tab" data-bs-target="#m-passing-tab-pane" type="button" role="tab" aria-controls="m-passing-tab-pane" aria-selected="true">
-                        Passing data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="m-rushing-tab" data-bs-toggle="tab" data-bs-target="#m-rushing-tab-pane" type="button" role="tab" aria-controls="m-rushing-tab-pane" aria-selected="false">
-                        Rushing data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="m-receiving-tab" data-bs-toggle="tab" data-bs-target="#m-receiving-tab-pane" type="button" role="tab" aria-controls="m-receiving-tab-pane" aria-selected="false">
-                        Receiving data
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="m-passing-tab-pane" role="tabpanel" aria-labelledby="m-passing-tab" tabindex="0">
-
-                    <canvas id="monthlyChart1PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="monthlyChart2PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
-
-
-
-                    <script>
-                        pass_att_monthly = pass_att_monthly.split(",").slice(-17);
-                        pass_cmp_monthly = pass_cmp_monthly.split(",").slice(-17);
-                        pass_yds_monthly = pass_yds_monthly.split(",").slice(-17);
-                        pass_td_monthly = pass_td_monthly.split(",").slice(-17);
-
-
-
-                        new Chart("monthlyChart1PM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'pass att',
-                                    data: pass_att_monthly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'pass cmp',
-                                    data: pass_cmp_monthly,
-                                    borderColor: "green",
-                                    fill: false
-                                }, {
-                                    label: 'pass td',
-                                    data: pass_td_monthly,
-                                    borderColor: "blue",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart2PM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'pass yds',
-                                    data: pass_yds_monthly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-                    </script>
-
-                </div>
-                <div class="tab-pane fade" id="m-rushing-tab-pane" role="tabpanel" aria-labelledby="m-rushing-tab" tabindex="0">
-
-                    <canvas id="monthlyChart1RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="monthlyChart2RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="monthlyChart3RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
-
-                    <script>
-                        rush_td_monthly = rush_td_monthly.split(",").slice(-17);
-                        rush_att_monthly = rush_att_monthly.split(",").slice(-17);
-                        rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
-
-                        new Chart("monthlyChart1RM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rush att',
-                                    data: rush_att_monthly,
-                                    borderColor: "green",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart2RM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rush yds',
-                                    data: rush_yds_monthly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart3RM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rush td',
-                                    data: rush_td_monthly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-                    </script>
-                </div>
-                <div class="tab-pane fade" id="m-receiving-tab-pane" role="tabpanel" aria-labelledby="m-receiving-tab" tabindex="0">
-
-                    <canvas id="monthlyChart1CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="monthlyChart2CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                    <canvas id="monthlyChart3CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-
-
-
-                    <script>
-                        targets_monthly = targets_monthly.split(",").slice(-17);
-                        rec_monthly = rec_monthly.split(",").slice(-17);
-                        rec_td_monthly = rec_td_monthly.split(",").slice(-17);
-                        rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
-
-                        new Chart("monthlyChart1CM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'receptions',
-                                    data: rec_monthly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'targets',
-                                    data: targets_monthly,
-                                    borderColor: "green",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart2CM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rec yds',
-                                    data: rec_yds_monthly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart3CM", {
-                            type: "line",
-                            data: {
-                                labels: get_dates,
-                                datasets: [{
-                                    label: 'rec td',
-                                    data: rec_td_monthly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-                    </script>
-
-                </div>
-            </div>
-
-        </div>
-        <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">
-
-            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link active" id="t-passing-tab" data-bs-toggle="tab" data-bs-target="#t-passing-tab-pane" type="button" role="tab" aria-controls="t-passing-tab-pane" aria-selected="true">
-                        Passing data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="t-rushing-tab" data-bs-toggle="tab" data-bs-target="#t-rushing-tab-pane" type="button" role="tab" aria-controls="t-rushing-tab-pane" aria-selected="false">
-                        Rushing data
-                    </button>
-                </li>
-                <li class="nav-item" role="presentation">
-                    <button class="nav-link" id="t-receiving-tab" data-bs-toggle="tab" data-bs-target="#t-receiving-tab-pane" type="button" role="tab" aria-controls="t-receiving-tab-pane" aria-selected="false">
-                        Receiving data
-                    </button>
-                </li>
-            </ul>
-            <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade show active" id="t-passing-tab-pane" role="tabpanel" aria-labelledby="t-passing-tab" tabindex="0">
-
-                    <canvas id="totalChart1P" style="width:40%; max-width:1000px"></canvas>
-
-                    <script>
-                        pass_cmp_pie = pass_cmp_total / pass_att_total
-                        pass_td_pie = pass_td_total / pass_cmp_total
-
-                        var pieLabels = [];
-
-                        new Chart("totalChart1P", {
-                            type: "pie",
-                            data: {
-                                labels: pieLabels,
-                                datasets: [{
-
-                                    backgroundColor: ["green", "red"],
-                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
-                                    labels: ['completed pass', 'incomplete pass']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [pass_td_pie, 1 - pass_td_pie],
-                                    labels: ['passing td', 'pass no td']
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                legend: {
-                                    display: false,
+        <ul class="nav nav-tabs nav-fill " id="myTab" role="tablist">
+            <li class="nav-item" role="presentation">
+                <button class="nav-link active" id="weekly-tab" data-bs-toggle="tab" data-bs-target="#weekly-tab-pane" type="button" role="tab" aria-controls="weekly-tab-pane" aria-selected="true">Weekly data</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="monthly-tab" data-bs-toggle="tab" data-bs-target="#monthly-tab-pane" type="button" role="tab" aria-controls="monthly-tab-pane" aria-selected="false">Monthly data</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="total-tab" data-bs-toggle="tab" data-bs-target="#total-tab-pane" type="button" role="tab" aria-controls="total-tab-pane" aria-selected="false">Total data</button>
+            </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison-tab-pane" type="button" role="tab" aria-controls="comparison-tab-pane" aria-selected="false">Comparison</button>
+            </li>
+        </ul>
+        <div class="tab-content" id="myTabContent">
+            <div class="tab-pane fade show active" id="weekly-tab-pane" role="tabpanel" aria-labelledby="weekly-tab" tabindex="0">
+
+
+                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="w-passing-tab" data-bs-toggle="tab" data-bs-target="#w-passing-tab-pane" type="button" role="tab" aria-controls="w-passing-tab-pane" aria-selected="true">
+                            Passing data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="w-rushing-tab" data-bs-toggle="tab" data-bs-target="#w-rushing-tab-pane" type="button" role="tab" aria-controls="w-rushing-tab-pane" aria-selected="false">
+                            Rushing data
+
+
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="w-receiving-tab" data-bs-toggle="tab" data-bs-target="#w-receiving-tab-pane" type="button" role="tab" aria-controls="w-receiving-tab-pane" aria-selected="false">
+                            Receiving data
+
+
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="w-passing-tab-pane" role="tabpanel" aria-labelledby="w-passing-tab" tabindex="0">
+
+
+                        <canvas id="weeklyChart1P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="weeklyChart2P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+
+
+
+                        <script>
+                            pass_att_weekly = pass_att_weekly.split(",").slice(-17);
+                            pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
+                            pass_yds_weekly = pass_yds_weekly.split(",").slice(-17);
+                            pass_td_weekly = pass_td_weekly.split(",").slice(-17);
+
+
+
+                            new Chart("weeklyChart1P", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'pass att',
+                                        data: pass_att_weekly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'pass cmp',
+                                        data: pass_cmp_weekly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }, {
+                                        label: 'pass td',
+                                        data: pass_td_weekly,
+                                        borderColor: "blue",
+                                        fill: false
+                                    }]
                                 },
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                                            var index = tooltipItem.index;
-                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart2P", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'pass yds',
+                                        data: pass_yds_weekly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+
+
+
+
+                            let text = data;
+                            document.getElementById("demo").innerHTML = text;
+                        </script>
+
+                    </div>
+                    <div class="tab-pane fade" id="w-rushing-tab-pane" role="tabpanel" aria-labelledby="w-rushing-tab" tabindex="0">
+
+                        <canvas id="weeklyChart1R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="weeklyChart2R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="weeklyChart3R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+
+                        <script>
+                            rush_td_weekly = rush_td_weekly.split(",").slice(-17);
+                            rush_att_weekly = rush_att_weekly.split(",").slice(-17);
+                            rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
+
+                            new Chart("weeklyChart1R", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rush att',
+                                        data: rush_att_weekly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart2R", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rush yds',
+                                        data: rush_yds_weekly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart3R", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rush td',
+                                        data: rush_td_weekly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                    <div class="tab-pane fade" id="w-receiving-tab-pane" role="tabpanel" aria-labelledby="w-receiving-tab" tabindex="0">
+
+                        <canvas id="weeklyChart1C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="weeklyChart2C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="weeklyChart3C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+
+
+                        <script>
+                            targets_weekly = targets_weekly.split(",").slice(-17);
+                            rec_weekly = rec_weekly.split(",").slice(-17);
+                            rec_td_weekly = rec_td_weekly.split(",").slice(-17);
+                            rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
+
+                            new Chart("weeklyChart1C", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'receptions',
+                                        data: rec_weekly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'targets',
+                                        data: targets_weekly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart2C", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rec yds',
+                                        data: rec_yds_weekly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart3C", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rec td',
+                                        data: rec_td_weekly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
+
+                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="m-passing-tab" data-bs-toggle="tab" data-bs-target="#m-passing-tab-pane" type="button" role="tab" aria-controls="m-passing-tab-pane" aria-selected="true">
+                            Passing data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="m-rushing-tab" data-bs-toggle="tab" data-bs-target="#m-rushing-tab-pane" type="button" role="tab" aria-controls="m-rushing-tab-pane" aria-selected="false">
+                            Rushing data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="m-receiving-tab" data-bs-toggle="tab" data-bs-target="#m-receiving-tab-pane" type="button" role="tab" aria-controls="m-receiving-tab-pane" aria-selected="false">
+                            Receiving data
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="m-passing-tab-pane" role="tabpanel" aria-labelledby="m-passing-tab" tabindex="0">
+
+                        <canvas id="monthlyChart1PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="monthlyChart2PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+
+
+
+                        <script>
+                            pass_att_monthly = pass_att_monthly.split(",").slice(-17);
+                            pass_cmp_monthly = pass_cmp_monthly.split(",").slice(-17);
+                            pass_yds_monthly = pass_yds_monthly.split(",").slice(-17);
+                            pass_td_monthly = pass_td_monthly.split(",").slice(-17);
+
+
+
+                            new Chart("monthlyChart1PM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'pass att',
+                                        data: pass_att_monthly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'pass cmp',
+                                        data: pass_cmp_monthly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }, {
+                                        label: 'pass td',
+                                        data: pass_td_monthly,
+                                        borderColor: "blue",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart2PM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'pass yds',
+                                        data: pass_yds_monthly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+                        </script>
+
+                    </div>
+                    <div class="tab-pane fade" id="m-rushing-tab-pane" role="tabpanel" aria-labelledby="m-rushing-tab" tabindex="0">
+
+                        <canvas id="monthlyChart1RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="monthlyChart2RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="monthlyChart3RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+
+                        <script>
+                            rush_td_monthly = rush_td_monthly.split(",").slice(-17);
+                            rush_att_monthly = rush_att_monthly.split(",").slice(-17);
+                            rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
+
+                            new Chart("monthlyChart1RM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rush att',
+                                        data: rush_att_monthly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart2RM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rush yds',
+                                        data: rush_yds_monthly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart3RM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rush td',
+                                        data: rush_td_monthly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+                        </script>
+                    </div>
+                    <div class="tab-pane fade" id="m-receiving-tab-pane" role="tabpanel" aria-labelledby="m-receiving-tab" tabindex="0">
+
+                        <canvas id="monthlyChart1CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="monthlyChart2CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <canvas id="monthlyChart3CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+
+
+                        <script>
+                            targets_monthly = targets_monthly.split(",").slice(-17);
+                            rec_monthly = rec_monthly.split(",").slice(-17);
+                            rec_td_monthly = rec_td_monthly.split(",").slice(-17);
+                            rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
+
+                            new Chart("monthlyChart1CM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'receptions',
+                                        data: rec_monthly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'targets',
+                                        data: targets_monthly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart2CM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rec yds',
+                                        data: rec_yds_monthly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart3CM", {
+                                type: "line",
+                                data: {
+                                    labels: get_dates,
+                                    datasets: [{
+                                        label: 'rec td',
+                                        data: rec_td_monthly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+                        </script>
+
+                    </div>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">
+
+                <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link active" id="t-passing-tab" data-bs-toggle="tab" data-bs-target="#t-passing-tab-pane" type="button" role="tab" aria-controls="t-passing-tab-pane" aria-selected="true">
+                            Passing data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="t-rushing-tab" data-bs-toggle="tab" data-bs-target="#t-rushing-tab-pane" type="button" role="tab" aria-controls="t-rushing-tab-pane" aria-selected="false">
+                            Rushing data
+                        </button>
+                    </li>
+                    <li class="nav-item" role="presentation">
+                        <button class="nav-link" id="t-receiving-tab" data-bs-toggle="tab" data-bs-target="#t-receiving-tab-pane" type="button" role="tab" aria-controls="t-receiving-tab-pane" aria-selected="false">
+                            Receiving data
+                        </button>
+                    </li>
+                </ul>
+                <div class="tab-content" id="myTabContent">
+                    <div class="tab-pane fade show active" id="t-passing-tab-pane" role="tabpanel" aria-labelledby="t-passing-tab" tabindex="0">
+
+                        <canvas id="totalChart1P" style="width:40%; max-width:1000px"></canvas>
+
+                        <script>
+                            pass_cmp_pie = pass_cmp_total / pass_att_total
+                            pass_td_pie = pass_td_total / pass_cmp_total
+
+                            var pieLabels = [];
+
+                            new Chart("totalChart1P", {
+                                type: "pie",
+                                data: {
+                                    labels: pieLabels,
+                                    datasets: [{
+
+                                        backgroundColor: ["green", "red"],
+                                        data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                        labels: ['completed pass', 'incomplete pass']
+                                    }, {
+                                        backgroundColor: ["orange", "yellow"],
+                                        data: [pass_td_pie, 1 - pass_td_pie],
+                                        labels: ['passing td', 'pass no td']
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function(tooltipItem, data) {
+                                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                                var index = tooltipItem.index;
+                                                return dataset.labels[index] + ': ' + dataset.data[index];
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
-                    </script>
+                            });
+                        </script>
 
 
-                </div>
-                <div class="tab-pane fade" id="t-rushing-tab-pane" role="tabpanel" aria-labelledby="t-rushing-tab" tabindex="0">
+                    </div>
+                    <div class="tab-pane fade" id="t-rushing-tab-pane" role="tabpanel" aria-labelledby="t-rushing-tab" tabindex="0">
 
-                    <canvas id="totalChart1R" style="width:40%; max-width:1000px"></canvas>
+                        <canvas id="totalChart1R" style="width:40%; max-width:1000px"></canvas>
 
-                    <script>
-                        var pieLabels = [];
+                        <script>
+                            var pieLabels = [];
 
-                        new Chart("totalChart1R", {
-                            type: "pie",
-                            data: {
-                                labels: pieLabels,
-                                datasets: [{
+                            new Chart("totalChart1R", {
+                                type: "pie",
+                                data: {
+                                    labels: pieLabels,
+                                    datasets: [{
 
-                                    backgroundColor: ["green", "red"],
-                                    data: [rush_att_total, targets_total],
-                                    labels: ['rush_att', 'non rushing attempts']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [rush_td_total, rush_att_total - rush_td_total],
-                                    labels: ['rushing td', 'rush no td']
-                                }, {
-                                    backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rush_yds_total, rec_yds_total],
-                                    labels: ['rush yds', 'reception yds']
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                legend: {
-                                    display: false,
+                                        backgroundColor: ["green", "red"],
+                                        data: [rush_att_total, targets_total],
+                                        labels: ['rush_att', 'non rushing attempts']
+                                    }, {
+                                        backgroundColor: ["orange", "yellow"],
+                                        data: [rush_td_total, rush_att_total - rush_td_total],
+                                        labels: ['rushing td', 'rush no td']
+                                    }, {
+                                        backgroundColor: ["indigo", "cornflowerblue"],
+                                        data: [rush_yds_total, rec_yds_total],
+                                        labels: ['rush yds', 'reception yds']
+                                    }]
                                 },
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                                            var index = tooltipItem.index;
-                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function(tooltipItem, data) {
+                                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                                var index = tooltipItem.index;
+                                                return dataset.labels[index] + ': ' + dataset.data[index];
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
-                    </script>
+                            });
+                        </script>
 
-                </div>
-                <div class="tab-pane fade" id="t-receiving-tab-pane" role="tabpanel" aria-labelledby="t-receiving-tab" tabindex="0">
+                    </div>
+                    <div class="tab-pane fade" id="t-receiving-tab-pane" role="tabpanel" aria-labelledby="t-receiving-tab" tabindex="0">
 
-                    <canvas id="totalChart1C" style="width:40%; max-width:1000px"></canvas>
+                        <canvas id="totalChart1C" style="width:40%; max-width:1000px"></canvas>
 
-                    <script>
-                        var pieLabels = [];
+                        <script>
+                            var pieLabels = [];
 
-                        new Chart("totalChart1C", {
-                            type: "pie",
-                            data: {
-                                labels: pieLabels,
-                                datasets: [{
+                            new Chart("totalChart1C", {
+                                type: "pie",
+                                data: {
+                                    labels: pieLabels,
+                                    datasets: [{
 
-                                    backgroundColor: ["green", "red"],
-                                    data: [rec_total, targets_total - rec_total],
-                                    labels: ['receptions', 'incompletes']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [rec_td_total, targets_total - rec_td_total],
-                                    labels: ['reception tds', 'target no td']
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                legend: {
-                                    display: false,
+                                        backgroundColor: ["green", "red"],
+                                        data: [rec_total, targets_total - rec_total],
+                                        labels: ['receptions', 'incompletes']
+                                    }, {
+                                        backgroundColor: ["orange", "yellow"],
+                                        data: [rec_td_total, targets_total - rec_td_total],
+                                        labels: ['reception tds', 'target no td']
+                                    }]
                                 },
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                                            var index = tooltipItem.index;
-                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function(tooltipItem, data) {
+                                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                                var index = tooltipItem.index;
+                                                return dataset.labels[index] + ': ' + dataset.data[index];
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
-                    </script>
+                            });
+                        </script>
 
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="tab-pane fade" id="comparison-tab-pane" role="tabpanel" aria-labelledby="comparison-tab" tabindex="0">
+            <div class="tab-pane fade" id="comparison-tab-pane" role="tabpanel" aria-labelledby="comparison-tab" tabindex="0">
 
-            <div id=comparison-test-container>
+                <div id=comparison-test-container>
 
 
+
+                </div>
 
             </div>
-
         </div>
     </div>
-    </div>
+    
 
 </body>
 
