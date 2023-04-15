@@ -1,6 +1,7 @@
 import sys
 import mysql.connector
 from mysql.connector import errorcode
+from team_data_fetch_test import *
 
 
 
@@ -11,20 +12,13 @@ try:
     
     if __name__ == "__main__":
         def some_function():
+
+            team = sys.argv[1]
+            
+            print(team_primary_view(team))
             
             
-            newTeam = sys.argv[1].split(',')
             
-            
-            
-            
-            query = ("SELECT t_rush_yds FROM `team_table` WHERE team = %s")
-            cursor.execute(query,newTeam)
-                     
-            result = cursor.fetchall()
-            final_result = [float(i[0]) for i in result]
-            print(final_result)
-            #print(newTeam)
 
         
         some_function()

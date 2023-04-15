@@ -1,18 +1,22 @@
 #teamPage {
-    background-color: #282838;
-    //background-image: url(../../src/picSource/stadium5.jpg);
+    
+    //background-color: #282838;
+    background-image: url(../../src/picSource/stadium2.jpg);
     //background-image: url(../../src/picSource/stadiumOverhead.jpg);
-    background-position: center;
-    background-size: cover;
     background-attachment: fixed;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    margin: auto;
+    padding: 0;
 }
 
 #teamPageData {
+    
     font-size: large;
 }
 
 #teamGraphContainer {
-    background-color: #434356;
     position: absolute;
     border-radius: 8px;
     width: 80%;
@@ -29,7 +33,7 @@
 }
 
 #teamTotalContainer {
-    background-color: #434356;
+    //background-color: #434356;
     position: absolute;
     right: 0%;
     width: 15%;
@@ -41,9 +45,9 @@
     color: #fff;
     font-weight: bolder;
     text-align: center;
-    background-color: #010101;
-    position:absolute;
-    width:15vw;
-    height:5vh;
-    
+    //background-color: #010101;
+    position: absolute;
+    width: 15vw;
+    height: 5vh;
+
 }
