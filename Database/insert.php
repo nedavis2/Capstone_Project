@@ -60,6 +60,8 @@ try{
     $person2_qry = "INSERT INTO user (user_email) VALUES ('nivek694@gmail.com')";
     $person3_qry = "INSERT INTO user (user_email) VALUES ('lww1117@gmail.com')";
     $person4_qry = "INSERT INTO user (user_email) VALUES ('crwinter@uncg.edu')";
+    $person5_qry = "INSERT INTO user (user_email) VALUES ('guest@aol.edu')";
+    $person6_qry = "INSERT INTO user (user_email) VALUES ('nedavis2@uncg.edu')";
     
     // insert into player table
     while (($row = fgetcsv($file_1)) !== FALSE) {
@@ -242,6 +244,12 @@ try{
     $stmt->execute();
 
     $stmt = $connection->prepare($person4_qry);
+    $stmt->execute();
+
+    $stmt = $connection->prepare($person5_qry);
+    $stmt->execute();
+
+    $stmt = $connection->prepare($person6_qry);
     $stmt->execute();
 
 } catch(PDOexecption $error){
