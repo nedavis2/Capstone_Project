@@ -19,7 +19,7 @@ db_password = ""
 db_user = "root"
 
 
-PREDICTION_TABLE_NAME = "prediction" #TODO: Replace with actual prediction table name
+PREDICTION_TABLE_NAME = "predictions" #TODO: Replace with actual prediction table name
 
 RETRIEVE_PLAYER_TOTAL_DATA = 1
 RETRIEVE_PLAYER_TIME_DATA = 2
@@ -374,8 +374,7 @@ def get_team_dates(team_id : str, weekly = True):
 def _get_player_prediction_value(player_id : str,retreived_data : str, table_name: str = PREDICTION_TABLE_NAME):
 
     #TODO: Remove this section once the prediction table is added.
-    print("NOTE: The prediction table needs to be implemented before this function can be used.")
-    return 0
+    
     data = -1
     try:
     
@@ -1302,7 +1301,10 @@ def player_max_comb_pass_play(player_id : str) -> int:
 #print(player_avg_rec_yds("ValdMa00"))
 #print(player_max_rec_yds("ValdMa00"))
 
+for i in get_player_months("ValdMa00"):
+    print(i)
 print("_____________________________________")
 
-print(get_team_weeks("GNB"))
+for i in get_team_weeks("GNB"):
+    print(i)
 #print(team_comb_rush_play_weekly("GNB"))
