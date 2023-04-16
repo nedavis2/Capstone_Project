@@ -78,7 +78,7 @@
 
         $player = explode(",", $selectedPlayer);
         $pos = $player[2];
-        $player_input = $player[0] . "," . $player[2];
+        $player_input = $player[0] . "," . $pos;
 
         $result_set = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input));
         //$player_data = explode($result_set, "#");
@@ -168,7 +168,7 @@
 
                             Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $player[2]; ?></br>
+                            Player POS: <?php echo $pos; ?></br>
                             Most recent game date: </br>
                             TD's: </br>
                             Yards: </br>
@@ -430,7 +430,7 @@
 
                             Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $player[2]; ?></br>
+                            Player POS: <?php echo $pos; ?></br>
                             Most recent game date: </br>
                             TD's: </br>
                             Yards: </br>
@@ -695,7 +695,7 @@
 
                             Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $player[2]; ?></br>
+                            Player POS: <?php echo $pos; ?></br>
                             Most recent game date: </br>
                             TD's: </br>
                             Yards: </br>

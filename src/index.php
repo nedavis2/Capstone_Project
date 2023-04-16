@@ -99,12 +99,12 @@
                 <select id="teamSelect" name="teamSelect">
 
                     <?php
-                    $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table ORDER BY team ASC;");
+                    $stmt = $connection->prepare("SELECT DISTINCT teamName FROM game_stats_team ORDER BY teamName ASC;");
                     $stmt->execute();
                     $results = $stmt->fetchAll();
                     for ($idx = 0; $idx < count($results); $idx++) {
                         $p = $results[$idx];
-                        print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
+                        print("<option value=\"" . $p['teamName'] . "\">" . $p['teamName'] . "</option>");
                     }
                     $connection = null;
                     ?>

@@ -120,11 +120,11 @@
                         qb
                         <?php
                         $qb =  $result[1];
-                        $player_input1 = $player[0] . ", 'QB'";
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$qb]);
                         $qb_name = $stmt->fetchAll();
+                        $player_input1 = $qb . ", 'QB'";
                         $result_set1 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input1));
                         echo $qb_name;
                         ?>
@@ -146,20 +146,20 @@
                         rb1, rb2
                         <?php
                         $rb1 =  $result[2];
-                        $player_input2 = $player[0] . ", 'RB'";
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$rb1]);
                         $rb1_name = $stmt->fetchAll();
+                        $player_input2 = $rb1 . ", 'RB'";
                         $result_set2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input2));
 
 
                         $rb2 =  $result[3];
-                        $player_input3 = $player[0] . ", 'RB'";
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$rb2]);
                         $rb2_name = $stmt->fetchAll();
+                        $player_input3 = $rb2 . ", 'RB'";
                         $result_set3 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input3));
 
                         echo $rb1_name;
@@ -197,23 +197,23 @@
                         WHERE player_id = ?;");
                         $stmt->execute([$wr1]);
                         $wr1_name = $stmt->fetchAll();
-                        $player_input4 = $player[0] . ", WR";
+                        $player_input4 = $wr1 . ", WR";
                         $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
 
                         $wr2 =  $result[5];
-                        $player_input5 = $player[0] . ", WR";
                         $result_set5 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input5));
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$wr2]);
+                        $player_input5 = $wr2 . ", WR";
                         $wr2_name = $stmt->fetchAll();
 
                         $te =  $result[6];
-                        $player_input6 = $player[0] . ", TE";
                         $result_set6 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input6));
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$te]);
+                        $player_input6 = $te . ", TE";
                         $te_name = $stmt->fetchAll();
 
                         echo $wr1_name;
@@ -258,13 +258,13 @@
                         $flx_name = $flx_res[0];
                         $flx_pos = $flx_res[1];
                         if($flx_pos == 'RB'){
-                            $player_input4 = $player[0] . ", RB";
+                            $player_input4 = $flx . ", RB";
                             $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
                         }else if($flx_pos == 'WR'){
-                                $player_input4 = $player[0] . ", WR";
+                                $player_input4 = $flx . ", WR";
                                 $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
                         } else {
-                                $player_input4 = $player[0] . ", TE";
+                                $player_input4 = $flx . ", TE";
                                 $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
                         }
                         echo $flex_name;
