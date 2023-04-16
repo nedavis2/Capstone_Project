@@ -1301,10 +1301,5 @@ def player_max_comb_pass_play(player_id : str) -> int:
 #print(player_avg_rec_yds("ValdMa00"))
 #print(player_max_rec_yds("ValdMa00"))
 
-for i in get_player_months("ValdMa00"):
-    print(i)
-print("_____________________________________")
 
-for i in get_team_weeks("GNB"):
-    print(i)
 #print(team_comb_rush_play_weekly("GNB"))
