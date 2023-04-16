@@ -117,20 +117,19 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="qb-tab-pane" role="tabpanel" aria-labelledby="qb-tab" tabindex="0">
-                        qb
                         <?php
                         $qb =  $result[1];
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$qb]);
-                        $qb_name = $stmt->fetchAll();
+                        $qb_name = $stmt->fetch();
                         $player_input1 = $qb . ", 'QB'";
                         $result_set1 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input1));
-                        echo $qb_name;
+                        print_r($result_set1);
                         ?>
 
                         <script>
-                            var data = <?php echo json_encode($result_set1); ?>;
+                            /*var data = <?php echo json_encode($result_set1); ?>;
 
                             var [pass_att_weekly_qb, pass_cmp_weekly_qb, pass_yds_weekly_qb, pass_td_weekly_qb,
                                 pass_att_monthly_qb, pass_cmp_monthly_qb, pass_yds_monthly_qb, pass_td_monthly_qb,
@@ -139,17 +138,113 @@
                                 rush_td_monthly_qb, rush_att_monthly_qb, rush_yds_monthly_qb,
                                 rush_td_total_qb, rush_att_total_qb, rush_yds_total_qb, player_dates_qb, player_dates_months_qb
                             ] = data.split('#');
+
+                            pass_att_weekly_qb = pass_att_weekly_qb.split(",").slice(-17);
+                            pass_cmp_weekly_qb = pass_cmp_weekly_qb.split(",").slice(-17);
+                            pass_yds_weekly_qb = pass_yds_weekly_qb.split(",").slice(-17);
+                            pass_td_weekly_qb = pass_td_weekly_qb.split(",").slice(-17);
+                            rush_td_weekly_qb = rush_td_weekly_qb.split(",").slice(-17);
+                            rush_att_weekly_qb = rush_att_weekly_qb.split(",").slice(-17);
+                            player_dates_qb = player_dates_qb.split(",").slice(0,-1).slice(-17);
+                            player_dates_months_qb = player_dates_months_qb.split(",").slice(0,-1).slice(-17);*/
                         </script>
 
+                        <div class="row">
+                            <div class="col">
+                                <?php
+                                echo 'QB ';
+                                print_r($qb_name['pName']);
+                                ?>
+                            </div>
+                            <div class="col">
+                                
+                            </div>
+                            <div class="col">
+                            <canvas id="weeklyChart1QB" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                            <canvas id="weeklyChart2QB" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                            <canvas id="weeklyChart3QB" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                            </div>
+                        </div>
+                    
+                    <script>
+                       /* new Chart("weeklyChart1QB", {
+                            type: "line",
+                            data: {
+                                labels: player_dates_qb,
+                                datasets: [{
+                                    label: 'pass att',
+                                    data: pass_att_weekly_qb,
+                                    borderColor: "red",
+                                    fill: false
+                                }, {
+                                    label: 'pass cmp',
+                                    data: pass_cmp_weekly_qb,
+                                    borderColor: "green",
+                                    fill: false
+                                }, {
+                                    label: 'pass td',
+                                    data: pass_td_weekly_qb,
+                                    borderColor: "blue",
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                legend: {
+                                    display: true
+                                }
+                            }
+                        });
+
+                        new Chart("weeklyChart2QB", {
+                            type: "line",
+                            data: {
+                                labels: player_dates_qb,
+                                datasets: [{
+                                    label: 'pass yds',
+                                    data: pass_yds_weekly_qb,
+                                    borderColor: "purple",
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                legend: {
+                                    display: true
+                                }
+                            }
+                        });
+
+                        new Chart("weeklyChart3QB", {
+                            type: "line",
+                            data: {
+                                labels: player_dates_qb,
+                                datasets: [{
+                                    label: 'rush td',
+                                    data: rush_td_weekly_qb,
+                                    borderColor: "yellow",
+                                    fill: false
+                                }, {
+                                    label: 'rush att',
+                                    data: rush_att_weekly_qb,
+                                    borderColor: "orange",
+                                    fill: false
+                                }]
+                            },
+                            options: {
+                                legend: {
+                                    display: true
+                                }
+                            }
+                        });*/
+                    </script>
+                    
                     </div>
                     <div class="tab-pane fade" id="rb-tab-pane" role="tabpanel" aria-labelledby="rb-tab" tabindex="0">
-                        rb1, rb2
                         <?php
                         $rb1 =  $result[2];
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$rb1]);
-                        $rb1_name = $stmt->fetchAll();
+                        $rb1_name = $stmt->fetch();
                         $player_input2 = $rb1 . ", 'RB'";
                         $result_set2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input2));
 
@@ -158,12 +253,15 @@
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$rb2]);
-                        $rb2_name = $stmt->fetchAll();
+                        $rb2_name = $stmt->fetch();
                         $player_input3 = $rb2 . ", 'RB'";
                         $result_set3 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input3));
 
-                        echo $rb1_name;
-                        echo $rb2_name;
+                        echo 'RB1 ';
+                        print_r($rb1_name['pName']);
+
+                        echo ', RB2 ';
+                        print_r($rb2_name['pName']);
                         ?>
 
                         <script>
@@ -190,35 +288,40 @@
                         </script>
                     </div>
                     <div class="tab-pane fade" id="rec-tab-pane" role="tabpanel" aria-labelledby="rec-tab" tabindex="0">
-                        wr1, wr2, te
                         <?php
                         $wr1 =  $result[4];
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$wr1]);
-                        $wr1_name = $stmt->fetchAll();
+                        $wr1_name = $stmt->fetch();
                         $player_input4 = $wr1 . ", WR";
                         $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
 
                         $wr2 =  $result[5];
-                        $result_set5 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input5));
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$wr2]);
+                        $wr2_name = $stmt->fetch();
                         $player_input5 = $wr2 . ", WR";
-                        $wr2_name = $stmt->fetchAll();
+                        $result_set5 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input5));
 
                         $te =  $result[6];
-                        $result_set6 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input6));
                         $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$te]);
+                        $te_name = $stmt->fetch();
                         $player_input6 = $te . ", TE";
-                        $te_name = $stmt->fetchAll();
+                        $result_set6 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input6));
 
-                        echo $wr1_name;
-                        echo $wr2_name;
-                        echo $te_name;
+
+                        echo 'WR1 ';
+                        print_r($wr1_name['pName']);
+
+                        echo ', WR2 ';
+                        print_r($wr2_name['pName']);
+
+                        echo ', TE ';
+                        print_r($te_name['pName']);
                         ?>
 
                         <script>
@@ -243,40 +346,85 @@
                                 targets_total_te, rec_total_te, rec_td_total_te, rec_yds_total_te,
                                 player_dates_te, player_dates_months_te
                             ] = data.split('#');
-
                         </script>
                     </div>
                     <div class="tab-pane fade" id="flx-tab-pane" role="tabpanel" aria-labelledby="flx-tab" tabindex="0">
-                        flex
                         <?php
                         $flx =  $result[7];
                         $stmt = $connection->prepare("SELECT pName, pos FROM player 
                         WHERE player_id = ?;");
                         $stmt->execute([$flx]);
-                        $flx_res = $stmt->fetchAll();
-                        $flx_res = explode($flx_res, ',');
-                        $flx_name = $flx_res[0];
-                        $flx_pos = $flx_res[1];
-                        if($flx_pos == 'RB'){
-                            $player_input4 = $flx . ", RB";
-                            $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
-                        }else if($flx_pos == 'WR'){
-                                $player_input4 = $flx . ", WR";
-                                $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
-                        } else {
-                                $player_input4 = $flx . ", TE";
-                                $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
-                        }
-                        echo $flex_name;
-                        
+                        $flx_res = $stmt->fetch();
+                        $flx_name = $flx_res['pName'];
+                        $flx_pos = $flx_res['pos'];
+                        $player_input4 = $flx . "," . $flx_pos;
+                        $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
+
+
+                        echo 'Flex ';
+                        print_r($flx_name);
                         ?>
+
+                        <script>
+                            var data = <?php echo json_encode($result_set4); ?>;
+                            var pos = <?php echo json_encode($flx_pos); ?>;
+
+                            if (pos == 'RB') {
+                                var [rush_td_weekly_flx, rush_att_weekly_flx, rush_yds_weekly_flx,
+                                    rush_td_monthly_flx, rush_att_monthly_flx, rush_yds_monthly_flx,
+                                    rush_td_total_flx, rush_att_total_flx, rush_yds_total_flx,
+                                    targets_weekly_flx, rec_weekly_flx, rec_td_weekly_flx, rec_yds_weekly_flx,
+                                    targets_monthly_flx, rec_monthly_flx, rec_td_monthly_flx, rec_yds_monthly_flx,
+                                    targets_total_flx, rec_total_flx, rec_td_total_flx, rec_yds_total_flx,
+                                    player_dates_flx, player_dates_months_flx
+                                ] = data.split('#');
+                            } else {
+                                var [targets_weekly_flx, rec_weekly_flx, rec_td_weekly_flx, rec_yds_weekly_flx,
+                                    targets_monthly_flx, rec_monthly_flx, rec_td_monthly_flx, rec_yds_monthly_flx,
+                                    targets_total_flx, rec_total_flx, rec_td_total_flx, rec_yds_total_flx,
+                                    player_dates_flx, player_dates_months_flx
+                                ] = data.split('#');
+                            }
+                        </script>
+
                     </div>
                     <div class="tab-pane fade" id="f-team-tab-pane" role="tabpanel" aria-labelledby="f-team-tab" tabindex="0">
-                        team
                         <?php
                         $team =  $result[8];
-                        echo $team;
+
+                        echo 'Team ';
+                        print_r($team);
+                        $result_set8 = exec('python ../src/team_data_chart.py ' . escapeshellarg($team));
+
                         ?>
+                        <script>
+                            const triggerTabList = document.querySelectorAll('#myTab button')
+                            triggerTabList.forEach(triggerEl => {
+                                const tabTrigger = new bootstrap.Tab(triggerEl)
+
+                                triggerEl.addEventListener('click', event => {
+                                    event.preventDefault()
+                                    tabTrigger.show()
+                                })
+                            });
+
+                            var data = <?php echo json_encode($result_set8); ?>;
+
+                            var [pass_att_weekly, pass_cmp_weekly, pass_td_weekly, pass_yds_weekly,
+                                pass_att_monthly, pass_cmp_monthly, pass_td_monthly, pass_yds_monthly,
+                                pass_att_total, pass_cmp_total, pass_td_total, pass_yds_total,
+                                rush_td_weekly, rush_att_weekly, rush_yds_weekly,
+                                rush_td_monthly, rush_att_monthly, rush_yds_monthly,
+                                rush_td_total, rush_att_total, rush_yds_total,
+                                targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
+                                targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
+                                targets_total, rec_total, rec_td_total, rec_yds_total,
+                                get_dates, get_months
+                            ] = data.split('#');
+
+                            get_dates = get_dates.split(",").slice(-17);
+                            get_months = get_months.split(",").slice(-17);
+                        </script>
                     </div>
                 </div>
             </div>
