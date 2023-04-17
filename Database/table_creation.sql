@@ -51,7 +51,7 @@ CREATE TABLE user (
 CREATE TABLE game_stats_team (
     game_date                       DATE            not null,
     game_id                         varchar(20)     not null,
-    teamName                        varchar(5)      not null,
+    team                            varchar(5)      not null,
     pass_cmp                        INT(4),
     pass_att                        INT(4),
     pass_yds                        INT(4),
@@ -97,7 +97,7 @@ CREATE TABLE game_stats_team (
     yds_per_rec                     numeric(3,2),
     yds_per_rush                    numeric(3,2),
     yds_per_target                  numeric(3,2),
-    primary key (game_date, game_id, teamName),
+    primary key (game_date, game_id, team),
     foreign key (game_id) references game(game_id)
 );
 CREATE TABLE game_stats_player (

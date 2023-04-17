@@ -78,11 +78,9 @@
 
         $player = explode(",", $selectedPlayer);
         $pos = $player[2];
-        $player_input = $player[0] . "," . $player[2];
+        $player_input = $player[0] . "," . $pos;
 
         $result_set = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input));
-        //$player_data = explode($result_set, "#");
-
 
     }
 
@@ -137,8 +135,9 @@
 
             }
 
-            player_dates = player_dates.split(",").slice(-17);
-            player_dates_months = player_dates_months.split(",").slice(-17);
+            player_dates = player_dates.split(",").slice(0,-1).slice(-17);
+            player_dates_months = player_dates_months.split(",").slice(0,-1).slice(-17);
+            player_last_date = player_dates.slice(-1);
         </script>
 
 
@@ -168,10 +167,36 @@
 
                             Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $player[2]; ?></br>
-                            Most recent game date: </br>
-                            TD's: </br>
-                            Yards: </br>
+                            Player POS: <?php echo $pos; ?></br>
+                            Most recent game date: </br><script>document.write(player_last_date);</script></br>
+                            TD's since 2019:</br><script>if(pos == 'QB'){
+                                document.write('Passing TDs: ')
+                                document.write(pass_td_total + '</br>')
+                                document.write('Rushing TDs: ')
+                                document.write(rush_td_total)
+                            }else if(pos == 'RB') {
+                                document.write('Rushing TDs: ')
+                                document.write(rush_td_total + '</br>')
+                                document.write('Reception TDs: ')
+                                document.write(rec_td_total)
+                            }else{
+                                document.write('Reception TDs: ')
+                                document.write(rec_td_total)
+                            };</script></br>
+                            Yards since 2019:</br><script>if(pos == 'QB'){
+                                document.write('Pass Yds: ')
+                                document.write(pass_yds_total + '</br>')
+                                document.write('Rush Yds: ')
+                                document.write(rush_yds_total)
+                            }else if(pos == 'RB') {
+                                document.write('Rushing Yds: ')
+                                document.write(rush_yds_total + '</br>')
+                                document.write('Reception Yds: ')
+                                document.write(rec_yds_total)
+                            }else{
+                                document.write('Recption Yds: ')
+                                document.write(rec_td_total)
+                            };</script></br>
 
                         </div>
                         <div class="col">
@@ -428,12 +453,38 @@
                     <div class="row">
                         <div class="col">
 
-                            Player Stats:</br>
+                        Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $player[2]; ?></br>
-                            Most recent game date: </br>
-                            TD's: </br>
-                            Yards: </br>
+                            Player POS: <?php echo $pos; ?></br>
+                            Most recent game date: </br><script>document.write(player_last_date);</script></br>
+                            TD's since 2019:</br><script>if(pos == 'QB'){
+                                document.write('Passing TDs: ')
+                                document.write(pass_td_total + '</br>')
+                                document.write('Rushing TDs: ')
+                                document.write(rush_td_total)
+                            }else if(pos == 'RB') {
+                                document.write('Rushing TDs: ')
+                                document.write(rush_td_total + '</br>')
+                                document.write('Reception TDs: ')
+                                document.write(rec_td_total)
+                            }else{
+                                document.write('Reception TDs: ')
+                                document.write(rec_td_total)
+                            };</script></br>
+                            Yards since 2019:</br><script>if(pos == 'QB'){
+                                document.write('Pass Yds: ')
+                                document.write(pass_yds_total + '</br>')
+                                document.write('Rush Yds: ')
+                                document.write(rush_yds_total)
+                            }else if(pos == 'RB') {
+                                document.write('Rushing Yds: ')
+                                document.write(rush_yds_total + '</br>')
+                                document.write('Reception Yds: ')
+                                document.write(rec_yds_total)
+                            }else{
+                                document.write('Recption Yds: ')
+                                document.write(rec_td_total)
+                            };</script></br>
 
                         </div>
                         <div class="col">
@@ -693,12 +744,38 @@
                     <div class="row">
                         <div class="col">
 
-                            Player Stats:</br>
+                        Player Stats:</br>
                             Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $player[2]; ?></br>
-                            Most recent game date: </br>
-                            TD's: </br>
-                            Yards: </br>
+                            Player POS: <?php echo $pos; ?></br>
+                            Most recent game date: </br><script>document.write(player_last_date);</script></br>
+                            TD's since 2019:</br><script>if(pos == 'QB'){
+                                document.write('Passing TDs: ')
+                                document.write(pass_td_total + '</br>')
+                                document.write('Rushing TDs: ')
+                                document.write(rush_td_total)
+                            }else if(pos == 'RB') {
+                                document.write('Rushing TDs: ')
+                                document.write(rush_td_total + '</br>')
+                                document.write('Reception TDs: ')
+                                document.write(rec_td_total)
+                            }else{
+                                document.write('Reception TDs: ')
+                                document.write(rec_td_total)
+                            };</script></br>
+                            Yards since 2019:</br><script>if(pos == 'QB'){
+                                document.write('Pass Yds: ')
+                                document.write(pass_yds_total + '</br>')
+                                document.write('Rush Yds: ')
+                                document.write(rush_yds_total)
+                            }else if(pos == 'RB') {
+                                document.write('Rushing Yds: ')
+                                document.write(rush_yds_total + '</br>')
+                                document.write('Reception Yds: ')
+                                document.write(rec_yds_total)
+                            }else{
+                                document.write('Recption Yds: ')
+                                document.write(rec_td_total)
+                            };</script></br>
 
                         </div>
                         

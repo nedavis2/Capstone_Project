@@ -145,20 +145,35 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="w-passing-tab-pane" role="tabpanel" aria-labelledby="w-passing-tab" tabindex="0">
 
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
 
-                        <canvas id="weeklyChart1P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="weeklyChart2P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                            </div>
+                            <div class="col">
 
-
-
+                            </div>
+                            <div class="col">
+                                <canvas id="weeklyChart1P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="weeklyChart2P" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                            </div>
+                        </div>
 
                         <script>
                             pass_att_weekly = pass_att_weekly.split(",").slice(-17);
                             pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
                             pass_yds_weekly = pass_yds_weekly.split(",").slice(-17);
                             pass_td_weekly = pass_td_weekly.split(",").slice(-17);
-
-
 
                             new Chart("weeklyChart1P", {
                                 type: "line",
@@ -205,21 +220,35 @@
                                     }
                                 }
                             });
-
-
-
-
-
-                            let text = data;
-                            document.getElementById("demo").innerHTML = text;
                         </script>
 
                     </div>
                     <div class="tab-pane fade" id="w-rushing-tab-pane" role="tabpanel" aria-labelledby="w-rushing-tab" tabindex="0">
 
-                        <canvas id="weeklyChart1R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="weeklyChart2R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="weeklyChart3R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <canvas id="weeklyChart1R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="weeklyChart2R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="weeklyChart3R" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                            </div>
+                        </div>
 
 
                         <script>
@@ -284,11 +313,30 @@
                     </div>
                     <div class="tab-pane fade" id="w-receiving-tab-pane" role="tabpanel" aria-labelledby="w-receiving-tab" tabindex="0">
 
-                        <canvas id="weeklyChart1C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="weeklyChart2C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="weeklyChart3C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
 
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
 
+                            </div>
+                            <div class="col">
+                                <canvas id="weeklyChart1C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="weeklyChart2C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="weeklyChart3C" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                            </div>
+                        </div>
 
                         <script>
                             targets_weekly = targets_weekly.split(",").slice(-17);
@@ -380,8 +428,28 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="m-passing-tab-pane" role="tabpanel" aria-labelledby="m-passing-tab" tabindex="0">
 
-                        <canvas id="monthlyChart1PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="monthlyChart2PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <canvas id="monthlyChart1PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="monthlyChart2PM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                            </div>
+                        </div>
 
 
 
@@ -444,10 +512,29 @@
                     </div>
                     <div class="tab-pane fade" id="m-rushing-tab-pane" role="tabpanel" aria-labelledby="m-rushing-tab" tabindex="0">
 
-                        <canvas id="monthlyChart1RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="monthlyChart2RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="monthlyChart3RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
 
+                            </div>
+                            <div class="col">
+                                <canvas id="monthlyChart1RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="monthlyChart2RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="monthlyChart3RM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                            </div>
+                        </div>
 
                         <script>
                             rush_td_monthly = rush_td_monthly.split(",").slice(-17);
@@ -511,11 +598,29 @@
                     </div>
                     <div class="tab-pane fade" id="m-receiving-tab-pane" role="tabpanel" aria-labelledby="m-receiving-tab" tabindex="0">
 
-                        <canvas id="monthlyChart1CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="monthlyChart2CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
-                        <canvas id="monthlyChart3CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
 
-
+                            </div>
+                            <div class="col">
+                                <canvas id="monthlyChart1CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="monthlyChart2CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                                <canvas id="monthlyChart3CM" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px;"></canvas>
+                            </div>
+                        </div>
 
                         <script>
                             targets_monthly = targets_monthly.split(",").slice(-17);
@@ -609,7 +714,27 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="t-passing-tab-pane" role="tabpanel" aria-labelledby="t-passing-tab" tabindex="0">
 
-                        <canvas id="totalChart1P" style="width:40%; max-width:1000px"></canvas>
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <canvas id="totalChart1P" style="width:40%; max-width:1000px"></canvas>
+                            </div>
+                        </div>
 
                         <script>
                             pass_cmp_pie = pass_cmp_total / pass_att_total
@@ -654,7 +779,27 @@
                     </div>
                     <div class="tab-pane fade" id="t-rushing-tab-pane" role="tabpanel" aria-labelledby="t-rushing-tab" tabindex="0">
 
-                        <canvas id="totalChart1R" style="width:40%; max-width:1000px"></canvas>
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <canvas id="totalChart1R" style="width:40%; max-width:1000px"></canvas>
+                            </div>
+                        </div>
 
                         <script>
                             var pieLabels = [];
@@ -699,7 +844,27 @@
                     </div>
                     <div class="tab-pane fade" id="t-receiving-tab-pane" role="tabpanel" aria-labelledby="t-receiving-tab" tabindex="0">
 
-                        <canvas id="totalChart1C" style="width:40%; max-width:1000px"></canvas>
+                        <div class="row">
+                            <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
+                            </div>
+                            <div class="col">
+
+                            </div>
+                            <div class="col">
+                                <canvas id="totalChart1C" style="width:40%; max-width:1000px"></canvas>
+                            </div>
+                        </div>
 
                         <script>
                             var pieLabels = [];
@@ -751,7 +916,7 @@
             </div>
         </div>
     </div>
-    
+
 
 </body>
 
