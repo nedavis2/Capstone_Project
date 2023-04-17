@@ -147,6 +147,17 @@
 
                         <div class="row">
                             <div class="col">
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
 
                             </div>
                             <div class="col">
@@ -217,7 +228,17 @@
 
                         <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -295,7 +316,17 @@
 
                         <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -399,7 +430,17 @@
 
                         <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -473,7 +514,17 @@
 
                         <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -549,7 +600,17 @@
 
                         <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -653,9 +714,19 @@
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="t-passing-tab-pane" role="tabpanel" aria-labelledby="t-passing-tab" tabindex="0">
 
-                    <div class="row">
+                        <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -664,7 +735,7 @@
                                 <canvas id="totalChart1P" style="width:40%; max-width:1000px"></canvas>
                             </div>
                         </div>
-                        
+
                         <script>
                             pass_cmp_pie = pass_cmp_total / pass_att_total
                             pass_td_pie = pass_td_total / pass_cmp_total
@@ -708,9 +779,19 @@
                     </div>
                     <div class="tab-pane fade" id="t-rushing-tab-pane" role="tabpanel" aria-labelledby="t-rushing-tab" tabindex="0">
 
-                    <div class="row">
+                        <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -763,9 +844,19 @@
                     </div>
                     <div class="tab-pane fade" id="t-receiving-tab-pane" role="tabpanel" aria-labelledby="t-receiving-tab" tabindex="0">
 
-                    <div class="row">
+                        <div class="row">
                             <div class="col">
-
+                                <script>
+                                    document.write("Team name:</br>")
+                                </script>
+                                <?php echo $selectedTeam; ?>;
+                                <script>
+                                    document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
+                                        pass_td_total + "</br>Rushing TDs:</br>" +
+                                        rush_td_total + "</br>Air Yards</br>" +
+                                        pass_yds_total + "</br>Rushing Yards:</br>" +
+                                        rush_yds_total)
+                                </script>
                             </div>
                             <div class="col">
 
@@ -773,8 +864,8 @@
                             <div class="col">
                                 <canvas id="totalChart1C" style="width:40%; max-width:1000px"></canvas>
                             </div>
-                        </div>    
-                    
+                        </div>
+
                         <script>
                             var pieLabels = [];
 
