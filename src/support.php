@@ -78,17 +78,22 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+                Our Team:<br>
+                Logan Whitfield<br>
+                Kevin Hayes<br>
+                Clayton Winters<br>
+                Carlos Ruis<br>
+                Nate Davis<br>
                 The best way to reach us is emailing guest@aol.com to set up an appointment with our team.
             </div>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="documentation-tab-pane" role="tabpanel" aria-labelledby="documentation-tab" tabindex="0">
                 Our model will enhance the experience of football and fantasy football with friends and family, 
-                by providing users with more accurate predictions of player performance. Our goal is to provide an entry-level tool that will allow anyone to get into fantasy football, 
-                without needing extensive knowledge of the game. Showing the users player and team past statistics in an easy viewing experience. At the same time, 
-                we understand that experts need more granularity in their predictions and we will provide them with a deeper level of analysis and insight.
-                Our goal of building a convolutional neural network for fantasy football is to streamline the statistical analysis behind the game and make it more accessible to users. 
-                By using advanced machine learning techniques, we aim to provide users with more informed decisions when it comes to drafting and managing their fantasy teams. 
-                Additionally, our convolutional neural network will take into account team injury analysis to provide users with a more complete picture of a team or player's potential. 
+                by providing users with more accurate predictions of player performance. <br>Our goal is to provide an entry-level tool that will allow anyone to get into fantasy football, 
+                without needing extensive knowledge of the game. <br>Showing the users player and team past statistics in an easy viewing experience. <br>At the same time, 
+                we understand that experts need more granularity in their predictions and we will provide them with a deeper level of analysis and insight.<br>
+                Our goal of building a convolutional neural network for fantasy football is to streamline the statistical analysis behind the game and make it more accessible to users. <br>
+                By using advanced machine learning techniques, we aim to provide users with more informed decisions when it comes to drafting and managing their fantasy teams. <br>
                 </div>
             </div>
             <div class="tab-content" id="myTabContent">
@@ -96,7 +101,7 @@
                     Q: Why are you all so awesome?<br>
                     A: We just are!<br>
                     Q: What data is being used for predictions?<br>
-                    A: Currently we have 55 different data points for each player. <br>
+                    A: Currently we are using 55 different data points for each player. <br>
                     Q: Common terms defined. While most displayed statistics are self-explanatory there are some that are not so obvious:<br>
                     1. Rush- This terminology simply refers to the act of running with the ball, with the stipulation that the ball is not thrown during the play.<br>
                     2. Broken tackle- This refers to when a player is tackled by an opposing player but manages not to stop progressing forward. 
