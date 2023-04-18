@@ -64,7 +64,7 @@
         </div>
     </nav>
 
-    <div id="teamPageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
+    <div id="teamPageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black; text-align: center;">
         <?php
         $selectedTeam = $_POST['teamSelect'];
         if (empty($selectedTeam)) {
