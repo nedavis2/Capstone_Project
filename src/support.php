@@ -100,6 +100,8 @@
                 <div class="tab-pane fade" id="faq-tab-pane" role="tabpanel" aria-labelledby="faq-tab" tabindex="0">
                     Q: Why are you all so awesome?<br>
                     A: We just are!<br>
+                    Q: How do I return to the home page?<br>
+                    A: Click the "Silicon Stadium" located at the top left of every page.<br>
                     Q: What data is being used for predictions?<br>
                     A: Currently we are using 55 different data points for each player. <br>
                     Q: Common terms defined. While most displayed statistics are self-explanatory there are some that are not so obvious:<br>
