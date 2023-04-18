@@ -78,13 +78,13 @@
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
-                Our Team:<br>
+                Our Team: at UNCG<br>
                 Logan Whitfield<br>
                 Kevin Hayes<br>
                 Clayton Winters<br>
                 Carlos Ruis<br>
                 Nate Davis<br>
-                The best way to reach us is emailing guest@aol.com to set up an appointment with our team.
+                To contact us, email crwinter@uncg.edu to set up an appointment with our team.
             </div>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="documentation-tab-pane" role="tabpanel" aria-labelledby="documentation-tab" tabindex="0">
