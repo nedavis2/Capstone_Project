@@ -10,12 +10,14 @@ try{
     $game_data_file = "..\\Data\\game_data.csv";
     $team_stats_file = "..\\Data\\team_stats.csv";
     $weather_data_file = "..\\Data\\weather_data.csv";
+    $pred_file = "..\\machine learning\\predictions_table.csv";
 
     $file_1 = fopen($player_desc_file, "r");
     $file_2 = fopen($player_stats_file, "r");
     $file_3 = fopen($game_data_file, "r");
     $file_4 = fopen($team_stats_file, "r");
     $file_5 = fopen($weather_data_file, "r");
+    $file_6 = fopen($pred_file, "r");
 
 } catch(Exception $e){
     echo "File Exception: " . $e->getMessage();
@@ -28,6 +30,7 @@ try{
     //$connection->query("DELETE FROM injury");
     $connection->query("DELETE FROM game_stats_player");
     $connection->query("DELETE FROM game_stats_team");
+    $connection->query("DELETE FROM predictions");
     $connection->query("DELETE FROM user");
     $connection->query("DELETE FROM weather");
     $connection->query("DELETE FROM game");
@@ -56,6 +59,11 @@ try{
                             :rush_yds_bonus, :rec_yds_bonus, :pass_target_yds, :pass_poor_throws, :pass_blitzed, :pass_hurried,
                             :rush_yds_before_contact, :rush_yac, :rush_broken_tackles, :rec_air_yds, :rec_yac, :rec_drops, :offense,
                             :off_pct, :yds_per_rec, :yds_per_rush, :yds_per_target)";
+    $query_str_preds = "INSERT INTO predictions
+                    VALUES (:player_id, :pass_att_total, :pass_cmp_total, :pass_yds_total, :pass_td_total, :rush_td_total, :rush_att_total, :rush_yds_total,
+                            :targets_total, :rec_total, :rec_td_total, :rec_yds_total, :pass_att_weekly, :pass_cmp_weekly, :pass_yds_weekly,
+                            :pass_td_weekly, :rush_td_weekly, :rush_att_weekly, :rush_yds_weekly, :targets_weekly, :rec_weekly, :rec_td_weekly,
+                            :rec_yds_weekly)";
     $person1_qry = "INSERT INTO user (user_email) VALUES ('winters1291@gmail.com')";
     $person2_qry = "INSERT INTO user (user_email) VALUES ('nivek694@gmail.com')";
     $person3_qry = "INSERT INTO user (user_email) VALUES ('lww1117@gmail.com')";
@@ -231,7 +239,38 @@ try{
         $stmt->execute();
     }
 
-    //insert into injury table
+    //insert into predictions table
+    while (($row = fgetcsv($file_6)) !== FALSE) {
+        $stmt = $connection->prepare($query_str_preds);
+
+        $stmt->bindParam(":player_id", $row[1], PDO::PARAM_STR);
+
+        $stmt->bindParam(":pass_att_total", $row[2], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_cmp_total", $row[3], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_yds_total", $row[4], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_td_total", $row[5], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_td_total", $row[6], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_att_total", $row[7], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_yds_total", $row[8], PDO::PARAM_STR);
+        $stmt->bindParam(":targets_total", $row[9], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_total", $row[10], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_td_total", $row[11], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_yds_total", $row[12], PDO::PARAM_STR);
+
+        $stmt->bindParam(":pass_att_weekly", $row[13], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_cmp_weekly", $row[14], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_yds_weekly", $row[15], PDO::PARAM_STR);
+        $stmt->bindParam(":pass_td_weekly", $row[16], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_td_weekly", $row[17], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_att_weekly", $row[18], PDO::PARAM_STR);
+        $stmt->bindParam(":rush_yds_weekly", $row[19], PDO::PARAM_STR);
+        $stmt->bindParam(":targets_weekly", $row[20], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_weekly", $row[21], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_td_weekly", $row[22], PDO::PARAM_STR);
+        $stmt->bindParam(":rec_yds_weekly", $row[23], PDO::PARAM_STR);
+
+        $stmt->execute();
+    }
 
     //insert into user table (hardcoded for now)
     $stmt = $connection->prepare($person1_qry);
