@@ -1223,7 +1223,7 @@
 
                                                 <?php
 
-                                                $stmt = $connection->prepare("SELECT DISTINCT team FROM team_table ORDER BY team ASC;");
+                                                $stmt = $connection->prepare("SELECT DISTINCT team FROM game_stats_table ORDER BY team ASC;");
                                                 $stmt->execute();
                                                 $results = $stmt->fetchAll();
                                                 for ($idx = 0; $idx < count($results); $idx++) {
