@@ -755,7 +755,7 @@ def team_running_back_rec_monthly(team : str) -> list[int]:
 #No position values
 
 #________________________________________________________________________________
- player_rush_td_total(player_id : str) -> int:
+def player_rush_td_total(player_id : str) -> int:
     retreived_data = "rush_td"
     
     return  _retrieve_player_total_data(player_id, retreived_data)

@@ -63,41 +63,41 @@ def player_rusher_view_total(player_id: str):
            + str(player_rush_yds_total(player_id)))
     
 def player_pass_pred(player_id: str):
-    return(str(pass_att_weekly(player_id)) + "#"
-    + str(pass_cmp_weekly(player_id)) + "#"
-    + str(pass_yds_weekly(player_id)) + "#"
-    + str(pass_td_weekly(player_id)))
+    return(str(player_prediction_pass_att_weekly(player_id)) + "#"
+    + str(player_prediction_pass_cmp_weekly(player_id)) + "#"
+    + str(player_prediction_pass_yds_weekly(player_id)) + "#"
+    + str(player_prediction_pass_td_weekly(player_id)))
     
     
 def player_pass_pred_total(player_id: str):
-    return(str(pass_att_total(player_id)) + "#"
-    + str(pass_cmp_total(player_id)) +"#"
-    + str(pass_yds_total(player_id)) + "#"
-    + str(pass_td_total(player_id)))
+    return(str(player_prediction_pass_att_total(player_id)) + "#"
+    + str(player_prediction_pass_cmp_total(player_id)) +"#"
+    + str(player_prediction_pass_yds_total(player_id)) + "#"
+    + str(player_prediction_pass_td_total(player_id)))
     
 def player_rush_pred(player_id: str):
-    return(str(rush_td_weekly(player_id)) + "#"
-    + str(rush_att_weekly(player_id)) + "#"
-    + str(rush_yds_weekly(player_id)))
+    return(str(player_prediction_rush_td_weekly(player_id)) + "#"
+    + str(player_prediction_rush_att_weekly(player_id)) + "#"
+    + str(player_prediction_rush_yds_weekly(player_id)))
     
     
 def player_rush_pred_total(player_id: str):
-    return(str(rush_td_total(player_id)) + "#"
-    + str(rush_att_total(player_id)) + "#"
-    + str(rush_yds_total(player_id)))
+    return(str(player_prediction_rush_td_total(player_id)) + "#"
+    + str(player_prediction_rush_att_total(player_id)) + "#"
+    + str(player_prediction_rush_yds_total(player_id)))
     
 def player_rec_pred(player_id: str):
-    return(str(targets_weekly(player_id)) + "#"
-    + str(rec_weekly(player_id)) + "#"
-    + str(rec_td_weekly(player_id)) + "#"
-    + str(rec_yds_weekly(player_id)))
+    return(str(player_prediction_targets_weekly(player_id)) + "#"
+    + str(player_prediction_rec_weekly(player_id)) + "#"
+    + str(player_prediction_rec_td_weekly(player_id)) + "#"
+    + str(player_prediction_rec_yds_weekly(player_id)))
     
    
 def player_rec_pred_total(player_id: str):
-    return(str(targets_total(player_id)) + "#"
-    + str(rec_total(player_id)) + "#"
-    + str(rec_td_total(player_id)) + "#"
-    + str(rec_yds_total(player_id)))
+    return(str(player_prediction_targets_total(player_id)) + "#"
+    + str(player_prediction_rec_total(player_id)) + "#"
+    + str(player_prediction_rec_td_total(player_id)) + "#"
+    + str(player_prediction_rec_yds_total(player_id)))
 
 
 
@@ -138,6 +138,8 @@ def player_primary_view(player_id: str, pos: str):
 #print(player_rec_yds_weekly('JoneAa00'))
 
 #print(player_avg_rec_view('JoneAa00'))
+
+print(player_pass_pred('AlleJo02'))
 
 
 
