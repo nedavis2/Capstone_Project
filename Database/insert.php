@@ -268,7 +268,7 @@ try{
         $stmt->bindParam(":rec_weekly", $row[21], PDO::PARAM_STR);
         $stmt->bindParam(":rec_td_weekly", $row[22], PDO::PARAM_STR);
         $stmt->bindParam(":rec_yds_weekly", $row[23], PDO::PARAM_STR);
-
+        print_r($stmt);
         $stmt->execute();
     }
 

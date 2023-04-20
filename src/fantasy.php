@@ -1257,12 +1257,12 @@
 
                                                 <?php
 
-                                                $stmt = $connection->prepare("SELECT DISTINCT teamName FROM game_stats_team ORDER BY teamName ASC;");
+                                                $stmt = $connection->prepare("SELECT DISTINCT team FROM game_stats_team ORDER BY team ASC;");
                                                 $stmt->execute();
                                                 $results = $stmt->fetchAll();
                                                 for ($idx = 0; $idx < count($results); $idx++) {
                                                     $p = $results[$idx];
-                                                    print("<option value=\"" . $p['teamName'] . "\">" . $p['teamName'] . "</option>");
+                                                    print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
                                                 }
                                                 ?>
 

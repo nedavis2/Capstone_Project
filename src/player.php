@@ -59,7 +59,7 @@
                     if (isset($_SESSION['email'])) {
                         $user_email = $_SESSION['email'];
                     } else {
-                        $user_email = 'dummyBOI@aol.com';
+                        $user_email = 'guest@gmail.com';
                     }
                 } else {
                     $user_name = 'guest';
@@ -151,7 +151,7 @@
                 <button class="nav-link" id="total-tab" data-bs-toggle="tab" data-bs-target="#total-tab-pane" type="button" role="tab" aria-controls="total-tab-pane" aria-selected="false">Total data</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison-tab-pane" type="button" role="tab" aria-controls="comparison-tab-pane" aria-selected="false">Comparison</button>
+                <button class="nav-link" id="prediction-comparison-tab" data-bs-toggle="tab" data-bs-target="#prediction-comparison-tab-pane" type="button" role="tab" aria-controls="prediction-comparison-tab-pane" aria-selected="false">Prediction/Comparison</button>
             </li>
         </ul>
 
@@ -436,7 +436,6 @@
 
                 </div>
                 <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
-
 
                     <div class="container p-3">
 
@@ -751,37 +750,31 @@
 
                             </div>
 
-
                             <div class="col">
                                 <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
                                 <script>
-                                    if(pos == 'QB'){
-                                        document.write("</br>Pass completion ratio: " + ((pass_cmp_total/pass_att_total)*100).toFixed(2) + "%"
-                                        + "</br>Pass TD ratio on complete passes: " + ((pass_td_total/pass_cmp_total)*100).toFixed(2) + "%"
-                                        + "</br>Rushing TD ratio: " + ((rush_td_total/rush_att_total)*100).toFixed(2) + "%"); 
-                                    }else if(pos == 'RB'){
+                                    if (pos == 'QB') {
+                                        document.write("</br>Pass completion ratio: " + ((pass_cmp_total / pass_att_total) * 100).toFixed(2) + "%" +
+                                            "</br>Pass TD ratio on complete passes: " + ((pass_td_total / pass_cmp_total) * 100).toFixed(2) + "%" +
+                                            "</br>Rushing TD ratio: " + ((rush_td_total / rush_att_total) * 100).toFixed(2) + "%");
+                                    } else if (pos == 'RB') {
                                         total_touches = rush_att_total + targets_total;
-                                        document.write("</br>Rushing ratio: " + ((rush_att_total/(parseInt(rush_att_total) + parseInt(targets_total)))*100).toFixed(2) + "%"
-                                        + "</br>Rushing TD ratio: " + ((rush_td_total/rush_att_total)*100).toFixed(2) + "%"
-                                        + "</br>Receptiom TD ratio on receptions: " + ((rec_td_total/rec_total)*100).toFixed(2) + "%");
-                                    }else{
-                                        document.write("</br>Reception ratio: " + ((rec_total/targets_total)*100).toFixed(2) + "%"
-                                        + "</br>Reception TD ratio on targets: " + ((rec_td_total/targets_total)*100).toFixed(2) + "%"
-                                        + "</br>Receptiom TD ratio on reception: " + ((rec_td_total/rec_total)*100).toFixed(2) + "%");
+                                        document.write("</br>Rushing ratio: " + ((rush_att_total / (parseInt(rush_att_total) + parseInt(targets_total))) * 100).toFixed(2) + "%" +
+                                            "</br>Rushing TD ratio: " + ((rush_td_total / rush_att_total) * 100).toFixed(2) + "%" +
+                                            "</br>Receptiom TD ratio on receptions: " + ((rec_td_total / rec_total) * 100).toFixed(2) + "%");
+                                    } else {
+                                        document.write("</br>Reception ratio: " + ((rec_total / targets_total) * 100).toFixed(2) + "%" +
+                                            "</br>Reception TD ratio on targets: " + ((rec_td_total / targets_total) * 100).toFixed(2) + "%" +
+                                            "</br>Receptiom TD ratio on reception: " + ((rec_td_total / rec_total) * 100).toFixed(2) + "%");
                                     }
-
-                                    
                                 </script>
                             </div>
                         </div>
 
                     </div>
 
-
-
                     <script>
                         if (pos == 'QB') {
-
 
                             var pieLabels = ['pass_cmp', 'pass_inc', ];
 
@@ -905,6 +898,18 @@
                     </script>
 
                 </div>
+                <div class="prediction-comparison-pane fade" id="prediction-comparison-tab-pane" role="tabpanel" aria-labelledby="prediction-comparison-tab" tabindex="0">
+                        
+                        <script>
+                            var user_email = <?php echo $user_email; ?>
+
+                            if(typeof user_email !== undefined){
+                                document.write("We did it!")
+                            }else{
+                                document.write("sad trombone noises...")
+                            }
+
+                        </script>
 
             </div>
 
