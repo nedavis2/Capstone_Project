@@ -117,14 +117,18 @@
                 </ul>
                 <div class="tab-content" id="myTabContent">
                     <div class="tab-pane fade show active" id="qb-tab-pane" role="tabpanel" aria-labelledby="qb-tab" tabindex="0">
+
                         <?php
-                        $qb =  $result[1];
-                        $stmt = $connection->prepare("SELECT pName FROM player 
+
+                        if (isset($result[1])) {
+                            $qb =  $result[1];
+                            $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
-                        $stmt->execute([$qb]);
-                        $qb_name = $stmt->fetch();
-                        $player_input1 = $qb . "," . "QB";
-                        $result_set1 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input1));
+                            $stmt->execute([$qb]);
+                            $qb_name = $stmt->fetch();
+                            $player_input1 = $qb . "," . "QB";
+                            $result_set1 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input1));
+                        }
 
                         ?>
 
@@ -151,10 +155,19 @@
 
                         <div class="row">
                             <div class="col">
+
                                 <script>
                                     document.write("Player name: </br>")
                                 </script>
-                                <?php print_r($qb_name['pName']); ?>
+
+                                <?php
+
+                                if (isset($result[1])) {
+                                    print_r($qb_name['pName']);
+                                } else {
+                                    echo "Please select player QB from the change players tab.";
+                                } ?>
+
                                 <script>
                                     document.write("</br>Position:</br>QB</br>" +
                                         "Stats since 2019: </br> Rushing TDs:</br>" +
@@ -204,6 +217,7 @@
                                 }
                             });
 
+
                             new Chart("weeklyChart2QB", {
                                 type: "line",
                                 data: {
@@ -248,23 +262,25 @@
 
                     </div>
                     <div class="tab-pane fade" id="rb-tab-pane" role="tabpanel" aria-labelledby="rb-tab" tabindex="0">
+
                         <?php
-                        $rb1 =  $result[2];
-                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        if (isset($result[2]) && isset($result[3])) {
+                            $rb1 =  $result[2];
+                            $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
-                        $stmt->execute([$rb1]);
-                        $rb1_name = $stmt->fetch();
-                        $player_input2 = $rb1 . "," . "RB";
-                        $result_set2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input2));
+                            $stmt->execute([$rb1]);
+                            $rb1_name = $stmt->fetch();
+                            $player_input2 = $rb1 . "," . "RB";
+                            $result_set2 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input2));
 
-
-                        $rb2 =  $result[3];
-                        $stmt = $connection->prepare("SELECT pName FROM player 
+                            $rb2 =  $result[3];
+                            $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
-                        $stmt->execute([$rb2]);
-                        $rb2_name = $stmt->fetch();
-                        $player_input3 = $rb2 . "," . "RB";
-                        $result_set3 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input3));
+                            $stmt->execute([$rb2]);
+                            $rb2_name = $stmt->fetch();
+                            $player_input3 = $rb2 . "," . "RB";
+                            $result_set3 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input3));
+                        }
 
                         ?>
 
@@ -311,9 +327,16 @@
                                 <script>
                                     document.write("Player name:</br>")
                                 </script>
-                                <?php print_r($rb1_name['pName']);
-                                echo ", ";
-                                print_r($rb2_name['pName']); ?>
+
+                                <?php
+                                if (isset($result[2]) && isset($result[3])) {
+                                    print_r($rb1_name['pName']);
+                                    echo ", ";
+                                    print_r($rb2_name['pName']);
+                                }
+
+                                ?>
+
                                 <script>
                                     document.write("</br>Stats since 2019:</br>Rushing TDS:</br>" +
                                         rush_td_total_rb1 + ", " + rush_td_total_rb2 +
@@ -324,6 +347,7 @@
                                         "</br>Reception Yards:</br>" +
                                         rec_yds_total_rb1 + ", " + rec_yds_total_rb2);
                                 </script>
+
                             </div>
                             <div class="col">
                                 <canvas id="weeklyChart1RB" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
@@ -481,30 +505,33 @@
 
                     </div>
                     <div class="tab-pane fade" id="rec-tab-pane" role="tabpanel" aria-labelledby="rec-tab" tabindex="0">
+
                         <?php
-                        $wr1 =  $result[4];
-                        $stmt = $connection->prepare("SELECT pName FROM player 
+                        if (isset($result[4]) && isset($result[5]) && isset($result[6])) {
+                            $wr1 =  $result[4];
+                            $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
-                        $stmt->execute([$wr1]);
-                        $wr1_name = $stmt->fetch();
-                        $player_input4 = $wr1 . "," . "WR";
-                        $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
+                            $stmt->execute([$wr1]);
+                            $wr1_name = $stmt->fetch();
+                            $player_input4 = $wr1 . "," . "WR";
+                            $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
 
-                        $wr2 =  $result[5];
-                        $stmt = $connection->prepare("SELECT pName FROM player 
+                            $wr2 =  $result[5];
+                            $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
-                        $stmt->execute([$wr2]);
-                        $wr2_name = $stmt->fetch();
-                        $player_input5 = $wr2 . "," . "WR";
-                        $result_set5 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input5));
+                            $stmt->execute([$wr2]);
+                            $wr2_name = $stmt->fetch();
+                            $player_input5 = $wr2 . "," . "WR";
+                            $result_set5 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input5));
 
-                        $te =  $result[6];
-                        $stmt = $connection->prepare("SELECT pName FROM player 
+                            $te =  $result[6];
+                            $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
-                        $stmt->execute([$te]);
-                        $te_name = $stmt->fetch();
-                        $player_input6 = $te . "," . "TE";
-                        $result_set6 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input6));
+                            $stmt->execute([$te]);
+                            $te_name = $stmt->fetch();
+                            $player_input6 = $te . "," . "TE";
+                            $result_set6 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input6));
+                        }
 
                         ?>
 
@@ -512,6 +539,7 @@
                             var data_wr1 = <?php echo json_encode($result_set4); ?>;
                             var data_wr2 = <?php echo json_encode($result_set5); ?>;
                             var data_te = <?php echo json_encode($result_set6); ?>;
+
 
                             var [targets_weekly_wr1, rec_weekly_wr1, rec_td_weekly_wr1, rec_yds_weekly_wr1,
                                 targets_monthly_wr1, rec_monthly_wr1, rec_td_monthly_wr1, rec_yds_monthly_wr1,
@@ -553,11 +581,14 @@
                                     document.write("Player names:</br>");
                                 </script>
                                 <?php
-                                print_r($wr1_name['pName']);
-                                echo ', ';
-                                print_r($wr2_name['pName']);
-                                echo ', ';
-                                print_r($te_name['pName']);
+                                if (isset($result[4]) && isset($result[5]) && isset($result[6])) {
+                                    print_r($wr1_name['pName']);
+                                    echo ', ';
+                                    print_r($wr2_name['pName']);
+                                    echo ', ';
+                                    print_r($te_name['pName']);
+                                }
+
                                 ?>
                                 <script>
                                     document.write("</br>Stats since 2019:</br>Reception TDs:</br>" +
@@ -693,19 +724,18 @@
                     </div>
                     <div class="tab-pane fade" id="flx-tab-pane" role="tabpanel" aria-labelledby="flx-tab" tabindex="0">
                         <?php
-                        $flx =  $result[7];
-                        $stmt = $connection->prepare("SELECT pName, pos FROM player 
+                        if (isset($result[7])) {
+                            $flx =  $result[7];
+                            $stmt = $connection->prepare("SELECT pName, pos FROM player 
                         WHERE player_id = ?;");
-                        $stmt->execute([$flx]);
-                        $flx_res = $stmt->fetch();
-                        $flx_name = $flx_res['pName'];
-                        $flx_pos = $flx_res['pos'];
-                        $player_input4 = $flx . "," . $flx_pos;
-                        $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
+                            $stmt->execute([$flx]);
+                            $flx_res = $stmt->fetch();
+                            $flx_name = $flx_res['pName'];
+                            $flx_pos = $flx_res['pos'];
+                            $player_input4 = $flx . "," . $flx_pos;
+                            $result_set4 = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input4));
+                        }
 
-
-                        echo 'Flex ';
-                        print_r($flx_name);
                         ?>
 
                         <script>
@@ -737,7 +767,11 @@
                                 <script>
                                     document.write("Player name:</br>");
                                 </script>
-                                <?php print_r($flx_name); ?>;
+
+                                <?php 
+                                if(isset($result[7])){
+                                    print_r($flx_name);
+                                 } ?>;
                                 <script>
                                     document.write("</br>Position:</br>" + pos +
                                         "</br>");

@@ -178,12 +178,12 @@
                                             "</br>Pass Yards:</br>" + pass_yds_total +
                                             "</br>Rushing Yds:</br>" + rush_yds_total);
                                     } else if (pos == 'RB') {
-                                        document.write("</br>Rushing TDs:</br>" + rush_td_total +
+                                        document.write("</br>Stats since 2019</br>Rushing TDs:</br>" + rush_td_total +
                                             "</br>Reception TDs:</br>" + rec_td_total +
                                             "</br>Rushing Yds:</br>" + rush_yds_total +
                                             "</br>Reception Yards:</br>" + rec_yds_total)
                                     } else {
-                                        document.write("</br>Reception TDs:</br>" + rec_td_total +
+                                        document.write("</br>Stats since 2019</br>Reception TDs:</br>" + rec_td_total +
                                             "</br>Recption Yards:</br>" + rec_yds_total)
                                     };
                                 </script>
@@ -457,12 +457,12 @@
                                             "</br>Pass Yards:</br>" + pass_yds_total +
                                             "</br>Rushing Yds:</br>" + rush_yds_total);
                                     } else if (pos == 'RB') {
-                                        document.write("</br>Rushing TDs:</br>" + rush_td_total +
+                                        document.write("</br>Stats since 2019</br>Rushing TDs:</br>" + rush_td_total +
                                             "</br>Reception TDs:</br>" + rec_td_total +
                                             "</br>Rushing Yds:</br>" + rush_yds_total +
                                             "</br>Reception Yards:</br>" + rec_yds_total)
                                     } else {
-                                        document.write("</br>Reception TDs:</br>" + rec_td_total +
+                                        document.write("</br>Stats since 2019</br>Reception TDs:</br>" + rec_td_total +
                                             "</br>Recption Yards:</br>" + rec_yds_total)
                                     };
                                 </script>
@@ -739,12 +739,12 @@
                                             "</br>Pass Yards:</br>" + pass_yds_total +
                                             "</br>Rushing Yds:</br>" + rush_yds_total);
                                     } else if (pos == 'RB') {
-                                        document.write("</br>Rushing TDs:</br>" + rush_td_total +
+                                        document.write("</br>Stats since 2019</br>Rushing TDs:</br>" + rush_td_total +
                                             "</br>Reception TDs:</br>" + rec_td_total +
                                             "</br>Rushing Yds:</br>" + rush_yds_total +
                                             "</br>Reception Yards:</br>" + rec_yds_total)
                                     } else {
-                                        document.write("</br>Reception TDs:</br>" + rec_td_total +
+                                        document.write("</br>Stats since 2019</br>Reception TDs:</br>" + rec_td_total +
                                             "</br>Recption Yards:</br>" + rec_yds_total)
                                     };
                                 </script>
@@ -754,6 +754,24 @@
 
                             <div class="col">
                                 <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
+                                <script>
+                                    if(pos == 'QB'){
+                                        document.write("</br>Pass completion ratio: " + ((pass_cmp_total/pass_att_total)*100).toFixed(2) + "%"
+                                        + "</br>Pass TD ratio on complete passes: " + ((pass_td_total/pass_cmp_total)*100).toFixed(2) + "%"
+                                        + "</br>Rushing TD ratio: " + ((rush_td_total/rush_att_total)*100).toFixed(2) + "%"); 
+                                    }else if(pos == 'RB'){
+                                        total_touches = rush_att_total + targets_total;
+                                        document.write("</br>Rushing ratio: " + ((rush_att_total/(parseInt(rush_att_total) + parseInt(targets_total)))*100).toFixed(2) + "%"
+                                        + "</br>Rushing TD ratio: " + ((rush_td_total/rush_att_total)*100).toFixed(2) + "%"
+                                        + "</br>Receptiom TD ratio on receptions: " + ((rec_td_total/rec_total)*100).toFixed(2) + "%");
+                                    }else{
+                                        document.write("</br>Reception ratio: " + ((rec_total/targets_total)*100).toFixed(2) + "%"
+                                        + "</br>Reception TD ratio on targets: " + ((rec_td_total/targets_total)*100).toFixed(2) + "%"
+                                        + "</br>Receptiom TD ratio on reception: " + ((rec_td_total/rec_total)*100).toFixed(2) + "%");
+                                    }
+
+                                    
+                                </script>
                             </div>
                         </div>
 
@@ -764,9 +782,6 @@
                     <script>
                         if (pos == 'QB') {
 
-                            pass_cmp_pie = pass_cmp_total / pass_att_total
-                            pass_td_pie = pass_td_total / pass_cmp_total
-                            rush_td_pie = rush_td_total / rush_att_total
 
                             var pieLabels = ['pass_cmp', 'pass_inc', ];
 
@@ -777,15 +792,15 @@
                                     datasets: [{
 
                                         backgroundColor: ["green", "red"],
-                                        data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                        data: [pass_cmp_total, pass_att_total - pass_cmp_total],
                                         labels: ['pass_cmp', 'pass_inc']
                                     }, {
                                         backgroundColor: ["orange", "yellow"],
-                                        data: [pass_td_pie, 1 - pass_td_pie],
+                                        data: [pass_td_total, pass_cmp_total - pass_td_total],
                                         labels: ['pass_td', 'pass_no_td']
                                     }, {
                                         backgroundColor: ["indigo", "cornflowerblue"],
-                                        data: [rush_td_pie, 1 - rush_td_pie],
+                                        data: [rush_td_total, rush_att_total - rush_td_total],
                                         labels: ['rush_td', 'rush_no_td']
                                     }]
                                 },
