@@ -379,7 +379,7 @@ def _get_player_prediction_value(player_id : str,retreived_data : str, table_nam
     try:
     
         db, cursor = _connect_to_database()
-        query =  ''' SELECT * AS data
+        query =  ''' SELECT *
                         FROM %s
                         WHERE player_id = \"%s\"
             '''%(table_name, player_id)
