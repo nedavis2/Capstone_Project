@@ -755,7 +755,7 @@ def team_running_back_rec_monthly(team : str) -> list[int]:
 #No position values
 
 #________________________________________________________________________________
-def player_rush_td_total(player_id : str) -> int:
+ player_rush_td_total(player_id : str) -> int:
     retreived_data = "rush_td"
     
     return  _retrieve_player_total_data(player_id, retreived_data)
@@ -1297,6 +1297,144 @@ def player_max_comb_pass_play(player_id : str) -> int:
 
     return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data)
 
+def player_prediction_pass_att_total(player_id : str) -> int:
+    
+   retreived_data = "pass_att_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_cmp_total(player_id : str) -> int:
+    
+   retreived_data = "pass_cmp_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_yds_total(player_id : str) -> int:
+    
+   retreived_data = "pass_yds_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_td_total(player_id : str) -> int:
+    
+   retreived_data = "pass_td_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_td_total(player_id : str) -> int:
+    
+   retreived_data = "rush_td_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_att_total(player_id : str) -> int:
+    
+   retreived_data = "rush_att_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+def player_prediction_pass_att_total(player_id : str) -> int:
+    
+   retreived_data = "pass_att_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_yds_total(player_id : str) -> int:
+    
+   retreived_data = "rush_yds_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_targets_total(player_id : str) -> int:
+    
+   retreived_data = "targets_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_total(player_id : str) -> int:
+    
+   retreived_data = "rec_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_td_total(player_id : str) -> int:
+    
+   retreived_data = "rec_td_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_yds_total(player_id : str) -> int:
+    
+   retreived_data = "rec_yds_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+
+def player_prediction_pass_att_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_att_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_cmp_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_cmp_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_yds_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_yds_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_td_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_td_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_td_weekly(player_id : str) -> int:
+    
+   retreived_data = "rush_td_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_att_weekly(player_id : str) -> int:
+    
+   retreived_data = "rush_att_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_yds_weekly(player_id : str) -> int:
+    
+   retreived_data = "rush_yds_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_targets_weekly(player_id : str) -> int:
+    
+   retreived_data = "targets_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_weekly(player_id : str) -> int:
+    
+   retreived_data = "rec_weekly"
+   
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+
+def player_prediction_rec_td_weekly(player_id : str) -> int:
+
+    retreived_data = "rec_td_weekly"
+
+    return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_yds_weekly(player_id : str) -> int:
+    
+   retreived_data = "rec_yds_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
 
 #print(player_avg_rec_yds("ValdMa00"))
 #print(player_max_rec_yds("ValdMa00"))
