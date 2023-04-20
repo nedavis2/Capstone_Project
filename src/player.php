@@ -81,12 +81,11 @@
         $player_input = $player[0] . "," . $pos;
 
         $result_set = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input));
-
     }
 
     ?>
 
-    <div id="playerPageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
+    <div id="playerPageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black; text-align: center;">
 
 
 
@@ -135,8 +134,8 @@
 
             }
 
-            player_dates = player_dates.split(",").slice(0,-1).slice(-17);
-            player_dates_months = player_dates_months.split(",").slice(0,-1).slice(-17);
+            player_dates = player_dates.split(",").slice(0, -1).slice(-17);
+            player_dates_months = player_dates_months.split(",").slice(0, -1).slice(-17);
             player_last_date = player_dates.slice(-1);
         </script>
 
@@ -157,771 +156,744 @@
         </ul>
 
         <div id="player-page-container">
-        <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="weekly-tab-pane" role="tabpanel" aria-labelledby="weekly-tab" tabindex="0">
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade show active" id="weekly-tab-pane" role="tabpanel" aria-labelledby="weekly-tab" tabindex="0">
 
-                <div class="container p-3">
+                    <div class="container p-3">
 
-                    <div class="row">
-                        <div class="col" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
+                        <div class="row">
+                            <div class="col" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
-                            Player Stats:</br>
-                            Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $pos; ?></br>
-                            Most recent game date: </br><script>document.write(player_last_date);</script></br>
-                            TD's since 2019:</br><script>if(pos == 'QB'){
-                                document.write('Passing TDs: ')
-                                document.write(pass_td_total + '</br>')
-                                document.write('Rushing TDs: ')
-                                document.write(rush_td_total)
-                            }else if(pos == 'RB') {
-                                document.write('Rushing TDs: ')
-                                document.write(rush_td_total + '</br>')
-                                document.write('Reception TDs: ')
-                                document.write(rec_td_total)
-                            }else{
-                                document.write('Reception TDs: ')
-                                document.write(rec_td_total)
-                            };</script></br>
-                            Yards since 2019:</br><script>if(pos == 'QB'){
-                                document.write('Pass Yds: ')
-                                document.write(pass_yds_total + '</br>')
-                                document.write('Rush Yds: ')
-                                document.write(rush_yds_total)
-                            }else if(pos == 'RB') {
-                                document.write('Rushing Yds: ')
-                                document.write(rush_yds_total + '</br>')
-                                document.write('Reception Yds: ')
-                                document.write(rec_yds_total)
-                            }else{
-                                document.write('Recption Yds: ')
-                                document.write(rec_td_total)
-                            };</script></br>
+                                <script>
+                                    document.write("Player Name:</br>");
+                                </script>
+                                <?php echo $player[1]; ?>;
+                                <script>
+                                    document.write("</br>POS:</br>" +
+                                        pos + "</br>Most recent game date: </br>" +
+                                        player_last_date);
+                                    if (pos == 'QB') {
+                                        document.write("</br>Stats since 2019</br>Passing TDs:</br>" + pass_td_total +
+                                            "</br>Rushing TDs:</br>" + rush_td_total +
+                                            "</br>Pass Yards:</br>" + pass_yds_total +
+                                            "</br>Rushing Yds:</br>" + rush_yds_total);
+                                    } else if (pos == 'RB') {
+                                        document.write("</br>Rushing TDs:</br>" + rush_td_total +
+                                            "</br>Reception TDs:</br>" + rec_td_total +
+                                            "</br>Rushing Yds:</br>" + rush_yds_total +
+                                            "</br>Reception Yards:</br>" + rec_yds_total)
+                                    } else {
+                                        document.write("</br>Reception TDs:</br>" + rec_td_total +
+                                            "</br>Recption Yards:</br>" + rec_yds_total)
+                                    };
+                                </script>
 
-                        </div>
-                        <div class="col">
+                            </div>
+                            <div class="col">
 
+                            </div>
+
+                            <div class="col">
+                                <canvas id="weeklyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                                <canvas id="weeklyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                                <canvas id="weeklyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                            </div>
                         </div>
 
-                        <div class="col">
-                            <canvas id="weeklyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
-                            <canvas id="weeklyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
-                            <canvas id="weeklyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
-                        </div>
                     </div>
+                    <script>
+                        if (pos == 'QB') {
 
-                </div>
-                <script>
-                    if (pos == 'QB') {
+                            pass_att_weekly = pass_att_weekly.split(",").slice(-17);
+                            pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
+                            pass_yds_weekly = pass_yds_weekly.split(",").slice(-17);
+                            pass_td_weekly = pass_td_weekly.split(",").slice(-17);
+                            rush_td_weekly = rush_td_weekly.split(",").slice(-17);
+                            rush_att_weekly = rush_att_weekly.split(",").slice(-17);
+                            rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
 
-                        pass_att_weekly = pass_att_weekly.split(",").slice(-17);
-                        pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
-                        pass_yds_weekly = pass_yds_weekly.split(",").slice(-17);
-                        pass_td_weekly = pass_td_weekly.split(",").slice(-17);
-                        rush_td_weekly = rush_td_weekly.split(",").slice(-17);
-                        rush_att_weekly = rush_att_weekly.split(",").slice(-17);
-                        rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
-
-                        new Chart("weeklyChart1", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'pass att',
-                                    data: pass_att_weekly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'pass cmp',
-                                    data: pass_cmp_weekly,
-                                    borderColor: "green",
-                                    fill: false
-                                }, {
-                                    label: 'pass td',
-                                    data: pass_td_weekly,
-                                    borderColor: "blue",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart2", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'pass yds',
-                                    data: pass_yds_weekly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }, {
-                                    label: 'rush yds',
-                                    data: rush_yds_weekly,
-                                    borderColor: "pink",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart3", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'rush td',
-                                    data: rush_td_weekly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }, {
-                                    label: 'rush att',
-                                    data: rush_att_weekly,
-                                    borderColor: "orange",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                    } else if (pos == 'RB') {
-
-                        rush_td_weekly = rush_td_weekly.split(",").slice(-17);
-                        rush_att_weekly = rush_att_weekly.split(",").slice(-17);
-                        rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
-                        targets_weekly = targets_weekly.split(",").slice(-17);
-                        rec_weekly = rec_weekly.split(",").slice(-17);
-                        rec_td_weekly = rec_td_weekly.split(",").slice(-17);
-                        rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
-
-                        new Chart("weeklyChart1", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'rush att',
-                                    data: rush_att_weekly,
-                                    borderColor: "green",
-                                    fill: false
-                                }, {
-                                    label: 'targets',
-                                    data: targets_weekly,
-                                    borderColor: "blue",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart2", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'rush yds',
-                                    data: rush_yds_weekly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }, {
-                                    label: 'rec yds',
-                                    data: rec_yds_weekly,
-                                    borderColor: "pink",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart3", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'rush td',
-                                    data: rush_td_weekly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }, {
-                                    label: 'rec td',
-                                    data: rec_td_weekly,
-                                    borderColor: "orange",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                    } else {
-
-                        targets_weekly = targets_weekly.split(",").slice(-17);
-                        rec_weekly = rec_weekly.split(",").slice(-17);
-                        rec_td_weekly = rec_td_weekly.split(",").slice(-17);
-                        rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
-
-                        new Chart("weeklyChart1", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'receptions',
-                                    data: rec_weekly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'targets',
-                                    data: targets_weekly,
-                                    borderColor: "green",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart2", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'rec yds',
-                                    data: rec_yds_weekly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("weeklyChart3", {
-                            type: "line",
-                            data: {
-                                labels: player_dates,
-                                datasets: [{
-                                    label: 'rec td',
-                                    data: rec_td_weekly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                    }
-                </script>
-
-            </div>
-            <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
-
-
-                <div class="container p-3">
-
-                    <div class="row">
-                        <div class="col">
-
-                        Player Stats:</br>
-                            Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $pos; ?></br>
-                            Most recent game date: </br><script>document.write(player_last_date);</script></br>
-                            TD's since 2019:</br><script>if(pos == 'QB'){
-                                document.write('Passing TDs: ')
-                                document.write(pass_td_total + '</br>')
-                                document.write('Rushing TDs: ')
-                                document.write(rush_td_total)
-                            }else if(pos == 'RB') {
-                                document.write('Rushing TDs: ')
-                                document.write(rush_td_total + '</br>')
-                                document.write('Reception TDs: ')
-                                document.write(rec_td_total)
-                            }else{
-                                document.write('Reception TDs: ')
-                                document.write(rec_td_total)
-                            };</script></br>
-                            Yards since 2019:</br><script>if(pos == 'QB'){
-                                document.write('Pass Yds: ')
-                                document.write(pass_yds_total + '</br>')
-                                document.write('Rush Yds: ')
-                                document.write(rush_yds_total)
-                            }else if(pos == 'RB') {
-                                document.write('Rushing Yds: ')
-                                document.write(rush_yds_total + '</br>')
-                                document.write('Reception Yds: ')
-                                document.write(rec_yds_total)
-                            }else{
-                                document.write('Recption Yds: ')
-                                document.write(rec_td_total)
-                            };</script></br>
-
-                        </div>
-                        <div class="col">
-
-                        </div>
-
-                        <div class="col">
-                            <canvas id="monthlyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
-                            <canvas id="monthlyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
-                            <canvas id="monthlyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
-                        </div>
-                    </div>
-
-                </div>
-
-
-                <script>
-                    if (pos == 'QB') {
-
-                        pass_att_monthly = pass_att_monthly.split(",").slice(-17);
-                        pass_cmp_monthly = pass_cmp_monthly.split(",").slice(-17);
-                        pass_yds_monthly = pass_yds_monthly.split(",").slice(-17);
-                        pass_td_monthly = pass_td_monthly.split(",").slice(-17);
-                        rush_td_monthly = rush_td_monthly.split(",").slice(-17);
-                        rush_att_monthly = rush_att_monthly.split(",").slice(-17);
-                        rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
-
-                        new Chart("monthlyChart1", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'pass att',
-                                    data: pass_att_monthly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'pass cmp',
-                                    data: pass_cmp_monthly,
-                                    borderColor: "green",
-                                    fill: false
-                                }, {
-                                    label: 'pass td',
-                                    data: pass_td_monthly,
-                                    borderColor: "blue",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart2", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'pass yds',
-                                    data: pass_yds_monthly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }, {
-                                    label: 'rush yds',
-                                    data: rush_yds_monthly,
-                                    borderColor: "pink",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart3", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'rush td',
-                                    data: rush_td_monthly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }, {
-                                    label: 'rush att',
-                                    data: rush_att_monthly,
-                                    borderColor: "orange",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                    } else if (pos == 'RB') {
-
-                        rush_td_monthly = rush_td_monthly.split(",").slice(-17);
-                        rush_att_monthly = rush_att_monthly.split(",").slice(-17);
-                        rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
-
-                        targets_monthly = targets_monthly.split(",").slice(-17);
-                        rec_monthly = rec_monthly.split(",").slice(-17);
-                        rec_td_monthly = rec_td_monthly.split(",").slice(-17);
-                        rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
-
-
-                        new Chart("monthlyChart1", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'rush att',
-                                    data: rush_att_monthly,
-                                    borderColor: "green",
-                                    fill: false
-                                }, {
-                                    label: 'targets',
-                                    data: targets_monthly,
-                                    borderColor: "blue",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart2", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'rush yds',
-                                    data: rush_yds_monthly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }, {
-                                    label: 'rec yds',
-                                    data: rec_yds_monthly,
-                                    borderColor: "pink",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart3", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'rush td',
-                                    data: rush_td_monthly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }, {
-                                    label: 'rec td',
-                                    data: rec_td_monthly,
-                                    borderColor: "orange",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                    } else {
-
-                        targets_monthly = targets_monthly.split(",").slice(-17);
-                        rec_monthly = rec_monthly.split(",").slice(-17);
-                        rec_td_monthly = rec_td_monthly.split(",").slice(-17);
-                        rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
-
-                        new Chart("monthlyChart1", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'receptions',
-                                    data: rec_monthly,
-                                    borderColor: "red",
-                                    fill: false
-                                }, {
-                                    label: 'targets',
-                                    data: targets_monthly,
-                                    borderColor: "green",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart2", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'rec yds',
-                                    data: rec_yds_monthly,
-                                    borderColor: "purple",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                        new Chart("monthlyChart3", {
-                            type: "line",
-                            data: {
-                                labels: player_dates_months,
-                                datasets: [{
-                                    label: 'rec td',
-                                    data: rec_td_monthly,
-                                    borderColor: "yellow",
-                                    fill: false
-                                }]
-                            },
-                            options: {
-                                legend: {
-                                    display: true
-                                }
-                            }
-                        });
-
-                    }
-                </script>
-
-            </div>
-            <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">
-
-                <div class="container p-3">
-
-                    <div class="row">
-                        <div class="col">
-
-                        Player Stats:</br>
-                            Player Name: <?php echo $player[1]; ?></br>
-                            Player POS: <?php echo $pos; ?></br>
-                            Most recent game date: </br><script>document.write(player_last_date);</script></br>
-                            TD's since 2019:</br><script>if(pos == 'QB'){
-                                document.write('Passing TDs: ')
-                                document.write(pass_td_total + '</br>')
-                                document.write('Rushing TDs: ')
-                                document.write(rush_td_total)
-                            }else if(pos == 'RB') {
-                                document.write('Rushing TDs: ')
-                                document.write(rush_td_total + '</br>')
-                                document.write('Reception TDs: ')
-                                document.write(rec_td_total)
-                            }else{
-                                document.write('Reception TDs: ')
-                                document.write(rec_td_total)
-                            };</script></br>
-                            Yards since 2019:</br><script>if(pos == 'QB'){
-                                document.write('Pass Yds: ')
-                                document.write(pass_yds_total + '</br>')
-                                document.write('Rush Yds: ')
-                                document.write(rush_yds_total)
-                            }else if(pos == 'RB') {
-                                document.write('Rushing Yds: ')
-                                document.write(rush_yds_total + '</br>')
-                                document.write('Reception Yds: ')
-                                document.write(rec_yds_total)
-                            }else{
-                                document.write('Recption Yds: ')
-                                document.write(rec_td_total)
-                            };</script></br>
-
-                        </div>
-                        
-
-                        <div class="col">
-                            <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
-                        </div>
-                    </div>
-
-                </div>
-
-
-
-                <script>
-                    if (pos == 'QB') {
-
-                        pass_cmp_pie = pass_cmp_total / pass_att_total
-                        pass_td_pie = pass_td_total / pass_cmp_total
-                        rush_td_pie = rush_td_total / rush_att_total
-
-                        var pieLabels = ['pass_cmp', 'pass_inc', ];
-
-                        new Chart("totalChart1", {
-                            type: "pie",
-                            data: {
-                                labels: pieLabels,
-                                datasets: [{
-
-                                    backgroundColor: ["green", "red"],
-                                    data: [pass_cmp_pie, 1 - pass_cmp_pie],
-                                    labels: ['pass_cmp', 'pass_inc']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [pass_td_pie, 1 - pass_td_pie],
-                                    labels: ['pass_td', 'pass_no_td']
-                                }, {
-                                    backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rush_td_pie, 1 - rush_td_pie],
-                                    labels: ['rush_td', 'rush_no_td']
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                legend: {
-                                    display: false,
+                            new Chart("weeklyChart1", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'pass att',
+                                        data: pass_att_weekly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'pass cmp',
+                                        data: pass_cmp_weekly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }, {
+                                        label: 'pass td',
+                                        data: pass_td_weekly,
+                                        borderColor: "blue",
+                                        fill: false
+                                    }]
                                 },
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                                            var index = tooltipItem.index;
-                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart2", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'pass yds',
+                                        data: pass_yds_weekly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }, {
+                                        label: 'rush yds',
+                                        data: rush_yds_weekly,
+                                        borderColor: "pink",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart3", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'rush td',
+                                        data: rush_td_weekly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }, {
+                                        label: 'rush att',
+                                        data: rush_att_weekly,
+                                        borderColor: "orange",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                        } else if (pos == 'RB') {
+
+                            rush_td_weekly = rush_td_weekly.split(",").slice(-17);
+                            rush_att_weekly = rush_att_weekly.split(",").slice(-17);
+                            rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
+                            targets_weekly = targets_weekly.split(",").slice(-17);
+                            rec_weekly = rec_weekly.split(",").slice(-17);
+                            rec_td_weekly = rec_td_weekly.split(",").slice(-17);
+                            rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
+
+                            new Chart("weeklyChart1", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'rush att',
+                                        data: rush_att_weekly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }, {
+                                        label: 'targets',
+                                        data: targets_weekly,
+                                        borderColor: "blue",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart2", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'rush yds',
+                                        data: rush_yds_weekly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }, {
+                                        label: 'rec yds',
+                                        data: rec_yds_weekly,
+                                        borderColor: "pink",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart3", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'rush td',
+                                        data: rush_td_weekly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }, {
+                                        label: 'rec td',
+                                        data: rec_td_weekly,
+                                        borderColor: "orange",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                        } else {
+
+                            targets_weekly = targets_weekly.split(",").slice(-17);
+                            rec_weekly = rec_weekly.split(",").slice(-17);
+                            rec_td_weekly = rec_td_weekly.split(",").slice(-17);
+                            rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
+
+                            new Chart("weeklyChart1", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'receptions',
+                                        data: rec_weekly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'targets',
+                                        data: targets_weekly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart2", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'rec yds',
+                                        data: rec_yds_weekly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("weeklyChart3", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates,
+                                    datasets: [{
+                                        label: 'rec td',
+                                        data: rec_td_weekly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                        }
+                    </script>
+
+                </div>
+                <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
+
+
+                    <div class="container p-3">
+
+                        <div class="row">
+                            <div class="col">
+
+                                <script>
+                                    document.write("Player Name:</br>");
+                                </script>
+                                <?php echo $player[1]; ?>;
+                                <script>
+                                    document.write("</br>POS:</br>" +
+                                        pos + "</br>Most recent game date: </br>" +
+                                        player_last_date);
+                                    if (pos == 'QB') {
+                                        document.write("</br>Stats since 2019</br>Passing TDs:</br>" + pass_td_total +
+                                            "</br>Rushing TDs:</br>" + rush_td_total +
+                                            "</br>Pass Yards:</br>" + pass_yds_total +
+                                            "</br>Rushing Yds:</br>" + rush_yds_total);
+                                    } else if (pos == 'RB') {
+                                        document.write("</br>Rushing TDs:</br>" + rush_td_total +
+                                            "</br>Reception TDs:</br>" + rec_td_total +
+                                            "</br>Rushing Yds:</br>" + rush_yds_total +
+                                            "</br>Reception Yards:</br>" + rec_yds_total)
+                                    } else {
+                                        document.write("</br>Reception TDs:</br>" + rec_td_total +
+                                            "</br>Recption Yards:</br>" + rec_yds_total)
+                                    };
+                                </script>
+
+                            </div>
+                            <div class="col">
+
+                            </div>
+
+                            <div class="col">
+                                <canvas id="monthlyChart1" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                                <canvas id="monthlyChart2" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                                <canvas id="monthlyChart3" style="width:15%;max-width:25vw;background-color:white;border-radius: 8px; margin: 1vh;"></canvas>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+                    <script>
+                        if (pos == 'QB') {
+
+                            pass_att_monthly = pass_att_monthly.split(",").slice(-17);
+                            pass_cmp_monthly = pass_cmp_monthly.split(",").slice(-17);
+                            pass_yds_monthly = pass_yds_monthly.split(",").slice(-17);
+                            pass_td_monthly = pass_td_monthly.split(",").slice(-17);
+                            rush_td_monthly = rush_td_monthly.split(",").slice(-17);
+                            rush_att_monthly = rush_att_monthly.split(",").slice(-17);
+                            rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
+
+                            new Chart("monthlyChart1", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'pass att',
+                                        data: pass_att_monthly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'pass cmp',
+                                        data: pass_cmp_monthly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }, {
+                                        label: 'pass td',
+                                        data: pass_td_monthly,
+                                        borderColor: "blue",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart2", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'pass yds',
+                                        data: pass_yds_monthly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }, {
+                                        label: 'rush yds',
+                                        data: rush_yds_monthly,
+                                        borderColor: "pink",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart3", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'rush td',
+                                        data: rush_td_monthly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }, {
+                                        label: 'rush att',
+                                        data: rush_att_monthly,
+                                        borderColor: "orange",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                        } else if (pos == 'RB') {
+
+                            rush_td_monthly = rush_td_monthly.split(",").slice(-17);
+                            rush_att_monthly = rush_att_monthly.split(",").slice(-17);
+                            rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
+
+                            targets_monthly = targets_monthly.split(",").slice(-17);
+                            rec_monthly = rec_monthly.split(",").slice(-17);
+                            rec_td_monthly = rec_td_monthly.split(",").slice(-17);
+                            rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
+
+
+                            new Chart("monthlyChart1", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'rush att',
+                                        data: rush_att_monthly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }, {
+                                        label: 'targets',
+                                        data: targets_monthly,
+                                        borderColor: "blue",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart2", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'rush yds',
+                                        data: rush_yds_monthly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }, {
+                                        label: 'rec yds',
+                                        data: rec_yds_monthly,
+                                        borderColor: "pink",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart3", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'rush td',
+                                        data: rush_td_monthly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }, {
+                                        label: 'rec td',
+                                        data: rec_td_monthly,
+                                        borderColor: "orange",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                        } else {
+
+                            targets_monthly = targets_monthly.split(",").slice(-17);
+                            rec_monthly = rec_monthly.split(",").slice(-17);
+                            rec_td_monthly = rec_td_monthly.split(",").slice(-17);
+                            rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
+
+                            new Chart("monthlyChart1", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'receptions',
+                                        data: rec_monthly,
+                                        borderColor: "red",
+                                        fill: false
+                                    }, {
+                                        label: 'targets',
+                                        data: targets_monthly,
+                                        borderColor: "green",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart2", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'rec yds',
+                                        data: rec_yds_monthly,
+                                        borderColor: "purple",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                            new Chart("monthlyChart3", {
+                                type: "line",
+                                data: {
+                                    labels: player_dates_months,
+                                    datasets: [{
+                                        label: 'rec td',
+                                        data: rec_td_monthly,
+                                        borderColor: "yellow",
+                                        fill: false
+                                    }]
+                                },
+                                options: {
+                                    legend: {
+                                        display: true
+                                    }
+                                }
+                            });
+
+                        }
+                    </script>
+
+                </div>
+                <div class="tab-pane fade" id="total-tab-pane" role="tabpanel" aria-labelledby="total-tab" tabindex="0">
+
+                    <div class="container p-3">
+
+                        <div class="row">
+                            <div class="col">
+
+                                <script>
+                                    document.write("Player Name:</br>");
+                                </script>
+                                <?php echo $player[1]; ?>;
+                                <script>
+                                    document.write("</br>POS:</br>" +
+                                        pos + "</br>Most recent game date: </br>" +
+                                        player_last_date);
+                                    if (pos == 'QB') {
+                                        document.write("</br>Stats since 2019</br>Passing TDs:</br>" + pass_td_total +
+                                            "</br>Rushing TDs:</br>" + rush_td_total +
+                                            "</br>Pass Yards:</br>" + pass_yds_total +
+                                            "</br>Rushing Yds:</br>" + rush_yds_total);
+                                    } else if (pos == 'RB') {
+                                        document.write("</br>Rushing TDs:</br>" + rush_td_total +
+                                            "</br>Reception TDs:</br>" + rec_td_total +
+                                            "</br>Rushing Yds:</br>" + rush_yds_total +
+                                            "</br>Reception Yards:</br>" + rec_yds_total)
+                                    } else {
+                                        document.write("</br>Reception TDs:</br>" + rec_td_total +
+                                            "</br>Recption Yards:</br>" + rec_yds_total)
+                                    };
+                                </script>
+
+                            </div>
+
+
+                            <div class="col">
+                                <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
+                            </div>
+                        </div>
+
+                    </div>
+
+
+
+                    <script>
+                        if (pos == 'QB') {
+
+                            pass_cmp_pie = pass_cmp_total / pass_att_total
+                            pass_td_pie = pass_td_total / pass_cmp_total
+                            rush_td_pie = rush_td_total / rush_att_total
+
+                            var pieLabels = ['pass_cmp', 'pass_inc', ];
+
+                            new Chart("totalChart1", {
+                                type: "pie",
+                                data: {
+                                    labels: pieLabels,
+                                    datasets: [{
+
+                                        backgroundColor: ["green", "red"],
+                                        data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                        labels: ['pass_cmp', 'pass_inc']
+                                    }, {
+                                        backgroundColor: ["orange", "yellow"],
+                                        data: [pass_td_pie, 1 - pass_td_pie],
+                                        labels: ['pass_td', 'pass_no_td']
+                                    }, {
+                                        backgroundColor: ["indigo", "cornflowerblue"],
+                                        data: [rush_td_pie, 1 - rush_td_pie],
+                                        labels: ['rush_td', 'rush_no_td']
+                                    }]
+                                },
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function(tooltipItem, data) {
+                                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                                var index = tooltipItem.index;
+                                                return dataset.labels[index] + ': ' + dataset.data[index];
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
+                            });
 
-                    } else if (pos == 'RB') {
+                        } else if (pos == 'RB') {
 
-                        var pieLabels = ['rush_yds_pct', 'rec_yds_ct', ];
+                            var pieLabels = ['rush_yds_pct', 'rec_yds_ct', ];
 
-                        new Chart("totalChart1", {
-                            type: "pie",
-                            data: {
-                                labels: pieLabels,
-                                datasets: [{
+                            new Chart("totalChart1", {
+                                type: "pie",
+                                data: {
+                                    labels: pieLabels,
+                                    datasets: [{
 
-                                    backgroundColor: ["green", "red"],
-                                    data: [rush_att_total, targets_total],
-                                    labels: ['rush_att', 'targets']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [rush_td_total, rush_att_total - rush_td_total],
-                                    labels: ['rush_td', 'rush_no_td']
-                                }, {
-                                    backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rec_td_total, rec_total - rec_td_total],
-                                    labels: ['rec_td', 'rec_no_td']
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                legend: {
-                                    display: false,
+                                        backgroundColor: ["green", "red"],
+                                        data: [rush_att_total, targets_total],
+                                        labels: ['rush_att', 'targets']
+                                    }, {
+                                        backgroundColor: ["orange", "yellow"],
+                                        data: [rush_td_total, rush_att_total - rush_td_total],
+                                        labels: ['rush_td', 'rush_no_td']
+                                    }, {
+                                        backgroundColor: ["indigo", "cornflowerblue"],
+                                        data: [rec_td_total, rec_total - rec_td_total],
+                                        labels: ['rec_td', 'rec_no_td']
+                                    }]
                                 },
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                                            var index = tooltipItem.index;
-                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function(tooltipItem, data) {
+                                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                                var index = tooltipItem.index;
+                                                return dataset.labels[index] + ': ' + dataset.data[index];
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
+                            });
 
-                    } else {
+                        } else {
 
-                        var pieLabels = ['rec_pie', 'incompletes', ];
+                            var pieLabels = ['rec_pie', 'incompletes', ];
 
-                        new Chart("totalChart1", {
-                            type: "pie",
-                            data: {
-                                labels: pieLabels,
-                                datasets: [{
+                            new Chart("totalChart1", {
+                                type: "pie",
+                                data: {
+                                    labels: pieLabels,
+                                    datasets: [{
 
-                                    backgroundColor: ["green", "red"],
-                                    data: [rec_total, targets_total - rec_total],
-                                    labels: ['receptions', 'incompletes']
-                                }, {
-                                    backgroundColor: ["orange", "yellow"],
-                                    data: [rec_td_total, targets_total - rec_td_total],
-                                    labels: ['reception td: all targets', 'target no td']
-                                }, {
-                                    backgroundColor: ["indigo", "cornflowerblue"],
-                                    data: [rec_td_total, rec_total - rec_td_total],
-                                    labels: ['reception td: all completions', 'completion no td']
-                                }]
-                            },
-                            options: {
-                                responsive: true,
-                                legend: {
-                                    display: false,
+                                        backgroundColor: ["green", "red"],
+                                        data: [rec_total, targets_total - rec_total],
+                                        labels: ['receptions', 'incompletes']
+                                    }, {
+                                        backgroundColor: ["orange", "yellow"],
+                                        data: [rec_td_total, targets_total - rec_td_total],
+                                        labels: ['reception td: all targets', 'target no td']
+                                    }, {
+                                        backgroundColor: ["indigo", "cornflowerblue"],
+                                        data: [rec_td_total, rec_total - rec_td_total],
+                                        labels: ['reception td: all completions', 'completion no td']
+                                    }]
                                 },
-                                tooltips: {
-                                    callbacks: {
-                                        label: function(tooltipItem, data) {
-                                            var dataset = data.datasets[tooltipItem.datasetIndex];
-                                            var index = tooltipItem.index;
-                                            return dataset.labels[index] + ': ' + dataset.data[index];
+                                options: {
+                                    responsive: true,
+                                    legend: {
+                                        display: false,
+                                    },
+                                    tooltips: {
+                                        callbacks: {
+                                            label: function(tooltipItem, data) {
+                                                var dataset = data.datasets[tooltipItem.datasetIndex];
+                                                var index = tooltipItem.index;
+                                                return dataset.labels[index] + ': ' + dataset.data[index];
+                                            }
                                         }
                                     }
                                 }
-                            }
-                        });
+                            });
 
-                    }
-                </script>
+                        }
+                    </script>
+
+                </div>
 
             </div>
 
         </div>
-
-    </div>
 
 </body>
 

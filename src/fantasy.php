@@ -74,7 +74,7 @@
     $result = $stmt->fetch();
 
     ?>
-    <div id="fantasy-page-content" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
+    <div id="fantasy-page-content" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black; text-align: center;">
 
         <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
