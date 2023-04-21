@@ -167,7 +167,7 @@
                                 <script>
                                     document.write("Player Name:</br>");
                                 </script>
-                                <?php echo $player[1]; ?>;
+                                <?php echo $player[1] ?>;
                                 <script>
                                     document.write("</br>POS:</br>" +
                                         pos + "</br>Most recent game date: </br>" +
