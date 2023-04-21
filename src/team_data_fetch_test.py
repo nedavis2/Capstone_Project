@@ -205,4 +205,4 @@ def team_primary_view(team: str):
             team_receiever_view_total(team) + "#"
             + str(get_team_dates(team, True)) + "#" + str(get_team_dates(team, False)))
 
-# print(get_team_dates('GNB'))
+print(team_primary_view('GNB'))
