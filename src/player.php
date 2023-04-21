@@ -58,14 +58,13 @@
                     $user_id = $_SESSION['userid'];
                     if (isset($_SESSION['email'])) {
                         $user_email = $_SESSION['email'];
+                        echo $user_email;
                     } else {
-                        $_SESSION['email'] = 'guest@gmail.com';
-                        $user_email = 'guest@gmail.com';
+                        echo "guest";
                     }
                 } else {
                     $user_name = 'guest';
                 }
-                echo $user_email;
                 ?>
             </li>
         </div>
@@ -903,64 +902,61 @@
                 <div class="prediction-comparison-pane fade" id="prediction-comparison-tab-pane" role="tabpanel" aria-labelledby="prediction-comparison-tab" tabindex="0">
 
                     <script>
-
                         var data_pred = <?php echo json_encode($prediction_set); ?>
-                        
-                        if (pos == 'QB'){
 
-                            var [pass_att_weekly_pred, pass_cmp_weekly_pred, pass_yds_weekly_pred, pass_td_weekly_pred, 
-                            pass_att_total_pred, pass_cmp_total_pred, pass_yds_total_pred, pass_td_total_pred, rush_td_weekly_pred, 
-                            rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred, rush_att_total_pred, rush_yds_total_pred
-                        ] = data_pred.split('#');
+                        if (pos == 'QB') {
 
-                        document.write("<div class='row'><div class='col'>Predicted Stats based on last game:</br>Pass attempts: "
-                        + pass_att_weekly_pred + "</br>Pass completions: " + pass_cmp_weekly_pred + "</br>Pass yards: " 
-                        + pass_yds_weekly_pred + "</br>Pass TDs: " + pass_td_weekly_pred + "</br>Rushing TDs: "
-                        + rush_td_weekly_pred + "</br>Rushing attempts: " +  rush_att_weekly_pred + "</br>Rushing yards: "
-                        + rush_yds_weekly_pred)
-                            document.write("</div><div class='col'>Predicted Stats based on previous season:</br>Pass attempts: "
-                        + pass_att_total_pred + "</br>Pass completions: " + pass_cmp_total_pred + "</br>Pass yards: " 
-                        + pass_yds_total_pred + "</br>Pass TDs: " + pass_td_total_pred + "</br>Rushing TDs: "
-                        + rush_td_total_pred + "</br>Rushing attempts: " +  rush_att_total_pred + "</br>Rushing yards: "
-                        + rush_yds_total_pred + "</div></div>")
+                            var [pass_att_weekly_pred, pass_cmp_weekly_pred, pass_yds_weekly_pred, pass_td_weekly_pred,
+                                pass_att_total_pred, pass_cmp_total_pred, pass_yds_total_pred, pass_td_total_pred, rush_td_weekly_pred,
+                                rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred, rush_att_total_pred, rush_yds_total_pred
+                            ] = data_pred.split('#');
 
-                        }else if (pos == 'RB'){
+                            document.write("<div class='row'><div class='col'>Predicted Stats based on last game:</br>Pass attempts: " +
+                                pass_att_weekly_pred + "</br>Pass completions: " + pass_cmp_weekly_pred + "</br>Pass yards: " +
+                                pass_yds_weekly_pred + "</br>Pass TDs: " + pass_td_weekly_pred + "</br>Rushing TDs: " +
+                                rush_td_weekly_pred + "</br>Rushing attempts: " + rush_att_weekly_pred + "</br>Rushing yards: " +
+                                rush_yds_weekly_pred)
+                            document.write("</div><div class='col'>Predicted Stats based on previous season:</br>Pass attempts: " +
+                                pass_att_total_pred + "</br>Pass completions: " + pass_cmp_total_pred + "</br>Pass yards: " +
+                                pass_yds_total_pred + "</br>Pass TDs: " + pass_td_total_pred + "</br>Rushing TDs: " +
+                                rush_td_total_pred + "</br>Rushing attempts: " + rush_att_total_pred + "</br>Rushing yards: " +
+                                rush_yds_total_pred + "</div></div>")
 
-                            var [rush_td_weekly_pred, rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred, 
-                            rush_att_total_pred, rush_yds_total_pred, targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred, 
-                            rec_yds_weekly_pred, targets_total_pred, rec_total_pred, rec_td_total_pred, rec_yds_total_pred
-                        ] = data_pred.split('#');
+                        } else if (pos == 'RB') {
 
-                        document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Rushing TDs: "
-                        + rush_td_weekly_pred + "</br>Rushing attempts: " +  rush_att_weekly_pred + "</br>Rushing yards: "
-                        + rush_yds_weekly_pred + "</br>Targets: " + targets_weekly_pred
-                            + "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred
-                            + "</br>Recption Yards: " + rec_yds_weekly_pred)
-                            document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Rushing TDs: "
-                        + rush_td_total_pred + "</br>Rushing attempts: " +  rush_att_total_pred + "</br>Rushing yards: "
-                        + rush_yds_total_pred + "</br>Targets: " + targets_total_pred
-                            + "</br>Receptions: " + rec_total_pred + "</br>Reception TDs: " + rec_td_total_pred
-                            + "</br>Recption Yards: " + rec_yds_total_pred + "</div></div>")
+                            var [rush_td_weekly_pred, rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred,
+                                rush_att_total_pred, rush_yds_total_pred, targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred,
+                                rec_yds_weekly_pred, targets_total_pred, rec_total_pred, rec_td_total_pred, rec_yds_total_pred
+                            ] = data_pred.split('#');
 
-                        }else{
+                            document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Rushing TDs: " +
+                                rush_td_weekly_pred + "</br>Rushing attempts: " + rush_att_weekly_pred + "</br>Rushing yards: " +
+                                rush_yds_weekly_pred + "</br>Targets: " + targets_weekly_pred +
+                                "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred +
+                                "</br>Recption Yards: " + rec_yds_weekly_pred)
+                            document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Rushing TDs: " +
+                                rush_td_total_pred + "</br>Rushing attempts: " + rush_att_total_pred + "</br>Rushing yards: " +
+                                rush_yds_total_pred + "</br>Targets: " + targets_total_pred +
+                                "</br>Receptions: " + rec_total_pred + "</br>Reception TDs: " + rec_td_total_pred +
+                                "</br>Recption Yards: " + rec_yds_total_pred + "</div></div>")
 
-                            var [targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred, rec_yds_weekly_pred, targets_total_pred, 
-                            rec_total_pred, rec_td_total_pred, rec_yds_total_pred
-                        ] = data_pred.split('#');
+                        } else {
 
-                            document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Targets: " + targets_weekly_pred
-                            + "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred
-                            + "</br>Recption Yards: " + rec_yds_weekly_pred)
-                            document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Targets: " + targets_total_pred
-                            + "</br>Receptions: " + rec_total_pred + "</br>Reception TDs: " + rec_td_total_pred
-                            + "</br>Recption Yards: " + rec_yds_total_pred + "</div></div>")
+                            var [targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred, rec_yds_weekly_pred, targets_total_pred,
+                                rec_total_pred, rec_td_total_pred, rec_yds_total_pred
+                            ] = data_pred.split('#');
+
+                            document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Targets: " + targets_weekly_pred +
+                                "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred +
+                                "</br>Recption Yards: " + rec_yds_weekly_pred)
+                            document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Targets: " + targets_total_pred +
+                                "</br>Receptions: " + rec_total_pred + "</br>Reception TDs: " + rec_td_total_pred +
+                                "</br>Recption Yards: " + rec_yds_total_pred + "</div></div>")
 
                         }
-                        
-
                     </script>
 
-                    
+
 
                 </div>
 
