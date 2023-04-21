@@ -162,7 +162,7 @@ def _retrieve_team_total_data(team : str, retreived_data : str, table_name: str 
         db, cursor = _connect_to_database()
         query =  ''' SELECT SUM(%s) AS total
                         FROM %s
-                        WHERE teamName = \"%s\"
+                        WHERE team = \"%s\"
             '''%(retreived_data, table_name, team)
         
         data = ps.read_sql(query, db)
@@ -251,14 +251,14 @@ def _retrieve_team_data(team : str,retreived_data : str, table_name: str = TEAM_
 
             query = '''SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
-                        WHERE teamName = \"%s\"
+                        WHERE team = \"%s\"
                         GROUP BY date ASC
                         ORDER BY date ASC
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team)
         else:
             query = ''' SELECT SUM(%s) AS value, CONCAT(YEAR(game_date), '/', %s(game_date))  AS date
                         FROM %s
-                        WHERE teamName = \"%s\" AND pos = \"%s\"
+                        WHERE team = \"%s\" AND pos = \"%s\"
                         GROUP BY date ASC
                         ORDER BY date ASC
             '''%(retreived_data, get_weekly_or_monthly(weekly), table_name, team, position)
@@ -343,7 +343,7 @@ def get_team_dates(team_id : str, weekly = True):
         
         query = ''' SELECT DISTINCT game_date AS date
                     FROM %s
-                    WHERE teamName = "%s"
+                    WHERE team = "%s"
                     GROUP BY CONCAT(YEAR(game_date), '/', %s(game_date))
                     ORDER BY date ASC
         '''%(TEAM_TABLE, team_id, get_weekly_or_monthly(weekly))
@@ -379,7 +379,7 @@ def _get_player_prediction_value(player_id : str,retreived_data : str, table_nam
     try:
     
         db, cursor = _connect_to_database()
-        query =  ''' SELECT * AS data
+        query =  ''' SELECT *
                         FROM %s
                         WHERE player_id = \"%s\"
             '''%(table_name, player_id)
@@ -401,7 +401,7 @@ def _get_player_prediction_value(player_id : str,retreived_data : str, table_nam
     #TODO: Check to make sure that it is ok to return 0 if no data is found.
     if output[0] == None:
         return 0
-    return int(output[retreived_data])
+    return int(output)
 
 
 
@@ -1297,6 +1297,144 @@ def player_max_comb_pass_play(player_id : str) -> int:
 
     return _retrieve_player_max_data(player_id = player_id, retreived_data=retreived_data)
 
+def player_prediction_pass_att_total(player_id : str) -> int:
+    
+   retreived_data = "pass_att_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_cmp_total(player_id : str) -> int:
+    
+   retreived_data = "pass_cmp_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_yds_total(player_id : str) -> int:
+    
+   retreived_data = "pass_yds_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_td_total(player_id : str) -> int:
+    
+   retreived_data = "pass_td_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_td_total(player_id : str) -> int:
+    
+   retreived_data = "rush_td_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_att_total(player_id : str) -> int:
+    
+   retreived_data = "rush_att_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+def player_prediction_pass_att_total(player_id : str) -> int:
+    
+   retreived_data = "pass_att_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_yds_total(player_id : str) -> int:
+    
+   retreived_data = "rush_yds_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_targets_total(player_id : str) -> int:
+    
+   retreived_data = "targets_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_total(player_id : str) -> int:
+    
+   retreived_data = "rec_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_td_total(player_id : str) -> int:
+    
+   retreived_data = "rec_td_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_yds_total(player_id : str) -> int:
+    
+   retreived_data = "rec_yds_total"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+
+def player_prediction_pass_att_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_att_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_cmp_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_cmp_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_yds_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_yds_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_pass_td_weekly(player_id : str) -> int:
+    
+   retreived_data = "pass_td_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_td_weekly(player_id : str) -> int:
+    
+   retreived_data = "rush_td_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_att_weekly(player_id : str) -> int:
+    
+   retreived_data = "rush_att_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rush_yds_weekly(player_id : str) -> int:
+    
+   retreived_data = "rush_yds_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_targets_weekly(player_id : str) -> int:
+    
+   retreived_data = "targets_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_weekly(player_id : str) -> int:
+    
+   retreived_data = "rec_weekly"
+   
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+
+def player_prediction_rec_td_weekly(player_id : str) -> int:
+
+    retreived_data = "rec_td_weekly"
+
+    return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
+
+def player_prediction_rec_yds_weekly(player_id : str) -> int:
+    
+   retreived_data = "rec_yds_weekly"
+    
+   return _get_player_prediction_value(player_id = player_id, retreived_data=retreived_data)
 
 #print(player_avg_rec_yds("ValdMa00"))
 #print(player_max_rec_yds("ValdMa00"))

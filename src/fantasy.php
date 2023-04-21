@@ -325,7 +325,7 @@
                             <div class="col">
 
                                 <script>
-                                    document.write("Player name:</br>")
+                                    document.write("Player names:</br>")
                                 </script>
 
                                 <?php
@@ -756,7 +756,7 @@
                                     targets_monthly_flx, rec_monthly_flx, rec_td_monthly_flx, rec_yds_monthly_flx,
                                     targets_total_flx, rec_total_flx, rec_td_total_flx, rec_yds_total_flx,
                                     player_dates_flx, player_dates_months_flx
-                                ] = data.split('#');
+                                ] = data_flx.split('#');
                             }
 
                             player_dates_flx = player_dates_flx.split(",").slice(0, -1).slice(-17);
@@ -907,7 +907,7 @@
                                             fill: false
                                         }, {
                                             label: 'Flex targets',
-                                            data: targets_weekly,
+                                            data: targets_weekly_flx,
                                             borderColor: "blue",
                                             fill: false
                                         }]
@@ -1257,12 +1257,12 @@
 
                                                 <?php
 
-                                                $stmt = $connection->prepare("SELECT DISTINCT teamName FROM game_stats_team ORDER BY teamName ASC;");
+                                                $stmt = $connection->prepare("SELECT DISTINCT team FROM game_stats_team ORDER BY team ASC;");
                                                 $stmt->execute();
                                                 $results = $stmt->fetchAll();
                                                 for ($idx = 0; $idx < count($results); $idx++) {
                                                     $p = $results[$idx];
-                                                    print("<option value=\"" . $p['teamName'] . "\">" . $p['teamName'] . "</option>");
+                                                    print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
                                                 }
                                                 ?>
 

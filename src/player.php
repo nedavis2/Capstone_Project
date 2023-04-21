@@ -59,7 +59,8 @@
                     if (isset($_SESSION['email'])) {
                         $user_email = $_SESSION['email'];
                     } else {
-                        $user_email = 'dummyBOI@aol.com';
+                        $_SESSION['email'] = 'guest@gmail.com';
+                        $user_email = 'guest@gmail.com';
                     }
                 } else {
                     $user_name = 'guest';
@@ -81,6 +82,7 @@
         $player_input = $player[0] . "," . $pos;
 
         $result_set = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input));
+        $prediction_set = exec('python ../src/player_data_pred.py ' . escapeshellarg($player_input));
     }
 
     ?>
@@ -151,7 +153,7 @@
                 <button class="nav-link" id="total-tab" data-bs-toggle="tab" data-bs-target="#total-tab-pane" type="button" role="tab" aria-controls="total-tab-pane" aria-selected="false">Total data</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="comparison-tab" data-bs-toggle="tab" data-bs-target="#comparison-tab-pane" type="button" role="tab" aria-controls="comparison-tab-pane" aria-selected="false">Comparison</button>
+                <button class="nav-link" id="prediction-comparison-tab" data-bs-toggle="tab" data-bs-target="#prediction-comparison-tab-pane" type="button" role="tab" aria-controls="prediction-comparison-tab-pane" aria-selected="false">Prediction/Comparison</button>
             </li>
         </ul>
 
@@ -436,7 +438,6 @@
 
                 </div>
                 <div class="tab-pane fade" id="monthly-tab-pane" role="tabpanel" aria-labelledby="monthly-tab" tabindex="0">
-
 
                     <div class="container p-3">
 
@@ -751,37 +752,31 @@
 
                             </div>
 
-
                             <div class="col">
                                 <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
                                 <script>
-                                    if(pos == 'QB'){
-                                        document.write("</br>Pass completion ratio: " + ((pass_cmp_total/pass_att_total)*100).toFixed(2) + "%"
-                                        + "</br>Pass TD ratio on complete passes: " + ((pass_td_total/pass_cmp_total)*100).toFixed(2) + "%"
-                                        + "</br>Rushing TD ratio: " + ((rush_td_total/rush_att_total)*100).toFixed(2) + "%"); 
-                                    }else if(pos == 'RB'){
+                                    if (pos == 'QB') {
+                                        document.write("</br>Pass completion ratio: " + ((pass_cmp_total / pass_att_total) * 100).toFixed(2) + "%" +
+                                            "</br>Pass TD ratio on complete passes: " + ((pass_td_total / pass_cmp_total) * 100).toFixed(2) + "%" +
+                                            "</br>Rushing TD ratio: " + ((rush_td_total / rush_att_total) * 100).toFixed(2) + "%");
+                                    } else if (pos == 'RB') {
                                         total_touches = rush_att_total + targets_total;
-                                        document.write("</br>Rushing ratio: " + ((rush_att_total/(parseInt(rush_att_total) + parseInt(targets_total)))*100).toFixed(2) + "%"
-                                        + "</br>Rushing TD ratio: " + ((rush_td_total/rush_att_total)*100).toFixed(2) + "%"
-                                        + "</br>Receptiom TD ratio on receptions: " + ((rec_td_total/rec_total)*100).toFixed(2) + "%");
-                                    }else{
-                                        document.write("</br>Reception ratio: " + ((rec_total/targets_total)*100).toFixed(2) + "%"
-                                        + "</br>Reception TD ratio on targets: " + ((rec_td_total/targets_total)*100).toFixed(2) + "%"
-                                        + "</br>Receptiom TD ratio on reception: " + ((rec_td_total/rec_total)*100).toFixed(2) + "%");
+                                        document.write("</br>Rushing ratio: " + ((rush_att_total / (parseInt(rush_att_total) + parseInt(targets_total))) * 100).toFixed(2) + "%" +
+                                            "</br>Rushing TD ratio: " + ((rush_td_total / rush_att_total) * 100).toFixed(2) + "%" +
+                                            "</br>Receptiom TD ratio on receptions: " + ((rec_td_total / rec_total) * 100).toFixed(2) + "%");
+                                    } else {
+                                        document.write("</br>Reception ratio: " + ((rec_total / targets_total) * 100).toFixed(2) + "%" +
+                                            "</br>Reception TD ratio on targets: " + ((rec_td_total / targets_total) * 100).toFixed(2) + "%" +
+                                            "</br>Receptiom TD ratio on reception: " + ((rec_td_total / rec_total) * 100).toFixed(2) + "%");
                                     }
-
-                                    
                                 </script>
                             </div>
                         </div>
 
                     </div>
 
-
-
                     <script>
                         if (pos == 'QB') {
-
 
                             var pieLabels = ['pass_cmp', 'pass_inc', ];
 
@@ -905,10 +900,71 @@
                     </script>
 
                 </div>
+                <div class="prediction-comparison-pane fade" id="prediction-comparison-tab-pane" role="tabpanel" aria-labelledby="prediction-comparison-tab" tabindex="0">
+
+                    <script>
+
+                        var data_pred = <?php echo json_encode($prediction_set); ?>
+                        
+                        if (pos == 'QB'){
+
+                            var [pass_att_weekly_pred, pass_cmp_weekly_pred, pass_yds_weekly_pred, pass_td_weekly_pred, 
+                            pass_att_total_pred, pass_cmp_total_pred, pass_yds_total_pred, pass_td_total_pred, rush_td_weekly_pred, 
+                            rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred, rush_att_total_pred, rush_yds_total_pred
+                        ] = data_pred.split('#');
+
+                        document.write("<div class='row'><div class='col'>Predicted Stats based on last game:</br>Pass attempts: "
+                        + pass_att_weekly_pred + "</br>Pass completions: " + pass_cmp_weekly_pred + "</br>Pass yards: " 
+                        + pass_yds_weekly_pred + "</br>Pass TDs: " + pass_td_weekly_pred + "</br>Rushing TDs: "
+                        + rush_td_weekly_pred + "</br>Rushing attempts: " +  rush_att_weekly_pred + "</br>Rushing yards: "
+                        + rush_yds_weekly_pred)
+                            document.write("</div><div class='col'>Predicted Stats based on previous season:</br>Pass attempts: "
+                        + pass_att_total_pred + "</br>Pass completions: " + pass_cmp_total_pred + "</br>Pass yards: " 
+                        + pass_yds_total_pred + "</br>Pass TDs: " + pass_td_total_pred + "</br>Rushing TDs: "
+                        + rush_td_total_pred + "</br>Rushing attempts: " +  rush_att_total_pred + "</br>Rushing yards: "
+                        + rush_yds_total_pred + "</div></div>")
+
+                        }else if (pos == 'RB'){
+
+                            var [rush_td_weekly_pred, rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred, 
+                            rush_att_total_pred, rush_yds_total_pred, targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred, 
+                            rec_yds_weekly_pred, targets_total_pred, rec_total_pred, rec_td_total_pred, rec_yds_total_pred
+                        ] = data_pred.split('#');
+
+                        document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Rushing TDs: "
+                        + rush_td_weekly_pred + "</br>Rushing attempts: " +  rush_att_weekly_pred + "</br>Rushing yards: "
+                        + rush_yds_weekly_pred + "</br>Targets: " + targets_weekly_pred
+                            + "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred
+                            + "</br>Recption Yards: " + rec_yds_weekly_pred)
+                            document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Rushing TDs: "
+                        + rush_td_total_pred + "</br>Rushing attempts: " +  rush_att_total_pred + "</br>Rushing yards: "
+                        + rush_yds_total_pred + "</br>Targets: " + targets_total_pred
+                            + "</br>Receptions: " + rec_total_pred + "</br>Reception TDs: " + rec_td_total_pred
+                            + "</br>Recption Yards: " + rec_yds_total_pred + "</div></div>")
+
+                        }else{
+
+                            var [targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred, rec_yds_weekly_pred, targets_total_pred, 
+                            rec_total_pred, rec_td_total_pred, rec_yds_total_pred
+                        ] = data_pred.split('#');
+
+                            document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Targets: " + targets_weekly_pred
+                            + "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred
+                            + "</br>Recption Yards: " + rec_yds_weekly_pred)
+                            document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Targets: " + targets_total_pred
+                            + "</br>Receptions: " + rec_total_pred + "</br>Reception TDs: " + rec_td_total_pred
+                            + "</br>Recption Yards: " + rec_yds_total_pred + "</div></div>")
+
+                        }
+                        
+
+                    </script>
+
+                    
+
+                </div>
 
             </div>
-
-        </div>
 
 </body>
 

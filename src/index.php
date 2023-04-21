@@ -59,13 +59,14 @@
                     $user_id = $_SESSION['userid'];
                     if (isset($_SESSION['email'])) {
                         $user_email = $_SESSION['email'];
+                        echo $user_email;
                     } else {
-                        $user_email = 'guest@aol.com';
+                        echo "guest";
                     }
                 } else {
-                    $user_name = 'guest@aol.com';
+                    $user_name = 'guest';
                 }
-                echo $user_email;
+                //echo $user_email;
                 ?>
             </li>
         </div>
@@ -99,12 +100,12 @@
                 <select id="teamSelect" name="teamSelect">
 
                     <?php
-                    $stmt = $connection->prepare("SELECT DISTINCT teamName FROM game_stats_team ORDER BY teamName ASC;");
+                    $stmt = $connection->prepare("SELECT DISTINCT team FROM game_stats_team ORDER BY team ASC;");
                     $stmt->execute();
                     $results = $stmt->fetchAll();
                     for ($idx = 0; $idx < count($results); $idx++) {
                         $p = $results[$idx];
-                        print("<option value=\"" . $p['teamName'] . "\">" . $p['teamName'] . "</option>");
+                        print("<option value=\"" . $p['team'] . "\">" . $p['team'] . "</option>");
                     }
                     $connection = null;
                     ?>

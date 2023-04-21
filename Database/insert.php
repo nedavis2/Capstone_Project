@@ -36,7 +36,7 @@ try{
     $connection->query("DELETE FROM game");
     $connection->query("DELETE FROM player");
 
-    // form query strings
+    // insert queries
     $query_str_plr = "INSERT INTO player
                     VALUES (:game_id, :player_id, :pName, :POS, :team)";
     $query_str_game = "INSERT INTO game
@@ -71,6 +71,11 @@ try{
     $person5_qry = "INSERT INTO user (user_email) VALUES ('guest@aol.edu')";
     $person6_qry = "INSERT INTO user (user_email) VALUES ('nedavis2@uncg.edu')";
     
+    // delete queries
+    $ply_del_qry = "DELETE FROM game_stats_player WHERE (player = 'player')";
+    $team_del_qry1 = "DELETE FROM game_stats_team WHERE (team = 'team')";
+    $team_del_qry2 = "DELETE FROM game_stats_team WHERE (team = 'ERROR')";
+
     // insert into player table
     while (($row = fgetcsv($file_1)) !== FALSE) {
         $stmt = $connection->prepare($query_str_plr);
@@ -268,7 +273,7 @@ try{
         $stmt->bindParam(":rec_weekly", $row[21], PDO::PARAM_STR);
         $stmt->bindParam(":rec_td_weekly", $row[22], PDO::PARAM_STR);
         $stmt->bindParam(":rec_yds_weekly", $row[23], PDO::PARAM_STR);
-
+        
         $stmt->execute();
     }
 
@@ -291,10 +296,21 @@ try{
     $stmt = $connection->prepare($person6_qry);
     $stmt->execute();
 
+    // clean data in the database
+
+    $stmt = $connection->prepare($ply_del_qry);
+    $stmt->execute();
+
+    $stmt = $connection->prepare($team_del_qry1);
+    $stmt->execute();
+
+    $stmt = $connection->prepare($team_del_qry2);
+    $stmt->execute();
+
 } catch(PDOexecption $error){
     echo "Database connection error: " . $error->getmessage() . "<BR>";
     die;
 }
 ?>
-Data inserted successfully.
+Data inserted and deleted successfully.
 </pre>
