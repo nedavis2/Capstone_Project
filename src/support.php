@@ -79,12 +79,11 @@
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
                 Our Team: at UNCG<br>
-                Logan Whitfield<br>
-                Kevin Hayes<br>
-                Clayton Winters<br>
-                Carlos Ruis<br>
-                Nate Davis<br>
-                To contact us, email crwinter@uncg.edu to set up an appointment with our team.
+                Logan Whitfield "lww1117@gmail.com"<br>
+                Kevin Hayes "nivek694@gmail.com"<br>
+                Clayton Winters "winters1291@yahoo.com"<br>
+                Carlos Ruis "carlosmrv123@hotmail.com"<br>
+                Nate Davis "nedavis2@uncg.edu"<br>
             </div>
             <div class="tab-content" id="myTabContent">
                 <div class="tab-pane fade" id="documentation-tab-pane" role="tabpanel" aria-labelledby="documentation-tab" tabindex="0">
