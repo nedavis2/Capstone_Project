@@ -401,7 +401,7 @@ def _get_player_prediction_value(player_id : str,retreived_data : str, table_nam
     #TODO: Check to make sure that it is ok to return 0 if no data is found.
     if output[0] == None:
         return 0
-    return int(output[retreived_data])
+    return int(output)
 
 
 
