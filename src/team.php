@@ -52,13 +52,13 @@
                     $user_id = $_SESSION['userid'];
                     if (isset($_SESSION['email'])) {
                         $user_email = $_SESSION['email'];
+                        echo $user_email;
                     } else {
-                        $user_email = 'dummyBOI@aol.com';
+                        echo "guest";
                     }
                 } else {
                     $user_name = 'guest';
                 }
-                echo $user_email;
                 ?>
             </li>
         </div>

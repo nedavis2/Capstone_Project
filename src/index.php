@@ -66,7 +66,6 @@
                 } else {
                     $user_name = 'guest';
                 }
-                //echo $user_email;
                 ?>
             </li>
         </div>
