@@ -913,12 +913,12 @@
                             rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred, rush_att_total_pred, rush_yds_total_pred
                         ] = data_pred.split('#');
 
-                        document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Pass attempts: "
+                        document.write("<div class='row'><div class='col'>Predicted Stats based on last game:</br>Pass attempts: "
                         + pass_att_weekly_pred + "</br>Pass completions: " + pass_cmp_weekly_pred + "</br>Pass yards: " 
                         + pass_yds_weekly_pred + "</br>Pass TDs: " + pass_td_weekly_pred + "</br>Rushing TDs: "
                         + rush_td_weekly_pred + "</br>Rushing attempts: " +  rush_att_weekly_pred + "</br>Rushing yards: "
                         + rush_yds_weekly_pred)
-                            document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Pass attempts: "
+                            document.write("</div><div class='col'>Predicted Stats based on previous season:</br>Pass attempts: "
                         + pass_att_total_pred + "</br>Pass completions: " + pass_cmp_total_pred + "</br>Pass yards: " 
                         + pass_yds_total_pred + "</br>Pass TDs: " + pass_td_total_pred + "</br>Rushing TDs: "
                         + rush_td_total_pred + "</br>Rushing attempts: " +  rush_att_total_pred + "</br>Rushing yards: "
