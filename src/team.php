@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -170,6 +170,10 @@
                         </div>
 
                         <script>
+                            var x_dates = ['week 1', 'week 2', 'week 3', 'week 4', 'week 5', 'week 6', 'week 7', 'week 8', 'week 9', 'week 10',
+                                'week 11', 'week 12', 'week 13', 'week 14', 'week 15', 'week 16', 'week 17'
+                            ]
+
                             pass_att_weekly = pass_att_weekly.split(",").slice(-17);
                             pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
                             pass_yds_weekly = pass_yds_weekly.split(",").slice(-17);
@@ -178,7 +182,7 @@
                             new Chart("weeklyChart1P", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass att',
                                         data: pass_att_weekly,
@@ -206,7 +210,7 @@
                             new Chart("weeklyChart2P", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass yds',
                                         data: pass_yds_weekly,
@@ -259,7 +263,7 @@
                             new Chart("weeklyChart1R", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush att',
                                         data: rush_att_weekly,
@@ -277,7 +281,7 @@
                             new Chart("weeklyChart2R", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush yds',
                                         data: rush_yds_weekly,
@@ -295,7 +299,7 @@
                             new Chart("weeklyChart3R", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush td',
                                         data: rush_td_weekly,
@@ -347,7 +351,7 @@
                             new Chart("weeklyChart1C", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'receptions',
                                         data: rec_weekly,
@@ -370,7 +374,7 @@
                             new Chart("weeklyChart2C", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rec yds',
                                         data: rec_yds_weekly,
@@ -388,7 +392,7 @@
                             new Chart("weeklyChart3C", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rec td',
                                         data: rec_td_weekly,
@@ -455,6 +459,10 @@
 
 
                         <script>
+                            var x_months = ['month 1', 'month 2', 'month 3', 'month 4', 'month 5', 'month 6', 'month 7', 'month 8',
+                                'month 9', 'month 10', 'month 11', 'month 12', 'month 13', 'month 14', 'month 15', 'month 16', 'month 17'
+                            ]
+
                             pass_att_monthly = pass_att_monthly.split(",").slice(-17);
                             pass_cmp_monthly = pass_cmp_monthly.split(",").slice(-17);
                             pass_yds_monthly = pass_yds_monthly.split(",").slice(-17);
@@ -465,7 +473,7 @@
                             new Chart("monthlyChart1PM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'pass att',
                                         data: pass_att_monthly,
@@ -493,7 +501,7 @@
                             new Chart("monthlyChart2PM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'pass yds',
                                         data: pass_yds_monthly,
@@ -544,7 +552,7 @@
                             new Chart("monthlyChart1RM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rush att',
                                         data: rush_att_monthly,
@@ -562,7 +570,7 @@
                             new Chart("monthlyChart2RM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rush yds',
                                         data: rush_yds_monthly,
@@ -580,7 +588,7 @@
                             new Chart("monthlyChart3RM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rush td',
                                         data: rush_td_monthly,
@@ -631,7 +639,7 @@
                             new Chart("monthlyChart1CM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'receptions',
                                         data: rec_monthly,
@@ -654,7 +662,7 @@
                             new Chart("monthlyChart2CM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rec yds',
                                         data: rec_yds_monthly,
@@ -672,7 +680,7 @@
                             new Chart("monthlyChart3CM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rec td',
                                         data: rec_td_monthly,

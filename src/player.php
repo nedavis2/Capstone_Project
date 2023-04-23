@@ -6,15 +6,15 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-    <script src="https://malsup.github.io/jquery.form.js"></script>
+    <script src="https://malsup.github.io/jquery.form.js"></script>-->
 
 
     <title>Silicon Stadium</title>
@@ -203,6 +203,10 @@
 
                     </div>
                     <script>
+                        var x_dates = ['week 1', 'week 2', 'week 3', 'week 4', 'week 5', 'week 6', 'week 7', 'week 8', 'week 9', 'week 10',
+                            'week 11', 'week 12', 'week 13', 'week 14', 'week 15', 'week 16', 'week 17'
+                        ]
+
                         if (pos == 'QB') {
 
                             pass_att_weekly = pass_att_weekly.split(",").slice(-17);
@@ -216,7 +220,7 @@
                             new Chart("weeklyChart1", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass att',
                                         data: pass_att_weekly,
@@ -244,7 +248,7 @@
                             new Chart("weeklyChart2", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass yds',
                                         data: pass_yds_weekly,
@@ -267,7 +271,7 @@
                             new Chart("weeklyChart3", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush td',
                                         data: rush_td_weekly,
@@ -300,7 +304,7 @@
                             new Chart("weeklyChart1", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush att',
                                         data: rush_att_weekly,
@@ -323,7 +327,7 @@
                             new Chart("weeklyChart2", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush yds',
                                         data: rush_yds_weekly,
@@ -346,7 +350,7 @@
                             new Chart("weeklyChart3", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush td',
                                         data: rush_td_weekly,
@@ -376,7 +380,7 @@
                             new Chart("weeklyChart1", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'receptions',
                                         data: rec_weekly,
@@ -399,7 +403,7 @@
                             new Chart("weeklyChart2", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rec yds',
                                         data: rec_yds_weekly,
@@ -417,7 +421,7 @@
                             new Chart("weeklyChart3", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rec td',
                                         data: rec_td_weekly,
@@ -483,6 +487,10 @@
 
 
                     <script>
+                        var x_months = ['month 1', 'month 2', 'month 3', 'month 4', 'month 5', 'month 6', 'month 7', 'month 8',
+                            'month 9', 'month 10', 'month 11', 'month 12', 'month 13', 'month 14', 'month 15', 'month 16', 'month 17'
+                        ]
+
                         if (pos == 'QB') {
 
                             pass_att_monthly = pass_att_monthly.split(",").slice(-17);
@@ -496,7 +504,7 @@
                             new Chart("monthlyChart1", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'pass att',
                                         data: pass_att_monthly,
@@ -524,7 +532,7 @@
                             new Chart("monthlyChart2", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'pass yds',
                                         data: pass_yds_monthly,
@@ -547,7 +555,7 @@
                             new Chart("monthlyChart3", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rush td',
                                         data: rush_td_monthly,
@@ -582,7 +590,7 @@
                             new Chart("monthlyChart1", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rush att',
                                         data: rush_att_monthly,
@@ -605,7 +613,7 @@
                             new Chart("monthlyChart2", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rush yds',
                                         data: rush_yds_monthly,
@@ -628,7 +636,7 @@
                             new Chart("monthlyChart3", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rush td',
                                         data: rush_td_monthly,
@@ -658,7 +666,7 @@
                             new Chart("monthlyChart1", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'receptions',
                                         data: rec_monthly,
@@ -681,7 +689,7 @@
                             new Chart("monthlyChart2", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rec yds',
                                         data: rec_yds_monthly,
@@ -699,7 +707,7 @@
                             new Chart("monthlyChart3", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_months,
+                                    labels: x_months,
                                     datasets: [{
                                         label: 'rec td',
                                         data: rec_td_monthly,

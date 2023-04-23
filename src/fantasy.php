@@ -6,7 +6,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
+    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -189,10 +189,14 @@
                         </div>
 
                         <script>
+                            var x_dates = ['week 1', 'week 2', 'week 3', 'week 4', 'week 5', 'week 6', 'week 7', 'week 8', 'week 9', 'week 10',
+                                'week 11', 'week 12', 'week 13', 'week 14', 'week 15', 'week 16', 'week 17'
+                            ]
+
                             new Chart("weeklyChart1QB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_qb,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass att',
                                         data: pass_att_weekly_qb,
@@ -221,7 +225,7 @@
                             new Chart("weeklyChart2QB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_qb,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass yds',
                                         data: pass_yds_weekly_qb,
@@ -239,7 +243,7 @@
                             new Chart("weeklyChart3QB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_qb,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush td',
                                         data: rush_td_weekly_qb,
@@ -366,7 +370,7 @@
                             new Chart("weeklyChart1RB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_rb1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'RB1 rush yds',
                                         data: rush_yds_weekly_rb1,
@@ -389,7 +393,7 @@
                             new Chart("weeklyChart2RB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_rb1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'RB1 rush td',
                                         data: rush_td_weekly_rb1,
@@ -412,7 +416,7 @@
                             new Chart("weeklyChart3RB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_rb1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'RB1 rush att',
                                         data: rush_att_weekly_rb1,
@@ -435,7 +439,7 @@
                             new Chart("weeklyChart4RB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_rb1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'RB1 rec yds',
                                         data: rec_yds_weekly_rb1,
@@ -458,7 +462,7 @@
                             new Chart("weeklyChart5RB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_rb1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'RB1 rec td',
                                         data: rec_td_weekly_rb1,
@@ -481,7 +485,7 @@
                             new Chart("weeklyChart6RB", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_rb1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'RB1 targets',
                                         data: targets_weekly_rb1,
@@ -611,7 +615,7 @@
                             new Chart("weeklyChart1WR", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_wr1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'WR1 rec yds',
                                         data: rec_yds_weekly_wr1,
@@ -639,7 +643,7 @@
                             new Chart("weeklyChart2WR", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_wr1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'WR1 rec td',
                                         data: rec_td_weekly_wr1,
@@ -667,7 +671,7 @@
                             new Chart("weeklyChart3WR", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_wr1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'WR1 rec',
                                         data: rec_weekly_wr1,
@@ -695,7 +699,7 @@
                             new Chart("weeklyChart4WR", {
                                 type: "line",
                                 data: {
-                                    labels: player_dates_wr1,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'WR1 targets',
                                         data: targets_weekly_wr1,
@@ -813,7 +817,7 @@
                                 new Chart("weeklyChart1FLX", {
                                     type: "line",
                                     data: {
-                                        labels: player_dates_flx,
+                                        labels: x_dates,
                                         datasets: [{
                                             label: 'Flex rush yds',
                                             data: rush_yds_weekly_flx,
@@ -836,7 +840,7 @@
                                 new Chart("weeklyChart2FLX", {
                                     type: "line",
                                     data: {
-                                        labels: player_dates_flx,
+                                        labels: x_dates,
                                         datasets: [{
                                             label: 'Flex rush td',
                                             data: rush_td_weekly_flx,
@@ -876,7 +880,7 @@
                                 new Chart("weeklyChart1FLX", {
                                     type: "line",
                                     data: {
-                                        labels: player_dates_flx,
+                                        labels: x_dates,
                                         datasets: [{
                                             label: 'Flex rec yds',
                                             data: rec_yds_weekly_flx,
@@ -894,7 +898,7 @@
                                 new Chart("weeklyChart2FLX", {
                                     type: "line",
                                     data: {
-                                        labels: player_dates_flx,
+                                        labels: x_dates,
                                         datasets: [{
                                             label: 'Flex rec td',
                                             data: rec_td_weekly_flx,
@@ -998,7 +1002,7 @@
                             new Chart("weeklyChart1TM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass att',
                                         data: pass_att_weekly,
@@ -1026,7 +1030,7 @@
                             new Chart("weeklyChart2TM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'pass yds',
                                         data: pass_yds_weekly,
@@ -1049,7 +1053,7 @@
                             new Chart("weeklyChart3TM", {
                                 type: "line",
                                 data: {
-                                    labels: get_dates,
+                                    labels: x_dates,
                                     datasets: [{
                                         label: 'rush att',
                                         data: rush_att_weekly,
