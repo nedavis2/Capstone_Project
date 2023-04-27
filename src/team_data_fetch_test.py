@@ -1,5 +1,7 @@
 from team_data_fetch import *
 
+#_______________________________________________________________________________________________________________________________________
+#Player data representation methods
 
 def player_qb_view(player_id: str):
     return (str(player_quarterback_pass_att_weekly(player_id)) + '#'
@@ -115,24 +117,25 @@ def player_primary_view(player_id: str, pos: str):
                 + player_qb_view_total(player_id) + "#" +
                 player_rusher_view(player_id) + "#"
                 + player_rusher_view_month(player_id) + "#" +
-                player_rusher_view_total(player_id) + "#"
-                + str(get_player_dates(player_id)) + "#" + str(get_player_dates(player_id, False)))
+                player_rusher_view_total(player_id) + '#' +
+                str(get_player_dates(player_id)))
     elif (pos == 'RB'):
         return (player_rusher_view(player_id) + "#" + player_rusher_view_month(player_id) + "#"
                 + player_rusher_view_total(player_id) +
                 "#" + player_receiver_view(player_id) + "#"
                 + player_receiver_view_month(player_id) + "#" +
-                player_receiver_view_total(player_id) + "#"
-                + str(get_player_dates(player_id)) + "#" + str(get_player_dates(player_id, False)))
+                player_receiver_view_total(player_id) + '#' +
+                str(get_player_dates(player_id)))
     else:
         return (player_receiver_view(player_id) + "#" + player_receiver_view_month(player_id) + "#"
-                + player_receiver_view_total(player_id) +
-                "#" + str(get_player_dates(player_id))
-                + "#" + str(get_player_dates(player_id, False)))
+                + player_receiver_view_total(player_id) + '#' +
+                str(get_player_dates(player_id)))
 
-# print(player_avg_rec_view('JoneAa00'))
-# print(player_rec_pred('TonyRo00'))
-# print(player_avg_pass_yds('AlleJo02'))
+
+
+
+#______________________________________________________________________________________________________________________________________
+#Team data representation methods
 
 
 def team_qb_view(team: str):
@@ -197,12 +200,6 @@ def team_receiever_view_total(team: str):
 
 def team_primary_view(team: str):
     return (team_qb_view(team) + '#' + team_qb_view_month(team) + '#' + team_qb_view_total(team) + '#'
-            + team_rushing_view(team) + '#' +
-            team_rushing_view_month(team) + '#'
-            + team_rushing_view_total(team) + '#' +
-            team_receiever_view(team) + '#'
-            + team_receiever_view_month(team) + '#' +
-            team_receiever_view_total(team) + "#"
-            + str(get_team_dates(team, True)) + "#" + str(get_team_dates(team, False)))
+            + team_rushing_view(team) + '#' + team_rushing_view_month(team) + '#' + team_rushing_view_total(team) + '#' +
+            team_receiever_view(team) + '#' + team_receiever_view_month(team) + '#' + team_receiever_view_total(team))
 
-print(team_primary_view('GNB'))

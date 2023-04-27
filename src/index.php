@@ -7,17 +7,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
-    <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.6.3/jquery.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>
-    <script src="https://code.jquery.com/ui/1.10.4/jquery-ui.js"></script>-->
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">
-    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
-    <script src="https://code.jquery.com/ui/1.13.2/jquery-ui.js"></script>-->
     <title>Silicon Stadium</title>
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
@@ -49,12 +41,16 @@
             </div>
             <li class="nav-item" style="color:aliceblue">
                 <?php
+                //Checking session
                 $_SESSION["TEST"] = True;
+                //Including database credentails
                 require_once 'config.php';
                 require 'php/DBconnect.php';
                 error_reporting(E_ALL);
                 ini_set('display_errors', True);
+                //Create connection
                 $connection = connect();
+                //Check login and display user email
                 if (isset($_SESSION['userid'])) {
                     $user_id = $_SESSION['userid'];
                     if (isset($_SESSION['email'])) {
@@ -78,6 +74,7 @@
                 <select id="playerSelect" name="playerSelect">
 
                     <?php
+                    //Populate drop down list for all player from 2019-present
                     $stmt = $connection->prepare("SELECT DISTINCT player_id, pName, pos 
                     FROM player ORDER BY pName ASC;");
                     $stmt->execute();
@@ -99,6 +96,7 @@
                 <select id="teamSelect" name="teamSelect">
 
                     <?php
+                    //Populate drop down list of all team abbreviations
                     $stmt = $connection->prepare("SELECT DISTINCT team FROM game_stats_team ORDER BY team ASC;");
                     $stmt->execute();
                     $results = $stmt->fetchAll();

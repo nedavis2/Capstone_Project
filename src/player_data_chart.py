@@ -12,6 +12,7 @@ try:
     if __name__ == "__main__":
         def some_function():
 
+            #Grab player id and position from exec and print player information
             player_id, pos = sys.argv[1].split(',')
 
             print(player_primary_view(player_id, pos))

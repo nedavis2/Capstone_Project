@@ -13,6 +13,7 @@ try:
     if __name__ == "__main__":
         def some_function():
 
+            #Get team abbreviation via exec and print the team's data
             team = sys.argv[1]
             
             print(team_primary_view(team))

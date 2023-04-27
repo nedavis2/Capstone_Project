@@ -12,6 +12,7 @@ try:
     if __name__ == "__main__":
         def some_function():
 
+            #Grab player id and position using exec and print prediction results
             player_id, pos = sys.argv[1].split(',')
 
             if(pos == 'QB'):

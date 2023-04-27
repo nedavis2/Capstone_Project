@@ -6,17 +6,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
     <script src="../node_modules/bootstrap/dist/js/bootstrap.bundle.js"></script>
-    <!--<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
-    <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.js"></script>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7/jquery.js"></script>
-    <script src="https://malsup.github.io/jquery.form.js"></script>-->
-
-
+    
     <title>Silicon Stadium</title>
     <link rel="icon" type="image/x-icon" href="../src/picSource/favicon.ico">
 </head>
@@ -48,16 +42,24 @@
             </div>
             <li class="nav-item" style="color:aliceblue">
                 <?php
+                //Check for logged in user
                 $_SESSION["TEST"] = True;
+
+                //Include the database connection
                 require_once 'config.php';
                 require 'php/DBconnect.php';
                 error_reporting(E_ALL);
                 ini_set('display_errors', True);
+
+                //Create connection
                 $connection = connect();
+
+                //Verify user info
                 if (isset($_SESSION['userid'])) {
                     $user_id = $_SESSION['userid'];
                     if (isset($_SESSION['email'])) {
                         $user_email = $_SESSION['email'];
+                        //Display user email
                         echo $user_email;
                     } else {
                         echo "guest";
@@ -71,15 +73,19 @@
     </nav>
 
     <?php
+    //Receive selected player from index.php
     $selectedPlayer = $_POST['playerSelect'];
     if (empty($selectedPlayer)) {
         echo ('no player found');
     } else {
 
+        //Separate 'playerSelect' into it's 3 parts: player id, player name, and position
         $player = explode(",", $selectedPlayer);
         $pos = $player[2];
         $player_input = $player[0] . "," . $pos;
 
+        //Exec the player_input array to both the player_data_chart and player_data_pred files to return their stats and predictions
+        //and store them as an array variable
         $result_set = exec('python ../src/player_data_chart.py ' . escapeshellarg($player_input));
         $prediction_set = exec('python ../src/player_data_pred.py ' . escapeshellarg($player_input));
     }
@@ -91,6 +97,7 @@
 
 
         <script>
+            //Enables tabs
             const triggerTabList = document.querySelectorAll('#myTab button')
             triggerTabList.forEach(triggerEl => {
                 const tabTrigger = new bootstrap.Tab(triggerEl)
@@ -101,9 +108,11 @@
                 })
             });
 
+            //Creates javascript variables from php variables
             var data = <?php echo json_encode($result_set); ?>;
             var pos = <?php echo json_encode($pos); ?>;
 
+            //Splits the variables into arrays depending on what position is set to
             if (pos == "QB") {
 
                 var [pass_att_weekly, pass_cmp_weekly, pass_yds_weekly, pass_td_weekly,
@@ -111,7 +120,7 @@
                     pass_att_total, pass_cmp_total, pass_yds_total, pass_td_total,
                     rush_td_weekly, rush_att_weekly, rush_yds_weekly,
                     rush_td_monthly, rush_att_monthly, rush_yds_monthly,
-                    rush_td_total, rush_att_total, rush_yds_total, player_dates, player_dates_months
+                    rush_td_total, rush_att_total, rush_yds_total, player_dates
                 ] = data.split('#');
 
             } else if (pos == "RB") {
@@ -121,23 +130,20 @@
                     rush_td_total, rush_att_total, rush_yds_total,
                     targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
                     targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
-                    targets_total, rec_total, rec_td_total, rec_yds_total,
-                    player_dates, player_dates_months
+                    targets_total, rec_total, rec_td_total, rec_yds_total, player_dates
                 ] = data.split('#');
 
             } else {
 
                 var [targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
                     targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
-                    targets_total, rec_total, rec_td_total, rec_yds_total,
-                    player_dates, player_dates_months
+                    targets_total, rec_total, rec_td_total, rec_yds_total, player_dates
                 ] = data.split('#');
 
-            }
+                //Create players last played game variable
+                player_last_date = player_dates.slice(0,-1).split(',').slice(-1);
 
-            player_dates = player_dates.split(",").slice(0, -1).slice(-17);
-            player_dates_months = player_dates_months.split(",").slice(0, -1).slice(-17);
-            player_last_date = player_dates.slice(-1);
+            }
         </script>
 
 
@@ -166,10 +172,15 @@
                             <div class="col" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
                                 <script>
+                                    //Start of text wall
                                     document.write("Player Name:</br>");
                                 </script>
-                                <?php echo $player[1] ?>;
+                                <?php 
+                                //Display player name
+                                echo $player[1] 
+                                ?>;
                                 <script>
+                                    //Continuation of text wall w/stats dependent on position
                                     document.write("</br>POS:</br>" +
                                         pos + "</br>Most recent game date: </br>" +
                                         player_last_date);
@@ -203,10 +214,12 @@
 
                     </div>
                     <script>
+                        //Create x-axis label array -weeks
                         var x_dates = ['week 1', 'week 2', 'week 3', 'week 4', 'week 5', 'week 6', 'week 7', 'week 8', 'week 9', 'week 10',
                             'week 11', 'week 12', 'week 13', 'week 14', 'week 15', 'week 16', 'week 17'
                         ]
 
+                        //Turn string variables into array dependent on what position is set to -weeks
                         if (pos == 'QB') {
 
                             pass_att_weekly = pass_att_weekly.split(",").slice(-17);
@@ -217,6 +230,7 @@
                             rush_att_weekly = rush_att_weekly.split(",").slice(-17);
                             rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
 
+                            //Graphing data for QB position -weeks
                             new Chart("weeklyChart1", {
                                 type: "line",
                                 data: {
@@ -293,6 +307,7 @@
 
                         } else if (pos == 'RB') {
 
+                            //Turning strings into array for the RB position -weeks
                             rush_td_weekly = rush_td_weekly.split(",").slice(-17);
                             rush_att_weekly = rush_att_weekly.split(",").slice(-17);
                             rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
@@ -301,6 +316,7 @@
                             rec_td_weekly = rec_td_weekly.split(",").slice(-17);
                             rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
 
+                            //Graphing data for the RB position -weeks
                             new Chart("weeklyChart1", {
                                 type: "line",
                                 data: {
@@ -372,11 +388,13 @@
 
                         } else {
 
+                            //Turning string into arrays for the WR and TE positions -weeks
                             targets_weekly = targets_weekly.split(",").slice(-17);
                             rec_weekly = rec_weekly.split(",").slice(-17);
                             rec_td_weekly = rec_td_weekly.split(",").slice(-17);
                             rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
 
+                            //Graphing data for WR and TE -weeks
                             new Chart("weeklyChart1", {
                                 type: "line",
                                 data: {
@@ -448,10 +466,15 @@
                             <div class="col">
 
                                 <script>
+                                    //Text wall start
                                     document.write("Player Name:</br>");
                                 </script>
-                                <?php echo $player[1]; ?>;
+                                <?php 
+                                //Player name
+                                echo $player[1]; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>POS:</br>" +
                                         pos + "</br>Most recent game date: </br>" +
                                         player_last_date);
@@ -487,10 +510,12 @@
 
 
                     <script>
+                        //Set x-axis label array -months
                         var x_months = ['month 1', 'month 2', 'month 3', 'month 4', 'month 5', 'month 6', 'month 7', 'month 8',
                             'month 9', 'month 10', 'month 11', 'month 12', 'month 13', 'month 14', 'month 15', 'month 16', 'month 17'
                         ]
 
+                        //Turn strings into arrays for QB position -months
                         if (pos == 'QB') {
 
                             pass_att_monthly = pass_att_monthly.split(",").slice(-17);
@@ -501,6 +526,7 @@
                             rush_att_monthly = rush_att_monthly.split(",").slice(-17);
                             rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
 
+                            //Graphing data for QB position -months
                             new Chart("monthlyChart1", {
                                 type: "line",
                                 data: {
@@ -577,6 +603,7 @@
 
                         } else if (pos == 'RB') {
 
+                            //Turning strings into arrays for RB position -months
                             rush_td_monthly = rush_td_monthly.split(",").slice(-17);
                             rush_att_monthly = rush_att_monthly.split(",").slice(-17);
                             rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
@@ -587,6 +614,7 @@
                             rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
 
 
+                            //Graphing data for RB position -months
                             new Chart("monthlyChart1", {
                                 type: "line",
                                 data: {
@@ -658,11 +686,13 @@
 
                         } else {
 
+                            //Turning strings into arrays for WR and TE positions -months
                             targets_monthly = targets_monthly.split(",").slice(-17);
                             rec_monthly = rec_monthly.split(",").slice(-17);
                             rec_td_monthly = rec_td_monthly.split(",").slice(-17);
                             rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
 
+                            //Graphing data for WR and TE positions
                             new Chart("monthlyChart1", {
                                 type: "line",
                                 data: {
@@ -734,10 +764,15 @@
                             <div class="col">
 
                                 <script>
+                                    //Text wall start
                                     document.write("Player Name:</br>");
                                 </script>
-                                <?php echo $player[1]; ?>;
+                                <?php 
+                                //Player Name
+                                echo $player[1]; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>POS:</br>" +
                                         pos + "</br>Most recent game date: </br>" +
                                         player_last_date);
@@ -762,6 +797,7 @@
                             <div class="col">
                                 <canvas id="totalChart1" style="width:40%; max-width:1000px"></canvas>
                                 <script>
+                                    //Text explaining nested pie chart values. Text varies depending upon players postion
                                     if (pos == 'QB') {
                                         document.write("</br>Pass completion ratio: " + ((pass_cmp_total / pass_att_total) * 100).toFixed(2) + "%" +
                                             "</br>Pass TD ratio on complete passes: " + ((pass_td_total / pass_cmp_total) * 100).toFixed(2) + "%" +
@@ -783,10 +819,13 @@
                     </div>
 
                     <script>
+                        //If else to filter between positions for pie chart creation
                         if (pos == 'QB') {
 
-                            var pieLabels = ['pass_cmp', 'pass_inc', ];
+                            //Set labels
+                            var pieLabels = ['pass_cmp', 'pass_inc' ];
 
+                            //Graphing 2019-present data for QB position
                             new Chart("totalChart1", {
                                 type: "pie",
                                 data: {
@@ -825,8 +864,10 @@
 
                         } else if (pos == 'RB') {
 
+                            //Set labels
                             var pieLabels = ['rush_yds_pct', 'rec_yds_ct', ];
 
+                            //Graphing 2019-present data for RB position
                             new Chart("totalChart1", {
                                 type: "pie",
                                 data: {
@@ -865,8 +906,10 @@
 
                         } else {
 
+                            //Set labels
                             var pieLabels = ['rec_pie', 'incompletes', ];
 
+                            //Graphing 2019-present data for WR and TE positions
                             new Chart("totalChart1", {
                                 type: "pie",
                                 data: {
@@ -910,20 +953,24 @@
                 <div class="prediction-comparison-pane fade" id="prediction-comparison-tab-pane" role="tabpanel" aria-labelledby="prediction-comparison-tab" tabindex="0">
 
                     <script>
+                        //Copying prediction_set as a string from PHP into javascript
                         var data_pred = <?php echo json_encode($prediction_set); ?>
 
                         if (pos == 'QB') {
 
+                            //Turning string into arrays for QB position
                             var [pass_att_weekly_pred, pass_cmp_weekly_pred, pass_yds_weekly_pred, pass_td_weekly_pred,
                                 pass_att_total_pred, pass_cmp_total_pred, pass_yds_total_pred, pass_td_total_pred, rush_td_weekly_pred,
                                 rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred, rush_att_total_pred, rush_yds_total_pred
                             ] = data_pred.split('#');
 
+                            //Text wall displaying predicted data for next week based off of previous week for QB position
                             document.write("<div class='row'><div class='col'>Predicted Stats based on last game:</br>Pass attempts: " +
                                 pass_att_weekly_pred + "</br>Pass completions: " + pass_cmp_weekly_pred + "</br>Pass yards: " +
                                 pass_yds_weekly_pred + "</br>Pass TDs: " + pass_td_weekly_pred + "</br>Rushing TDs: " +
                                 rush_td_weekly_pred + "</br>Rushing attempts: " + rush_att_weekly_pred + "</br>Rushing yards: " +
                                 rush_yds_weekly_pred)
+                                //Text wall displaying predicted data for next week based off of previous season for QB position
                             document.write("</div><div class='col'>Predicted Stats based on previous season:</br>Pass attempts: " +
                                 pass_att_total_pred + "</br>Pass completions: " + pass_cmp_total_pred + "</br>Pass yards: " +
                                 pass_yds_total_pred + "</br>Pass TDs: " + pass_td_total_pred + "</br>Rushing TDs: " +
@@ -932,16 +979,19 @@
 
                         } else if (pos == 'RB') {
 
+                            //Turning string into arrays for RB position
                             var [rush_td_weekly_pred, rush_att_weekly_pred, rush_yds_weekly_pred, rush_td_total_pred,
                                 rush_att_total_pred, rush_yds_total_pred, targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred,
                                 rec_yds_weekly_pred, targets_total_pred, rec_total_pred, rec_td_total_pred, rec_yds_total_pred
                             ] = data_pred.split('#');
 
+                            //Text wall displaying predicted data for next week based off of previous week for RB position
                             document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Rushing TDs: " +
                                 rush_td_weekly_pred + "</br>Rushing attempts: " + rush_att_weekly_pred + "</br>Rushing yards: " +
                                 rush_yds_weekly_pred + "</br>Targets: " + targets_weekly_pred +
                                 "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred +
                                 "</br>Recption Yards: " + rec_yds_weekly_pred)
+                            //Text wall displaying predicted data for next week based off of previous season for RB position
                             document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Rushing TDs: " +
                                 rush_td_total_pred + "</br>Rushing attempts: " + rush_att_total_pred + "</br>Rushing yards: " +
                                 rush_yds_total_pred + "</br>Targets: " + targets_total_pred +
@@ -950,13 +1000,16 @@
 
                         } else {
 
+                            //Turning string into arrays for WR and TE position
                             var [targets_weekly_pred, rec_weekly_pred, rec_td_weekly_pred, rec_yds_weekly_pred, targets_total_pred,
                                 rec_total_pred, rec_td_total_pred, rec_yds_total_pred
                             ] = data_pred.split('#');
 
+                            //Text wall displaying predicted data for next week based off of previous week for WR and TE position
                             document.write("<div class='row'><div class='col'>Predicted Stats:</br>Upcoming week:</br>Targets: " + targets_weekly_pred +
                                 "</br>Receptions: " + rec_weekly_pred + "</br>Reception TDs: " + rec_td_weekly_pred +
                                 "</br>Recption Yards: " + rec_yds_weekly_pred)
+                                //Text wall displaying predicted data for next week based off of previous season for WR and TE position
                             document.write("</div><div class='col'>Predicted Stats:</br>Upcoming totals:</br>Targets: " + targets_total_pred +
                                 "</br>Receptions: " + rec_total_pred + "</br>Reception TDs: " + rec_td_total_pred +
                                 "</br>Recption Yards: " + rec_yds_total_pred + "</div></div>")

@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -42,12 +41,16 @@
             </div>
             <li class="nav-item" style="color:aliceblue">
                 <?php
+                //Checking session
                 $_SESSION["TEST"] = True;
+                //Including database connection credentials
                 require_once 'config.php';
                 require 'php/DBconnect.php';
                 error_reporting(E_ALL);
                 ini_set('display_errors', True);
+                //Creating connection
                 $connection = connect();
+                //Checking login status and displaying user email
                 if (isset($_SESSION['userid'])) {
                     $user_id = $_SESSION['userid'];
                     if (isset($_SESSION['email'])) {
@@ -66,14 +69,17 @@
 
     <div id="teamPageData" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black; text-align: center;">
         <?php
+        //Receiving selected team from index page
         $selectedTeam = $_POST['teamSelect'];
         if (empty($selectedTeam)) {
             echo ('no team found');
         } else {
+            //Sending selected team string to team_data_chart via exec call and saving as a string variable
             $result_set = exec('python ../src/team_data_chart.py ' . escapeshellarg($selectedTeam));
         }
         ?>
         <script>
+            //Enable tabs
             const triggerTabList = document.querySelectorAll('#myTab button')
             triggerTabList.forEach(triggerEl => {
                 const tabTrigger = new bootstrap.Tab(triggerEl)
@@ -84,8 +90,10 @@
                 })
             });
 
+            //Copying string variable from PHP to javascript
             var data = <?php echo json_encode($result_set); ?>;
 
+            //Separating strings into arrays
             var [pass_att_weekly, pass_cmp_weekly, pass_td_weekly, pass_yds_weekly,
                 pass_att_monthly, pass_cmp_monthly, pass_td_monthly, pass_yds_monthly,
                 pass_att_total, pass_cmp_total, pass_td_total, pass_yds_total,
@@ -94,12 +102,9 @@
                 rush_td_total, rush_att_total, rush_yds_total,
                 targets_weekly, rec_weekly, rec_td_weekly, rec_yds_weekly,
                 targets_monthly, rec_monthly, rec_td_monthly, rec_yds_monthly,
-                targets_total, rec_total, rec_td_total, rec_yds_total,
-                get_dates, get_months
+                targets_total, rec_total, rec_td_total, rec_yds_total
             ] = data.split('#');
 
-            get_dates = get_dates.split(",").slice(-17);
-            get_months = get_months.split(",").slice(-17);
         </script>
 
 
@@ -130,15 +135,11 @@
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="w-rushing-tab" data-bs-toggle="tab" data-bs-target="#w-rushing-tab-pane" type="button" role="tab" aria-controls="w-rushing-tab-pane" aria-selected="false">
                             Rushing data
-
-
                         </button>
                     </li>
                     <li class="nav-item" role="presentation">
                         <button class="nav-link" id="w-receiving-tab" data-bs-toggle="tab" data-bs-target="#w-receiving-tab-pane" type="button" role="tab" aria-controls="w-receiving-tab-pane" aria-selected="false">
                             Receiving data
-
-
                         </button>
                     </li>
                 </ul>
@@ -148,10 +149,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall start
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -170,15 +176,18 @@
                         </div>
 
                         <script>
+                            //Set x-axis labels as array
                             var x_dates = ['week 1', 'week 2', 'week 3', 'week 4', 'week 5', 'week 6', 'week 7', 'week 8', 'week 9', 'week 10',
                                 'week 11', 'week 12', 'week 13', 'week 14', 'week 15', 'week 16', 'week 17'
                             ]
 
+                            //Split and shorten arrays
                             pass_att_weekly = pass_att_weekly.split(",").slice(-17);
                             pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
                             pass_yds_weekly = pass_yds_weekly.split(",").slice(-17);
                             pass_td_weekly = pass_td_weekly.split(",").slice(-17);
 
+                            //Graph weekly passing data
                             new Chart("weeklyChart1P", {
                                 type: "line",
                                 data: {
@@ -233,10 +242,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -254,12 +268,13 @@
                             </div>
                         </div>
 
-
                         <script>
+                            //Split and shorten arrays
                             rush_td_weekly = rush_td_weekly.split(",").slice(-17);
                             rush_att_weekly = rush_att_weekly.split(",").slice(-17);
                             rush_yds_weekly = rush_yds_weekly.split(",").slice(-17);
 
+                            //Graph weekly rushing data
                             new Chart("weeklyChart1R", {
                                 type: "line",
                                 data: {
@@ -321,10 +336,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -343,11 +363,13 @@
                         </div>
 
                         <script>
+                            //Split and shorten arrays
                             targets_weekly = targets_weekly.split(",").slice(-17);
                             rec_weekly = rec_weekly.split(",").slice(-17);
                             rec_td_weekly = rec_td_weekly.split(",").slice(-17);
                             rec_yds_weekly = rec_yds_weekly.split(",").slice(-17);
 
+                            //Graph weekly receiver data
                             new Chart("weeklyChart1C", {
                                 type: "line",
                                 data: {
@@ -435,10 +457,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall start
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -459,10 +486,12 @@
 
 
                         <script>
+                            //Set x-axis array for months
                             var x_months = ['month 1', 'month 2', 'month 3', 'month 4', 'month 5', 'month 6', 'month 7', 'month 8',
                                 'month 9', 'month 10', 'month 11', 'month 12', 'month 13', 'month 14', 'month 15', 'month 16', 'month 17'
                             ]
 
+                            //Split and shorten arrays
                             pass_att_monthly = pass_att_monthly.split(",").slice(-17);
                             pass_cmp_monthly = pass_cmp_monthly.split(",").slice(-17);
                             pass_yds_monthly = pass_yds_monthly.split(",").slice(-17);
@@ -470,6 +499,7 @@
 
 
 
+                            //Graph monthly passing data
                             new Chart("monthlyChart1PM", {
                                 type: "line",
                                 data: {
@@ -523,10 +553,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall start
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -545,10 +580,12 @@
                         </div>
 
                         <script>
+                            //Split and shorten rushing data
                             rush_td_monthly = rush_td_monthly.split(",").slice(-17);
                             rush_att_monthly = rush_att_monthly.split(",").slice(-17);
                             rush_yds_monthly = rush_yds_monthly.split(",").slice(-17);
 
+                            //Graph monthly rushing data
                             new Chart("monthlyChart1RM", {
                                 type: "line",
                                 data: {
@@ -609,10 +646,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall starts
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -631,11 +673,13 @@
                         </div>
 
                         <script>
+                            //Split and shorten monthly receiving data
                             targets_monthly = targets_monthly.split(",").slice(-17);
                             rec_monthly = rec_monthly.split(",").slice(-17);
                             rec_td_monthly = rec_td_monthly.split(",").slice(-17);
                             rec_yds_monthly = rec_yds_monthly.split(",").slice(-17);
 
+                            //Graph monthly receiving data
                             new Chart("monthlyChart1CM", {
                                 type: "line",
                                 data: {
@@ -725,10 +769,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall start
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -745,11 +794,10 @@
                         </div>
 
                         <script>
-                            pass_cmp_pie = pass_cmp_total / pass_att_total
-                            pass_td_pie = pass_td_total / pass_cmp_total
-
+            
                             var pieLabels = [];
 
+                            //Graphing 2019-present passing data
                             new Chart("totalChart1P", {
                                 type: "pie",
                                 data: {
@@ -757,11 +805,11 @@
                                     datasets: [{
 
                                         backgroundColor: ["green", "red"],
-                                        data: [pass_cmp_pie, 1 - pass_cmp_pie],
+                                        data: [pass_cmp_total, pass_att_total - pass_cmp_total],
                                         labels: ['completed pass', 'incomplete pass']
                                     }, {
                                         backgroundColor: ["orange", "yellow"],
-                                        data: [pass_td_pie, 1 - pass_td_pie],
+                                        data: [pass_td_total, pass_att_total - pass_td_total],
                                         labels: ['passing td', 'pass no td']
                                     }]
                                 },
@@ -790,10 +838,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -812,6 +865,7 @@
                         <script>
                             var pieLabels = [];
 
+                            //Graphing 2019-present rushing data
                             new Chart("totalChart1R", {
                                 type: "pie",
                                 data: {
@@ -855,10 +909,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall starts
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $selectedTeam; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $selectedTeam; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -877,6 +936,7 @@
                         <script>
                             var pieLabels = [];
 
+                            //Graph 2019-present receiving data
                             new Chart("totalChart1C", {
                                 type: "pie",
                                 data: {

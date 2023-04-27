@@ -6,7 +6,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../dist/css/style.min.css">
-    <!--<link rel="stylesheet" href="//code.jquery.com/ui/1.13.2/themes/base/jquery-ui.css">-->
     <link rel="stylesheet" href="../node_modules/bootstrap/dist/css/bootstrap.css">
     <link href="https://fonts.googleapis.com/css2?family=Bangers&display=swap" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
@@ -42,12 +41,16 @@
             </div>
             <li class="nav-item" style="color:aliceblue">
                 <?php
+                //Checking session
                 $_SESSION["TEST"] = True;
+                //Including database connection credentials
                 require_once 'config.php';
                 require 'php/DBconnect.php';
                 error_reporting(E_ALL);
                 ini_set('display_errors', True);
+                //Creating connection
                 $connection = connect();
+                //Checking login status and displaying user email
                 if (isset($_SESSION['userid'])) {
                     $user_id = $_SESSION['userid'];
                     if (isset($_SESSION['email'])) {
@@ -66,8 +69,7 @@
 
     <?php
 
-
-
+    //Grabbing user preferences from the database
     $connection = connect();
     $stmt = $connection->prepare("SELECT * FROM user WHERE user_email=?");
     $stmt->execute([$user_email]);
@@ -120,8 +122,10 @@
 
                         <?php
 
+                        //Checking if user has a saved QB
                         if (isset($result[1])) {
                             $qb =  $result[1];
+                            //Getting QB stats using exec to player data chart
                             $stmt = $connection->prepare("SELECT pName FROM player 
                         WHERE player_id = ?;");
                             $stmt->execute([$qb]);
@@ -133,35 +137,38 @@
                         ?>
 
                         <script>
+                            
+                            //Copying result set 1 into data_qb
                             var data_qb = <?php echo json_encode($result_set1); ?>;
 
+                            //Splitting string into arrays
                             var [pass_att_weekly_qb, pass_cmp_weekly_qb, pass_yds_weekly_qb, pass_td_weekly_qb,
                                 pass_att_monthly_qb, pass_cmp_monthly_qb, pass_yds_monthly_qb, pass_td_monthly_qb,
                                 pass_att_total_qb, pass_cmp_total_qb, pass_yds_total_qb, pass_td_total_qb,
                                 rush_td_weekly_qb, rush_att_weekly_qb, rush_yds_weekly_qb,
                                 rush_td_monthly_qb, rush_att_monthly_qb, rush_yds_monthly_qb,
-                                rush_td_total_qb, rush_att_total_qb, rush_yds_total_qb, player_dates_qb, player_dates_months_qb
+                                rush_td_total_qb, rush_att_total_qb, rush_yds_total_qb
                             ] = data_qb.split('#');
 
+                            //Split and shorten arrays
                             pass_att_weekly_qb = pass_att_weekly_qb.split(",").slice(-17);
                             pass_cmp_weekly_qb = pass_cmp_weekly_qb.split(",").slice(-17);
                             pass_yds_weekly_qb = pass_yds_weekly_qb.split(",").slice(-17);
                             pass_td_weekly_qb = pass_td_weekly_qb.split(",").slice(-17);
                             rush_td_weekly_qb = rush_td_weekly_qb.split(",").slice(-17);
                             rush_att_weekly_qb = rush_att_weekly_qb.split(",").slice(-17);
-                            player_dates_qb = player_dates_qb.split(",").slice(0, -1).slice(-17);
-                            player_dates_months_qb = player_dates_months_qb.split(",").slice(0, -1).slice(-17);
+                            
                         </script>
 
                         <div class="row">
                             <div class="col">
 
                                 <script>
+                                    //Text wall start
                                     document.write("Player name: </br>")
                                 </script>
-
                                 <?php
-
+                                //Check if user has saved QB and displays name
                                 if (isset($result[1])) {
                                     print_r($qb_name['pName']);
                                 } else {
@@ -169,6 +176,7 @@
                                 } ?>
 
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Position:</br>QB</br>" +
                                         "Stats since 2019: </br> Rushing TDs:</br>" +
                                         rush_td_total_qb + "</br>Passing TDs:</br>" +
@@ -189,10 +197,12 @@
                         </div>
 
                         <script>
+                            //Set x-axis array
                             var x_dates = ['week 1', 'week 2', 'week 3', 'week 4', 'week 5', 'week 6', 'week 7', 'week 8', 'week 9', 'week 10',
                                 'week 11', 'week 12', 'week 13', 'week 14', 'week 15', 'week 16', 'week 17'
                             ]
 
+                            //Chart saved QB's weekly data
                             new Chart("weeklyChart1QB", {
                                 type: "line",
                                 data: {
@@ -268,6 +278,7 @@
                     <div class="tab-pane fade" id="rb-tab-pane" role="tabpanel" aria-labelledby="rb-tab" tabindex="0">
 
                         <?php
+                        //Check if user has saved RB1 and RB2 and grabs their data
                         if (isset($result[2]) && isset($result[3])) {
                             $rb1 =  $result[2];
                             $stmt = $connection->prepare("SELECT pName FROM player 
@@ -289,9 +300,11 @@
                         ?>
 
                         <script>
+                            //Copy the result set 2 & 3 into data_rb1 and data_rb2
                             var data_rb1 = <?php echo json_encode($result_set2); ?>;
                             var data_rb2 = <?php echo json_encode($result_set3); ?>;
 
+                            //Split strings into arrays
                             var [rush_td_weekly_rb1, rush_att_weekly_rb1, rush_yds_weekly_rb1,
                                 rush_td_monthly_rb1, rush_att_monthly_rb1, rush_yds_monthly_rb1,
                                 rush_td_total_rb1, rush_att_total_rb1, rush_yds_total_rb1,
@@ -310,6 +323,7 @@
                                 player_dates_rb2, player_dates_months_rb2
                             ] = data_rb2.split('#');
 
+                            //Split and shorten arrays
                             player_dates_rb1 = player_dates_rb1.split(",").slice(0, -1).slice(-17);
                             rush_td_weekly_rb1 = rush_td_weekly_rb1.split(",").slice(-17);
                             rush_td_weekly_rb2 = rush_td_weekly_rb2.split(",").slice(-17);
@@ -329,10 +343,11 @@
                             <div class="col">
 
                                 <script>
+                                    //Text wall starts
                                     document.write("Player names:</br>")
                                 </script>
-
                                 <?php
+                                //Checks if user has saved RB1 and RB2, then displays their names
                                 if (isset($result[2]) && isset($result[3])) {
                                     print_r($rb1_name['pName']);
                                     echo ", ";
@@ -342,6 +357,7 @@
                                 ?>
 
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Rushing TDS:</br>" +
                                         rush_td_total_rb1 + ", " + rush_td_total_rb2 +
                                         "</br>Reception TDs:</br>" +
@@ -367,6 +383,7 @@
                         </div>
 
                         <script>
+                            //Graph saved players data
                             new Chart("weeklyChart1RB", {
                                 type: "line",
                                 data: {
@@ -511,6 +528,7 @@
                     <div class="tab-pane fade" id="rec-tab-pane" role="tabpanel" aria-labelledby="rec-tab" tabindex="0">
 
                         <?php
+                        //Checks if user has saved WR1, WR2, and TE. Grabs their data using exec to player data chart
                         if (isset($result[4]) && isset($result[5]) && isset($result[6])) {
                             $wr1 =  $result[4];
                             $stmt = $connection->prepare("SELECT pName FROM player 
@@ -540,11 +558,12 @@
                         ?>
 
                         <script>
+                            //Copy result set 4, 5, and 6 into data_wr1, data_wr2, and data_te
                             var data_wr1 = <?php echo json_encode($result_set4); ?>;
                             var data_wr2 = <?php echo json_encode($result_set5); ?>;
                             var data_te = <?php echo json_encode($result_set6); ?>;
 
-
+                            //Split strings into arrays
                             var [targets_weekly_wr1, rec_weekly_wr1, rec_td_weekly_wr1, rec_yds_weekly_wr1,
                                 targets_monthly_wr1, rec_monthly_wr1, rec_td_monthly_wr1, rec_yds_monthly_wr1,
                                 targets_total_wr1, rec_total_wr1, rec_td_total_wr1, rec_yds_total_wr1,
@@ -563,6 +582,7 @@
                                 player_dates_te, player_dates_months_te
                             ] = data_te.split('#');
 
+                            //Split and shorten arrays
                             player_dates_wr1 = player_dates_wr1.split(",").slice(0, -1).slice(-17);
                             targets_weekly_wr1 = targets_weekly_wr1.split(",").slice(-17);
                             targets_weekly_wr2 = targets_weekly_wr2.split(",").slice(-17);
@@ -582,9 +602,11 @@
                             <div class="col">
 
                                 <script>
+                                    //Text wall starts
                                     document.write("Player names:</br>");
                                 </script>
                                 <?php
+                                //Checks if user has saved WR1, WR2, and TE. Displays player names
                                 if (isset($result[4]) && isset($result[5]) && isset($result[6])) {
                                     print_r($wr1_name['pName']);
                                     echo ', ';
@@ -595,6 +617,7 @@
 
                                 ?>
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Reception TDs:</br>" +
                                         rec_td_total_wr1 + ", " + rec_td_total_wr2 + ", " + rec_td_total_te +
                                         "</br>Reception Yards:</br>" +
@@ -612,6 +635,7 @@
                         </div>
 
                         <script>
+                            //Graph saved receiver weekly data
                             new Chart("weeklyChart1WR", {
                                 type: "line",
                                 data: {
@@ -728,6 +752,7 @@
                     </div>
                     <div class="tab-pane fade" id="flx-tab-pane" role="tabpanel" aria-labelledby="flx-tab" tabindex="0">
                         <?php
+                        //Checks if user has saved flex player, execs to player data chart to retrieve player data
                         if (isset($result[7])) {
                             $flx =  $result[7];
                             $stmt = $connection->prepare("SELECT pName, pos FROM player 
@@ -743,40 +768,43 @@
                         ?>
 
                         <script>
+                            //Copy result set 4 into data_flx
                             var data_flx = <?php echo json_encode($result_set4); ?>;
                             var pos = <?php echo json_encode($flx_pos); ?>;
 
+                            //Splits string into array depending upon what position pos is set to
                             if (pos == 'RB') {
                                 var [rush_td_weekly_flx, rush_att_weekly_flx, rush_yds_weekly_flx,
                                     rush_td_monthly_flx, rush_att_monthly_flx, rush_yds_monthly_flx,
                                     rush_td_total_flx, rush_att_total_flx, rush_yds_total_flx,
                                     targets_weekly_flx, rec_weekly_flx, rec_td_weekly_flx, rec_yds_weekly_flx,
                                     targets_monthly_flx, rec_monthly_flx, rec_td_monthly_flx, rec_yds_monthly_flx,
-                                    targets_total_flx, rec_total_flx, rec_td_total_flx, rec_yds_total_flx,
-                                    player_dates_flx, player_dates_months_flx
+                                    targets_total_flx, rec_total_flx, rec_td_total_flx, rec_yds_total_flx
                                 ] = data_flx.split('#');
                             } else {
                                 var [targets_weekly_flx, rec_weekly_flx, rec_td_weekly_flx, rec_yds_weekly_flx,
                                     targets_monthly_flx, rec_monthly_flx, rec_td_monthly_flx, rec_yds_monthly_flx,
-                                    targets_total_flx, rec_total_flx, rec_td_total_flx, rec_yds_total_flx,
-                                    player_dates_flx, player_dates_months_flx
+                                    targets_total_flx, rec_total_flx, rec_td_total_flx, rec_yds_total_flx
                                 ] = data_flx.split('#');
                             }
 
-                            player_dates_flx = player_dates_flx.split(",").slice(0, -1).slice(-17);
+                            
                         </script>
 
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall starts
                                     document.write("Player name:</br>");
                                 </script>
 
                                 <?php
+                                //CHecks if user has saved flex player, displays player name
                                 if (isset($result[7])) {
                                     print_r($flx_name);
                                 } ?>;
                                 <script>
+                                    //Text wall continues, dependent upon pos
                                     document.write("</br>Position:</br>" + pos +
                                         "</br>");
                                     if (pos == 'RB') {
@@ -804,6 +832,7 @@
                         </div>
 
                         <script>
+                            //Split and shorten arrays dependent upon what position pos is
                             if (pos == 'RB') {
 
                                 rush_td_weekly_flx = rush_td_weekly_flx.split(",").slice(-17);
@@ -814,6 +843,7 @@
                                 rec_td_weekly_flx = rec_td_weekly_flx.split(",").slice(-17);
                                 rec_yds_weekly_flx = rec_yds_weekly_flx.split(",").slice(-17);
 
+                                //Graph flex data if flex has pos = RB
                                 new Chart("weeklyChart1FLX", {
                                     type: "line",
                                     data: {
@@ -872,11 +902,13 @@
 
                             } else {
 
+                                //Split and shorten arrays
                                 targets_weekly_flx = targets_weekly_flx.split(",").slice(-17);
                                 rec_weekly_flx = rec_weekly_flx.split(",").slice(-17);
                                 rec_td_weekly_flx = rec_td_weekly_flx.split(",").slice(-17);
                                 rec_yds_weekly_flx = rec_yds_weekly_flx.split(",").slice(-17);
 
+                                //Graph weekly data for flex receiver
                                 new Chart("weeklyChart1FLX", {
                                     type: "line",
                                     data: {
@@ -930,11 +962,15 @@
                     <div class="tab-pane fade" id="f-team-tab-pane" role="tabpanel" aria-labelledby="f-team-tab" tabindex="0">
                         <?php
 
-                        $team =  $result[8];
-                        $result_set8 = exec('python ../src/team_data_chart.py ' . escapeshellarg($team));
-
+                        //Checks if user has saved team, execs to team data chart to retreive team data
+                        if(isset($result[8])){
+                            $team =  $result[8];
+                            $result_set8 = exec('python ../src/team_data_chart.py ' . escapeshellarg($team)); 
+                        }
+                        
                         ?>
                         <script>
+                            //Enables tabs
                             const triggerTabList = document.querySelectorAll('#myTab button')
                             triggerTabList.forEach(triggerEl => {
                                 const tabTrigger = new bootstrap.Tab(triggerEl)
@@ -945,8 +981,10 @@
                                 })
                             });
 
+                            //Copy result set 8 into data_team
                             var data_team = <?php echo json_encode($result_set8); ?>;
 
+                            //Split string into array
                             var [pass_att_weekly, pass_cmp_weekly, pass_td_weekly, pass_yds_weekly,
                                 pass_att_monthly, pass_cmp_monthly, pass_td_monthly, pass_yds_monthly,
                                 pass_att_total, pass_cmp_total, pass_td_total, pass_yds_total,
@@ -959,6 +997,7 @@
                                 get_dates, get_months
                             ] = data_team.split('#');
 
+                            //Split and shorten arrays
                             pass_att_weekly = pass_att_weekly.split(",").slice(-17);
                             pass_cmp_weekly = pass_cmp_weekly.split(",").slice(-17);
                             pass_td_weekly = pass_td_weekly.split(",").slice(-17);
@@ -976,10 +1015,15 @@
                         <div class="row">
                             <div class="col">
                                 <script>
+                                    //Text wall starts
                                     document.write("Team name:</br>")
                                 </script>
-                                <?php echo $team; ?>;
+                                <?php 
+                                //Team abbreviation
+                                echo $team; 
+                                ?>;
                                 <script>
+                                    //Text wall continues
                                     document.write("</br>Stats since 2019:</br>Air TDs:</br>" +
                                         pass_td_total + "</br>Rushing TDs:</br>" +
                                         rush_td_total + "</br>Air Yards</br>" +
@@ -999,6 +1043,7 @@
                         </div>
 
                         <script>
+                            //Graphing team weekly data
                             new Chart("weeklyChart1TM", {
                                 type: "line",
                                 data: {
@@ -1091,6 +1136,7 @@
 
                                                 <?php
 
+                                                //Populate drop-down list for all QB's
                                                 $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
                         WHERE pos = 'QB' ORDER BY pName ASC;");
                                                 $stmt->execute();
@@ -1115,6 +1161,7 @@
 
                                                 <?php
 
+                                                //Populate drop-down list for all RB's
                                                 $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
                         WHERE pos = 'RB' ORDER BY pName ASC;");
                                                 $stmt->execute();
@@ -1139,6 +1186,7 @@
 
                                                 <?php
 
+                                                //Populate drop-down list for all RB's
                                                 $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
                         WHERE pos = 'RB' ORDER BY pName ASC;");
                                                 $stmt->execute();
@@ -1163,6 +1211,7 @@
 
                                                 <?php
 
+                                                ////Populate drop-down list for all WR's
                                                 $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
                         WHERE pos = 'WR' ORDER BY pName ASC;");
                                                 $stmt->execute();
@@ -1189,6 +1238,7 @@
 
                                                 <?php
 
+                                                ////Populate drop-down list for all WR's
                                                 $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player
                         WHERE pos = 'WR' ORDER BY pName ASC;");
                                                 $stmt->execute();
@@ -1213,6 +1263,7 @@
 
                                                 <?php
 
+                                                //Populate drop-down list for all TE's
                                                 $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
                         WHERE pos = 'TE' ORDER BY pName ASC;");
                                                 $stmt->execute();
@@ -1237,6 +1288,7 @@
 
                                                 <?php
 
+                                                //Populate drop-down list for all RB's, WR's, and TE's
                                                 $stmt = $connection->prepare("SELECT DISTINCT player_id, pName FROM player 
                         WHERE pos = 'RB' OR pos = 'WR' OR pos = 'TE' ORDER BY pName ASC;");
                                                 $stmt->execute();
@@ -1261,6 +1313,7 @@
 
                                                 <?php
 
+                                                //Populate drop-down list for all Teams
                                                 $stmt = $connection->prepare("SELECT DISTINCT team FROM game_stats_team ORDER BY team ASC;");
                                                 $stmt->execute();
                                                 $results = $stmt->fetchAll();
