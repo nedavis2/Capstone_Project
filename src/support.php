@@ -22,7 +22,9 @@
             <a class="navbar-brand" href="../src/index.php">
                 <img src="../src/picSource/favicon.ico" alt="Bootstrap" width="30" height="24">
                 Silicon Stadium</a>
-            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+                data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+                aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
             </button>
             <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -63,24 +65,32 @@
             </li>
         </div>
     </nav>
-    <div id="support-page-content" style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
+    <div id="support-page-content"
+        style="color: white; font-family: 'Bangers', cursive; font-size: xx-large; font-weight: 500; text-shadow: -2px 2px 0px black;">
 
         <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
             <li class="nav-item" role="presentation">
-                <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane" type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="true">Contact Us</button>
+                <button class="nav-link active" id="contact-tab" data-bs-toggle="tab" data-bs-target="#contact-tab-pane"
+                    type="button" role="tab" aria-controls="contact-tab-pane" aria-selected="true">Contact Us</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="documentation-tab" data-bs-toggle="tab" data-bs-target="#documentation-tab-pane" type="button" role="tab" aria-controls="documentation-tab-pane" aria-selected="false">Documentation</button>
+                <button class="nav-link" id="documentation-tab" data-bs-toggle="tab"
+                    data-bs-target="#documentation-tab-pane" type="button" role="tab"
+                    aria-controls="documentation-tab-pane" aria-selected="false">Documentation</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-tab-pane" type="button" role="tab" aria-controls="faq-tab-pane" aria-selected="false">FAQ</button>
+                <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-tab-pane" type="button"
+                    role="tab" aria-controls="faq-tab-pane" aria-selected="false">FAQ</button>
             </li>
             <li class="nav-item" role="presentation">
-                <button class="nav-link" id="user-manual-tab" data-bs-toggle="tab" data-bs-target="#user-manual-tab-pane" type="button" role="tab" aria-controls="user-manual-tab-pane" aria-selected="false">User Manual</button>
+                <button class="nav-link" id="user-manual-tab" data-bs-toggle="tab"
+                    data-bs-target="#user-manual-tab-pane" type="button" role="tab" aria-controls="user-manual-tab-pane"
+                    aria-selected="false">User Manual</button>
             </li>
         </ul>
         <div class="tab-content" id="myTabContent">
-            <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
+            <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab"
+                tabindex="0">
                 Our Team: at UNCG<br>
                 Logan Whitfield "lww1117@gmail.com"<br>
                 Kevin Hayes "nivek694@gmail.com"<br>
@@ -89,13 +99,19 @@
                 Nate Davis "nedavis2@uncg.edu"<br>
             </div>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="documentation-tab-pane" role="tabpanel" aria-labelledby="documentation-tab" tabindex="0">
+                <div class="tab-pane fade" id="documentation-tab-pane" role="tabpanel"
+                    aria-labelledby="documentation-tab" tabindex="0">
                     Our model will enhance the experience of football and fantasy football with friends and family,
-                    by providing users with more accurate predictions of player performance. <br>Our goal is to provide an entry-level tool that will allow anyone to get into fantasy football,
-                    without needing extensive knowledge of the game. <br>Showing the users player and team past statistics in an easy viewing experience. <br>At the same time,
-                    we understand that experts need more granularity in their predictions and we will provide them with a deeper level of analysis and insight.<br>
-                    Our goal of building a convolutional neural network for fantasy football is to streamline the statistical analysis behind the game and make it more accessible to users. <br>
-                    By using advanced machine learning techniques, we aim to provide users with more informed decisions when it comes to drafting and managing their fantasy teams. <br>
+                    by providing users with more accurate predictions of player performance. <br>Our goal is to provide
+                    an entry-level tool that will allow anyone to get into fantasy football,
+                    without needing extensive knowledge of the game. <br>Showing the users player and team past
+                    statistics in an easy viewing experience. <br>At the same time,
+                    we understand that experts need more granularity in their predictions and we will provide them with
+                    a deeper level of analysis and insight.<br>
+                    Our goal of building a convolutional neural network for fantasy football is to streamline the
+                    statistical analysis behind the game and make it more accessible to users. <br>
+                    By using advanced machine learning techniques, we aim to provide users with more informed decisions
+                    when it comes to drafting and managing their fantasy teams. <br>
                 </div>
             </div>
             <div class="tab-content" id="myTabContent">
@@ -106,18 +122,56 @@
                     A: Click the "Silicon Stadium" located at the top left of every page.<br>
                     Q: What data is being used for predictions?<br>
                     A: Currently we are using 55 different data points for each player. <br>
-                    Q: Common terms defined. While most displayed statistics are self-explanatory there are some that are not so obvious:<br>
-                    1. Rush- This terminology simply refers to the act of running with the ball, with the stipulation that the ball is not thrown during the play.<br>
-                    2. Broken tackle- This refers to when a player is tackled by an opposing player but manages not to stop progressing forward.
+                    Q: Common terms defined. While most displayed statistics are self-explanatory there are some that
+                    are not so obvious:<br>
+                    1. Rush- This terminology simply refers to the act of running with the ball, with the stipulation
+                    that the ball is not thrown during the play.<br>
+                    2. Broken tackle- This refers to when a player is tackled by an opposing player but manages not to
+                    stop progressing forward.
                     Often this will seem like the person breaking the tackle brushes the tackler away. <br>
-                    3. Blitzed- This refers to a play where the defense sends five or more defenders directly into the offensive backfield to attack the ball carrier and disrupt the offense<br>
-                    4. Fumble- When a ball is dropped but the play is still active, the ball can be recovered by either team, thereby gaining possession of it.<br>
+                    3. Blitzed- This refers to a play where the defense sends five or more defenders directly into the
+                    offensive backfield to attack the ball carrier and disrupt the offense<br>
+                    4. Fumble- When a ball is dropped but the play is still active, the ball can be recovered by either
+                    team, thereby gaining possession of it.<br>
                 </div>
             </div>
             <div class="tab-content" id="myTabContent">
-                <div class="tab-pane fade" id="user-manual-tab-pane" role="tabpanel" aria-labelledby="user-manual-tab" tabindex="0">
-                    
-                </div>
+                <div class="tab-pane fade" id="user-manual-tab-pane" role="tabpanel" aria-labelledby="user-manual-tab"
+                    tabindex="0">
+
+                </div>Welcome to Silicon Stadium,<br>
+                Our statistical analysis tool is a simple to use experience that can let you create your own fantasy
+                teams or lookup player stats at your convenience.<br>
+                Main Menu:<br>
+                After using your gmail credentials to login you will be redirected to our front page which will have 2
+                search options in the middle. The first will allow you to select from all the players in our database
+                that will lead you to our player page. The second option will allow you to select from the teams in our
+                database.<br>
+                Player Page:<br>
+                Once you have entered the player page, you will see some basic statistics on the side and some graphs.
+                But what do these mean?<br>
+                The statistics on the side are somewhat self-explanatory but the more specific statistics are displayed
+                based on the position that the player chosen has. Example a QB will display ‘Rushing Touchdowns’, ‘Pass
+                Yards’ and ‘Rushing Yds’. (These remain the same regardless of which time frame bracket is chosen).<br>
+                The graphs on the right change depending on which bracket is chosen. The statistics are dependent on the
+                position, the aggregates of the data are displayed on a different time frame bracket. Initially the
+                default is the weekly time frame, but monthly data is accessible as well. Finally, the total tab has pie
+                charts to display ratios and their complements. For example, ‘Pass Completions’ are complemented by
+                ‘Pass Incompletions’.<br>
+                Finally, the predictions/comparison table has two predictions based on our machine learning models. The
+                left column has predictions based on his last known performance, and the right column has predictions
+                based on his season’s statistics. This is done to give you the user a range of plausible values that are
+                likely to occur on his next game.<br>
+                Team Page:<br>
+                Selecting a team on the main page will bring you to the team page. The data is further broken down into
+                passing, rushing and receiving data, but the time frame divisions remain the same from the player page.<br>
+                Fantasy Page:<br>
+                Once you have looked at the data of your favorite players in detail, it’s time to create your fantasy
+                team. First you will have to navigate to the “change players” tab, in here you will see the offensive
+                positions players that make up your team. For positions that have more than 1 player, both players once
+                selected will be displayed on the graphs and their statistics will be displayed side to side so you can
+                see who works better with who.<br>
+
             </div>
         </div>
 </body>
