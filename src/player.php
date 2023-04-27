@@ -141,9 +141,10 @@
                 ] = data.split('#');
 
                 //Create players last played game variable
-                player_last_date = player_dates.slice(0,-1).split(',').slice(-1);
+                
 
             }
+            player_last_date = player_dates.slice(0,-1).split(',').slice(-1);
         </script>
 
 
