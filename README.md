@@ -1,4 +1,4 @@
-# Capstone_Project
+# Silicon Stadium
 
 We're "Hello World or Bust" and we are developing a web application to enhance the enjoyment of NFL and fantasy football with friends, family, and foes. Our app will enable people to better predict the outcome of fantasy football before the real NFL games are played. Some people are intimidated by fantasy football and this tool will give the entry level player a way to feel more comfortable discussing their teams at the water cooler or family function. The fantasy sports sector has been growing with no signs of slowing down as fantasy sports have the potential to increase engagement in sporting events, sports news, and online content. Fantasy football (NFL) is the most popular with 20% of US adults over the age of 21 having played in the last 12 months. This number is up from just 10% in 2010. An industry that cannot be ignored.
 
