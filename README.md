@@ -8,3 +8,11 @@ As everyone knows the NFL is a fast moving dangerous sport and injuries are boun
 We also will be implementing an API request for Database operation. The goal here will be to do an initial pull to fill our databases with all the historic data we deem necessary. After this we can update our database with scheduled pulls from the API, at an interval we find most efficient, without having to worry about usage constraints imposed by the free API's we have chosen. The databases that we populate will operate in similar fashion to a repository, we will have the master databases which will not be operated upon except for pulls to add more current data. The data being analyzed will come from branched off databases to not compromise our master database and require unnecessary API pulls to restore it.  To separate our application from competitors we are also going to be using a weather API for up to date weather data and forecasts to give our customers the upper hand in their leagues. 
 
 Our web application will be free to use, selling advertising space to interested advertisers. Our customers will have the ability to sign up for a monthly membership that hides these advertisements and gives them other benefits like alerts for drastic weather conditions change.
+
+Operational Requirements:
+1. Import nfl_pass_rush_receive_raw_data.sql, located /Database, into database (prefered database is XAMPP myPHPAdmin)
+2. Import table_creations.sql, located /Database, into database
+3. Run table_splitter.py, located /Data
+4. Run insert.php, located /Database
+
+
