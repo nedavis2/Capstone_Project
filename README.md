@@ -11,15 +11,14 @@ Our web application will be free to use, selling advertising space to interested
 
 First time run Requirements:
 1. Turn on Xampp and start Apache and mySQL
-2. Import nfl_pass_rush_receive_raw_data.sql, located /Database, into database (prefered database is XAMPP myPHPAdmin)
-3. Import table_creations.sql, located /Database, into database
-4. Run table_splitter.py, located /Data
-5. Run insert.php, located /Database
-6. Run pip_install.py, located /src, if on new system.
-7. Contact winters1291@gmail to get email added to google authorization.
-8. Add email into database 'users' table.
-9. Using prefered browser, navigate to localhost/Capstone_project/src/button.html.
-10. Login and explore.
+2. Import table_creations.sql, located /Database, into database
+3. Run table_splitter.py, located /Data
+4. Run insert.php, located /Database
+5. Run pip_install.py, located /src, if on new system.
+6. Contact winters1291@gmail to get email added to google authorization.
+7. Add email into database 'users' table.
+8. Using prefered browser, navigate to localhost/Capstone_project/src/button.html.
+9. Login and explore.
 
 
 
