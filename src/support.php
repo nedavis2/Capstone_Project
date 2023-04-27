@@ -75,6 +75,9 @@
             <li class="nav-item" role="presentation">
                 <button class="nav-link" id="faq-tab" data-bs-toggle="tab" data-bs-target="#faq-tab-pane" type="button" role="tab" aria-controls="faq-tab-pane" aria-selected="false">FAQ</button>
             </li>
+            <li class="nav-item" role="presentation">
+                <button class="nav-link" id="user-manual-tab" data-bs-toggle="tab" data-bs-target="#user-manual-tab-pane" type="button" role="tab" aria-controls="user-manual-tab-pane" aria-selected="false">User Manual</button>
+            </li>
         </ul>
         <div class="tab-content" id="myTabContent">
             <div class="tab-pane fade show active" id="contact-tab-pane" role="tabpanel" aria-labelledby="contact-tab" tabindex="0">
@@ -109,7 +112,11 @@
                     Often this will seem like the person breaking the tackle brushes the tackler away. <br>
                     3. Blitzed- This refers to a play where the defense sends five or more defenders directly into the offensive backfield to attack the ball carrier and disrupt the offense<br>
                     4. Fumble- When a ball is dropped but the play is still active, the ball can be recovered by either team, thereby gaining possession of it.<br>
-
+                </div>
+            </div>
+            <div class="tab-content" id="myTabContent">
+                <div class="tab-pane fade" id="user-manual-tab-pane" role="tabpanel" aria-labelledby="user-manual-tab" tabindex="0">
+                    
                 </div>
             </div>
         </div>
