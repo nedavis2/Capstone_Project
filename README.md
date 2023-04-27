@@ -9,7 +9,7 @@ We also will be implementing an API request for Database operation. The goal her
 
 Our web application will be free to use, selling advertising space to interested advertisers. Our customers will have the ability to sign up for a monthly membership that hides these advertisements and gives them other benefits like alerts for drastic weather conditions change.
 
-Operational Requirements:
+First time run Requirements:
 1. Turn on Xampp and start Apache and mySQL
 2. Import nfl_pass_rush_receive_raw_data.sql, located /Database, into database (prefered database is XAMPP myPHPAdmin)
 3. Import table_creations.sql, located /Database, into database
