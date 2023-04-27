@@ -307,7 +307,7 @@ try{
     $stmt = $connection->prepare($team_del_qry2);
     $stmt->execute();
 
-} catch(PDOexecption $error){
+} catch(PDOexception $error){
     echo "Database connection error: " . $error->getmessage() . "<BR>";
     die;
 }
